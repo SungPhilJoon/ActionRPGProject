@@ -1,0 +1,19 @@
+fileFormatVersion: 2
+guid: 0751e75c2a6ed40baa0bc4e522072e65
+timeCreated: 1490647587
+licenseType: Store
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 175595
+  packageName: RPG Fantasy Monster Bundle #6 - 4 RPG / Fantasy Characters
+  packageVersion: 4.3.2
+  assetPath: Assets/Magic Pig Games (Infinity PBR)/Characters/Medusa/Scripts/medusaTypeControl.cs
+  uploadId: 934178

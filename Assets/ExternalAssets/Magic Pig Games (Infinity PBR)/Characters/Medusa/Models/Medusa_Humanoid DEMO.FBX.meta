@@ -1,0 +1,4471 @@
+fileFormatVersion: 2
+guid: 6ede9903ef4494a97955479a1fc89e4e
+AssetOrigin:
+  serializedVersion: 1
+  productId: 175595
+  packageName: RPG Fantasy Monster Bundle #6 - 4 RPG / Fantasy Characters
+  packageVersion: 4.3.2
+  assetPath: Assets/Magic Pig Games (Infinity PBR)/Characters/Medusa/Models/Medusa_Humanoid
+    DEMO.FBX
+  uploadId: 934178
+ModelImporter:
+  serializedVersion: 24300
+  internalIDToNameTable:
+  - first:
+      1: 100000
+    second: Armor
+  - first:
+      1: 100002
+    second: Back_Tasset_01
+  - first:
+      1: 100004
+    second: Back_Tasset_02
+  - first:
+      1: 100006
+    second: Belt
+  - first:
+      1: 100008
+    second: Eyelashes
+  - first:
+      1: 100010
+    second: Eyes
+  - first:
+      1: 100012
+    second: Eyes_Reflect
+  - first:
+      1: 100014
+    second: Front_Tasset_01
+  - first:
+      1: 100016
+    second: Front_Tasset_02
+  - first:
+      1: 100018
+    second: Head
+  - first:
+      1: 100020
+    second: Hips
+  - first:
+      1: 100022
+    second: Jaw_1
+  - first:
+      1: 100024
+    second: Jaw_2
+  - first:
+      1: 100026
+    second: L_eye
+  - first:
+      1: 100028
+    second: L_Snakehead_100
+  - first:
+      1: 100030
+    second: L_Snakehead_101
+  - first:
+      1: 100032
+    second: L_Snakehead_102
+  - first:
+      1: 100034
+    second: L_Snakehead_103
+  - first:
+      1: 100036
+    second: L_Snakehead_104
+  - first:
+      1: 100038
+    second: L_Snakehead_105
+  - first:
+      1: 100040
+    second: L_Snakehead_106
+  - first:
+      1: 100042
+    second: L_Snakehead_107
+  - first:
+      1: 100044
+    second: L_Snakehead_108
+  - first:
+      1: 100046
+    second: L_Snakehead_109
+  - first:
+      1: 100048
+    second: L_Snakehead_110
+  - first:
+      1: 100050
+    second: L_Snakehead_111
+  - first:
+      1: 100052
+    second: L_Snakehead_112
+  - first:
+      1: 100054
+    second: L_Snakehead_113
+  - first:
+      1: 100056
+    second: L_Snakehead_114
+  - first:
+      1: 100058
+    second: L_Snakehead_115
+  - first:
+      1: 100060
+    second: L_Snakehead_116
+  - first:
+      1: 100062
+    second: L_Snakehead_117
+  - first:
+      1: 100064
+    second: L_Snakehead_118
+  - first:
+      1: 100066
+    second: L_Snakehead_119
+  - first:
+      1: 100068
+    second: L_Snakehead_120
+  - first:
+      1: 100070
+    second: L_Snakehead_121
+  - first:
+      1: 100072
+    second: L_Snakehead_122
+  - first:
+      1: 100074
+    second: L_Snakehead_123
+  - first:
+      1: 100076
+    second: L_Snakehead_124
+  - first:
+      1: 100078
+    second: L_Snakehead_125
+  - first:
+      1: 100080
+    second: L_Snakehead_126
+  - first:
+      1: 100082
+    second: L_Snakehead_127
+  - first:
+      1: 100084
+    second: L_Snakehead_128
+  - first:
+      1: 100086
+    second: L_Snakehead_129
+  - first:
+      1: 100088
+    second: L_Snakehead_130
+  - first:
+      1: 100090
+    second: L_Snakehead_36
+  - first:
+      1: 100092
+    second: L_Snakehead_37
+  - first:
+      1: 100094
+    second: L_Snakehead_38
+  - first:
+      1: 100096
+    second: L_Snakehead_39
+  - first:
+      1: 100098
+    second: L_Snakehead_40
+  - first:
+      1: 100100
+    second: L_Snakehead_41
+  - first:
+      1: 100102
+    second: L_Snakehead_42
+  - first:
+      1: 100104
+    second: L_Snakehead_43
+  - first:
+      1: 100106
+    second: L_Snakehead_44
+  - first:
+      1: 100108
+    second: L_Snakehead_45
+  - first:
+      1: 100110
+    second: L_Snakehead_46
+  - first:
+      1: 100112
+    second: L_Snakehead_47
+  - first:
+      1: 100114
+    second: L_Snakehead_48
+  - first:
+      1: 100116
+    second: L_Snakehead_49
+  - first:
+      1: 100118
+    second: L_Snakehead_50
+  - first:
+      1: 100120
+    second: L_Snakehead_51
+  - first:
+      1: 100122
+    second: L_Snakehead_52
+  - first:
+      1: 100124
+    second: L_Snakehead_53
+  - first:
+      1: 100126
+    second: L_Snakehead_54
+  - first:
+      1: 100128
+    second: L_Snakehead_55
+  - first:
+      1: 100130
+    second: L_Snakehead_56
+  - first:
+      1: 100132
+    second: L_Snakehead_57
+  - first:
+      1: 100134
+    second: L_Snakehead_58
+  - first:
+      1: 100136
+    second: L_Snakehead_59
+  - first:
+      1: 100138
+    second: L_Snakehead_60
+  - first:
+      1: 100140
+    second: L_Snakehead_61
+  - first:
+      1: 100142
+    second: L_Snakehead_62
+  - first:
+      1: 100144
+    second: L_Snakehead_63
+  - first:
+      1: 100146
+    second: L_Snakehead_64
+  - first:
+      1: 100148
+    second: L_Snakehead_65
+  - first:
+      1: 100150
+    second: L_Snakehead_66
+  - first:
+      1: 100152
+    second: L_Snakehead_67
+  - first:
+      1: 100154
+    second: L_Snakehead_68
+  - first:
+      1: 100156
+    second: L_Snakehead_69
+  - first:
+      1: 100158
+    second: L_Snakehead_70
+  - first:
+      1: 100160
+    second: L_Snakehead_71
+  - first:
+      1: 100162
+    second: L_Snakehead_72
+  - first:
+      1: 100164
+    second: L_Snakehead_73
+  - first:
+      1: 100166
+    second: L_Snakehead_74
+  - first:
+      1: 100168
+    second: L_Snakehead_75
+  - first:
+      1: 100170
+    second: L_Snakehead_76
+  - first:
+      1: 100172
+    second: L_Snakehead_77
+  - first:
+      1: 100174
+    second: L_Snakehead_78
+  - first:
+      1: 100176
+    second: L_Snakehead_79
+  - first:
+      1: 100178
+    second: L_Snakehead_80
+  - first:
+      1: 100180
+    second: L_Snakehead_81
+  - first:
+      1: 100182
+    second: L_Snakehead_82
+  - first:
+      1: 100184
+    second: L_Snakehead_83
+  - first:
+      1: 100186
+    second: L_Snakehead_84
+  - first:
+      1: 100188
+    second: L_Snakehead_85
+  - first:
+      1: 100190
+    second: L_Snakehead_86
+  - first:
+      1: 100192
+    second: L_Snakehead_87
+  - first:
+      1: 100194
+    second: L_Snakehead_88
+  - first:
+      1: 100196
+    second: L_Snakehead_89
+  - first:
+      1: 100198
+    second: L_Snakehead_90
+  - first:
+      1: 100200
+    second: L_Snakehead_91
+  - first:
+      1: 100202
+    second: L_Snakehead_92
+  - first:
+      1: 100204
+    second: L_Snakehead_93
+  - first:
+      1: 100206
+    second: L_Snakehead_94
+  - first:
+      1: 100208
+    second: L_Snakehead_95
+  - first:
+      1: 100210
+    second: L_Snakehead_96
+  - first:
+      1: 100212
+    second: L_Snakehead_97
+  - first:
+      1: 100214
+    second: L_Snakehead_98
+  - first:
+      1: 100216
+    second: L_Snakehead_99
+  - first:
+      1: 100218
+    second: L_weapon
+  - first:
+      1: 100220
+    second: LeftArm
+  - first:
+      1: 100222
+    second: LeftFoot
+  - first:
+      1: 100224
+    second: LeftForeArm
+  - first:
+      1: 100226
+    second: LeftHand
+  - first:
+      1: 100228
+    second: LeftHandIndex1
+  - first:
+      1: 100230
+    second: LeftHandIndex2
+  - first:
+      1: 100232
+    second: LeftHandIndex3
+  - first:
+      1: 100234
+    second: LeftHandMiddle1
+  - first:
+      1: 100236
+    second: LeftHandMiddle2
+  - first:
+      1: 100238
+    second: LeftHandMiddle3
+  - first:
+      1: 100240
+    second: LeftHandPinky1
+  - first:
+      1: 100242
+    second: LeftHandPinky2
+  - first:
+      1: 100244
+    second: LeftHandPinky3
+  - first:
+      1: 100246
+    second: LeftHandRing1
+  - first:
+      1: 100248
+    second: LeftHandRing2
+  - first:
+      1: 100250
+    second: LeftHandRing3
+  - first:
+      1: 100252
+    second: LeftHandThumb1
+  - first:
+      1: 100254
+    second: LeftHandThumb2
+  - first:
+      1: 100256
+    second: LeftHandThumb3
+  - first:
+      1: 100258
+    second: LeftLeg
+  - first:
+      1: 100260
+    second: LeftShoulder
+  - first:
+      1: 100262
+    second: LeftToeBase
+  - first:
+      1: 100264
+    second: LeftUpLeg
+  - first:
+      1: 100266
+    second: LeftWrist
+  - first:
+      1: 100268
+    second: Lower_Teeth
+  - first:
+      1: 100270
+    second: Medusa_Body
+  - first:
+      1: 100272
+    second: //RootNode
+  - first:
+      1: 100274
+    second: Neck
+  - first:
+      1: 100276
+    second: Pauldron
+  - first:
+      1: 100278
+    second: R_eye
+  - first:
+      1: 100280
+    second: R_Snakehead_100
+  - first:
+      1: 100282
+    second: R_Snakehead_101
+  - first:
+      1: 100284
+    second: R_Snakehead_102
+  - first:
+      1: 100286
+    second: R_Snakehead_103
+  - first:
+      1: 100288
+    second: R_Snakehead_104
+  - first:
+      1: 100290
+    second: R_Snakehead_105
+  - first:
+      1: 100292
+    second: R_Snakehead_106
+  - first:
+      1: 100294
+    second: R_Snakehead_107
+  - first:
+      1: 100296
+    second: R_Snakehead_108
+  - first:
+      1: 100298
+    second: R_Snakehead_109
+  - first:
+      1: 100300
+    second: R_Snakehead_110
+  - first:
+      1: 100302
+    second: R_Snakehead_111
+  - first:
+      1: 100304
+    second: R_Snakehead_112
+  - first:
+      1: 100306
+    second: R_Snakehead_113
+  - first:
+      1: 100308
+    second: R_Snakehead_114
+  - first:
+      1: 100310
+    second: R_Snakehead_115
+  - first:
+      1: 100312
+    second: R_Snakehead_116
+  - first:
+      1: 100314
+    second: R_Snakehead_117
+  - first:
+      1: 100316
+    second: R_Snakehead_118
+  - first:
+      1: 100318
+    second: R_Snakehead_119
+  - first:
+      1: 100320
+    second: R_Snakehead_120
+  - first:
+      1: 100322
+    second: R_Snakehead_121
+  - first:
+      1: 100324
+    second: R_Snakehead_122
+  - first:
+      1: 100326
+    second: R_Snakehead_123
+  - first:
+      1: 100328
+    second: R_Snakehead_124
+  - first:
+      1: 100330
+    second: R_Snakehead_125
+  - first:
+      1: 100332
+    second: R_Snakehead_126
+  - first:
+      1: 100334
+    second: R_Snakehead_127
+  - first:
+      1: 100336
+    second: R_Snakehead_128
+  - first:
+      1: 100338
+    second: R_Snakehead_129
+  - first:
+      1: 100340
+    second: R_Snakehead_130
+  - first:
+      1: 100342
+    second: R_Snakehead_36
+  - first:
+      1: 100344
+    second: R_Snakehead_37
+  - first:
+      1: 100346
+    second: R_Snakehead_38
+  - first:
+      1: 100348
+    second: R_Snakehead_39
+  - first:
+      1: 100350
+    second: R_Snakehead_40
+  - first:
+      1: 100352
+    second: R_Snakehead_41
+  - first:
+      1: 100354
+    second: R_Snakehead_42
+  - first:
+      1: 100356
+    second: R_Snakehead_43
+  - first:
+      1: 100358
+    second: R_Snakehead_44
+  - first:
+      1: 100360
+    second: R_Snakehead_45
+  - first:
+      1: 100362
+    second: R_Snakehead_46
+  - first:
+      1: 100364
+    second: R_Snakehead_47
+  - first:
+      1: 100366
+    second: R_Snakehead_48
+  - first:
+      1: 100368
+    second: R_Snakehead_49
+  - first:
+      1: 100370
+    second: R_Snakehead_50
+  - first:
+      1: 100372
+    second: R_Snakehead_51
+  - first:
+      1: 100374
+    second: R_Snakehead_52
+  - first:
+      1: 100376
+    second: R_Snakehead_53
+  - first:
+      1: 100378
+    second: R_Snakehead_54
+  - first:
+      1: 100380
+    second: R_Snakehead_55
+  - first:
+      1: 100382
+    second: R_Snakehead_56
+  - first:
+      1: 100384
+    second: R_Snakehead_57
+  - first:
+      1: 100386
+    second: R_Snakehead_58
+  - first:
+      1: 100388
+    second: R_Snakehead_59
+  - first:
+      1: 100390
+    second: R_Snakehead_60
+  - first:
+      1: 100392
+    second: R_Snakehead_61
+  - first:
+      1: 100394
+    second: R_Snakehead_62
+  - first:
+      1: 100396
+    second: R_Snakehead_63
+  - first:
+      1: 100398
+    second: R_Snakehead_64
+  - first:
+      1: 100400
+    second: R_Snakehead_65
+  - first:
+      1: 100402
+    second: R_Snakehead_66
+  - first:
+      1: 100404
+    second: R_Snakehead_67
+  - first:
+      1: 100406
+    second: R_Snakehead_68
+  - first:
+      1: 100408
+    second: R_Snakehead_69
+  - first:
+      1: 100410
+    second: R_Snakehead_70
+  - first:
+      1: 100412
+    second: R_Snakehead_71
+  - first:
+      1: 100414
+    second: R_Snakehead_72
+  - first:
+      1: 100416
+    second: R_Snakehead_73
+  - first:
+      1: 100418
+    second: R_Snakehead_74
+  - first:
+      1: 100420
+    second: R_Snakehead_75
+  - first:
+      1: 100422
+    second: R_Snakehead_76
+  - first:
+      1: 100424
+    second: R_Snakehead_77
+  - first:
+      1: 100426
+    second: R_Snakehead_78
+  - first:
+      1: 100428
+    second: R_Snakehead_79
+  - first:
+      1: 100430
+    second: R_Snakehead_80
+  - first:
+      1: 100432
+    second: R_Snakehead_81
+  - first:
+      1: 100434
+    second: R_Snakehead_82
+  - first:
+      1: 100436
+    second: R_Snakehead_83
+  - first:
+      1: 100438
+    second: R_Snakehead_84
+  - first:
+      1: 100440
+    second: R_Snakehead_85
+  - first:
+      1: 100442
+    second: R_Snakehead_86
+  - first:
+      1: 100444
+    second: R_Snakehead_87
+  - first:
+      1: 100446
+    second: R_Snakehead_88
+  - first:
+      1: 100448
+    second: R_Snakehead_89
+  - first:
+      1: 100450
+    second: R_Snakehead_90
+  - first:
+      1: 100452
+    second: R_Snakehead_91
+  - first:
+      1: 100454
+    second: R_Snakehead_92
+  - first:
+      1: 100456
+    second: R_Snakehead_93
+  - first:
+      1: 100458
+    second: R_Snakehead_94
+  - first:
+      1: 100460
+    second: R_Snakehead_95
+  - first:
+      1: 100462
+    second: R_Snakehead_96
+  - first:
+      1: 100464
+    second: R_Snakehead_97
+  - first:
+      1: 100466
+    second: R_Snakehead_98
+  - first:
+      1: 100468
+    second: R_Snakehead_99
+  - first:
+      1: 100470
+    second: RightArm
+  - first:
+      1: 100472
+    second: RightFoot
+  - first:
+      1: 100474
+    second: RightForeArm
+  - first:
+      1: 100476
+    second: RightHand
+  - first:
+      1: 100478
+    second: RightHandIndex1
+  - first:
+      1: 100480
+    second: RightHandIndex2
+  - first:
+      1: 100482
+    second: RightHandIndex3
+  - first:
+      1: 100484
+    second: RightHandMiddle1
+  - first:
+      1: 100486
+    second: RightHandMiddle2
+  - first:
+      1: 100488
+    second: RightHandMiddle3
+  - first:
+      1: 100490
+    second: RightHandPinky1
+  - first:
+      1: 100492
+    second: RightHandPinky2
+  - first:
+      1: 100494
+    second: RightHandPinky3
+  - first:
+      1: 100496
+    second: RightHandRing1
+  - first:
+      1: 100498
+    second: RightHandRing2
+  - first:
+      1: 100500
+    second: RightHandRing3
+  - first:
+      1: 100502
+    second: RightHandThumb1
+  - first:
+      1: 100504
+    second: RightHandThumb2
+  - first:
+      1: 100506
+    second: RightHandThumb3
+  - first:
+      1: 100508
+    second: RightLeg
+  - first:
+      1: 100510
+    second: RightShoulder
+  - first:
+      1: 100512
+    second: RightToeBase
+  - first:
+      1: 100514
+    second: RightUpLeg
+  - first:
+      1: 100516
+    second: RightWrist
+  - first:
+      1: 100518
+    second: Root
+  - first:
+      1: 100520
+    second: Sandals
+  - first:
+      1: 100522
+    second: Skirt
+  - first:
+      1: 100524
+    second: Snakehead_1
+  - first:
+      1: 100526
+    second: Snakehead_10
+  - first:
+      1: 100528
+    second: Snakehead_11
+  - first:
+      1: 100530
+    second: Snakehead_12
+  - first:
+      1: 100532
+    second: Snakehead_13
+  - first:
+      1: 100534
+    second: Snakehead_14
+  - first:
+      1: 100536
+    second: Snakehead_15
+  - first:
+      1: 100538
+    second: Snakehead_16
+  - first:
+      1: 100540
+    second: Snakehead_17
+  - first:
+      1: 100542
+    second: Snakehead_18
+  - first:
+      1: 100544
+    second: Snakehead_19
+  - first:
+      1: 100546
+    second: Snakehead_2
+  - first:
+      1: 100548
+    second: Snakehead_20
+  - first:
+      1: 100550
+    second: Snakehead_21
+  - first:
+      1: 100552
+    second: Snakehead_22
+  - first:
+      1: 100554
+    second: Snakehead_23
+  - first:
+      1: 100556
+    second: Snakehead_24
+  - first:
+      1: 100558
+    second: Snakehead_25
+  - first:
+      1: 100560
+    second: Snakehead_26
+  - first:
+      1: 100562
+    second: Snakehead_27
+  - first:
+      1: 100564
+    second: Snakehead_28
+  - first:
+      1: 100566
+    second: Snakehead_29
+  - first:
+      1: 100568
+    second: Snakehead_3
+  - first:
+      1: 100570
+    second: Snakehead_30
+  - first:
+      1: 100572
+    second: Snakehead_31
+  - first:
+      1: 100574
+    second: Snakehead_32
+  - first:
+      1: 100576
+    second: Snakehead_33
+  - first:
+      1: 100578
+    second: Snakehead_34
+  - first:
+      1: 100580
+    second: Snakehead_35
+  - first:
+      1: 100582
+    second: Snakehead_4
+  - first:
+      1: 100584
+    second: Snakehead_5
+  - first:
+      1: 100586
+    second: Snakehead_6
+  - first:
+      1: 100588
+    second: Snakehead_7
+  - first:
+      1: 100590
+    second: Snakehead_8
+  - first:
+      1: 100592
+    second: Snakehead_9
+  - first:
+      1: 100594
+    second: Snakes
+  - first:
+      1: 100596
+    second: Spine
+  - first:
+      1: 100598
+    second: Spine1
+  - first:
+      1: 100600
+    second: Spine2
+  - first:
+      1: 100602
+    second: Tassets
+  - first:
+      1: 100604
+    second: Tongue
+  - first:
+      1: 100606
+    second: Tongue_1
+  - first:
+      1: 100608
+    second: Tongue_2
+  - first:
+      1: 100610
+    second: Tongue_3
+  - first:
+      1: 100612
+    second: Tongue_4
+  - first:
+      1: 100614
+    second: Tongue_5
+  - first:
+      1: 100616
+    second: Tongue_6
+  - first:
+      1: 100618
+    second: Top
+  - first:
+      1: 100620
+    second: Upper_Teeth
+  - first:
+      1: 100622
+    second: Waistband
+  - first:
+      4: 400000
+    second: Armor
+  - first:
+      4: 400002
+    second: Back_Tasset_01
+  - first:
+      4: 400004
+    second: Back_Tasset_02
+  - first:
+      4: 400006
+    second: Belt
+  - first:
+      4: 400008
+    second: Eyelashes
+  - first:
+      4: 400010
+    second: Eyes
+  - first:
+      4: 400012
+    second: Eyes_Reflect
+  - first:
+      4: 400014
+    second: Front_Tasset_01
+  - first:
+      4: 400016
+    second: Front_Tasset_02
+  - first:
+      4: 400018
+    second: Head
+  - first:
+      4: 400020
+    second: Hips
+  - first:
+      4: 400022
+    second: Jaw_1
+  - first:
+      4: 400024
+    second: Jaw_2
+  - first:
+      4: 400026
+    second: L_eye
+  - first:
+      4: 400028
+    second: L_Snakehead_100
+  - first:
+      4: 400030
+    second: L_Snakehead_101
+  - first:
+      4: 400032
+    second: L_Snakehead_102
+  - first:
+      4: 400034
+    second: L_Snakehead_103
+  - first:
+      4: 400036
+    second: L_Snakehead_104
+  - first:
+      4: 400038
+    second: L_Snakehead_105
+  - first:
+      4: 400040
+    second: L_Snakehead_106
+  - first:
+      4: 400042
+    second: L_Snakehead_107
+  - first:
+      4: 400044
+    second: L_Snakehead_108
+  - first:
+      4: 400046
+    second: L_Snakehead_109
+  - first:
+      4: 400048
+    second: L_Snakehead_110
+  - first:
+      4: 400050
+    second: L_Snakehead_111
+  - first:
+      4: 400052
+    second: L_Snakehead_112
+  - first:
+      4: 400054
+    second: L_Snakehead_113
+  - first:
+      4: 400056
+    second: L_Snakehead_114
+  - first:
+      4: 400058
+    second: L_Snakehead_115
+  - first:
+      4: 400060
+    second: L_Snakehead_116
+  - first:
+      4: 400062
+    second: L_Snakehead_117
+  - first:
+      4: 400064
+    second: L_Snakehead_118
+  - first:
+      4: 400066
+    second: L_Snakehead_119
+  - first:
+      4: 400068
+    second: L_Snakehead_120
+  - first:
+      4: 400070
+    second: L_Snakehead_121
+  - first:
+      4: 400072
+    second: L_Snakehead_122
+  - first:
+      4: 400074
+    second: L_Snakehead_123
+  - first:
+      4: 400076
+    second: L_Snakehead_124
+  - first:
+      4: 400078
+    second: L_Snakehead_125
+  - first:
+      4: 400080
+    second: L_Snakehead_126
+  - first:
+      4: 400082
+    second: L_Snakehead_127
+  - first:
+      4: 400084
+    second: L_Snakehead_128
+  - first:
+      4: 400086
+    second: L_Snakehead_129
+  - first:
+      4: 400088
+    second: L_Snakehead_130
+  - first:
+      4: 400090
+    second: L_Snakehead_36
+  - first:
+      4: 400092
+    second: L_Snakehead_37
+  - first:
+      4: 400094
+    second: L_Snakehead_38
+  - first:
+      4: 400096
+    second: L_Snakehead_39
+  - first:
+      4: 400098
+    second: L_Snakehead_40
+  - first:
+      4: 400100
+    second: L_Snakehead_41
+  - first:
+      4: 400102
+    second: L_Snakehead_42
+  - first:
+      4: 400104
+    second: L_Snakehead_43
+  - first:
+      4: 400106
+    second: L_Snakehead_44
+  - first:
+      4: 400108
+    second: L_Snakehead_45
+  - first:
+      4: 400110
+    second: L_Snakehead_46
+  - first:
+      4: 400112
+    second: L_Snakehead_47
+  - first:
+      4: 400114
+    second: L_Snakehead_48
+  - first:
+      4: 400116
+    second: L_Snakehead_49
+  - first:
+      4: 400118
+    second: L_Snakehead_50
+  - first:
+      4: 400120
+    second: L_Snakehead_51
+  - first:
+      4: 400122
+    second: L_Snakehead_52
+  - first:
+      4: 400124
+    second: L_Snakehead_53
+  - first:
+      4: 400126
+    second: L_Snakehead_54
+  - first:
+      4: 400128
+    second: L_Snakehead_55
+  - first:
+      4: 400130
+    second: L_Snakehead_56
+  - first:
+      4: 400132
+    second: L_Snakehead_57
+  - first:
+      4: 400134
+    second: L_Snakehead_58
+  - first:
+      4: 400136
+    second: L_Snakehead_59
+  - first:
+      4: 400138
+    second: L_Snakehead_60
+  - first:
+      4: 400140
+    second: L_Snakehead_61
+  - first:
+      4: 400142
+    second: L_Snakehead_62
+  - first:
+      4: 400144
+    second: L_Snakehead_63
+  - first:
+      4: 400146
+    second: L_Snakehead_64
+  - first:
+      4: 400148
+    second: L_Snakehead_65
+  - first:
+      4: 400150
+    second: L_Snakehead_66
+  - first:
+      4: 400152
+    second: L_Snakehead_67
+  - first:
+      4: 400154
+    second: L_Snakehead_68
+  - first:
+      4: 400156
+    second: L_Snakehead_69
+  - first:
+      4: 400158
+    second: L_Snakehead_70
+  - first:
+      4: 400160
+    second: L_Snakehead_71
+  - first:
+      4: 400162
+    second: L_Snakehead_72
+  - first:
+      4: 400164
+    second: L_Snakehead_73
+  - first:
+      4: 400166
+    second: L_Snakehead_74
+  - first:
+      4: 400168
+    second: L_Snakehead_75
+  - first:
+      4: 400170
+    second: L_Snakehead_76
+  - first:
+      4: 400172
+    second: L_Snakehead_77
+  - first:
+      4: 400174
+    second: L_Snakehead_78
+  - first:
+      4: 400176
+    second: L_Snakehead_79
+  - first:
+      4: 400178
+    second: L_Snakehead_80
+  - first:
+      4: 400180
+    second: L_Snakehead_81
+  - first:
+      4: 400182
+    second: L_Snakehead_82
+  - first:
+      4: 400184
+    second: L_Snakehead_83
+  - first:
+      4: 400186
+    second: L_Snakehead_84
+  - first:
+      4: 400188
+    second: L_Snakehead_85
+  - first:
+      4: 400190
+    second: L_Snakehead_86
+  - first:
+      4: 400192
+    second: L_Snakehead_87
+  - first:
+      4: 400194
+    second: L_Snakehead_88
+  - first:
+      4: 400196
+    second: L_Snakehead_89
+  - first:
+      4: 400198
+    second: L_Snakehead_90
+  - first:
+      4: 400200
+    second: L_Snakehead_91
+  - first:
+      4: 400202
+    second: L_Snakehead_92
+  - first:
+      4: 400204
+    second: L_Snakehead_93
+  - first:
+      4: 400206
+    second: L_Snakehead_94
+  - first:
+      4: 400208
+    second: L_Snakehead_95
+  - first:
+      4: 400210
+    second: L_Snakehead_96
+  - first:
+      4: 400212
+    second: L_Snakehead_97
+  - first:
+      4: 400214
+    second: L_Snakehead_98
+  - first:
+      4: 400216
+    second: L_Snakehead_99
+  - first:
+      4: 400218
+    second: L_weapon
+  - first:
+      4: 400220
+    second: LeftArm
+  - first:
+      4: 400222
+    second: LeftFoot
+  - first:
+      4: 400224
+    second: LeftForeArm
+  - first:
+      4: 400226
+    second: LeftHand
+  - first:
+      4: 400228
+    second: LeftHandIndex1
+  - first:
+      4: 400230
+    second: LeftHandIndex2
+  - first:
+      4: 400232
+    second: LeftHandIndex3
+  - first:
+      4: 400234
+    second: LeftHandMiddle1
+  - first:
+      4: 400236
+    second: LeftHandMiddle2
+  - first:
+      4: 400238
+    second: LeftHandMiddle3
+  - first:
+      4: 400240
+    second: LeftHandPinky1
+  - first:
+      4: 400242
+    second: LeftHandPinky2
+  - first:
+      4: 400244
+    second: LeftHandPinky3
+  - first:
+      4: 400246
+    second: LeftHandRing1
+  - first:
+      4: 400248
+    second: LeftHandRing2
+  - first:
+      4: 400250
+    second: LeftHandRing3
+  - first:
+      4: 400252
+    second: LeftHandThumb1
+  - first:
+      4: 400254
+    second: LeftHandThumb2
+  - first:
+      4: 400256
+    second: LeftHandThumb3
+  - first:
+      4: 400258
+    second: LeftLeg
+  - first:
+      4: 400260
+    second: LeftShoulder
+  - first:
+      4: 400262
+    second: LeftToeBase
+  - first:
+      4: 400264
+    second: LeftUpLeg
+  - first:
+      4: 400266
+    second: LeftWrist
+  - first:
+      4: 400268
+    second: Lower_Teeth
+  - first:
+      4: 400270
+    second: Medusa_Body
+  - first:
+      4: 400272
+    second: //RootNode
+  - first:
+      4: 400274
+    second: Neck
+  - first:
+      4: 400276
+    second: Pauldron
+  - first:
+      4: 400278
+    second: R_eye
+  - first:
+      4: 400280
+    second: R_Snakehead_100
+  - first:
+      4: 400282
+    second: R_Snakehead_101
+  - first:
+      4: 400284
+    second: R_Snakehead_102
+  - first:
+      4: 400286
+    second: R_Snakehead_103
+  - first:
+      4: 400288
+    second: R_Snakehead_104
+  - first:
+      4: 400290
+    second: R_Snakehead_105
+  - first:
+      4: 400292
+    second: R_Snakehead_106
+  - first:
+      4: 400294
+    second: R_Snakehead_107
+  - first:
+      4: 400296
+    second: R_Snakehead_108
+  - first:
+      4: 400298
+    second: R_Snakehead_109
+  - first:
+      4: 400300
+    second: R_Snakehead_110
+  - first:
+      4: 400302
+    second: R_Snakehead_111
+  - first:
+      4: 400304
+    second: R_Snakehead_112
+  - first:
+      4: 400306
+    second: R_Snakehead_113
+  - first:
+      4: 400308
+    second: R_Snakehead_114
+  - first:
+      4: 400310
+    second: R_Snakehead_115
+  - first:
+      4: 400312
+    second: R_Snakehead_116
+  - first:
+      4: 400314
+    second: R_Snakehead_117
+  - first:
+      4: 400316
+    second: R_Snakehead_118
+  - first:
+      4: 400318
+    second: R_Snakehead_119
+  - first:
+      4: 400320
+    second: R_Snakehead_120
+  - first:
+      4: 400322
+    second: R_Snakehead_121
+  - first:
+      4: 400324
+    second: R_Snakehead_122
+  - first:
+      4: 400326
+    second: R_Snakehead_123
+  - first:
+      4: 400328
+    second: R_Snakehead_124
+  - first:
+      4: 400330
+    second: R_Snakehead_125
+  - first:
+      4: 400332
+    second: R_Snakehead_126
+  - first:
+      4: 400334
+    second: R_Snakehead_127
+  - first:
+      4: 400336
+    second: R_Snakehead_128
+  - first:
+      4: 400338
+    second: R_Snakehead_129
+  - first:
+      4: 400340
+    second: R_Snakehead_130
+  - first:
+      4: 400342
+    second: R_Snakehead_36
+  - first:
+      4: 400344
+    second: R_Snakehead_37
+  - first:
+      4: 400346
+    second: R_Snakehead_38
+  - first:
+      4: 400348
+    second: R_Snakehead_39
+  - first:
+      4: 400350
+    second: R_Snakehead_40
+  - first:
+      4: 400352
+    second: R_Snakehead_41
+  - first:
+      4: 400354
+    second: R_Snakehead_42
+  - first:
+      4: 400356
+    second: R_Snakehead_43
+  - first:
+      4: 400358
+    second: R_Snakehead_44
+  - first:
+      4: 400360
+    second: R_Snakehead_45
+  - first:
+      4: 400362
+    second: R_Snakehead_46
+  - first:
+      4: 400364
+    second: R_Snakehead_47
+  - first:
+      4: 400366
+    second: R_Snakehead_48
+  - first:
+      4: 400368
+    second: R_Snakehead_49
+  - first:
+      4: 400370
+    second: R_Snakehead_50
+  - first:
+      4: 400372
+    second: R_Snakehead_51
+  - first:
+      4: 400374
+    second: R_Snakehead_52
+  - first:
+      4: 400376
+    second: R_Snakehead_53
+  - first:
+      4: 400378
+    second: R_Snakehead_54
+  - first:
+      4: 400380
+    second: R_Snakehead_55
+  - first:
+      4: 400382
+    second: R_Snakehead_56
+  - first:
+      4: 400384
+    second: R_Snakehead_57
+  - first:
+      4: 400386
+    second: R_Snakehead_58
+  - first:
+      4: 400388
+    second: R_Snakehead_59
+  - first:
+      4: 400390
+    second: R_Snakehead_60
+  - first:
+      4: 400392
+    second: R_Snakehead_61
+  - first:
+      4: 400394
+    second: R_Snakehead_62
+  - first:
+      4: 400396
+    second: R_Snakehead_63
+  - first:
+      4: 400398
+    second: R_Snakehead_64
+  - first:
+      4: 400400
+    second: R_Snakehead_65
+  - first:
+      4: 400402
+    second: R_Snakehead_66
+  - first:
+      4: 400404
+    second: R_Snakehead_67
+  - first:
+      4: 400406
+    second: R_Snakehead_68
+  - first:
+      4: 400408
+    second: R_Snakehead_69
+  - first:
+      4: 400410
+    second: R_Snakehead_70
+  - first:
+      4: 400412
+    second: R_Snakehead_71
+  - first:
+      4: 400414
+    second: R_Snakehead_72
+  - first:
+      4: 400416
+    second: R_Snakehead_73
+  - first:
+      4: 400418
+    second: R_Snakehead_74
+  - first:
+      4: 400420
+    second: R_Snakehead_75
+  - first:
+      4: 400422
+    second: R_Snakehead_76
+  - first:
+      4: 400424
+    second: R_Snakehead_77
+  - first:
+      4: 400426
+    second: R_Snakehead_78
+  - first:
+      4: 400428
+    second: R_Snakehead_79
+  - first:
+      4: 400430
+    second: R_Snakehead_80
+  - first:
+      4: 400432
+    second: R_Snakehead_81
+  - first:
+      4: 400434
+    second: R_Snakehead_82
+  - first:
+      4: 400436
+    second: R_Snakehead_83
+  - first:
+      4: 400438
+    second: R_Snakehead_84
+  - first:
+      4: 400440
+    second: R_Snakehead_85
+  - first:
+      4: 400442
+    second: R_Snakehead_86
+  - first:
+      4: 400444
+    second: R_Snakehead_87
+  - first:
+      4: 400446
+    second: R_Snakehead_88
+  - first:
+      4: 400448
+    second: R_Snakehead_89
+  - first:
+      4: 400450
+    second: R_Snakehead_90
+  - first:
+      4: 400452
+    second: R_Snakehead_91
+  - first:
+      4: 400454
+    second: R_Snakehead_92
+  - first:
+      4: 400456
+    second: R_Snakehead_93
+  - first:
+      4: 400458
+    second: R_Snakehead_94
+  - first:
+      4: 400460
+    second: R_Snakehead_95
+  - first:
+      4: 400462
+    second: R_Snakehead_96
+  - first:
+      4: 400464
+    second: R_Snakehead_97
+  - first:
+      4: 400466
+    second: R_Snakehead_98
+  - first:
+      4: 400468
+    second: R_Snakehead_99
+  - first:
+      4: 400470
+    second: RightArm
+  - first:
+      4: 400472
+    second: RightFoot
+  - first:
+      4: 400474
+    second: RightForeArm
+  - first:
+      4: 400476
+    second: RightHand
+  - first:
+      4: 400478
+    second: RightHandIndex1
+  - first:
+      4: 400480
+    second: RightHandIndex2
+  - first:
+      4: 400482
+    second: RightHandIndex3
+  - first:
+      4: 400484
+    second: RightHandMiddle1
+  - first:
+      4: 400486
+    second: RightHandMiddle2
+  - first:
+      4: 400488
+    second: RightHandMiddle3
+  - first:
+      4: 400490
+    second: RightHandPinky1
+  - first:
+      4: 400492
+    second: RightHandPinky2
+  - first:
+      4: 400494
+    second: RightHandPinky3
+  - first:
+      4: 400496
+    second: RightHandRing1
+  - first:
+      4: 400498
+    second: RightHandRing2
+  - first:
+      4: 400500
+    second: RightHandRing3
+  - first:
+      4: 400502
+    second: RightHandThumb1
+  - first:
+      4: 400504
+    second: RightHandThumb2
+  - first:
+      4: 400506
+    second: RightHandThumb3
+  - first:
+      4: 400508
+    second: RightLeg
+  - first:
+      4: 400510
+    second: RightShoulder
+  - first:
+      4: 400512
+    second: RightToeBase
+  - first:
+      4: 400514
+    second: RightUpLeg
+  - first:
+      4: 400516
+    second: RightWrist
+  - first:
+      4: 400518
+    second: Root
+  - first:
+      4: 400520
+    second: Sandals
+  - first:
+      4: 400522
+    second: Skirt
+  - first:
+      4: 400524
+    second: Snakehead_1
+  - first:
+      4: 400526
+    second: Snakehead_10
+  - first:
+      4: 400528
+    second: Snakehead_11
+  - first:
+      4: 400530
+    second: Snakehead_12
+  - first:
+      4: 400532
+    second: Snakehead_13
+  - first:
+      4: 400534
+    second: Snakehead_14
+  - first:
+      4: 400536
+    second: Snakehead_15
+  - first:
+      4: 400538
+    second: Snakehead_16
+  - first:
+      4: 400540
+    second: Snakehead_17
+  - first:
+      4: 400542
+    second: Snakehead_18
+  - first:
+      4: 400544
+    second: Snakehead_19
+  - first:
+      4: 400546
+    second: Snakehead_2
+  - first:
+      4: 400548
+    second: Snakehead_20
+  - first:
+      4: 400550
+    second: Snakehead_21
+  - first:
+      4: 400552
+    second: Snakehead_22
+  - first:
+      4: 400554
+    second: Snakehead_23
+  - first:
+      4: 400556
+    second: Snakehead_24
+  - first:
+      4: 400558
+    second: Snakehead_25
+  - first:
+      4: 400560
+    second: Snakehead_26
+  - first:
+      4: 400562
+    second: Snakehead_27
+  - first:
+      4: 400564
+    second: Snakehead_28
+  - first:
+      4: 400566
+    second: Snakehead_29
+  - first:
+      4: 400568
+    second: Snakehead_3
+  - first:
+      4: 400570
+    second: Snakehead_30
+  - first:
+      4: 400572
+    second: Snakehead_31
+  - first:
+      4: 400574
+    second: Snakehead_32
+  - first:
+      4: 400576
+    second: Snakehead_33
+  - first:
+      4: 400578
+    second: Snakehead_34
+  - first:
+      4: 400580
+    second: Snakehead_35
+  - first:
+      4: 400582
+    second: Snakehead_4
+  - first:
+      4: 400584
+    second: Snakehead_5
+  - first:
+      4: 400586
+    second: Snakehead_6
+  - first:
+      4: 400588
+    second: Snakehead_7
+  - first:
+      4: 400590
+    second: Snakehead_8
+  - first:
+      4: 400592
+    second: Snakehead_9
+  - first:
+      4: 400594
+    second: Snakes
+  - first:
+      4: 400596
+    second: Spine
+  - first:
+      4: 400598
+    second: Spine1
+  - first:
+      4: 400600
+    second: Spine2
+  - first:
+      4: 400602
+    second: Tassets
+  - first:
+      4: 400604
+    second: Tongue
+  - first:
+      4: 400606
+    second: Tongue_1
+  - first:
+      4: 400608
+    second: Tongue_2
+  - first:
+      4: 400610
+    second: Tongue_3
+  - first:
+      4: 400612
+    second: Tongue_4
+  - first:
+      4: 400614
+    second: Tongue_5
+  - first:
+      4: 400616
+    second: Tongue_6
+  - first:
+      4: 400618
+    second: Top
+  - first:
+      4: 400620
+    second: Upper_Teeth
+  - first:
+      4: 400622
+    second: Waistband
+  - first:
+      43: 4300000
+    second: Tongue
+  - first:
+      43: 4300002
+    second: Upper_Teeth
+  - first:
+      43: 4300004
+    second: Lower_Teeth
+  - first:
+      43: 4300006
+    second: Eyes_Reflect
+  - first:
+      43: 4300008
+    second: Eyes
+  - first:
+      43: 4300010
+    second: Eyelashes
+  - first:
+      43: 4300012
+    second: Snakes
+  - first:
+      43: 4300014
+    second: Sandals
+  - first:
+      43: 4300016
+    second: Armor
+  - first:
+      43: 4300018
+    second: Tassets
+  - first:
+      43: 4300020
+    second: Belt
+  - first:
+      43: 4300022
+    second: Waistband
+  - first:
+      43: 4300024
+    second: Top
+  - first:
+      43: 4300026
+    second: Skirt
+  - first:
+      43: 4300028
+    second: Medusa_Body
+  - first:
+      43: 4300030
+    second: Pauldron
+  - first:
+      74: 7400000
+    second: Idle
+  - first:
+      74: 7400002
+    second: IdleBreak
+  - first:
+      74: 7400004
+    second: Taunt
+  - first:
+      74: 7400006
+    second: GotHit
+  - first:
+      74: 7400008
+    second: Dodge
+  - first:
+      74: 7400010
+    second: Death
+  - first:
+      74: 7400012
+    second: Attack1
+  - first:
+      74: 7400014
+    second: Attack2
+  - first:
+      74: 7400016
+    second: Attack3
+  - first:
+      74: 7400018
+    second: Walk
+  - first:
+      74: 7400020
+    second: WalkBackwards
+  - first:
+      74: 7400022
+    second: Snakeheads
+  - first:
+      95: 9500000
+    second: //RootNode
+  - first:
+      137: 13700000
+    second: Armor
+  - first:
+      137: 13700002
+    second: Belt
+  - first:
+      137: 13700004
+    second: Eyelashes
+  - first:
+      137: 13700006
+    second: Eyes
+  - first:
+      137: 13700008
+    second: Eyes_Reflect
+  - first:
+      137: 13700010
+    second: Lower_Teeth
+  - first:
+      137: 13700012
+    second: Medusa_Body
+  - first:
+      137: 13700014
+    second: Pauldron
+  - first:
+      137: 13700016
+    second: Sandals
+  - first:
+      137: 13700018
+    second: Skirt
+  - first:
+      137: 13700020
+    second: Snakes
+  - first:
+      137: 13700022
+    second: Tassets
+  - first:
+      137: 13700024
+    second: Tongue
+  - first:
+      137: 13700026
+    second: Top
+  - first:
+      137: 13700028
+    second: Upper_Teeth
+  - first:
+      137: 13700030
+    second: Waistband
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Body
+    second: {fileID: 2100000, guid: 7fd9539e566fa401f893c8f036a008ee, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Head
+    second: {fileID: 2100000, guid: 9beccbd3c8af3411b88f1b6f4a16f49f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Medusa_Head_MAT
+    second: {fileID: 2100000, guid: 4d0a30c2210f9401aab0e3d95ed1f590, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: armor
+    second: {fileID: 2100000, guid: b68489e0613ca4de4bb58201a0439d21, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: dress
+    second: {fileID: 2100000, guid: 0be7b46b673e64948a3aad81def5d49e, type: 2}
+  materials:
+    materialImportMode: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 0
+    searchTexturesGlobally: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 1
+    removeConstantScaleCurves: 0
+    motionNodeName: Root
+    animationImportErrors: 
+    animationImportWarnings: "\nClip 'Take 001' has import animation warnings that
+      might lower retargeting quality:\nNote: Activate translation DOF on avatar
+      to improve retargeting quality.\n\t'LeftHand' is inbetween humanoid transforms
+      and has rotation animation that will be discarded.\n\t'RightHand' is inbetween
+      humanoid transforms and has rotation animation that will be discarded.\n"
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 3
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths:
+    - Armor
+    - Belt
+    - Eyelashes
+    - Eyes
+    - Eyes_Reflect
+    - Pauldron
+    - Sandals
+    - Snakes
+    - Tassets
+    - Waistband
+    - Tongue
+    - Upper_Teeth
+    - Lower_Teeth
+    - Top
+    - Skirt
+    - Root/Hips/Spine/Spine1/Spine2/LeftShoulder/LeftArm/LeftForeArm/LeftWrist/LeftHand/L_weapon
+    extraUserProperties: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Idle
+      takeName: Take 001
+      internalID: 7400000
+      firstFrame: 15
+      lastFrame: 64
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 1
+      loopBlendOrientation: 1
+      loopBlendPositionY: 1
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 1
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events:
+      - time: 0
+        functionName: SetDesiredHairWeight
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 1
+        intParameter: 0
+        messageOptions: 0
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: IdleBreak
+      takeName: Take 001
+      internalID: 7400002
+      firstFrame: 75
+      lastFrame: 163
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 1
+      loopBlendPositionY: 1
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 1
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events:
+      - time: 0
+        functionName: SetDesiredHairWeight
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 1
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.13788968
+        functionName: PlayAudio
+        data: Footstep Light
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 1
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.8453237
+        functionName: PlayAudio
+        data: Footstep Light
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 1
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.3333333
+        functionName: PlayAudio
+        data: Armor Movement
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 1
+        intParameter: 0
+        messageOptions: 0
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Taunt
+      takeName: Take 001
+      internalID: 7400004
+      firstFrame: 175
+      lastFrame: 288
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 1
+      loopBlendPositionY: 1
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 1
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events:
+      - time: 0
+        functionName: SetDesiredHairWeight
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.22824837
+        functionName: PlayAudio
+        data: Footstep
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.3369305
+        functionName: PlayAudio
+        data: Scream Vocals
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.3369305
+        functionName: PlayAudio
+        data: Snakescream Vocals
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.65347725
+        functionName: PlayAudio
+        data: Armor Movement
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.9400479
+        functionName: PlayAudio
+        data: Footstep
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: GotHit
+      takeName: Take 001
+      internalID: 7400006
+      firstFrame: 300
+      lastFrame: 350
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 1
+      loopBlendPositionY: 1
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 1
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events:
+      - time: 0
+        functionName: SetDesiredHairWeight
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0
+        functionName: PlayAudio
+        data: Armor Hit
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.23021553
+        functionName: PlayAudio
+        data: Footstep
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.9196642
+        functionName: PlayAudio
+        data: Footstep
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.61990404
+        functionName: PlayAudio
+        data: Armor Movement
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Dodge
+      takeName: Take 001
+      internalID: 7400008
+      firstFrame: 363
+      lastFrame: 406
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 1
+      loopBlendPositionY: 1
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 1
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events:
+      - time: 0
+        functionName: SetDesiredHairWeight
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 1
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.21582733
+        functionName: PlayAudio
+        data: Footstep
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 1
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.32494
+        functionName: PlayAudio
+        data: Footstep
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 1
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.83213395
+        functionName: PlayAudio
+        data: Footstep Light
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 1
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.9196645
+        functionName: PlayAudio
+        data: Footstep Light
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 1
+        intParameter: 0
+        messageOptions: 0
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Death
+      takeName: Take 001
+      internalID: 7400010
+      firstFrame: 419
+      lastFrame: 494
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 1
+      loopBlendPositionY: 1
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 1
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events:
+      - time: 0
+        functionName: SetDesiredHairWeight
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0
+        functionName: PlayAudio
+        data: Armor Hit
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.20263779
+        functionName: PlayAudio
+        data: Death Thump
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Attack1
+      takeName: Take 001
+      internalID: 7400012
+      firstFrame: 506
+      lastFrame: 563
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 1
+      loopBlendPositionY: 1
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 1
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events:
+      - time: 0
+        functionName: SetDesiredHairWeight
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 1
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.088728875
+        functionName: PlayAudio
+        data: Armor Movement
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 1
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.3489204
+        functionName: PlayAudio
+        data: Weapon Whoosh
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 1
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.43645063
+        functionName: PlayAudio
+        data: Attack Vocals
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 1
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.40767378
+        functionName: PlayAudio
+        data: Footstep
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 1
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.74460393
+        functionName: PlayAudio
+        data: Footstep Light
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 1
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.81654716
+        functionName: PlayAudio
+        data: Footstep Light
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 1
+        intParameter: 0
+        messageOptions: 0
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Attack2
+      takeName: Take 001
+      internalID: 7400014
+      firstFrame: 575
+      lastFrame: 619
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 1
+      loopBlendPositionY: 1
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 1
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events:
+      - time: 0
+        functionName: SetDesiredHairWeight
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 1
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.18825005
+        functionName: PlayAudio
+        data: Weapon Whoosh
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 1
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.25179854
+        functionName: PlayAudio
+        data: Attack Vocals
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 1
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.2973616
+        functionName: PlayAudio
+        data: Armor Movement
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 1
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.5203835
+        functionName: PlayAudio
+        data: Footstep
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 1
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.8681056
+        functionName: PlayAudio
+        data: Footstep Light
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 1
+        intParameter: 0
+        messageOptions: 0
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Attack3
+      takeName: Take 001
+      internalID: 7400016
+      firstFrame: 638
+      lastFrame: 695
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 1
+      loopBlendPositionY: 1
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 1
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events:
+      - time: 0
+        functionName: SetDesiredHairWeight
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 1
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.27098328
+        functionName: PlayAudio
+        data: Weapon Whoosh
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 1
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.41127148
+        functionName: PlayAudio
+        data: Weapon Whoosh
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 1
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.35611564
+        functionName: PlayAudio
+        data: Footstep
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 1
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.5011987
+        functionName: PlayAudio
+        data: Attack Vocals
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 1
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.54916114
+        functionName: PlayAudio
+        data: Footstep
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 1
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.66306955
+        functionName: PlayAudio
+        data: Footstep
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 1
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.82494044
+        functionName: PlayAudio
+        data: Footstep
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 1
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.9544364
+        functionName: PlayAudio
+        data: Footstep Scuff
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 1
+        intParameter: 0
+        messageOptions: 0
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Walk
+      takeName: Take 001
+      internalID: 7400018
+      firstFrame: 713
+      lastFrame: 738
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 1
+      loopBlendPositionY: 1
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 1
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events:
+      - time: 0
+        functionName: SetDesiredHairWeight
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 1
+        intParameter: 0
+        messageOptions: 0
+      - time: 0
+        functionName: PlayAudio
+        data: Armor Movement
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 1
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.47362024
+        functionName: PlayAudio
+        data: Footstep
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 1
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.9628296
+        functionName: PlayAudio
+        data: Footstep
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 1
+        intParameter: 0
+        messageOptions: 0
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: WalkBackwards
+      takeName: Take 001
+      internalID: 7400020
+      firstFrame: 750
+      lastFrame: 775
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 1
+      loopBlendPositionY: 1
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 1
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events:
+      - time: 0
+        functionName: SetDesiredHairWeight
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 1
+        intParameter: 0
+        messageOptions: 0
+      - time: 0
+        functionName: PlayAudio
+        data: Armor Movement
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 1
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.39568374
+        functionName: PlayAudio
+        data: Footstep Light
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 1
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.39568374
+        functionName: PlayAudio
+        data: Footstep Scuff
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 1
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.91726613
+        functionName: PlayAudio
+        data: Footstep Light
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 1
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.91726613
+        functionName: PlayAudio
+        data: Footstep Scuff
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 1
+        intParameter: 0
+        messageOptions: 0
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Snakeheads
+      takeName: Take 001
+      internalID: 7400022
+      firstFrame: 788
+      lastFrame: 1037.5
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 1
+      loopBlendPositionY: 1
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 1
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
+    importPhysicalCameras: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    nodeNameCollisionStrategy: 0
+    fileIdsGeneration: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    keepQuads: 0
+    weldVertices: 1
+    bakeAxisConversion: 0
+    preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    optimizeBones: 1
+    generateMeshLods: 0
+    meshLodGenerationFlags: 0
+    maximumMeshLod: -1
+    meshOptimizationFlags: -1
+    indexFormat: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVMarginMethod: 0
+    secondaryUVMinLightmapResolution: 40
+    secondaryUVMinObjectScale: 1
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    strictVertexDataChecks: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 1
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  referencedClips: []
+  importAnimation: 1
+  humanDescription:
+    serializedVersion: 3
+    human: []
+    skeleton:
+    - name: Medusa_Humanoid DEMO(Clone)
+      parentName: 
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Tongue
+      parentName: Medusa_Humanoid DEMO(Clone)
+      position: {x: -0.0000049149994, y: 1.6479309, z: 0.049357057}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 10, y: 10, z: 10}
+    - name: Upper_Teeth
+      parentName: Medusa_Humanoid DEMO(Clone)
+      position: {x: 0.00013422013, y: 1.6716402, z: 0.042023685}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 10, y: 10, z: 10}
+    - name: Lower_Teeth
+      parentName: Medusa_Humanoid DEMO(Clone)
+      position: {x: -0.000027129652, y: 1.6485243, z: 0.039021607}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 10, y: 10, z: 10}
+    - name: Eyes_Reflect
+      parentName: Medusa_Humanoid DEMO(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 10, y: 10, z: 10}
+    - name: Eyes
+      parentName: Medusa_Humanoid DEMO(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 10, y: 10, z: 10}
+    - name: Eyelashes
+      parentName: Medusa_Humanoid DEMO(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 10, y: 10, z: 10}
+    - name: Snakes
+      parentName: Medusa_Humanoid DEMO(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 10, y: 10, z: 10}
+    - name: Sandals
+      parentName: Medusa_Humanoid DEMO(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 10, y: 10, z: 10}
+    - name: Armor
+      parentName: Medusa_Humanoid DEMO(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0.000000021855696, y: -0, z: -0, w: 1}
+      scale: {x: 10, y: 10, z: 10}
+    - name: Tassets
+      parentName: Medusa_Humanoid DEMO(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 10, y: 10, z: 10}
+    - name: Belt
+      parentName: Medusa_Humanoid DEMO(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 10, y: 10, z: 10}
+    - name: Waistband
+      parentName: Medusa_Humanoid DEMO(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 10, y: 10, z: 10}
+    - name: Top
+      parentName: Medusa_Humanoid DEMO(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 10, y: 10, z: 10}
+    - name: Skirt
+      parentName: Medusa_Humanoid DEMO(Clone)
+      position: {x: 0.000223732, y: 0.84783846, z: -0.040161744}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 10, y: 10, z: 10}
+    - name: Root
+      parentName: Medusa_Humanoid DEMO(Clone)
+      position: {x: -0, y: 0, z: -0.006377953}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 10, y: 10, z: 10}
+    - name: Hips
+      parentName: Root
+      position: {x: -0, y: 0.10344694, z: -0.0022310633}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Front_Tasset_01
+      parentName: Hips
+      position: {x: -0, y: 0.00055576325, z: 0.010361897}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Front_Tasset_02
+      parentName: Front_Tasset_01
+      position: {x: -0, y: -0.01607557, z: 0.000614707}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Back_Tasset_01
+      parentName: Hips
+      position: {x: -0, y: 0.0003677521, z: -0.014161269}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Back_Tasset_02
+      parentName: Back_Tasset_01
+      position: {x: -0, y: -0.014047624, z: -0.00046850205}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Spine
+      parentName: Hips
+      position: {x: -0, y: 0.0058267214, z: 0.0006681149}
+      rotation: {x: -0.48808593, y: 0.51163673, z: -0.48808593, w: 0.51163673}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Spine1
+      parentName: Spine
+      position: {x: -0.016485032, y: -0.0000000014305115, z: -4.5474737e-16}
+      rotation: {x: 0.9974373, y: -0.07154605, z: -5.9791037e-17, w: 5.710086e-17}
+      scale: {x: 0.9999999, y: 0.9999999, z: 0.99999994}
+    - name: Spine2
+      parentName: Spine1
+      position: {x: -0.016543122, y: 9.536744e-10, z: 4.5474737e-16}
+      rotation: {x: -0.39590654, y: 0.29069728, z: 0.44577584, w: 0.7483562}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Neck
+      parentName: Spine2
+      position: {x: -0.008711575, y: 0.014194275, z: -0.00412185}
+      rotation: {x: 0.63768876, y: -0.59338546, z: 0.20079724, w: -0.44824922}
+      scale: {x: 1, y: 1, z: 1.0000001}
+    - name: Head
+      parentName: Neck
+      position: {x: -0.009409775, y: -0.0000000038146974, z: -9.094947e-16}
+      rotation: {x: 0, y: 0, z: 0.12517712, w: 0.99213445}
+      scale: {x: 0.9999999, y: 0.99999994, z: 1}
+    - name: Jaw_1
+      parentName: Head
+      position: {x: -0.0031183169, y: -0.0011654206, z: -4.5474737e-16}
+      rotation: {x: 0.000009866769, y: 0.000004672019, z: 0.91993845, w: 0.39206284}
+      scale: {x: 1, y: 1, z: 1.0000001}
+    - name: Tongue_1
+      parentName: Jaw_1
+      position: {x: -0.00547876, y: 0.0009870759, z: 0}
+      rotation: {x: 0, y: 0, z: -0.7818123, w: 0.6235138}
+      scale: {x: 1.0000001, y: 1.0000001, z: 0.99999994}
+    - name: Tongue_2
+      parentName: Tongue_1
+      position: {x: -0.0035763173, y: -3.926101e-17, z: 1.5882039e-18}
+      rotation: {x: 0, y: 0, z: 0.26151046, w: 0.96520066}
+      scale: {x: 1, y: 0.99999994, z: 0.99999994}
+    - name: Tongue_3
+      parentName: Tongue_2
+      position: {x: -0.0032804757, y: -5.544379e-17, z: 8.438846e-19}
+      rotation: {x: 0, y: 0, z: 0.0355138, w: 0.9993692}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Tongue_4
+      parentName: Tongue_3
+      position: {x: -0.0016103388, y: 2.5885392e-19, z: 3.629319e-19}
+      rotation: {x: 0, y: 0, z: 0.14102435, w: 0.99000615}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Tongue_5
+      parentName: Tongue_4
+      position: {x: -0.0012257877, y: -1.7637972e-17, z: 1.0886478e-19}
+      rotation: {x: 0, y: 0, z: 0.19252019, w: 0.981293}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Tongue_6
+      parentName: Tongue_5
+      position: {x: -0.0010539758, y: -1.33736436e-17, z: -1.1313564e-19}
+      rotation: {x: -0.2818163, y: -0.64852107, z: -0.2818163, w: 0.64852107}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Jaw_2
+      parentName: Jaw_1
+      position: {x: -0.0051246034, y: 0, z: -4.656613e-13}
+      rotation: {x: 0, y: -0, z: -0.47888947, w: 0.8778752}
+      scale: {x: 0.99999994, y: 1, z: 0.99999994}
+    - name: R_eye
+      parentName: Head
+      position: {x: -0.009861618, y: -0.00396579, z: 0.0035008404}
+      rotation: {x: 0.62197757, y: 0.33636868, z: 0.62197757, w: -0.33636868}
+      scale: {x: 1.0000001, y: 0.9999999, z: 1}
+    - name: L_eye
+      parentName: Head
+      position: {x: -0.009861389, y: -0.0039659427, z: -0.0035008367}
+      rotation: {x: 0.33636868, y: -0.62197757, z: 0.33636868, w: 0.62197757}
+      scale: {x: 1.0000001, y: 0.9999999, z: 1}
+    - name: Snakehead_6
+      parentName: Head
+      position: {x: -0.016302155, y: 0.0060461503, z: 0}
+      rotation: {x: 0, y: -0, z: -0.2654355, w: 0.9641287}
+      scale: {x: 1, y: 1, z: 1.0000001}
+    - name: Snakehead_7
+      parentName: Snakehead_6
+      position: {x: -0.0064054723, y: 0, z: 0}
+      rotation: {x: 0, y: 0, z: 0.00034232304, w: 0.99999994}
+      scale: {x: 1.0000001, y: 1, z: 0.99999994}
+    - name: Snakehead_8
+      parentName: Snakehead_7
+      position: {x: -0.006997757, y: 0, z: -1.3642421e-15}
+      rotation: {x: 0, y: -0, z: -0.0064813523, w: 0.999979}
+      scale: {x: 0.99999994, y: 0.9999999, z: 1}
+    - name: Snakehead_9
+      parentName: Snakehead_8
+      position: {x: -0.004307572, y: -4.768372e-10, z: -4.5474737e-16}
+      rotation: {x: 0, y: 0, z: 0.03498007, w: 0.99938804}
+      scale: {x: 1.0000001, y: 1, z: 1.0000001}
+    - name: Snakehead_10
+      parentName: Snakehead_9
+      position: {x: -0.0025705872, y: 0, z: 1.3642421e-15}
+      rotation: {x: 0.47447243, y: -0.52431417, z: 0.47447243, w: 0.52425814}
+      scale: {x: 0.99999994, y: 1, z: 1.0000001}
+    - name: Snakehead_11
+      parentName: Head
+      position: {x: -0.013796784, y: 0.009500023, z: -9.094947e-16}
+      rotation: {x: 0.9511923, y: -0.30859873, z: -1.8896223e-17, w: 5.824373e-17}
+      scale: {x: 1.0000001, y: 1.0000001, z: 1.0000001}
+    - name: Snakehead_12
+      parentName: Snakehead_11
+      position: {x: -0.0081259925, y: 4.768372e-10, z: 9.094947e-16}
+      rotation: {x: -8.881731e-16, y: -3.0672657e-18, z: 0.0034534342, w: 0.99999404}
+      scale: {x: 0.99999994, y: 0.9999999, z: 0.99999994}
+    - name: Snakehead_13
+      parentName: Snakehead_12
+      position: {x: -0.006219071, y: -9.536744e-10, z: 0}
+      rotation: {x: -2.2204241e-16, y: 9.922547e-19, z: -0.0044706254, w: 0.99999005}
+      scale: {x: 1.0000001, y: 1.0000001, z: 1}
+    - name: Snakehead_14
+      parentName: Snakehead_13
+      position: {x: -0.0031815493, y: -0.0000000014305115, z: 0}
+      rotation: {x: -1.7758846e-15, y: 4.096015e-17, z: -0.023058515, w: 0.99973416}
+      scale: {x: 1, y: 0.99999994, z: 1}
+    - name: Snakehead_15
+      parentName: Snakehead_14
+      position: {x: -0.00264032, y: 0, z: 0}
+      rotation: {x: -0.5, y: 0.50001246, z: 0.5, w: 0.49998757}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Snakehead_16
+      parentName: Head
+      position: {x: -0.008665085, y: 0.011985833, z: -9.094947e-16}
+      rotation: {x: 0.8211762, y: -0.5706748, z: -3.4943752e-17, w: 5.0282536e-17}
+      scale: {x: 0.99999994, y: 0.99999994, z: 1.0000001}
+    - name: Snakehead_17
+      parentName: Snakehead_16
+      position: {x: -0.0060142674, y: -0.00000001525879, z: -3.637979e-15}
+      rotation: {x: 0, y: 0, z: 0.006909816, w: 0.99997616}
+      scale: {x: 1.0000001, y: 1.0000001, z: 1}
+    - name: Snakehead_18
+      parentName: Snakehead_17
+      position: {x: -0.0068747103, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0.0085263895, w: 0.99996364}
+      scale: {x: 1, y: 1, z: 0.99999994}
+    - name: Snakehead_19
+      parentName: Snakehead_18
+      position: {x: -0.0043030246, y: 0, z: 0}
+      rotation: {x: 0, y: 0, z: 0.0509894, w: 0.99869925}
+      scale: {x: 1.0000001, y: 1.0000001, z: 1}
+    - name: Snakehead_20
+      parentName: Snakehead_19
+      position: {x: -0.0027003023, y: 0, z: 0}
+      rotation: {x: -0.2872436, y: 0.64613557, z: 0.2872436, w: 0.64613557}
+      scale: {x: 1, y: 1, z: 1.0000001}
+    - name: Snakehead_21
+      parentName: Head
+      position: {x: -0.00483725, y: 0.011585244, z: -9.094947e-16}
+      rotation: {x: -0.7064546, y: 0.70775837, z: -8.6595566e-17, w: -7.983419e-20}
+      scale: {x: 0.9999999, y: 1, z: 1.0000001}
+    - name: Snakehead_22
+      parentName: Snakehead_21
+      position: {x: -0.007703072, y: 0.00000001525879, z: 1.8189895e-15}
+      rotation: {x: 0, y: -0, z: -0.00094320765, w: 0.9999996}
+      scale: {x: 1, y: 0.99999994, z: 1}
+    - name: Snakehead_23
+      parentName: Snakehead_22
+      position: {x: -0.0062518544, y: 0, z: -1.3642421e-15}
+      rotation: {x: 0, y: 0, z: 0.0021268693, w: 0.99999774}
+      scale: {x: 1, y: 1, z: 0.99999994}
+    - name: Snakehead_24
+      parentName: Snakehead_23
+      position: {x: -0.0031464081, y: 0, z: 1.8189895e-15}
+      rotation: {x: 0, y: 0, z: 0.039314635, w: 0.99922687}
+      scale: {x: 1.0000001, y: 1.0000001, z: 1}
+    - name: Snakehead_25
+      parentName: Snakehead_24
+      position: {x: -0.0026691437, y: 0.00000001525879, z: -9.094947e-16}
+      rotation: {x: -0.17371531, y: 0.68543637, z: 0.17371531, w: 0.68543637}
+      scale: {x: 1, y: 1, z: 1.0000001}
+    - name: Snakehead_26
+      parentName: Head
+      position: {x: -0.0019508515, y: 0.01028138, z: -4.5474737e-16}
+      rotation: {x: -0.4881223, y: 0.87277526, z: -8.333094e-17, w: -2.3553199e-17}
+      scale: {x: 0.99999994, y: 0.99999994, z: 1.0000001}
+    - name: Snakehead_27
+      parentName: Snakehead_26
+      position: {x: -0.006896948, y: 0.00000003051758, z: 0}
+      rotation: {x: 0, y: -0, z: -0.010977788, w: 0.99993974}
+      scale: {x: 1, y: 1, z: 0.99999994}
+    - name: Snakehead_28
+      parentName: Snakehead_27
+      position: {x: -0.006804995, y: -0.00000001525879, z: 0}
+      rotation: {x: 0, y: -0, z: -0.014530044, w: 0.99989444}
+      scale: {x: 0.99999994, y: 1, z: 0.99999994}
+    - name: Snakehead_29
+      parentName: Snakehead_28
+      position: {x: -0.0043163416, y: -0.00000003051758, z: -4.5474737e-16}
+      rotation: {x: 0, y: 0, z: 0.04859763, w: 0.99881846}
+      scale: {x: 0.99999994, y: 0.9999999, z: 1}
+    - name: Snakehead_30
+      parentName: Snakehead_29
+      position: {x: -0.0027385426, y: 0, z: 4.5474737e-16}
+      rotation: {x: 0.006312699, y: 0.70707864, z: -0.006312699, w: 0.70707864}
+      scale: {x: 1, y: 1, z: 0.99999994}
+    - name: Snakehead_31
+      parentName: Head
+      position: {x: 0.0013529512, y: 0.006601113, z: 0}
+      rotation: {x: -0.46583334, y: 0.8848725, z: -8.270688e-17, w: -2.5658747e-17}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Snakehead_32
+      parentName: Snakehead_31
+      position: {x: -0.00765396, y: 0, z: 9.094947e-16}
+      rotation: {x: 0, y: 0, z: 0.0004455665, w: 0.99999994}
+      scale: {x: 1.0000001, y: 1.0000001, z: 1.0000001}
+    - name: Snakehead_33
+      parentName: Snakehead_32
+      position: {x: -0.0063091414, y: 0, z: -4.5474737e-16}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Snakehead_34
+      parentName: Snakehead_33
+      position: {x: -0.003154568, y: 0, z: 4.5474737e-16}
+      rotation: {x: 0, y: 0, z: 0.035397407, w: 0.9993733}
+      scale: {x: 0.99999994, y: 0.99999994, z: 1}
+    - name: Snakehead_35
+      parentName: Snakehead_34
+      position: {x: -0.0026029302, y: 0.00000001525879, z: -9.094947e-16}
+      rotation: {x: 0.03324341, y: 0.70632493, z: -0.03324341, w: 0.70632493}
+      scale: {x: 0.99999994, y: 0.9999999, z: 0.99999994}
+    - name: R_Snakehead_66
+      parentName: Head
+      position: {x: -0.014484467, y: 0.0074336627, z: 0.004104411}
+      rotation: {x: -0.5878051, y: 0.33079302, z: -0.049204573, w: 0.73664105}
+      scale: {x: 1, y: 1.0000002, z: 0.9999999}
+    - name: R_Snakehead_67
+      parentName: R_Snakehead_66
+      position: {x: -0.007367325, y: -0.00000001525879, z: 0}
+      rotation: {x: -0.009972405, y: 0.0046850517, z: -0.0066911066, w: 0.999917}
+      scale: {x: 1.0000001, y: 1, z: 1.0000001}
+    - name: R_Snakehead_68
+      parentName: R_Snakehead_67
+      position: {x: -0.0066261445, y: 0.000000007629395, z: 2.384186e-10}
+      rotation: {x: -0.0057667308, y: 0.0026797464, z: 0.00249648, w: 0.9999767}
+      scale: {x: 1.0000001, y: 0.99999994, z: 1}
+    - name: R_Snakehead_69
+      parentName: R_Snakehead_68
+      position: {x: -0.0031088106, y: 0.000000007629395, z: 0}
+      rotation: {x: 0.076542705, y: -0.036079474, z: 0.0029669784, w: 0.99640894}
+      scale: {x: 0.9999998, y: 0.9999999, z: 0.99999994}
+    - name: R_Snakehead_70
+      parentName: R_Snakehead_69
+      position: {x: -0.002627121, y: -0.000000007629395, z: 0}
+      rotation: {x: -0.09486732, y: -0.059963234, z: -0.8399593, w: 0.5309171}
+      scale: {x: 0.9999999, y: 1, z: 1}
+    - name: R_Snakehead_71
+      parentName: Head
+      position: {x: -0.011658158, y: 0.007276955, z: 0.0064509506}
+      rotation: {x: -0.49477085, y: 0.47726846, z: 0.13580829, w: 0.71342325}
+      scale: {x: 1.0000001, y: 0.99999994, z: 1}
+    - name: R_Snakehead_72
+      parentName: R_Snakehead_71
+      position: {x: -0.0077720494, y: 0.00000003051758, z: 0}
+      rotation: {x: -0.006835242, y: 0.009745436, z: 0.0036403807, w: 0.9999225}
+      scale: {x: 0.99999994, y: 0.99999994, z: 0.99999994}
+    - name: R_Snakehead_73
+      parentName: R_Snakehead_72
+      position: {x: -0.006562958, y: -0.00000001525879, z: 4.768372e-10}
+      rotation: {x: -0.0008110506, y: 0.0011540591, z: -0.0045798193, w: 0.99998856}
+      scale: {x: 0.99999994, y: 1, z: 0.99999994}
+    - name: R_Snakehead_74
+      parentName: R_Snakehead_73
+      position: {x: -0.0030359728, y: -0.00000001525879, z: 0}
+      rotation: {x: 0.026228582, y: -0.03845853, z: 0.018607836, w: 0.9987426}
+      scale: {x: 1.0000001, y: 1.0000001, z: 1.0000002}
+    - name: R_Snakehead_75
+      parentName: R_Snakehead_74
+      position: {x: -0.0025969546, y: -0.00000001525879, z: -9.536744e-10}
+      rotation: {x: 0.05811502, y: 0.017339466, z: 0.95649266, w: -0.28538358}
+      scale: {x: 1.0000002, y: 1, z: 1}
+    - name: R_Snakehead_76
+      parentName: Head
+      position: {x: -0.008884873, y: 0.006726807, z: 0.0071452917}
+      rotation: {x: -0.44733557, y: 0.56563103, z: 0.21948479, w: 0.6570988}
+      scale: {x: 1.0000001, y: 1, z: 0.99999994}
+    - name: R_Snakehead_77
+      parentName: R_Snakehead_76
+      position: {x: -0.0073646777, y: -0.00000003051758, z: 4.768372e-10}
+      rotation: {x: -0.0019210578, y: 0.005172684, z: -0.008823146, w: 0.9999459}
+      scale: {x: 1, y: 0.99999994, z: 0.9999999}
+    - name: R_Snakehead_78
+      parentName: R_Snakehead_77
+      position: {x: -0.005429169, y: 0, z: 0}
+      rotation: {x: -0.0015156355, y: 0.0040991395, z: 0.010265384, w: 0.9999378}
+      scale: {x: 0.99999994, y: 1.0000001, z: 1.0000001}
+    - name: R_Snakehead_79
+      parentName: R_Snakehead_78
+      position: {x: -0.004223633, y: 0.00000003051758, z: -0.0000000014305115}
+      rotation: {x: 0.0071580964, y: -0.021353764, z: 0.0204403, w: 0.9995374}
+      scale: {x: 0.99999994, y: 1, z: 1}
+    - name: R_Snakehead_80
+      parentName: R_Snakehead_79
+      position: {x: -0.0025135651, y: 0, z: 4.768372e-10}
+      rotation: {x: -0.007332719, y: -0.0011194693, z: 0.98851895, w: -0.15091491}
+      scale: {x: 0.99999994, y: 0.9999999, z: 0.9999998}
+    - name: R_Snakehead_81
+      parentName: Head
+      position: {x: -0.0052919923, y: 0.0062641604, z: 0.0069019715}
+      rotation: {x: -0.4111934, y: 0.6234525, z: 0.26413557, w: 0.61029464}
+      scale: {x: 1.0000001, y: 1.0000001, z: 1}
+    - name: R_Snakehead_82
+      parentName: R_Snakehead_81
+      position: {x: -0.005958218, y: 0, z: -9.536744e-10}
+      rotation: {x: -0.0017954861, y: 0.010250944, z: 0.0012010658, w: 0.99994516}
+      scale: {x: 0.99999994, y: 0.9999999, z: 0.99999994}
+    - name: R_Snakehead_83
+      parentName: R_Snakehead_82
+      position: {x: -0.0071785585, y: -0.00000003051758, z: 4.768372e-10}
+      rotation: {x: -0.0012861036, y: 0.0071195774, z: -0.006522517, w: 0.99995255}
+      scale: {x: 0.99999994, y: 0.9999999, z: 0.9999999}
+    - name: R_Snakehead_84
+      parentName: R_Snakehead_83
+      position: {x: -0.004120945, y: 0, z: -4.768372e-10}
+      rotation: {x: -5.899333e-14, y: -0.000016487737, z: 0.028259592, w: 0.99960065}
+      scale: {x: 1.0000001, y: 1, z: 0.99999994}
+    - name: R_Snakehead_85
+      parentName: R_Snakehead_84
+      position: {x: -0.0027423555, y: 0, z: 9.536744e-10}
+      rotation: {x: -0.07529985, y: -0.00485527, z: 0.99508494, w: -0.064128004}
+      scale: {x: 1.0000001, y: 0.9999999, z: 0.99999994}
+    - name: R_Snakehead_86
+      parentName: Head
+      position: {x: -0.0023868866, y: 0.003960892, z: 0.006396001}
+      rotation: {x: -0.2796916, y: 0.7245169, z: 0.36761546, w: 0.5115728}
+      scale: {x: 1.0000001, y: 1, z: 0.99999994}
+    - name: R_Snakehead_87
+      parentName: R_Snakehead_86
+      position: {x: -0.0060450463, y: 0, z: 0}
+      rotation: {x: 0.0029425197, y: 0.011138309, z: 0.0035929426, w: 0.9999272}
+      scale: {x: 1, y: 1, z: 1}
+    - name: R_Snakehead_88
+      parentName: R_Snakehead_87
+      position: {x: -0.0070145708, y: 0, z: 0.0000000014305115}
+      rotation: {x: 0.0015743722, y: 0.0059114303, z: -0.0015876143, w: 0.99998003}
+      scale: {x: 1, y: 0.99999994, z: 1}
+    - name: R_Snakehead_89
+      parentName: R_Snakehead_88
+      position: {x: -0.0043233302, y: 0, z: -9.536744e-10}
+      rotation: {x: -0.009197123, y: -0.03283757, z: 0.014375985, w: 0.999315}
+      scale: {x: 0.99999994, y: 0.9999999, z: 0.99999994}
+    - name: R_Snakehead_90
+      parentName: R_Snakehead_89
+      position: {x: -0.0027087613, y: 0, z: 0}
+      rotation: {x: -0.0864169, y: 0.012507262, z: 0.98590803, w: 0.1426921}
+      scale: {x: 1, y: 1, z: 1}
+    - name: R_Snakehead_91
+      parentName: Head
+      position: {x: -0.011107972, y: 0.011513924, z: 0.0021946006}
+      rotation: {x: 0.81166685, y: -0.3878294, z: 0.058154892, w: -0.43290108}
+      scale: {x: 1, y: 1, z: 0.99999994}
+    - name: R_Snakehead_92
+      parentName: R_Snakehead_91
+      position: {x: -0.0061629335, y: 0.000000007629395, z: -4.768372e-10}
+      rotation: {x: -0.010882864, y: 0.0035314695, z: 0.0015705515, w: 0.9999333}
+      scale: {x: 0.99999994, y: 0.9999999, z: 0.99999976}
+    - name: R_Snakehead_93
+      parentName: R_Snakehead_92
+      position: {x: -0.0069034277, y: -0.000000007629395, z: 4.768372e-10}
+      rotation: {x: -0.016861716, y: 0.0054967417, z: -0.00022203215, w: 0.9998427}
+      scale: {x: 1.0000001, y: 0.99999994, z: 1}
+    - name: R_Snakehead_94
+      parentName: R_Snakehead_93
+      position: {x: -0.004308884, y: 0.0000000038146974, z: -0.0000000014305115}
+      rotation: {x: 0.08178172, y: -0.026137097, z: -0.0055476236, w: 0.99629205}
+      scale: {x: 1, y: 1, z: 1}
+    - name: R_Snakehead_95
+      parentName: R_Snakehead_94
+      position: {x: -0.0025140992, y: -0.0000000038146974, z: 4.768372e-10}
+      rotation: {x: 0.22008401, y: 0.1616541, z: -0.7753206, w: 0.56948143}
+      scale: {x: 1.0000001, y: 1, z: 1}
+    - name: R_Snakehead_96
+      parentName: Head
+      position: {x: -0.00850644, y: 0.010693894, z: 0.0048965514}
+      rotation: {x: -0.591306, y: 0.5380367, z: 0.09510267, w: 0.593152}
+      scale: {x: 1.0000001, y: 0.99999994, z: 1}
+    - name: R_Snakehead_97
+      parentName: R_Snakehead_96
+      position: {x: -0.0070282747, y: -0.00000003051758, z: -4.768372e-10}
+      rotation: {x: -0.008937746, y: 0.011376178, z: 0.007617122, w: 0.99986637}
+      scale: {x: 1, y: 0.99999994, z: 0.99999994}
+    - name: R_Snakehead_98
+      parentName: R_Snakehead_97
+      position: {x: -0.0062505803, y: -0.00000001525879, z: 9.536744e-10}
+      rotation: {x: -0.0032700587, y: 0.0042432114, z: 0.0017235619, w: 0.9999842}
+      scale: {x: 1, y: 1, z: 0.99999994}
+    - name: R_Snakehead_99
+      parentName: R_Snakehead_98
+      position: {x: -0.003144211, y: 0, z: 0.0000000014305115}
+      rotation: {x: 0.01615868, y: -0.020523766, z: -0.012086876, w: 0.9995857}
+      scale: {x: 0.99999994, y: 1, z: 1}
+    - name: R_Snakehead_100
+      parentName: R_Snakehead_99
+      position: {x: -0.00292334, y: 0, z: -9.536744e-10}
+      rotation: {x: -0.12661496, y: -0.044720717, z: 0.9343734, w: -0.330023}
+      scale: {x: 1.0000001, y: 1.0000001, z: 0.99999994}
+    - name: R_Snakehead_101
+      parentName: Head
+      position: {x: -0.0052805943, y: 0.009242714, z: 0.0055510816}
+      rotation: {x: -0.508904, y: 0.6704772, z: 0.18119772, w: 0.508571}
+      scale: {x: 1.0000001, y: 1, z: 0.99999994}
+    - name: R_Snakehead_102
+      parentName: R_Snakehead_101
+      position: {x: -0.0057250066, y: 0, z: 0}
+      rotation: {x: -0.0039041117, y: 0.012145398, z: -0.00403358, w: 0.99991053}
+      scale: {x: 0.9999999, y: 1, z: 1}
+    - name: R_Snakehead_103
+      parentName: R_Snakehead_102
+      position: {x: -0.005373322, y: 0, z: 9.536744e-10}
+      rotation: {x: -0.0050814506, y: 0.015332418, z: -0.004976116, w: 0.9998572}
+      scale: {x: 1.0000001, y: 1.0000001, z: 1}
+    - name: R_Snakehead_104
+      parentName: R_Snakehead_103
+      position: {x: -0.005868874, y: 0, z: -0.0000000033378602}
+      rotation: {x: 0.010117804, y: -0.03147475, z: 0.013970341, w: 0.99935573}
+      scale: {x: 0.99999994, y: 1.0000001, z: 1}
+    - name: R_Snakehead_105
+      parentName: R_Snakehead_104
+      position: {x: -0.0026546174, y: 0, z: 0.000000002384186}
+      rotation: {x: -0.2070742, y: -0.030983474, z: 0.9670692, w: -0.14469771}
+      scale: {x: 0.99999994, y: 0.9999999, z: 0.9999999}
+    - name: R_Snakehead_106
+      parentName: Head
+      position: {x: -0.0021241761, y: 0.0067683263, z: 0.00528084}
+      rotation: {x: -0.42807662, y: 0.7227309, z: 0.23931342, w: 0.48696977}
+      scale: {x: 1.0000001, y: 0.99999994, z: 0.9999999}
+    - name: R_Snakehead_107
+      parentName: R_Snakehead_106
+      position: {x: -0.0057130777, y: 0, z: 0}
+      rotation: {x: -0.0005606138, y: 0.006427406, z: -0.0090314625, w: 0.9999384}
+      scale: {x: 0.99999994, y: 0.99999994, z: 0.9999999}
+    - name: R_Snakehead_108
+      parentName: R_Snakehead_107
+      position: {x: -0.005412651, y: 0, z: 0}
+      rotation: {x: 0.0010406886, y: -0.010379587, z: -0.0038948236, w: 0.999938}
+      scale: {x: 1.0000001, y: 1.0000001, z: 1.0000001}
+    - name: R_Snakehead_109
+      parentName: R_Snakehead_108
+      position: {x: -0.005750805, y: -0.00000003051758, z: -4.768372e-10}
+      rotation: {x: -0.0012943385, y: 0.013782427, z: 0.010185334, w: 0.99985236}
+      scale: {x: 1.0000001, y: 0.99999994, z: 1}
+    - name: R_Snakehead_110
+      parentName: R_Snakehead_109
+      position: {x: -0.0029032708, y: 0, z: 0}
+      rotation: {x: -0.21973304, y: -0.00917382, z: 0.97466785, w: -0.040692225}
+      scale: {x: 0.99999994, y: 1, z: 1.0000001}
+    - name: R_Snakehead_111
+      parentName: Head
+      position: {x: 0.00034638977, y: 0.0048548435, z: 0.0046000904}
+      rotation: {x: -0.39321366, y: 0.76207083, z: 0.25344408, w: 0.4476574}
+      scale: {x: 1, y: 0.99999994, z: 1}
+    - name: R_Snakehead_112
+      parentName: R_Snakehead_111
+      position: {x: -0.0061335717, y: 0, z: -9.536744e-10}
+      rotation: {x: 0.000008695179, y: 0.00024196184, z: -0.0028918842, w: 0.9999958}
+      scale: {x: 0.9999999, y: 1, z: 1}
+    - name: R_Snakehead_113
+      parentName: R_Snakehead_112
+      position: {x: -0.006904322, y: 0, z: -4.768372e-10}
+      rotation: {x: -0.00032077357, y: -0.009793335, z: -0.00028622747, w: 0.99995196}
+      scale: {x: 1, y: 1.0000001, z: 1.0000001}
+    - name: R_Snakehead_114
+      parentName: R_Snakehead_113
+      position: {x: -0.0042218002, y: -0.00000003051758, z: -9.536744e-10}
+      rotation: {x: 0.000497787, y: 0.009442058, z: 0.020212814, w: 0.99975103}
+      scale: {x: 1, y: 1.0000001, z: 1.0000001}
+    - name: R_Snakehead_115
+      parentName: R_Snakehead_114
+      position: {x: -0.0026777603, y: 0.00000003051758, z: 9.536744e-10}
+      rotation: {x: -0.24235858, y: 0.008836241, z: 0.96950233, w: 0.035347447}
+      scale: {x: 1, y: 0.99999994, z: 1}
+    - name: R_Snakehead_126
+      parentName: Head
+      position: {x: 0.0008274231, y: 0.006799492, z: 0.0027231402}
+      rotation: {x: -0.42321336, y: 0.86234444, z: 0.14177306, w: 0.23906696}
+      scale: {x: 1, y: 0.99999994, z: 1.0000001}
+    - name: R_Snakehead_127
+      parentName: R_Snakehead_126
+      position: {x: -0.005749977, y: 0, z: 7.1525574e-10}
+      rotation: {x: 0.00023817828, y: 0.0031423597, z: -0.0033877024, w: 0.99998933}
+      scale: {x: 1, y: 0.99999994, z: 0.9999999}
+    - name: R_Snakehead_128
+      parentName: R_Snakehead_127
+      position: {x: -0.0053739063, y: 0, z: 0.0000000014305115}
+      rotation: {x: -0.00063605595, y: -0.0097578885, z: -0.0032140554, w: 0.999947}
+      scale: {x: 0.99999994, y: 1.0000001, z: 1.0000001}
+    - name: R_Snakehead_129
+      parentName: R_Snakehead_128
+      position: {x: -0.0058218255, y: 0.00000003051758, z: -0.0000000014305115}
+      rotation: {x: 0.0016472846, y: 0.015413802, z: 0.040616166, w: 0.9990546}
+      scale: {x: 0.9999999, y: 0.99999994, z: 1}
+    - name: R_Snakehead_130
+      parentName: R_Snakehead_129
+      position: {x: -0.0026472227, y: -0.00000003051758, z: 4.768372e-10}
+      rotation: {x: -0.48913434, y: 0.036040574, z: 0.8691075, w: 0.06403789}
+      scale: {x: 1, y: 1, z: 1}
+    - name: R_Snakehead_121
+      parentName: Head
+      position: {x: -0.0011251679, y: 0.008807022, z: 0.0033622202}
+      rotation: {x: -0.5022679, y: 0.8349578, z: 0.0978076, w: 0.2025001}
+      scale: {x: 0.99999994, y: 0.99999994, z: 1.0000002}
+    - name: R_Snakehead_122
+      parentName: R_Snakehead_121
+      position: {x: -0.0072042295, y: 0, z: -7.1525574e-10}
+      rotation: {x: 0.00033312626, y: -0.003692214, z: 0.0016218225, w: 0.99999183}
+      scale: {x: 1.0000002, y: 1.0000002, z: 1.0000001}
+    - name: R_Snakehead_123
+      parentName: R_Snakehead_122
+      position: {x: -0.005201508, y: 0.00000003051758, z: 4.768372e-10}
+      rotation: {x: 0.00096513965, y: -0.011097348, z: 0.001606411, w: 0.9999367}
+      scale: {x: 1.0000001, y: 1.0000001, z: 1}
+    - name: R_Snakehead_124
+      parentName: R_Snakehead_123
+      position: {x: -0.004174374, y: 0, z: 4.768372e-10}
+      rotation: {x: -0.0020758496, y: 0.02604785, z: 0.005617923, w: 0.9996428}
+      scale: {x: 1, y: 0.9999999, z: 0.9999999}
+    - name: R_Snakehead_125
+      parentName: R_Snakehead_124
+      position: {x: -0.0028034174, y: 0.00000003051758, z: -1.192093e-10}
+      rotation: {x: -0.53914696, y: -0.019932076, z: 0.84140104, w: -0.031106304}
+      scale: {x: 0.99999994, y: 1.0000001, z: 1}
+    - name: R_Snakehead_116
+      parentName: Head
+      position: {x: -0.004598511, y: 0.010959473, z: 0.0037669207}
+      rotation: {x: -0.5638682, y: 0.80655605, z: 0.06608133, w: 0.16478229}
+      scale: {x: 0.99999994, y: 1, z: 1.0000001}
+    - name: R_Snakehead_117
+      parentName: R_Snakehead_116
+      position: {x: -0.005883152, y: 0, z: 8.3446505e-10}
+      rotation: {x: 0.0013946779, y: -0.0059411013, z: -0.0018369849, w: 0.99997973}
+      scale: {x: 1, y: 1.0000001, z: 1.0000001}
+    - name: R_Snakehead_118
+      parentName: R_Snakehead_117
+      position: {x: -0.0054748463, y: 0, z: -0.000000001192093}
+      rotation: {x: -0.0015016041, y: 0.006099539, z: -0.00897016, w: 0.99994004}
+      scale: {x: 0.99999994, y: 0.99999994, z: 0.9999999}
+    - name: R_Snakehead_119
+      parentName: R_Snakehead_118
+      position: {x: -0.0057558827, y: 0, z: -0.0000000013113023}
+      rotation: {x: -0.0012389539, y: 0.005372893, z: 0.023719143, w: 0.99970347}
+      scale: {x: 0.99999994, y: 1, z: 1.0000001}
+    - name: R_Snakehead_120
+      parentName: R_Snakehead_119
+      position: {x: -0.0027490999, y: 0, z: 0.0000000016689301}
+      rotation: {x: -0.5720451, y: -0.058236856, z: 0.81394506, w: -0.0828634}
+      scale: {x: 0.9999999, y: 1, z: 0.99999994}
+    - name: L_Snakehead_66
+      parentName: Head
+      position: {x: -0.014484299, y: 0.007433556, z: -0.0041044094}
+      rotation: {x: 0.5878073, y: -0.33079106, z: -0.04920752, w: 0.73664004}
+      scale: {x: 1.0000001, y: 1, z: 1}
+    - name: L_Snakehead_67
+      parentName: L_Snakehead_66
+      position: {x: -0.0073674168, y: 0.000000007629395, z: 2.384186e-10}
+      rotation: {x: 0.009971023, y: -0.004684233, z: -0.006696777, w: 0.9999169}
+      scale: {x: 0.9999999, y: 0.99999994, z: 1}
+    - name: L_Snakehead_68
+      parentName: L_Snakehead_67
+      position: {x: -0.0066263583, y: 0, z: -4.768372e-10}
+      rotation: {x: 0.005765803, y: -0.0026794982, z: 0.0025421542, w: 0.9999766}
+      scale: {x: 1, y: 1, z: 1}
+    - name: L_Snakehead_69
+      parentName: L_Snakehead_68
+      position: {x: -0.0031083985, y: 0, z: 0}
+      rotation: {x: -0.076541916, y: 0.036079578, z: 0.0029005273, w: 0.9964092}
+      scale: {x: 1, y: 1.0000001, z: 1.0000001}
+    - name: L_Snakehead_70
+      parentName: L_Snakehead_69
+      position: {x: -0.0026274873, y: 0.000000007629395, z: -0.0000000014305115}
+      rotation: {x: 0.05996649, y: -0.094866, z: 0.5309429, w: 0.83994293}
+      scale: {x: 0.99999994, y: 1, z: 1.0000001}
+    - name: L_Snakehead_71
+      parentName: Head
+      position: {x: -0.011658555, y: 0.007277222, z: -0.0064509567}
+      rotation: {x: 0.49475336, y: -0.4772865, z: 0.13583437, w: 0.71341836}
+      scale: {x: 1.0000001, y: 0.99999994, z: 1}
+    - name: L_Snakehead_72
+      parentName: L_Snakehead_71
+      position: {x: -0.00777163, y: 0, z: 4.768372e-10}
+      rotation: {x: 0.0068344707, y: -0.009745348, z: 0.003616024, w: 0.99992263}
+      scale: {x: 1.0000001, y: 1, z: 1}
+    - name: L_Snakehead_73
+      parentName: L_Snakehead_72
+      position: {x: -0.0065628206, y: -0.00000001525879, z: 9.536744e-10}
+      rotation: {x: 0.00081136404, y: -0.0011544932, z: -0.004609011, w: 0.9999884}
+      scale: {x: 0.9999999, y: 1, z: 1}
+    - name: L_Snakehead_74
+      parentName: L_Snakehead_73
+      position: {x: -0.0030360415, y: 0, z: 0}
+      rotation: {x: -0.026230903, y: 0.0384553, z: 0.018561559, w: 0.99874353}
+      scale: {x: 0.9999999, y: 0.9999999, z: 1}
+    - name: L_Snakehead_75
+      parentName: L_Snakehead_74
+      position: {x: -0.0025972214, y: 0.00000001525879, z: -9.536744e-10}
+      rotation: {x: 0.017342778, y: -0.058112692, z: 0.28544414, w: 0.95647466}
+      scale: {x: 1.0000001, y: 1, z: 1}
+    - name: L_Snakehead_76
+      parentName: Head
+      position: {x: -0.008885072, y: 0.0067269444, z: -0.007145289}
+      rotation: {x: 0.44732237, y: -0.5656417, z: 0.21950012, w: 0.65709347}
+      scale: {x: 1.0000001, y: 0.99999994, z: 1}
+    - name: L_Snakehead_77
+      parentName: L_Snakehead_76
+      position: {x: -0.0073645557, y: 0, z: 9.536744e-10}
+      rotation: {x: 0.0019211419, y: -0.00517288, z: -0.008872155, w: 0.99994546}
+      scale: {x: 1, y: 0.99999994, z: 0.99999994}
+    - name: L_Snakehead_78
+      parentName: L_Snakehead_77
+      position: {x: -0.005429245, y: 0, z: -9.536744e-10}
+      rotation: {x: 0.0015158416, y: -0.004098902, z: 0.0102532245, w: 0.9999379}
+      scale: {x: 0.9999999, y: 0.99999994, z: 0.99999994}
+    - name: L_Snakehead_79
+      parentName: L_Snakehead_78
+      position: {x: -0.0042237015, y: 0, z: 0}
+      rotation: {x: -0.0071587763, y: 0.021354107, z: 0.020491717, w: 0.99953634}
+      scale: {x: 1, y: 1, z: 1}
+    - name: L_Snakehead_80
+      parentName: L_Snakehead_79
+      position: {x: -0.0025135423, y: 0, z: 4.768372e-10}
+      rotation: {x: -0.0011193426, y: 0.0073325653, z: 0.15090132, w: 0.98852104}
+      scale: {x: 0.99999994, y: 0.9999999, z: 0.9999999}
+    - name: L_Snakehead_81
+      parentName: Head
+      position: {x: -0.005292206, y: 0.0062642978, z: -0.0069019683}
+      rotation: {x: 0.41120338, y: -0.62344545, z: 0.26412562, w: 0.6102992}
+      scale: {x: 1.0000001, y: 1.0000001, z: 0.99999994}
+    - name: L_Snakehead_82
+      parentName: L_Snakehead_81
+      position: {x: -0.005958256, y: 0.00000001525879, z: 9.536744e-10}
+      rotation: {x: 0.001795202, y: -0.010251877, z: 0.0012762682, w: 0.99994504}
+      scale: {x: 1, y: 1, z: 0.9999999}
+    - name: L_Snakehead_83
+      parentName: L_Snakehead_82
+      position: {x: -0.007178372, y: 0.00000001525879, z: 9.536744e-10}
+      rotation: {x: 0.0012861923, y: -0.00711939, z: -0.006656683, w: 0.99995166}
+      scale: {x: 1, y: 0.9999998, z: 1}
+    - name: L_Snakehead_84
+      parentName: L_Snakehead_83
+      position: {x: -0.0041210596, y: 0.00000001525879, z: 0}
+      rotation: {x: 7.571325e-15, y: 0.000016418933, z: 0.028442373, w: 0.99959546}
+      scale: {x: 1.0000001, y: 1.0000002, z: 1}
+    - name: L_Snakehead_85
+      parentName: L_Snakehead_84
+      position: {x: -0.0027422907, y: 0.00000001525879, z: 4.768372e-10}
+      rotation: {x: -0.004847194, y: 0.075300746, z: 0.06402111, w: 0.9950918}
+      scale: {x: 1, y: 1, z: 1}
+    - name: L_Snakehead_86
+      parentName: Head
+      position: {x: -0.0023872377, y: 0.0039611286, z: -0.006396005}
+      rotation: {x: 0.2796874, y: -0.7245187, z: 0.3676184, w: 0.5115706}
+      scale: {x: 1.0000001, y: 0.99999994, z: 1}
+    - name: L_Snakehead_87
+      parentName: L_Snakehead_86
+      position: {x: -0.0060450174, y: 0, z: 0.0000000014305115}
+      rotation: {x: -0.0029428457, y: -0.011137176, z: 0.00363361, w: 0.99992704}
+      scale: {x: 1.0000001, y: 0.99999994, z: 0.99999994}
+    - name: L_Snakehead_88
+      parentName: L_Snakehead_87
+      position: {x: -0.007014784, y: 0.00000001525879, z: -4.768372e-10}
+      rotation: {x: -0.0015741948, y: -0.0059099817, z: -0.0016478105, w: 0.99998}
+      scale: {x: 0.9999999, y: 0.9999999, z: 0.9999999}
+    - name: L_Snakehead_89
+      parentName: L_Snakehead_88
+      position: {x: -0.0043233302, y: 0, z: 0}
+      rotation: {x: 0.0091946125, y: 0.032827765, z: 0.014409859, w: 0.99931484}
+      scale: {x: 1.0000001, y: 0.9999999, z: 1}
+    - name: L_Snakehead_90
+      parentName: L_Snakehead_89
+      position: {x: -0.00270879, y: -0.00000003051758, z: 9.536744e-10}
+      rotation: {x: 0.012510125, y: 0.086424366, z: -0.14271195, w: 0.9859045}
+      scale: {x: 0.99999994, y: 1.0000001, z: 1.0000001}
+    - name: L_Snakehead_91
+      parentName: Head
+      position: {x: -0.011107743, y: 0.0115137715, z: -0.0021946023}
+      rotation: {x: 0.8116697, y: -0.38782278, z: -0.058158405, w: 0.43290117}
+      scale: {x: 1, y: 1, z: 0.99999994}
+    - name: L_Snakehead_92
+      parentName: L_Snakehead_91
+      position: {x: -0.0061632083, y: 0.000000007629395, z: 4.768372e-10}
+      rotation: {x: 0.010883583, y: -0.0035317226, z: 0.0015881136, w: 0.9999333}
+      scale: {x: 1, y: 1, z: 1}
+    - name: L_Snakehead_93
+      parentName: L_Snakehead_92
+      position: {x: -0.006903031, y: 0, z: 4.768372e-10}
+      rotation: {x: 0.016852096, y: -0.00549342, z: -0.00025114522, w: 0.9998429}
+      scale: {x: 0.9999999, y: 1, z: 1.0000001}
+    - name: L_Snakehead_94
+      parentName: L_Snakehead_93
+      position: {x: -0.0043092957, y: -0.000000007629395, z: -9.536744e-10}
+      rotation: {x: -0.08177718, y: 0.026134618, z: -0.0055200546, w: 0.99629265}
+      scale: {x: 0.99999994, y: 1.0000001, z: 1}
+    - name: L_Snakehead_95
+      parentName: L_Snakehead_94
+      position: {x: -0.0025139619, y: 0, z: -0.0000000014305115}
+      rotation: {x: -0.16164948, y: 0.2200815, z: 0.5694758, w: 0.7753263}
+      scale: {x: 0.9999999, y: 0.99999994, z: 0.9999999}
+    - name: L_Snakehead_96
+      parentName: Head
+      position: {x: -0.008506226, y: 0.010693749, z: -0.0048965537}
+      rotation: {x: 0.591302, y: -0.5380401, z: 0.095106594, w: 0.5931522}
+      scale: {x: 1.0000001, y: 1.0000001, z: 1}
+    - name: L_Snakehead_97
+      parentName: L_Snakehead_96
+      position: {x: -0.0070282673, y: -0.00000001525879, z: 0}
+      rotation: {x: 0.0089389505, y: -0.011377735, z: 0.0076052803, w: 0.9998664}
+      scale: {x: 0.9999999, y: 1.0000001, z: 1}
+    - name: L_Snakehead_98
+      parentName: L_Snakehead_97
+      position: {x: -0.006250565, y: 0, z: -4.768372e-10}
+      rotation: {x: 0.003267446, y: -0.004239766, z: 0.0017280035, w: 0.9999842}
+      scale: {x: 0.9999999, y: 0.99999994, z: 0.99999994}
+    - name: L_Snakehead_99
+      parentName: L_Snakehead_98
+      position: {x: -0.0031442873, y: 0, z: 9.536744e-10}
+      rotation: {x: -0.016157016, y: 0.02051964, z: -0.012132682, w: 0.9995853}
+      scale: {x: 0.9999999, y: 1, z: 0.9999999}
+    - name: L_Snakehead_100
+      parentName: L_Snakehead_99
+      position: {x: -0.0029235536, y: 0, z: -9.536744e-10}
+      rotation: {x: -0.044726927, y: 0.1266137, z: 0.33006656, w: 0.9343578}
+      scale: {x: 1, y: 0.9999999, z: 0.99999994}
+    - name: L_Snakehead_101
+      parentName: Head
+      position: {x: -0.0052809757, y: 0.009242951, z: -0.0055510774}
+      rotation: {x: 0.5088861, y: -0.67049164, z: 0.18121125, w: 0.50856507}
+      scale: {x: 1.0000001, y: 0.99999994, z: 1}
+    - name: L_Snakehead_102
+      parentName: L_Snakehead_101
+      position: {x: -0.0057249796, y: -0.00000001525879, z: 0}
+      rotation: {x: 0.0039021482, y: -0.012140206, z: -0.0040659453, w: 0.9999105}
+      scale: {x: 0.9999999, y: 1, z: 0.99999994}
+    - name: L_Snakehead_103
+      parentName: L_Snakehead_102
+      position: {x: -0.005373314, y: 0, z: 9.536744e-10}
+      rotation: {x: 0.0050834585, y: -0.0153401615, z: -0.00493293, w: 0.99985725}
+      scale: {x: 1, y: 0.99999976, z: 0.99999994}
+    - name: L_Snakehead_104
+      parentName: L_Snakehead_103
+      position: {x: -0.005868775, y: 0, z: -9.536744e-10}
+      rotation: {x: -0.0101195285, y: 0.03147732, z: 0.013868546, w: 0.99935704}
+      scale: {x: 1, y: 0.99999994, z: 1}
+    - name: L_Snakehead_105
+      parentName: L_Snakehead_104
+      position: {x: -0.0026546633, y: 0, z: 0.000000002384186}
+      rotation: {x: -0.03099683, y: 0.20707309, z: 0.14475945, w: 0.9670598}
+      scale: {x: 1, y: 1, z: 1}
+    - name: L_Snakehead_106
+      parentName: Head
+      position: {x: -0.002124588, y: 0.0067686085, z: -0.0052808435}
+      rotation: {x: -0.4280631, y: 0.72274005, z: -0.23932211, w: -0.48696378}
+      scale: {x: 1, y: 1, z: 0.9999999}
+    - name: L_Snakehead_107
+      parentName: L_Snakehead_106
+      position: {x: -0.0057130856, y: 0, z: -0.0000000014305115}
+      rotation: {x: 0.0005598372, y: -0.006424824, z: -0.008984986, w: 0.99993885}
+      scale: {x: 0.99999994, y: 1, z: 1}
+    - name: L_Snakehead_108
+      parentName: L_Snakehead_107
+      position: {x: -0.0054125446, y: -0.00000003051758, z: -0.0000000014305115}
+      rotation: {x: -0.0010404876, y: 0.010382487, z: -0.0039795777, w: 0.99993765}
+      scale: {x: 1.0000001, y: 0.99999994, z: 1}
+    - name: L_Snakehead_109
+      parentName: L_Snakehead_108
+      position: {x: -0.0057508624, y: -0.00000001525879, z: 4.768372e-10}
+      rotation: {x: 0.0012968554, y: -0.013794826, z: 0.010126037, w: 0.9998528}
+      scale: {x: 1, y: 1, z: 0.99999994}
+    - name: L_Snakehead_110
+      parentName: L_Snakehead_109
+      position: {x: -0.0029033357, y: 0, z: 0}
+      rotation: {x: -0.00919137, y: 0.21974117, z: 0.040768348, w: 0.97466266}
+      scale: {x: 1.0000001, y: 0.99999994, z: 1}
+    - name: L_Snakehead_111
+      parentName: Head
+      position: {x: 0.0003464203, y: 0.0048548128, z: -0.004600087}
+      rotation: {x: -0.39321268, y: 0.7620726, z: -0.2534441, w: -0.44765535}
+      scale: {x: 1, y: 1.0000001, z: 0.99999994}
+    - name: L_Snakehead_112
+      parentName: L_Snakehead_111
+      position: {x: -0.0061335796, y: 0, z: 9.536744e-10}
+      rotation: {x: -0.000008576088, y: -0.00023852305, z: -0.0028770375, w: 0.9999958}
+      scale: {x: 0.99999994, y: 0.9999999, z: 1}
+    - name: L_Snakehead_113
+      parentName: L_Snakehead_112
+      position: {x: -0.006904358, y: -0.00000003051758, z: 9.536744e-10}
+      rotation: {x: 0.00032025442, y: 0.009794512, z: -0.00037675782, w: 0.9999519}
+      scale: {x: 0.99999994, y: 0.99999994, z: 1.0000002}
+    - name: L_Snakehead_114
+      parentName: L_Snakehead_113
+      position: {x: -0.004221745, y: -0.000000045776368, z: -9.536744e-10}
+      rotation: {x: -0.00049809215, y: -0.009438129, z: 0.020414304, w: 0.999747}
+      scale: {x: 1.0000001, y: 1.0000002, z: 1.0000002}
+    - name: L_Snakehead_115
+      parentName: L_Snakehead_114
+      position: {x: -0.0026778146, y: 0, z: 0.000000002384186}
+      rotation: {x: 0.008866998, y: 0.24235117, z: -0.03547146, w: 0.9694994}
+      scale: {x: 1.0000001, y: 0.99999994, z: 1.0000001}
+    - name: L_Snakehead_126
+      parentName: Head
+      position: {x: 0.0008270264, y: 0.006799721, z: -0.002723139}
+      rotation: {x: -0.42321333, y: 0.8623449, z: -0.14177224, w: -0.23906563}
+      scale: {x: 1, y: 0.99999994, z: 1}
+    - name: L_Snakehead_127
+      parentName: L_Snakehead_126
+      position: {x: -0.0057500154, y: 0, z: -4.768372e-10}
+      rotation: {x: -0.00023827353, y: -0.0031411008, z: -0.0033276659, w: 0.9999895}
+      scale: {x: 1, y: 1, z: 0.99999994}
+    - name: L_Snakehead_128
+      parentName: L_Snakehead_127
+      position: {x: -0.005373953, y: 0.00000003051758, z: -7.1525574e-10}
+      rotation: {x: 0.0006754406, y: 0.009758028, z: -0.0032751125, w: 0.99994683}
+      scale: {x: 0.99999994, y: 1, z: 1.0000001}
+    - name: L_Snakehead_129
+      parentName: L_Snakehead_128
+      position: {x: -0.005821811, y: 0, z: 2.384186e-10}
+      rotation: {x: -0.0016459869, y: -0.015415142, z: 0.040524803, w: 0.9990583}
+      scale: {x: 0.99999994, y: 1, z: 1}
+    - name: L_Snakehead_130
+      parentName: L_Snakehead_129
+      position: {x: -0.0026471769, y: 0.00000003051758, z: -0.000000001192093}
+      rotation: {x: 0.03599435, y: 0.4891207, z: -0.06395868, w: 0.8691229}
+      scale: {x: 1, y: 0.9999999, z: 1}
+    - name: L_Snakehead_121
+      parentName: Head
+      position: {x: -0.0011252594, y: 0.008807038, z: -0.003362222}
+      rotation: {x: -0.502291, y: 0.83494383, z: -0.09780175, w: -0.20250268}
+      scale: {x: 0.99999994, y: 1, z: 1.0000001}
+    - name: L_Snakehead_122
+      parentName: L_Snakehead_121
+      position: {x: -0.00720426, y: 0, z: 2.384186e-10}
+      rotation: {x: -0.00033317006, y: 0.0036932803, z: 0.0016916128, w: 0.9999917}
+      scale: {x: 0.99999994, y: 0.99999994, z: 1}
+    - name: L_Snakehead_123
+      parentName: L_Snakehead_122
+      position: {x: -0.005201466, y: 0, z: 2.384186e-10}
+      rotation: {x: -0.0009638577, y: 0.011092885, z: 0.0016025145, w: 0.99993676}
+      scale: {x: 1.0000001, y: 1.0000001, z: 0.9999999}
+    - name: L_Snakehead_124
+      parentName: L_Snakehead_123
+      position: {x: -0.004174408, y: 0, z: -0.0000000014305115}
+      rotation: {x: 0.0020779031, y: -0.026050473, z: 0.0054715397, w: 0.9996435}
+      scale: {x: 1, y: 1, z: 0.99999994}
+    - name: L_Snakehead_125
+      parentName: L_Snakehead_124
+      position: {x: -0.002803421, y: 0, z: 0.0000000021457673}
+      rotation: {x: -0.019990755, y: 0.53915036, z: 0.031197427, w: 0.8413941}
+      scale: {x: 0.99999994, y: 1, z: 1.0000002}
+    - name: L_Snakehead_116
+      parentName: Head
+      position: {x: -0.004598419, y: 0.01095939, z: -0.0037669246}
+      rotation: {x: -0.5638449, y: 0.80657256, z: -0.06608586, w: -0.16477953}
+      scale: {x: 1.0000001, y: 1, z: 1.0000002}
+    - name: L_Snakehead_117
+      parentName: L_Snakehead_116
+      position: {x: -0.00588308, y: 0.00000003051758, z: 4.1723253e-10}
+      rotation: {x: -0.0013951685, y: 0.00594399, z: -0.00186523, w: 0.9999796}
+      scale: {x: 0.99999994, y: 1, z: 1}
+    - name: L_Snakehead_118
+      parentName: L_Snakehead_117
+      position: {x: -0.005474804, y: -0.00000003051758, z: -4.1723253e-10}
+      rotation: {x: 0.0015028103, y: -0.006104134, z: -0.008983389, w: 0.9999399}
+      scale: {x: 1, y: 0.99999994, z: 1.0000001}
+    - name: L_Snakehead_119
+      parentName: L_Snakehead_118
+      position: {x: -0.005756012, y: 0, z: 5.960465e-11}
+      rotation: {x: 0.0012356712, y: -0.005357038, z: 0.02367775, w: 0.99970454}
+      scale: {x: 0.9999999, y: 1, z: 0.9999999}
+    - name: L_Snakehead_120
+      parentName: L_Snakehead_119
+      position: {x: -0.0027490922, y: 0, z: 1.3411046e-10}
+      rotation: {x: -0.058266502, y: 0.5720311, z: 0.08290795, w: 0.81394833}
+      scale: {x: 1, y: 1.0000001, z: 1.0000001}
+    - name: R_Snakehead_61
+      parentName: Head
+      position: {x: -0.006675049, y: 0.00059136964, z: 0.0077879303}
+      rotation: {x: -0.2909326, y: 0.7345272, z: 0.35339734, w: 0.5009376}
+      scale: {x: 1, y: 1, z: 0.99999994}
+    - name: R_Snakehead_62
+      parentName: R_Snakehead_61
+      position: {x: -0.0057435725, y: -0.00000001525879, z: 5.066395e-10}
+      rotation: {x: -0.0025826232, y: -0.010507118, z: 0.0037540472, w: 0.99993443}
+      scale: {x: 1.0000001, y: 0.99999994, z: 1}
+    - name: R_Snakehead_63
+      parentName: R_Snakehead_62
+      position: {x: -0.006210366, y: 0, z: -2.6077032e-10}
+      rotation: {x: -0.007235821, y: -0.028579285, z: 0.0031980884, w: 0.99956024}
+      scale: {x: 1, y: 1.0000001, z: 1}
+    - name: R_Snakehead_64
+      parentName: R_Snakehead_63
+      position: {x: -0.0038826715, y: 0, z: 1.192093e-10}
+      rotation: {x: -0.02875584, y: -0.13192815, z: -0.036220524, w: 0.99017984}
+      scale: {x: 1, y: 1.0000001, z: 1.0000001}
+    - name: R_Snakehead_65
+      parentName: R_Snakehead_64
+      position: {x: -0.0020439664, y: 0, z: 4.768372e-10}
+      rotation: {x: 0.050039615, y: -0.0044664796, z: 0.9947823, w: 0.08879314}
+      scale: {x: 1, y: 0.99999994, z: 0.9999999}
+    - name: R_Snakehead_56
+      parentName: Head
+      position: {x: -0.00795366, y: 0.0022719498, z: 0.007981461}
+      rotation: {x: -0.3589135, y: 0.6672012, z: 0.31176385, w: 0.57343435}
+      scale: {x: 1.0000001, y: 1, z: 0.9999998}
+    - name: R_Snakehead_57
+      parentName: R_Snakehead_56
+      position: {x: -0.0058550355, y: 0, z: -3.5762787e-10}
+      rotation: {x: -0.00003075737, y: -0.0019933765, z: 0.010987681, w: 0.99993765}
+      scale: {x: 1.0000001, y: 1.0000001, z: 1.0000001}
+    - name: R_Snakehead_58
+      parentName: R_Snakehead_57
+      position: {x: -0.0061332476, y: 0.00000001525879, z: 0}
+      rotation: {x: -0.0014064605, y: -0.043616075, z: 0.0058131493, w: 0.9990305}
+      scale: {x: 0.99999994, y: 1, z: 1}
+    - name: R_Snakehead_59
+      parentName: R_Snakehead_58
+      position: {x: -0.004258139, y: 0, z: 2.384186e-10}
+      rotation: {x: -0.002609914, y: -0.046933737, z: 0.017477106, w: 0.9987417}
+      scale: {x: 1.0000001, y: 0.9999998, z: 1}
+    - name: R_Snakehead_60
+      parentName: R_Snakehead_59
+      position: {x: -0.002795147, y: -0.00000003051758, z: 4.768372e-10}
+      rotation: {x: 0.01840751, y: -0.000672621, z: 0.9991635, w: 0.036510006}
+      scale: {x: 1.0000001, y: 1, z: 1.0000001}
+    - name: R_Snakehead_51
+      parentName: Head
+      position: {x: -0.010195755, y: 0.002121605, z: 0.0078033702}
+      rotation: {x: -0.42997006, y: 0.59132624, z: 0.24213144, w: 0.6378334}
+      scale: {x: 1.0000001, y: 1, z: 0.99999994}
+    - name: R_Snakehead_52
+      parentName: R_Snakehead_51
+      position: {x: -0.0063325544, y: 0, z: -2.9802324e-11}
+      rotation: {x: 0.00016177245, y: -0.00060244795, z: 0.0035541013, w: 0.9999935}
+      scale: {x: 1.0000001, y: 0.99999994, z: 0.99999994}
+    - name: R_Snakehead_53
+      parentName: R_Snakehead_52
+      position: {x: -0.0066587487, y: 0, z: -5.960465e-11}
+      rotation: {x: 0.003674508, y: -0.0149003165, z: 0.016998006, w: 0.99973774}
+      scale: {x: 1, y: 1.0000001, z: 1}
+    - name: R_Snakehead_54
+      parentName: R_Snakehead_53
+      position: {x: -0.004253155, y: 0, z: 0}
+      rotation: {x: 0.013537382, y: -0.06336265, z: 0.014265752, w: 0.9977968}
+      scale: {x: 0.9999999, y: 0.99999994, z: 1.0000001}
+    - name: R_Snakehead_55
+      parentName: R_Snakehead_54
+      position: {x: -0.0027496682, y: -0.00000003051758, z: 4.768372e-10}
+      rotation: {x: 0.046002008, y: 0.004527061, z: 0.9941289, w: -0.09783229}
+      scale: {x: 1, y: 1.0000001, z: 0.9999999}
+    - name: R_Snakehead_46
+      parentName: Head
+      position: {x: -0.012439667, y: 0.0015939485, z: 0.007044051}
+      rotation: {x: -0.4905491, y: 0.5174428, z: 0.16175026, w: 0.68224}
+      scale: {x: 1.0000001, y: 1.0000001, z: 0.99999994}
+    - name: R_Snakehead_47
+      parentName: R_Snakehead_46
+      position: {x: -0.006396134, y: 0, z: 5.960465e-11}
+      rotation: {x: -0.0041827383, y: 0.007031776, z: -0.010676473, w: 0.9999096}
+      scale: {x: 1, y: 0.99999994, z: 0.9999999}
+    - name: R_Snakehead_48
+      parentName: R_Snakehead_47
+      position: {x: -0.007177521, y: -0.00000003051758, z: 0}
+      rotation: {x: 0.0057046306, y: -0.0100647565, z: 0.031637393, w: 0.9994325}
+      scale: {x: 1.0000001, y: 1.0000001, z: 1}
+    - name: R_Snakehead_49
+      parentName: R_Snakehead_48
+      position: {x: -0.0043754503, y: 0, z: 1.192093e-10}
+      rotation: {x: 0.020593997, y: -0.04631149, z: 0.065443724, w: 0.99656826}
+      scale: {x: 1.0000001, y: 1, z: 1}
+    - name: R_Snakehead_50
+      parentName: R_Snakehead_49
+      position: {x: -0.002595688, y: 0, z: 3.5762787e-10}
+      rotation: {x: 0.044982146, y: 0.008019343, z: 0.9834493, w: -0.17532773}
+      scale: {x: 1, y: 1.0000001, z: 0.99999994}
+    - name: R_Snakehead_41
+      parentName: Head
+      position: {x: -0.015255662, y: 0.0024259263, z: 0.005623922}
+      rotation: {x: -0.55546284, y: 0.45249838, z: 0.07264385, w: 0.69385093}
+      scale: {x: 0.99999994, y: 1, z: 1}
+    - name: R_Snakehead_42
+      parentName: R_Snakehead_41
+      position: {x: -0.0066082766, y: 0.000000007629395, z: -1.192093e-10}
+      rotation: {x: 0.0025386375, y: -0.002498044, z: -0.010577586, w: 0.9999377}
+      scale: {x: 0.9999999, y: 1.0000001, z: 0.99999994}
+    - name: R_Snakehead_43
+      parentName: R_Snakehead_42
+      position: {x: -0.00686377, y: -0.000000007629395, z: 0}
+      rotation: {x: 0.014208129, y: -0.013652874, z: -0.0012892841, w: 0.99980503}
+      scale: {x: 1.0000001, y: 0.99999994, z: 1.0000001}
+    - name: R_Snakehead_44
+      parentName: R_Snakehead_43
+      position: {x: -0.0046914523, y: 0.00000001525879, z: -1.192093e-10}
+      rotation: {x: 0.029869944, y: -0.030203657, z: 0.026744002, w: 0.99873936}
+      scale: {x: 0.99999994, y: 1.0000001, z: 1}
+    - name: R_Snakehead_45
+      parentName: R_Snakehead_44
+      position: {x: -0.0027460938, y: 0, z: 0}
+      rotation: {x: 0.048766345, y: 0.019282065, z: 0.9286659, w: -0.36719167}
+      scale: {x: 0.99999994, y: 1, z: 1}
+    - name: Snakehead_1
+      parentName: Head
+      position: {x: -0.017934037, y: -0.000000007629395, z: -4.5474737e-16}
+      rotation: {x: 0, y: -0, z: -0.25032988, w: 0.9681606}
+      scale: {x: 1, y: 0.99999994, z: 1}
+    - name: Snakehead_2
+      parentName: Snakehead_1
+      position: {x: -0.0062435307, y: 9.536744e-10, z: 0}
+      rotation: {x: 0, y: -0, z: -0.018770128, w: 0.9998238}
+      scale: {x: 0.99999994, y: 0.99999994, z: 1.0000001}
+    - name: Snakehead_3
+      parentName: Snakehead_2
+      position: {x: -0.0053386386, y: 0, z: 0}
+      rotation: {x: 0, y: 0, z: 0.005477426, w: 0.99998504}
+      scale: {x: 1.0000001, y: 1, z: 1}
+    - name: Snakehead_4
+      parentName: Snakehead_3
+      position: {x: -0.0058370363, y: 0.0000000014305115, z: 0}
+      rotation: {x: 0, y: 0, z: 0.013089079, w: 0.99991435}
+      scale: {x: 1, y: 1, z: 0.99999994}
+    - name: Snakehead_5
+      parentName: Snakehead_4
+      position: {x: -0.0025662843, y: 0, z: 0}
+      rotation: {x: 0.4814643, y: -0.5178727, z: 0.4814643, w: 0.5178727}
+      scale: {x: 1, y: 1, z: 1.0000001}
+    - name: L_Snakehead_61
+      parentName: Head
+      position: {x: -0.006675202, y: 0.0005914688, z: -0.0077879285}
+      rotation: {x: 0.29091835, y: -0.73453283, z: 0.3534071, w: 0.50093067}
+      scale: {x: 1.0000001, y: 1, z: 0.99999994}
+    - name: L_Snakehead_62
+      parentName: L_Snakehead_61
+      position: {x: -0.0057436298, y: -0.00000001525879, z: -1.4901162e-10}
+      rotation: {x: 0.0025826246, y: 0.01050747, z: 0.003707484, w: 0.9999346}
+      scale: {x: 1.0000001, y: 1.0000002, z: 1}
+    - name: L_Snakehead_63
+      parentName: L_Snakehead_62
+      position: {x: -0.006210293, y: 0, z: -7.078052e-11}
+      rotation: {x: 0.0072365133, y: 0.028578216, z: 0.0032839307, w: 0.99956}
+      scale: {x: 1, y: 0.9999999, z: 0.9999999}
+    - name: L_Snakehead_64
+      parentName: L_Snakehead_63
+      position: {x: -0.003882786, y: -0.00000001525879, z: -1.192093e-10}
+      rotation: {x: 0.028755395, y: 0.13192895, z: -0.03634131, w: 0.99017537}
+      scale: {x: 0.99999994, y: 1, z: 1}
+    - name: L_Snakehead_65
+      parentName: L_Snakehead_64
+      position: {x: -0.0020438824, y: 0, z: -4.768372e-10}
+      rotation: {x: -0.004463328, y: -0.05004005, z: -0.08873022, w: 0.99478793}
+      scale: {x: 1, y: 1.0000001, z: 1}
+    - name: L_Snakehead_51
+      parentName: Head
+      position: {x: -0.010195847, y: 0.0021216813, z: -0.0078033777}
+      rotation: {x: 0.42995796, y: -0.59133506, z: 0.24214445, w: 0.6378284}
+      scale: {x: 1.0000001, y: 1, z: 0.99999994}
+    - name: L_Snakehead_52
+      parentName: L_Snakehead_51
+      position: {x: -0.0063325046, y: 0, z: 0}
+      rotation: {x: -0.00016178889, y: 0.00060245115, z: 0.003489106, w: 0.99999374}
+      scale: {x: 1.0000001, y: 1, z: 1}
+    - name: L_Snakehead_53
+      parentName: L_Snakehead_52
+      position: {x: -0.006658928, y: 0, z: 2.0861626e-10}
+      rotation: {x: -0.0036747928, y: 0.014901249, z: 0.01708358, w: 0.9997363}
+      scale: {x: 1, y: 1.0000001, z: 1}
+    - name: L_Snakehead_54
+      parentName: L_Snakehead_53
+      position: {x: -0.004253098, y: -0.00000001525879, z: -2.384186e-10}
+      rotation: {x: -0.0135354595, y: 0.06336105, z: 0.01420761, w: 0.9977977}
+      scale: {x: 0.99999994, y: 0.99999994, z: 0.99999994}
+    - name: L_Snakehead_55
+      parentName: L_Snakehead_54
+      position: {x: -0.0027496873, y: 0, z: 9.536744e-10}
+      rotation: {x: 0.004527746, y: -0.046000842, z: 0.09784941, w: 0.9941272}
+      scale: {x: 0.9999999, y: 0.99999994, z: 0.9999998}
+    - name: L_Snakehead_46
+      parentName: Head
+      position: {x: -0.012439774, y: 0.0015940247, z: -0.007044047}
+      rotation: {x: 0.4905342, y: -0.51745695, z: 0.16176994, w: 0.6822354}
+      scale: {x: 1.0000001, y: 1, z: 0.99999994}
+    - name: L_Snakehead_47
+      parentName: L_Snakehead_46
+      position: {x: -0.0063959737, y: 0, z: -5.960465e-11}
+      rotation: {x: 0.004182578, y: -0.0070318794, z: -0.010710871, w: 0.9999092}
+      scale: {x: 1, y: 0.9999998, z: 0.99999994}
+    - name: L_Snakehead_48
+      parentName: L_Snakehead_47
+      position: {x: -0.007177605, y: 0, z: 0}
+      rotation: {x: -0.0057047755, y: 0.010064546, z: 0.0316287, w: 0.99943274}
+      scale: {x: 1, y: 1, z: 1}
+    - name: L_Snakehead_49
+      parentName: L_Snakehead_48
+      position: {x: -0.004375504, y: 0, z: 1.192093e-10}
+      rotation: {x: -0.020594632, y: 0.046311922, z: 0.06546421, w: 0.9965669}
+      scale: {x: 0.9999999, y: 1, z: 0.9999998}
+    - name: L_Snakehead_50
+      parentName: L_Snakehead_49
+      position: {x: -0.0025956652, y: 0, z: -2.384186e-10}
+      rotation: {x: 0.008015173, y: -0.044983488, z: 0.17523427, w: 0.9834659}
+      scale: {x: 1, y: 1.0000001, z: 0.9999999}
+    - name: L_Snakehead_56
+      parentName: Head
+      position: {x: -0.0079535525, y: 0.002271866, z: -0.0079814615}
+      rotation: {x: 0.35891393, y: -0.6672009, z: 0.31176344, w: 0.57343465}
+      scale: {x: 1, y: 0.99999994, z: 0.9999999}
+    - name: L_Snakehead_57
+      parentName: L_Snakehead_56
+      position: {x: -0.005855028, y: 0, z: 4.768372e-10}
+      rotation: {x: 0.000030784413, y: 0.00199372, z: 0.011000057, w: 0.99993753}
+      scale: {x: 1, y: 1.0000001, z: 1}
+    - name: L_Snakehead_58
+      parentName: L_Snakehead_57
+      position: {x: -0.006133283, y: 0, z: -1.192093e-10}
+      rotation: {x: 0.0014068496, y: 0.043614753, z: 0.0057997713, w: 0.9990306}
+      scale: {x: 1, y: 0.99999994, z: 0.99999994}
+    - name: L_Snakehead_59
+      parentName: L_Snakehead_58
+      position: {x: -0.0042581237, y: 0, z: 2.384186e-10}
+      rotation: {x: 0.0026102595, y: 0.04693439, z: 0.017487165, w: 0.9987415}
+      scale: {x: 1, y: 0.99999994, z: 1}
+    - name: L_Snakehead_60
+      parentName: L_Snakehead_59
+      position: {x: -0.0027951193, y: -0.00000003051758, z: 9.536744e-10}
+      rotation: {x: -0.0006361761, y: -0.018408692, z: -0.036517635, w: 0.99916327}
+      scale: {x: 1, y: 1, z: 1.0000001}
+    - name: L_Snakehead_41
+      parentName: Head
+      position: {x: -0.015255631, y: 0.0024258958, z: -0.005623925}
+      rotation: {x: 0.5554659, y: -0.4524953, z: 0.07263972, w: 0.69385105}
+      scale: {x: 0.9999999, y: 1.0000001, z: 1}
+    - name: L_Snakehead_42
+      parentName: L_Snakehead_41
+      position: {x: -0.0066083833, y: -0.00000001525879, z: -1.192093e-10}
+      rotation: {x: -0.002539193, y: 0.002498559, z: -0.010572132, w: 0.9999378}
+      scale: {x: 0.99999994, y: 1, z: 0.99999994}
+    - name: L_Snakehead_43
+      parentName: L_Snakehead_42
+      position: {x: -0.0068637547, y: -0.000000007629395, z: 2.384186e-10}
+      rotation: {x: -0.01420765, y: 0.013653192, z: -0.0012599633, w: 0.99980503}
+      scale: {x: 1.0000001, y: 0.99999994, z: 1.0000001}
+    - name: L_Snakehead_44
+      parentName: L_Snakehead_43
+      position: {x: -0.004691132, y: 0.00000001525879, z: -1.192093e-10}
+      rotation: {x: -0.029868439, y: 0.030200915, z: 0.02666617, w: 0.99874157}
+      scale: {x: 1.0000001, y: 0.99999994, z: 1}
+    - name: L_Snakehead_45
+      parentName: L_Snakehead_44
+      position: {x: -0.0027464295, y: 0, z: -5.960465e-11}
+      rotation: {x: 0.019283598, y: -0.048762664, z: 0.36724094, w: 0.92864656}
+      scale: {x: 0.9999999, y: 0.99999994, z: 1}
+    - name: L_Snakehead_36
+      parentName: Head
+      position: {x: -0.017529923, y: 0.0015257493, z: -0.0031933074}
+      rotation: {x: 0.66613126, y: -0.3202907, z: -0.08804795, w: 0.66778034}
+      scale: {x: 1.0000001, y: 1.0000001, z: 0.99999994}
+    - name: L_Snakehead_37
+      parentName: L_Snakehead_36
+      position: {x: -0.0057963566, y: 0, z: -4.768372e-10}
+      rotation: {x: -0.01637682, y: 0.0055770236, z: 0.011131433, w: 0.9997884}
+      scale: {x: 1, y: 0.9999999, z: 1}
+    - name: L_Snakehead_38
+      parentName: L_Snakehead_37
+      position: {x: -0.0063751987, y: -0.0000000038146974, z: 0}
+      rotation: {x: -0.049867418, y: 0.016910922, z: -0.01239428, w: 0.99853575}
+      scale: {x: 1.0000001, y: 1.0000001, z: 1.0000001}
+    - name: L_Snakehead_39
+      parentName: L_Snakehead_38
+      position: {x: -0.0043869633, y: 0, z: 0}
+      rotation: {x: -0.06888365, y: 0.023652546, z: 0.016176447, w: 0.9972131}
+      scale: {x: 1, y: 0.99999994, z: 1}
+    - name: L_Snakehead_40
+      parentName: L_Snakehead_39
+      position: {x: -0.0028802797, y: -0.0000000038146974, z: 1.192093e-10}
+      rotation: {x: 0.055343714, y: -0.0788635, z: 0.5717598, w: 0.8147444}
+      scale: {x: 0.9999998, y: 0.99999994, z: 0.9999999}
+    - name: R_Snakehead_36
+      parentName: Head
+      position: {x: -0.017529527, y: 0.0015254975, z: 0.0031933105}
+      rotation: {x: -0.6661366, y: 0.32027945, z: -0.08805924, w: 0.6677789}
+      scale: {x: 1, y: 1.0000001, z: 1}
+    - name: R_Snakehead_37
+      parentName: R_Snakehead_36
+      position: {x: -0.0057969363, y: -0.0000000038146974, z: 2.384186e-10}
+      rotation: {x: 0.016378058, y: -0.0055774064, z: 0.011163008, w: 0.999788}
+      scale: {x: 1.0000001, y: 1.0000001, z: 1}
+    - name: R_Snakehead_38
+      parentName: R_Snakehead_37
+      position: {x: -0.0063745882, y: 0, z: 0}
+      rotation: {x: 0.04986457, y: -0.016910294, z: -0.012417588, w: 0.99853563}
+      scale: {x: 1.0000001, y: 1.0000001, z: 1.0000002}
+    - name: R_Snakehead_39
+      parentName: R_Snakehead_38
+      position: {x: -0.0043872073, y: 0.0000000038146974, z: 0}
+      rotation: {x: 0.06888908, y: -0.023652062, z: 0.016163187, w: 0.99721295}
+      scale: {x: 0.9999999, y: 0.9999999, z: 1.0000001}
+    - name: R_Snakehead_40
+      parentName: R_Snakehead_39
+      position: {x: -0.0028806154, y: -0.0000000038146974, z: 4.768372e-10}
+      rotation: {x: -0.07886511, y: -0.055347428, z: -0.81473154, w: 0.5717775}
+      scale: {x: 1.0000001, y: 1.0000001, z: 1.0000001}
+    - name: LeftShoulder
+      parentName: Spine2
+      position: {x: -0.0090602, y: 0.00000001525879, z: 4.768372e-10}
+      rotation: {x: -0.07662162, y: 0.21440737, z: 0.03879766, w: 0.9729612}
+      scale: {x: 0.99999994, y: 1, z: 0.99999994}
+    - name: LeftArm
+      parentName: LeftShoulder
+      position: {x: -0.011916242, y: 0, z: 4.768372e-10}
+      rotation: {x: -0.0052337707, y: 0.025271649, z: 0.19515961, w: 0.9804319}
+      scale: {x: 0.99999994, y: 0.9999999, z: 0.9999999}
+    - name: LeftForeArm
+      parentName: LeftArm
+      position: {x: -0.026202437, y: 0, z: 0}
+      rotation: {x: 0.0011974976, y: 0.038858026, z: -0.00360748, w: 0.9992375}
+      scale: {x: 0.99999994, y: 0.9999999, z: 0.9999999}
+    - name: LeftWrist
+      parentName: LeftForeArm
+      position: {x: -0.012996293, y: -0.00000025939943, z: -0.0000000019073487}
+      rotation: {x: 1.2188003e-12, y: 0.00000009667193, z: -0.000012607593, w: 1}
+      scale: {x: 1.0000001, y: 1, z: 1}
+    - name: LeftHand
+      parentName: LeftWrist
+      position: {x: -0.0112270815, y: 0, z: -9.536744e-10}
+      rotation: {x: 0.08377799, y: 0.26161313, z: 0.24224298, w: 0.930515}
+      scale: {x: 0.99999994, y: 1, z: 1.0000001}
+    - name: L_weapon
+      parentName: LeftHand
+      position: {x: -0.009513027, y: -0.0007749333, z: -0.0039113737}
+      rotation: {x: -0.08166372, y: -0.28155616, z: -0.2663244, w: 0.9182203}
+      scale: {x: 1.0000001, y: 1, z: 1}
+    - name: LeftHandIndex1
+      parentName: LeftHand
+      position: {x: -0.0089685405, y: 0.003476227, z: -0.002111702}
+      rotation: {x: -0.07643032, y: -0.22342797, z: -0.16112381, w: 0.9582679}
+      scale: {x: 1.0000001, y: 0.99999994, z: 1.0000002}
+    - name: LeftHandIndex2
+      parentName: LeftHandIndex1
+      position: {x: -0.00471019, y: -0.00000001525879, z: -0.0000000038146974}
+      rotation: {x: -0.047122985, y: -0.0072143814, z: 0.032355137, w: 0.99833894}
+      scale: {x: 1.0000001, y: 1.0000001, z: 0.99999994}
+    - name: LeftHandIndex3
+      parentName: LeftHandIndex2
+      position: {x: -0.0028071825, y: 0, z: 0}
+      rotation: {x: -0.0150293, y: -0.027400937, z: -0.480671, w: 0.87634397}
+      scale: {x: 0.99999994, y: 1, z: 1}
+    - name: LeftHandMiddle1
+      parentName: LeftHand
+      position: {x: -0.0075768703, y: 0.0036303713, z: -0.0040408024}
+      rotation: {x: -0.1132911, y: -0.23959467, z: -0.1665432, w: 0.9497489}
+      scale: {x: 1.0000001, y: 1, z: 1.0000001}
+    - name: LeftHandMiddle2
+      parentName: LeftHandMiddle1
+      position: {x: -0.005123806, y: 0, z: 0}
+      rotation: {x: -0.056938093, y: -0.0063315458, z: 0.03051629, w: 0.9978911}
+      scale: {x: 1.0000001, y: 1, z: 1.0000001}
+    - name: LeftHandMiddle3
+      parentName: LeftHandMiddle2
+      position: {x: -0.0035174105, y: 0.00000001525879, z: -4.768372e-10}
+      rotation: {x: 0.038153164, y: 0.06344688, z: -0.5139258, w: 0.8546339}
+      scale: {x: 0.99999994, y: 0.9999999, z: 0.99999976}
+    - name: LeftHandThumb1
+      parentName: LeftHand
+      position: {x: -0.004787464, y: 0, z: 0}
+      rotation: {x: 0.05872725, y: 0.13082716, z: -0.18245895, w: 0.9726994}
+      scale: {x: 1.0000001, y: 1.0000001, z: 1.0000002}
+    - name: LeftHandThumb2
+      parentName: LeftHandThumb1
+      position: {x: -0.0044810106, y: 0, z: 0}
+      rotation: {x: -0.23029791, y: -0.02932733, z: 0.008571036, w: 0.97264045}
+      scale: {x: 1, y: 1.0000001, z: 1}
+    - name: LeftHandThumb3
+      parentName: LeftHandThumb2
+      position: {x: -0.0038297197, y: 0, z: 0.0000000019073487}
+      rotation: {x: -0.046651307, y: -0.10792928, z: -0.39400983, w: 0.9115543}
+      scale: {x: 0.99999994, y: 1, z: 0.99999994}
+    - name: LeftHandRing1
+      parentName: LeftHand
+      position: {x: -0.0063199503, y: 0.0029613343, z: -0.005954861}
+      rotation: {x: -0.16528074, y: -0.24347635, z: -0.18691821, w: 0.93726367}
+      scale: {x: 1.0000001, y: 1.0000002, z: 1.0000001}
+    - name: LeftHandRing2
+      parentName: LeftHandRing1
+      position: {x: -0.0040385323, y: -0.00000001525879, z: -9.536744e-10}
+      rotation: {x: -0.11745992, y: -0.010974631, z: 0.029909343, w: 0.9925665}
+      scale: {x: 0.99999994, y: 1.0000001, z: 1.0000001}
+    - name: LeftHandRing3
+      parentName: LeftHandRing2
+      position: {x: -0.0030114749, y: -0.00000001525879, z: 0.0000000038146974}
+      rotation: {x: 0.14226194, y: 0.21127702, z: -0.5401069, w: 0.80212724}
+      scale: {x: 1.0000001, y: 0.9999999, z: 0.99999994}
+    - name: LeftHandPinky1
+      parentName: LeftHand
+      position: {x: -0.004751602, y: 0.0014110109, z: -0.0072171404}
+      rotation: {x: -0.18737285, y: -0.25394756, z: -0.19996947, w: 0.9275852}
+      scale: {x: 1.0000002, y: 1.0000002, z: 1.0000001}
+    - name: LeftHandPinky2
+      parentName: LeftHandPinky1
+      position: {x: -0.0026921732, y: 0.00000001525879, z: -0.0000000019073487}
+      rotation: {x: -0.1907173, y: -0.012574759, z: 0.024783438, w: 0.9812516}
+      scale: {x: 0.9999999, y: 1.0000001, z: 1}
+    - name: LeftHandPinky3
+      parentName: LeftHandPinky2
+      position: {x: -0.0022773668, y: 0, z: -0.0000000038146974}
+      rotation: {x: 0.23745042, y: 0.3454298, z: -0.5143077, w: 0.7481866}
+      scale: {x: 0.99999994, y: 1, z: 1.0000001}
+    - name: RightShoulder
+      parentName: Spine2
+      position: {x: 0.0021933138, y: 0.004760773, z: -0.007389989}
+      rotation: {x: -0.33344993, y: 0.8906446, z: -0.008979843, w: -0.3090028}
+      scale: {x: 1, y: 0.99999994, z: 1}
+    - name: RightArm
+      parentName: RightShoulder
+      position: {x: -0.011916238, y: -0.00000001525879, z: -0.0000000014305115}
+      rotation: {x: 0.0059898114, y: -0.027714398, z: 0.18777364, w: 0.981803}
+      scale: {x: 0.9999999, y: 0.9999999, z: 1}
+    - name: RightForeArm
+      parentName: RightArm
+      position: {x: -0.026199276, y: -0.00040180972, z: 0.00006440592}
+      rotation: {x: 0.14658865, y: -0.043207537, z: 0.0050192624, w: 0.9882407}
+      scale: {x: 1.0000001, y: 1, z: 0.99999994}
+    - name: RightWrist
+      parentName: RightForeArm
+      position: {x: -0.012996293, y: -0.000000289917, z: 0.000000007629395}
+      rotation: {x: -1.2188003e-12, y: -0.00000009667193, z: -0.000012607593, w: 1}
+      scale: {x: 0.99999994, y: 0.9999999, z: 1}
+    - name: RightHand
+      parentName: RightWrist
+      position: {x: -0.01122707, y: -0.00000001525879, z: -0.000000007629395}
+      rotation: {x: -0.2177279, y: -0.22125307, z: 0.28592122, w: 0.9065819}
+      scale: {x: 0.99999994, y: 1.0000001, z: 1}
+    - name: RightHandIndex1
+      parentName: RightHand
+      position: {x: -0.008968552, y: 0.0034762118, z: 0.0021117134}
+      rotation: {x: 0.07555741, y: 0.22363916, z: -0.16570093, w: 0.9575071}
+      scale: {x: 1.0000001, y: 1, z: 0.99999994}
+    - name: RightHandIndex2
+      parentName: RightHandIndex1
+      position: {x: -0.0047101937, y: -0.00000003051758, z: 0}
+      rotation: {x: 0.047122598, y: 0.007212803, z: 0.032350276, w: 0.9983391}
+      scale: {x: 1, y: 1.0000001, z: 1}
+    - name: RightHandIndex3
+      parentName: RightHandIndex2
+      position: {x: -0.0028071902, y: 0, z: 0}
+      rotation: {x: 0.4806706, y: 0.8763431, z: 0.015044651, w: -0.027428921}
+      scale: {x: 0.9999999, y: 1, z: 0.99999994}
+    - name: RightHandMiddle1
+      parentName: RightHand
+      position: {x: -0.0075768665, y: 0.0036303864, z: 0.0040408024}
+      rotation: {x: 0.11201129, y: 0.23931317, z: -0.17116825, w: 0.9491492}
+      scale: {x: 1.0000001, y: 1, z: 1.0000001}
+    - name: RightHandMiddle2
+      parentName: RightHandMiddle1
+      position: {x: -0.005123814, y: 0, z: 0}
+      rotation: {x: 0.05693829, y: 0.006332188, z: 0.030516123, w: 0.9978911}
+      scale: {x: 0.99999994, y: 1, z: 1}
+    - name: RightHandMiddle3
+      parentName: RightHandMiddle2
+      position: {x: -0.0035174028, y: 0, z: 0.0000000014305115}
+      rotation: {x: 0.5139263, y: 0.854635, z: -0.038144942, w: 0.06343322}
+      scale: {x: 1.0000001, y: 1, z: 1.0000001}
+    - name: RightHandThumb1
+      parentName: RightHand
+      position: {x: -0.0047874604, y: 0, z: -0.0000000038146974}
+      rotation: {x: -0.05821058, y: -0.1313802, z: -0.18576579, w: 0.97202975}
+      scale: {x: 1.0000001, y: 1, z: 1.0000001}
+    - name: RightHandThumb2
+      parentName: RightHandThumb1
+      position: {x: -0.0044810106, y: 0, z: 0}
+      rotation: {x: 0.23029739, y: 0.029332418, z: 0.008575101, w: 0.97264034}
+      scale: {x: 1.0000001, y: 1.0000001, z: 1}
+    - name: RightHandThumb3
+      parentName: RightHandThumb2
+      position: {x: -0.0038297274, y: 0, z: 0}
+      rotation: {x: 0.3940098, y: 0.91155434, z: 0.04665132, w: -0.10792932}
+      scale: {x: 1, y: 0.9999999, z: 1}
+    - name: RightHandRing1
+      parentName: RightHand
+      position: {x: -0.0063199503, y: 0.0029613343, z: 0.0059548686}
+      rotation: {x: 0.16366236, y: 0.24281207, z: -0.1913582, w: 0.9368239}
+      scale: {x: 1.0000002, y: 1, z: 1.0000001}
+    - name: RightHandRing2
+      parentName: RightHandRing1
+      position: {x: -0.0040385174, y: 0, z: -9.536744e-10}
+      rotation: {x: 0.11745949, y: 0.010974154, z: 0.02991375, w: 0.9925664}
+      scale: {x: 1, y: 0.99999994, z: 0.99999994}
+    - name: RightHandRing3
+      parentName: RightHandRing2
+      position: {x: -0.0030114977, y: 0, z: -0.000000007629395}
+      rotation: {x: 0.54010916, y: 0.80213064, z: -0.14225332, w: 0.21126424}
+      scale: {x: 1, y: 1.0000001, z: 1.0000001}
+    - name: RightHandPinky1
+      parentName: RightHand
+      position: {x: -0.00475161, y: 0.0014110109, z: 0.0072171483}
+      rotation: {x: 0.18544178, y: 0.25309038, z: -0.20413485, w: 0.9273002}
+      scale: {x: 1, y: 1, z: 0.9999999}
+    - name: RightHandPinky2
+      parentName: RightHandPinky1
+      position: {x: -0.002692192, y: 0, z: 0.000000005722046}
+      rotation: {x: 0.19071794, y: 0.012581676, z: 0.024799954, w: 0.98125094}
+      scale: {x: 0.99999994, y: 0.9999999, z: 1}
+    - name: RightHandPinky3
+      parentName: RightHandPinky2
+      position: {x: -0.0022773668, y: 0, z: 0}
+      rotation: {x: 0.5143115, y: 0.7481921, z: -0.23744221, w: 0.3454179}
+      scale: {x: 0.9999999, y: 1, z: 1.0000001}
+    - name: LeftUpLeg
+      parentName: Hips
+      position: {x: -0.008935316, y: -0.0063909306, z: -0.0010078333}
+      rotation: {x: -0.018521937, y: -0.01709398, z: 0.67730635, w: 0.73526925}
+      scale: {x: 1, y: 1, z: 1}
+    - name: LeftLeg
+      parentName: LeftUpLeg
+      position: {x: -0.042867467, y: -0.00011420441, z: 0}
+      rotation: {x: -0.4714773, y: -0.054063305, z: -0.031152051, w: 0.87966806}
+      scale: {x: 1.0000001, y: 1, z: 1.0000002}
+    - name: LeftFoot
+      parentName: LeftLeg
+      position: {x: -0.045647547, y: 0, z: -0.0000000019073487}
+      rotation: {x: 0.81058425, y: 0.44332844, z: -0.13038532, w: 0.35974}
+      scale: {x: 1, y: 1, z: 0.99999994}
+    - name: LeftToeBase
+      parentName: LeftFoot
+      position: {x: -0.013982331, y: -0.0000000019073487, z: 0}
+      rotation: {x: -0.21435167, y: -0.57320184, z: -0.27701813, w: 0.7407794}
+      scale: {x: 1.0000001, y: 1, z: 0.99999994}
+    - name: RightUpLeg
+      parentName: Hips
+      position: {x: 0.008935316, y: -0.0063909306, z: -0.0010078333}
+      rotation: {x: 0.67730635, y: 0.73526925, z: -0.018521858, w: -0.017093975}
+      scale: {x: 1, y: 1, z: 1}
+    - name: RightLeg
+      parentName: RightUpLeg
+      position: {x: -0.042867467, y: -0.00011421013, z: -4.768372e-10}
+      rotation: {x: 0.4714773, y: 0.054063305, z: -0.031152051, w: 0.87966806}
+      scale: {x: 1.0000001, y: 1.0000001, z: 1.0000001}
+    - name: RightFoot
+      parentName: RightLeg
+      position: {x: -0.045647547, y: 0, z: -9.536744e-10}
+      rotation: {x: 0.8105841, y: 0.44332844, z: 0.13038552, w: -0.35974005}
+      scale: {x: 0.9999999, y: 0.99999994, z: 1.0000001}
+    - name: RightToeBase
+      parentName: RightFoot
+      position: {x: -0.013982334, y: 0, z: 0}
+      rotation: {x: -0.27695718, y: -0.74078757, z: -0.21431442, w: 0.57323456}
+      scale: {x: 1, y: 0.99999994, z: 1}
+    - name: Medusa_Body
+      parentName: Medusa_Humanoid DEMO(Clone)
+      position: {x: -0.97691196, y: 0, z: 0.4303539}
+      rotation: {x: 0.000000021855696, y: -0, z: -0, w: 1}
+      scale: {x: 10, y: 10, z: 10}
+    - name: Pauldron
+      parentName: Medusa_Humanoid DEMO(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 10, y: 10, z: 10}
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    globalScale: 1
+    rootMotionBoneName: Root
+    hasTranslationDoF: 0
+    hasExtraRoot: 1
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  autoGenerateAvatarMappingIfUnspecified: 1
+  animationType: 2
+  humanoidOversampling: 1
+  avatarSetup: 1
+  addHumanoidExtraRootOnlyWhenUsingAvatar: 0
+  importBlendShapeDeformPercent: 0
+  remapMaterialsIfMaterialImportModeIsNone: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
