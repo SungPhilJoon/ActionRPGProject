@@ -1,0 +1,1 @@
+SFB_BlendShapesManager V2,cobraBody,FangLengthPlus,-21,31,cobraBody,BodyRidge,0,100,cobraBody,HeadRidge,0,51,cobraBody,HeadBumps,0,100,cobraBody,EyeSize,0,22,cobraBody,NoseWidthPlus,-1,36,cobraBody,NoseLengthPlus,-15,31,cobraBody,HeadHeightPlus,-21,13,cobraBody,EyebrowDepthPlus,-44,42,cobraBody,NeckWidthPlus,-18,23,cobraBody,BodyThicknessPlus,-7,41,CobraTongue,TongueSize,0,38
