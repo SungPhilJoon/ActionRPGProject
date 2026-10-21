@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: bba1defc50202bd4cac1781eee2435f5
+TextScriptImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 60955
+  packageName: Weather Maker - Volumetric Clouds and Weather System for Unity
+  packageVersion: 8.1.2
+  assetPath: Assets/WeatherMaker/AI/Skills/weather-maker-weather-zones/SKILL.md
+  uploadId: 1002188
