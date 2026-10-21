@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: f88ee423cb3e4486b9d085677989fd5e
+timeCreated: 1476218801
+licenseType: Store
+DefaultImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 175595
+  packageName: RPG Fantasy Monster Bundle #6 - 4 RPG / Fantasy Characters
+  packageVersion: 4.3.2
+  assetPath: Assets/Magic Pig Games (Infinity PBR)/Characters/Minotaur/Demo/InfinityPBR
+    - Minotaur.unity
+  uploadId: 934178

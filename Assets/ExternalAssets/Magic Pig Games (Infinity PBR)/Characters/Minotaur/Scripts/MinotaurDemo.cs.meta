@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: 23a834441c3e449ba898af7c76bdf83c
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 175595
+  packageName: RPG Fantasy Monster Bundle #6 - 4 RPG / Fantasy Characters
+  packageVersion: 4.3.2
+  assetPath: Assets/Magic Pig Games (Infinity PBR)/Characters/Minotaur/Scripts/MinotaurDemo.cs
+  uploadId: 934178
