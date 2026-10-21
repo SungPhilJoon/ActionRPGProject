@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 3ab839f8deeab9b4cbf51e114936438b
+timeCreated: 1528495398
+licenseType: Store
+NativeFormatImporter:
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 130876
+  packageName: Photoscanned MoutainsRocks PBR
+  packageVersion: 1.1
+  assetPath: Assets/TheTalesFactory/Photoscanned MoutainsRocks PBR/Materials/MountainsRocks01_MountainsRocks01_Albedo.mat
+  uploadId: 381155

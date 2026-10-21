@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 1fdfc37f91a411548a5f4dcd69f7ecae
+timeCreated: 1539710528
+licenseType: Store
+NativeFormatImporter:
+  mainObjectFileID: 100100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 130876
+  packageName: Photoscanned MoutainsRocks PBR
+  packageVersion: 1.1
+  assetPath: Assets/TheTalesFactory/Photoscanned MoutainsRocks PBR/Prefabs/MountainRocks01_A.prefab
+  uploadId: 381155

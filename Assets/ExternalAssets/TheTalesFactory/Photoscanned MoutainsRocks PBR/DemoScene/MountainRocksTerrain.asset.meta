@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 4326ac5c557b3a74a83ef14e3533a075
+timeCreated: 1593328784
+licenseType: Store
+NativeFormatImporter:
+  mainObjectFileID: -1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 130876
+  packageName: Photoscanned MoutainsRocks PBR
+  packageVersion: 1.1
+  assetPath: Assets/TheTalesFactory/Photoscanned MoutainsRocks PBR/DemoScene/MountainRocksTerrain.asset
+  uploadId: 381155
