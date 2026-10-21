@@ -1,0 +1,17 @@
+fileFormatVersion: 2
+guid: 524e0f305f8d73d4c852b86451c77463
+ShaderImporter:
+  externalObjects: {}
+  defaultTextures: []
+  nonModifiableTextures: []
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 175595
+  packageName: RPG Fantasy Monster Bundle #6 - 4 RPG / Fantasy Characters
+  packageVersion: 4.3.2
+  assetPath: Assets/Magic Pig Games (Infinity PBR)/MagicPig Shared/Shaders/AV/Hair/AV
+    URP Hair.shader
+  uploadId: 934178

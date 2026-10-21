@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 57259ea948a6a47378599f1e75024935
+ShaderImporter:
+  externalObjects: {}
+  defaultTextures: []
+  nonModifiableTextures: []
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 175595
+  packageName: RPG Fantasy Monster Bundle #6 - 4 RPG / Fantasy Characters
+  packageVersion: 4.3.2
+  assetPath: Assets/Magic Pig Games (Infinity PBR)/MagicPig Shared/Shaders/IPBR_DiffuseHSL.shader
+  uploadId: 934178
