@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a5cfca043bdcad46a2f4317af847e62, type: 3}
+  m_Name: TS_09_Outro
+  m_EditorClassIdentifier: ActionRPG.Runtime::ActionRPG.Tutorial.DialogueStep
+  ObjectiveText: "\uC900\uBE44 \uC644\uB8CC"
+  DialogueLine: "\uD6CC\uB96D\uD558\uB2E4. \uC774\uC81C \uB3D9\uB8CC\uB97C \uBAA8\uC544
+    \uB358\uC804\uC73C\uB85C \uD5A5\uD558\uB77C."
+  DialogueDuration: 5
+  CompletionDelay: 0.6
+  TimeoutSeconds: 0
+  WaitForDialogue: 1

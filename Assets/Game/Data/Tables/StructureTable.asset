@@ -1,0 +1,116 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7cc4f5b70687194589113adb5d527cb, type: 3}
+  m_Name: StructureTable
+  m_EditorClassIdentifier: Game.Runtime::StructureTable
+  Source: {fileID: 4900000, guid: 8b62c88cb2200774cbc6cdfe1b5a45ff, type: 3}
+  Rows:
+  - Index: 1
+    NameId: 4001
+    Type: 0
+    Prefab: 170
+    Icon: 213
+    Costs: 0100000002000000
+    CostCounts: 1400000014000000
+    Footprint: {x: 3, y: 3}
+    RequiresHeart: 0
+    Station: 0
+  - Index: 2
+    NameId: 4002
+    Type: 1
+    Prefab: 171
+    Icon: 207
+    Costs: 02000000
+    CostCounts: 04000000
+    Footprint: {x: 3, y: 3}
+    RequiresHeart: 1
+    Station: 0
+  - Index: 3
+    NameId: 4003
+    Type: 2
+    Prefab: 172
+    Icon: 206
+    Costs: 02000000
+    CostCounts: 06000000
+    Footprint: {x: 3, y: 0.6}
+    RequiresHeart: 1
+    Station: 0
+  - Index: 8
+    NameId: 4008
+    Type: 2
+    Prefab: 177
+    Icon: 206
+    Costs: 0100000002000000
+    CostCounts: 0400000006000000
+    Footprint: {x: 3, y: 0.6}
+    RequiresHeart: 1
+    Station: 0
+  - Index: 9
+    NameId: 4009
+    Type: 2
+    Prefab: 178
+    Icon: 206
+    Costs: 0100000002000000
+    CostCounts: 0200000006000000
+    Footprint: {x: 3, y: 0.6}
+    RequiresHeart: 1
+    Station: 0
+  - Index: 10
+    NameId: 4010
+    Type: 5
+    Prefab: 179
+    Icon: 206
+    Costs: 02000000
+    CostCounts: 03000000
+    Footprint: {x: 0.6, y: 0.6}
+    RequiresHeart: 1
+    Station: 0
+  - Index: 4
+    NameId: 4004
+    Type: 3
+    Prefab: 173
+    Icon: 214
+    Costs: 0100000002000000
+    CostCounts: 140000000a000000
+    Footprint: {x: 3, y: 1.5}
+    RequiresHeart: 1
+    Station: 2
+  - Index: 5
+    NameId: 4005
+    Type: 3
+    Prefab: 175
+    Icon: 215
+    Costs: 02000000
+    CostCounts: 1e000000
+    Footprint: {x: 2, y: 2}
+    RequiresHeart: 1
+    Station: 3
+  - Index: 6
+    NameId: 4006
+    Type: 4
+    Prefab: 174
+    Icon: 204
+    Costs: 0100000003000000
+    CostCounts: 0a0000000a000000
+    Footprint: {x: 2, y: 1}
+    RequiresHeart: 1
+    Station: 0
+  - Index: 7
+    NameId: 4007
+    Type: 5
+    Prefab: 176
+    Icon: 216
+    Costs: 0100000002000000
+    CostCounts: 0400000002000000
+    Footprint: {x: 0.6, y: 0.6}
+    RequiresHeart: 1
+    Station: 0

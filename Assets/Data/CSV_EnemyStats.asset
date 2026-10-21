@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd8d752836a2b5d4387db0c38f8752d2, type: 3}
+  m_Name: CSV_EnemyStats
+  m_EditorClassIdentifier: ActionRPG.Foundation.Editor::ActionRPG.Core.EditorTools.DataDriven.CsvImportProfile
+  SourceCsv: {fileID: 4900000, guid: 680197e76c37a6645856cfbe96929de9, type: 3}
+  TargetScript: {fileID: 11500000, guid: 9f15acb3a709d694394a68f05240857f, type: 3}
+  OutputFolder: Assets/Data/Generated/EnemyStats
+  IdColumnName: Id
+  DeleteOrphanedAssets: 1
+  AssetNamePrefix: ESR_

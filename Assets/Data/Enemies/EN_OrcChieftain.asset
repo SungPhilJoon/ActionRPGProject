@@ -1,0 +1,72 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c3cd0c1f516bd534ea18ff1cbdc88a81, type: 3}
+  m_Name: EN_OrcChieftain
+  m_EditorClassIdentifier: ActionRPG.Runtime::ActionRPG.AI.EnemyDefinition
+  DisplayName: "\uC624\uD06C \uC871\uC7A5"
+  Portrait: {fileID: 0}
+  IsBoss: 1
+  Stats:
+    MaxHealth: 600
+    MaxMana: 0
+    ManaRegen: 0
+    AttackPower: 18
+    AbilityPower: 0
+    Defense: 12
+    MoveSpeed: 3.6
+    AttackSpeed: 1
+    CritChance: 0.05
+    CritDamage: 1.5
+    CooldownReduction: 0
+  DetectionRadius: 20
+  FieldOfView: 160
+  LeashRadius: 0
+  PreferredDistance: 1.8
+  Patrol: 0
+  PatrolRadius: 6
+  PatrolWaitSeconds: 2.5
+  Attacks:
+  - Name: "\uD718\uB450\uB974\uAE30"
+    MinRange: 0
+    MaxRange: 3.4
+    Cooldown: 3
+    Weight: 2
+    WindupTime: 0.7
+    RecoveryTime: 0.8
+    AnimationIndex: 0
+    FlatDamage: 14
+    AttackPowerScale: 1
+    DamageType: 0
+    Knockback: 4
+    ApplyStatus: {fileID: 0}
+    HitRadius: 3.4
+    ArcDegrees: 150
+    ProjectilePrefab: {fileID: 0}
+    ProjectileSpeed: 18
+  - Name: "\uB3C4\uC57D \uAC15\uD0C0"
+    MinRange: 4
+    MaxRange: 12
+    Cooldown: 9
+    Weight: 1
+    WindupTime: 1.1
+    RecoveryTime: 1.2
+    AnimationIndex: 1
+    FlatDamage: 22
+    AttackPowerScale: 1
+    DamageType: 0
+    Knockback: 7
+    ApplyStatus: {fileID: 11400000, guid: 081533ca65a828946b9f697b274b285f, type: 2}
+    HitRadius: 4.5
+    ArcDegrees: 360
+    ProjectilePrefab: {fileID: 0}
+    ProjectileSpeed: 18
+  ExperienceReward: 10

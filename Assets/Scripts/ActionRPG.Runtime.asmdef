@@ -1,0 +1,26 @@
+{
+    "name": "ActionRPG.Runtime",
+    "rootNamespace": "ActionRPG",
+    "references": [
+        "ActionRPG.Foundation",
+        "Unity.Netcode.Runtime",
+        "Unity.InputSystem",
+        "Unity.AI.Navigation",
+        "Unity.TextMeshPro",
+        "Unity.Collections",
+        "Unity.Mathematics",
+        "UnityEngine.UI",
+        "UniTask",
+        "Unity.Addressables",
+        "Unity.ResourceManager"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

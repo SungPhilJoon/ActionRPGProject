@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 77ab8697eb3a3144e97dc52e91c6f4c5, type: 3}
+  m_Name: SE_Slow
+  m_EditorClassIdentifier: ActionRPG.Runtime::ActionRPG.Combat.StatusEffectDefinition
+  Id: 3
+  DisplayName: "\uB454\uD654"
+  Description: "\uC774\uB3D9 \uC18D\uB3C4\uAC00 40% \uAC10\uC18C\uD55C\uB2E4."
+  Icon: {fileID: 0}
+  IsDebuff: 1
+  Duration: 3
+  Stackable: 0
+  MaxStacks: 1
+  RefreshOnReapply: 1
+  Modifiers:
+  - Stat: 6
+    Op: 1
+    Value: -0.4
+  CrowdControl: 0
+  DamagePerSecond: 0
+  TickDamageType: 1
+  TickInterval: 1
+  AttachVfxPrefab: {fileID: 0}

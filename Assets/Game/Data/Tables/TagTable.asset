@@ -1,0 +1,100 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69fdad47f74e1a14f9f356eac94201e8, type: 3}
+  m_Name: TagTable
+  m_EditorClassIdentifier: Game.Runtime::TagTable
+  Source: {fileID: 4900000, guid: 35bb5062b5210764d8de53d6bf450f0f, type: 3}
+  Rows:
+  - Index: 0
+    Parent: -1
+  - Index: 1
+    Parent: 0
+  - Index: 2
+    Parent: 0
+  - Index: 3
+    Parent: 2
+  - Index: 4
+    Parent: 2
+  - Index: 5
+    Parent: 2
+  - Index: 6
+    Parent: 2
+  - Index: 7
+    Parent: 2
+  - Index: 8
+    Parent: 0
+  - Index: 9
+    Parent: 8
+  - Index: 10
+    Parent: 8
+  - Index: 11
+    Parent: 0
+  - Index: 12
+    Parent: 0
+  - Index: 13
+    Parent: 0
+  - Index: 14
+    Parent: 0
+  - Index: 15
+    Parent: 0
+  - Index: 16
+    Parent: 0
+  - Index: 17
+    Parent: 8
+  - Index: 18
+    Parent: 2
+  - Index: 19
+    Parent: 8
+  - Index: 20
+    Parent: -1
+  - Index: 21
+    Parent: 20
+  - Index: 22
+    Parent: 20
+  - Index: 23
+    Parent: 20
+  - Index: 24
+    Parent: 20
+  - Index: 25
+    Parent: 20
+  - Index: 26
+    Parent: 20
+  - Index: 27
+    Parent: 20
+  - Index: 40
+    Parent: -1
+  - Index: 41
+    Parent: 40
+  - Index: 42
+    Parent: 40
+  - Index: 43
+    Parent: 40
+  - Index: 60
+    Parent: -1
+  - Index: 61
+    Parent: 60
+  - Index: 62
+    Parent: 60
+  - Index: 70
+    Parent: 0
+  - Index: 71
+    Parent: 2
+  - Index: 72
+    Parent: 2
+  - Index: 73
+    Parent: 3
+  - Index: 74
+    Parent: 2
+  - Index: 75
+    Parent: 2
+  - Index: 76
+    Parent: 2

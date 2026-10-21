@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 0}
+  m_Name: TS_07_Skill
+  m_EditorClassIdentifier: ActionRPG.Runtime:ActionRPG.Tutorial:PerformActionStep
+  ObjectiveText: "Q E R F \uB85C \uC2A4\uD0AC \uC0AC\uC6A9\uD558\uAE30"
+  DialogueLine: "\uCD9C\uC804 \uC804\uC5D0 \uACE0\uB978 \uB124 \uAC00\uC9C0 \uAE30\uC220\uC774
+    \uC190\uB05D\uC5D0 \uC788\uB2E4. Q, E, R, F."
+  DialogueDuration: 4
+  CompletionDelay: 0.6
+  TimeoutSeconds: 0
+  Action: 4
+  SkillSlot: 0
+  RequiredCount: 4
+  RequiredWeapon: 0

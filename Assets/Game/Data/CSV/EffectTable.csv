@@ -1,0 +1,52 @@
+Index,DurationPolicy,Duration,Period,ExecuteOnApply,Execution,GrantedTags,RequiredTags,BlockedTags,RemoveTags,Stack,MaxStack,Cue,IsCooldown,Mod1Attr,Mod1Op,Mod1Type,Mod1Key,Mod1Value,Mod2Attr,Mod2Op,Mod2Type,Mod2Key,Mod2Value,Mod3Attr,Mod3Op,Mod3Type,Mod3Key,Mod3Value,Coefficient,DamageType,#Memo
+1,Instant,0,0,0,Damage,,,State_Dead,,None,1,0,0,Health,Add,Scalar,0,0,Health,Add,Scalar,0,0,Health,Add,Scalar,0,0,0,Physical,범용 피해 (SetByCaller: Coefficient/Damage/DamageType)
+2,Instant,0,0,0,Heal,,,State_Dead,,None,1,0,0,Health,Add,Scalar,0,0,Health,Add,Scalar,0,0,Health,Add,Scalar,0,0,0,Physical,범용 회복
+3,HasDuration,0,0,0,None,,,,,None,1,0,1,Health,Add,Scalar,0,0,Health,Add,Scalar,0,0,Health,Add,Scalar,0,0,0,Physical,범용 쿨다운 (Duration 은 어빌리티가 덮어씀)
+4,Instant,0,0,0,None,,,,,None,1,0,0,BloodPool,Add,SetByCaller,6,1,Health,Add,Scalar,0,0,Health,Add,Scalar,0,0,0,Physical,범용 비용
+5,Infinite,0,0.5,0,SunDamage,State_Debuff_SunBurn|State_InSunlight,,State_Dead,,None,1,6,0,Health,Add,Scalar,0,0,Health,Add,Scalar,0,0,Health,Add,Scalar,0,0,0,Physical,햇빛 화상
+6,Infinite,0,1,0,PercentDamage,,,State_Dead,,None,1,0,0,Health,Add,Scalar,0,0,Health,Add,Scalar,0,0,Health,Add,Scalar,0,0,0,Physical,혈액 고갈
+7,HasDuration,2.5,0,0,None,State_Debuff_Stun,,,,None,1,11,0,Health,Add,Scalar,0,0,Health,Add,Scalar,0,0,Health,Add,Scalar,0,0,0,Physical,흡혈 당하는 중 기절
+8,HasDuration,4,0,0,None,State_Invulnerable,,,,None,1,5,0,Health,Add,Scalar,0,0,Health,Add,Scalar,0,0,Health,Add,Scalar,0,0,0,Physical,부활 무적
+11,HasDuration,0.8,0,0,None,State_Debuff_Stun,,State_Dead|State_Invulnerable,,Refresh,1,11,0,Health,Add,Scalar,0,0,Health,Add,Scalar,0,0,Health,Add,Scalar,0,0,0,Physical,기절
+12,HasDuration,2.5,0,0,None,State_Debuff_Slow,,State_Dead,,Refresh,1,0,0,MoveSpeed,MultiplyPercent,Scalar,0,-35,Health,Add,Scalar,0,0,Health,Add,Scalar,0,0,0,Physical,둔화 -35%
+20,HasDuration,3,0,0,None,State_Buff_Empower,,,,Refresh,1,10,0,PhysicalPower,MultiplyPercent,Scalar,0,30,Health,Add,Scalar,0,0,Health,Add,Scalar,0,0,0,Physical,Veil 강화 +30% 물공
+21,HasDuration,1.5,0,0,None,State_Buff_Haste,,,,Refresh,1,0,0,MoveSpeed,MultiplyPercent,Scalar,0,25,Health,Add,Scalar,0,0,Health,Add,Scalar,0,0,0,Physical,Veil 가속
+22,HasDuration,4,0,0,None,State_Buff_Shield,,,,Refresh,1,5,0,Health,Add,Scalar,0,0,Health,Add,Scalar,0,0,Health,Add,Scalar,0,0,0,Physical,보호막 유지 태그 (태그가 빠지면 Shield 소멸)
+23,HasDuration,8,0,0,None,State_Buff,,,,Refresh,1,10,0,PhysicalPower,MultiplyPercent,Scalar,0,40,AttackSpeed,Add,Scalar,0,30,Health,Add,Scalar,0,0,0,Physical,보스 격노
+24,Instant,0,0,0,None,,,,,None,1,0,0,Shield,Add,SourceAttribute,3,4,Shield,Add,Scalar,0,40,Health,Add,Scalar,0,0,0,Physical,보호막량 = 40 + 주문력 400%
+30,Instant,0,0,0,None,,,,,None,1,0,0,IncomingHeal,Add,SourceAttribute,3,1.5,IncomingHeal,Add,Scalar,0,20,Health,Add,Scalar,0,0,0,Physical,코일 자힐 20 + 주문력 150%
+31,Instant,0,0,0,None,,,,,None,1,0,0,IncomingHeal,Add,Scalar,0,150,Health,Add,Scalar,0,0,Health,Add,Scalar,0,0,0,Physical,피의 물약
+32,HasDuration,120,0,0,None,State_Buff_SunResist,,,,Refresh,1,0,0,SunResist,Add,Scalar,0,50,Health,Add,Scalar,0,0,Health,Add,Scalar,0,0,0,Physical,햇빛 저항 물약
+40,Infinite,0,0,0,None,,,,,None,1,0,0,PhysicalPower,MultiplyPercent,Scalar,0,10,Health,Add,Scalar,0,0,Health,Add,Scalar,0,0,0,Physical,Warrior T1
+41,Infinite,0,0,0,None,,,,,None,1,0,0,PhysicalResist,Add,Scalar,0,10,Health,Add,Scalar,0,0,Health,Add,Scalar,0,0,0,Physical,Warrior T2
+42,Infinite,0,0,0,None,,,,,None,1,0,0,PhysicalPower,MultiplyPercent,Scalar,0,15,Health,Add,Scalar,0,0,Health,Add,Scalar,0,0,0,Physical,Warrior T3
+43,Infinite,0,0,0,None,,,,,None,1,0,0,CritChance,Add,Scalar,0,10,Health,Add,Scalar,0,0,Health,Add,Scalar,0,0,0,Physical,Rogue T1
+44,Infinite,0,0,0,None,,,,,None,1,0,0,MoveSpeed,MultiplyPercent,Scalar,0,8,Health,Add,Scalar,0,0,Health,Add,Scalar,0,0,0,Physical,Rogue T2
+45,Infinite,0,0,0,None,,,,,None,1,0,0,CritDamage,Add,Scalar,0,30,Health,Add,Scalar,0,0,Health,Add,Scalar,0,0,0,Physical,Rogue T3
+46,Infinite,0,0,0,None,,,,,None,1,0,0,SpellPower,MultiplyPercent,Scalar,0,15,Health,Add,Scalar,0,0,Health,Add,Scalar,0,0,0,Physical,Scholar T1
+47,Infinite,0,0,0,None,,,,,None,1,0,0,CooldownReduction,Add,Scalar,0,10,Health,Add,Scalar,0,0,Health,Add,Scalar,0,0,0,Physical,Scholar T2
+48,Infinite,0,0,0,None,,,,,None,1,0,0,SpellPower,MultiplyPercent,Scalar,0,15,Health,Add,Scalar,0,0,Health,Add,Scalar,0,0,0,Physical,Scholar T3
+49,Infinite,0,0,0,None,,,,,None,1,0,0,HealthRegen,Add,Scalar,0,2,Health,Add,Scalar,0,0,Health,Add,Scalar,0,0,0,Physical,Brute T1
+50,Infinite,0,0,0,None,,,,,None,1,0,0,MaxHealth,MultiplyPercent,Scalar,0,10,Health,Add,Scalar,0,0,Health,Add,Scalar,0,0,0,Physical,Brute T2
+51,Infinite,0,0,0,None,,,,,None,1,0,0,LifeLeech,Add,Scalar,0,5,Health,Add,Scalar,0,0,Health,Add,Scalar,0,0,0,Physical,Brute T3
+52,Infinite,0,0,0,None,,,,,None,1,0,0,MoveSpeed,MultiplyPercent,Scalar,0,10,Health,Add,Scalar,0,0,Health,Add,Scalar,0,0,0,Physical,Creature T1
+53,Infinite,0,0,0,None,,,,,None,1,0,0,SunResist,Add,Scalar,0,20,Health,Add,Scalar,0,0,Health,Add,Scalar,0,0,0,Physical,Creature T2
+54,Infinite,0,0,0,None,,,,,None,1,0,0,ResourceYield,Add,Scalar,0,30,Health,Add,Scalar,0,0,Health,Add,Scalar,0,0,0,Physical,Creature T3
+60,Infinite,0,0,0,None,,,,,None,1,0,0,PhysicalPower,Add,Scalar,0,4,Health,Add,Scalar,0,0,Health,Add,Scalar,0,0,0,Physical,Bone Sword
+61,Infinite,0,0,0,None,,,,,None,1,0,0,PhysicalPower,Add,Scalar,0,10,Health,Add,Scalar,0,0,Health,Add,Scalar,0,0,0,Physical,Copper Sword
+62,Infinite,0,0,0,None,,,,,None,1,0,0,PhysicalPower,Add,Scalar,0,5,Health,Add,Scalar,0,0,Health,Add,Scalar,0,0,0,Physical,Bone Spear
+63,Infinite,0,0,0,None,,,,,None,1,0,0,PhysicalPower,Add,Scalar,0,12,Health,Add,Scalar,0,0,Health,Add,Scalar,0,0,0,Physical,Copper Spear
+64,Infinite,0,0,0,None,,,,,None,1,0,0,MaxHealth,Add,Scalar,0,15,PhysicalResist,Add,Scalar,0,2,Health,Add,Scalar,0,0,0,Physical,Cloth piece
+65,Infinite,0,0,0,None,,,,,None,1,0,0,MaxHealth,Add,Scalar,0,35,PhysicalResist,Add,Scalar,0,5,SpellPower,Add,Scalar,0,2,0,Physical,Reinforced piece
+80,HasDuration,5,0,0,None,State_Debuff_Leech,,State_Dead,,Refresh,1,32,0,Health,Add,Scalar,0,0,Health,Add,Scalar,0,0,Health,Add,Scalar,0,0,0,Physical,Leech 5s: physical damage taken heals attacker LeechHealPercent% (V Rising Blood)
+81,HasDuration,0.35,0,0,None,State_Immaterial,,,,Refresh,1,0,0,Health,Add,Scalar,0,0,Health,Add,Scalar,0,0,Health,Add,Scalar,0,0,0,Physical,Veil dash Immaterial
+82,HasDuration,5,1,0,Damage,State_Debuff_Ignite,,State_Dead,,Refresh,1,27,0,Health,Add,Scalar,0,0,Health,Add,Scalar,0,0,Health,Add,Scalar,0,0,10,Spell,Ignite 5s: 10% spell power per second (V Rising Chaos)
+83,Instant,0,0,0,Damage,,,State_Dead,,None,1,21,0,Health,Add,Scalar,0,0,Health,Add,Scalar,0,0,Health,Add,Scalar,0,0,60,Spell,Ignite consume explosion 60% spell power
+84,HasDuration,5,0,0,None,State_Debuff_Chill,,State_Dead,,Refresh,1,30,0,MoveSpeed,MultiplyPercent,Scalar,0,-15,Health,Add,Scalar,0,0,Health,Add,Scalar,0,0,0,Physical,Chill 5s: move speed -15% (V Rising Frost)
+85,HasDuration,4,0,0,None,State_Debuff_Stun_Frozen,,State_Dead|State_Invulnerable,,Refresh,1,25,0,Health,Add,Scalar,0,0,Health,Add,Scalar,0,0,Health,Add,Scalar,0,0,0,Physical,"Freeze 4s: no move/action, breaks on HP loss"
+86,HasDuration,5,0,0,None,State_Debuff_Static,,State_Dead,,Refresh,1,31,0,Health,Add,Scalar,0,0,Health,Add,Scalar,0,0,Health,Add,Scalar,0,0,0,Physical,Static 5s: physical damage +StaticBonusPercent% (V Rising Storm)
+87,HasDuration,1,0,0,None,State_Debuff_Stun,,State_Dead|State_Invulnerable,,Refresh,1,11,0,Health,Add,Scalar,0,0,Health,Add,Scalar,0,0,Health,Add,Scalar,0,0,0,Physical,Static consume stun 1s
+88,HasDuration,5,0,0,None,State_Debuff_Condemn,,State_Dead,,Refresh,1,28,0,Health,Add,Scalar,0,0,Health,Add,Scalar,0,0,Health,Add,Scalar,0,0,0,Physical,Condemn 5s: damage taken +CondemnDamageTakenPercent% (V Rising Unholy)
+89,HasDuration,5,0,0,None,State_Debuff_Weaken,,State_Dead,,Refresh,1,29,0,Health,Add,Scalar,0,0,Health,Add,Scalar,0,0,Health,Add,Scalar,0,0,0,Physical,Weaken 5s: damage dealt -WeakenDamageDealtPercent% (V Rising Illusion)
+90,HasDuration,1.2,0,0,None,State_Immaterial,,,,Refresh,1,22,0,Health,Add,Scalar,0,0,Health,Add,Scalar,0,0,Health,Add,Scalar,0,0,0,Physical,Blood Rite Immaterial 1.2s
+91,Instant,0,0,0,None,,,State_Dead,,None,1,8,0,IncomingHeal,Add,SourceAttribute,3,1,IncomingHeal,Add,Scalar,0,25,Health,Add,Scalar,0,0,0,Physical,Blood Rite heal 25 + 100% spell power

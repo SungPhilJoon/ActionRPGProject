@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f15acb3a709d694394a68f05240857f, type: 3}
+  m_Name: ESR_orc_chieftain
+  m_EditorClassIdentifier: ActionRPG.Runtime::ActionRPG.Data.EnemyStatRow
+  Id: orc_chieftain
+  DisplayName: "\uC624\uD06C \uC871\uC7A5"
+  MaxHealth: 600
+  AttackPower: 18
+  Defense: 12
+  MoveSpeed: 3.6
+  ExperienceReward: 200
+  IsBoss: 1
+  Tags:
+  - "\uBCF4\uC2A4"
+  - "\uADFC\uC811"

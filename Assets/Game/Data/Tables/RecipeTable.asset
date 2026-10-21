@@ -1,0 +1,114 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1fef7b868759f2b4293592eed2988277, type: 3}
+  m_Name: RecipeTable
+  m_EditorClassIdentifier: Game.Runtime::RecipeTable
+  Source: {fileID: 4900000, guid: 95ff404f227cab54893594846d29eef6, type: 3}
+  Rows:
+  - Index: 1
+    Station: 1
+    Result: 30
+    ResultCount: 1
+    Inputs: 0300000005000000
+    InputCounts: 0a00000002000000
+    CraftTime: 0
+  - Index: 2
+    Station: 1
+    Result: 20
+    ResultCount: 1
+    Inputs: 03000000
+    InputCounts: 14000000
+    CraftTime: 0
+  - Index: 3
+    Station: 1
+    Result: 21
+    ResultCount: 1
+    Inputs: 03000000
+    InputCounts: 10000000
+    CraftTime: 0
+  - Index: 4
+    Station: 1
+    Result: 22
+    ResultCount: 1
+    Inputs: 03000000
+    InputCounts: 0c000000
+    CraftTime: 0
+  - Index: 5
+    Station: 1
+    Result: 23
+    ResultCount: 1
+    Inputs: 03000000
+    InputCounts: 0a000000
+    CraftTime: 0
+  - Index: 6
+    Station: 1
+    Result: 12
+    ResultCount: 1
+    Inputs: 0100000002000000
+    InputCounts: 0c00000004000000
+    CraftTime: 0
+  - Index: 7
+    Station: 3
+    Result: 6
+    ResultCount: 1
+    Inputs: 04000000
+    InputCounts: 04000000
+    CraftTime: 0
+  - Index: 8
+    Station: 2
+    Result: 11
+    ResultCount: 1
+    Inputs: 0600000001000000
+    InputCounts: 080000000a000000
+    CraftTime: 0
+  - Index: 9
+    Station: 2
+    Result: 13
+    ResultCount: 1
+    Inputs: 0600000001000000
+    InputCounts: 0800000010000000
+    CraftTime: 0
+  - Index: 10
+    Station: 2
+    Result: 24
+    ResultCount: 1
+    Inputs: 0600000003000000
+    InputCounts: 040000001e000000
+    CraftTime: 0
+  - Index: 11
+    Station: 2
+    Result: 25
+    ResultCount: 1
+    Inputs: 0600000003000000
+    InputCounts: 0400000018000000
+    CraftTime: 0
+  - Index: 12
+    Station: 2
+    Result: 26
+    ResultCount: 1
+    Inputs: 0600000003000000
+    InputCounts: 0300000014000000
+    CraftTime: 0
+  - Index: 13
+    Station: 2
+    Result: 27
+    ResultCount: 1
+    Inputs: 0600000003000000
+    InputCounts: 0300000010000000
+    CraftTime: 0
+  - Index: 14
+    Station: 2
+    Result: 31
+    ResultCount: 1
+    Inputs: 0300000005000000
+    InputCounts: 0f00000004000000
+    CraftTime: 0

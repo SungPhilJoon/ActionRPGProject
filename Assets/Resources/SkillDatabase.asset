@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d2c6dec1c672ff45908e9f18ef580de, type: 3}
+  m_Name: SkillDatabase
+  m_EditorClassIdentifier: ActionRPG.Runtime::ActionRPG.Skills.SkillDatabase
+  skills:
+  - {fileID: 11400000, guid: 31d5a668b8173a643b4f58bf7799b2c5, type: 2}
+  - {fileID: 11400000, guid: cf51407f45481584cb59ce500268f998, type: 2}
+  - {fileID: 11400000, guid: d219ff4310e8f4c49b714b1c4e87f752, type: 2}
+  - {fileID: 11400000, guid: 34ec6b9f622b46d4c9d1e2a1723b3e63, type: 2}
+  - {fileID: 11400000, guid: 1a70c3b57f493ff49ab68daf544cf60d, type: 2}
+  - {fileID: 11400000, guid: 5f715f05396e72146a844846e6139230, type: 2}
+  - {fileID: 11400000, guid: 4bd48a5fb9e2a77468a8f304acaa8c23, type: 2}
+  - {fileID: 11400000, guid: 59725e368f016d145a1ee271ce5ca233, type: 2}
+  - {fileID: 11400000, guid: 6e227f23193d3da4799525f5398b29f7, type: 2}
+  - {fileID: 11400000, guid: 35534049b2604fb46b20f85332a124f0, type: 2}

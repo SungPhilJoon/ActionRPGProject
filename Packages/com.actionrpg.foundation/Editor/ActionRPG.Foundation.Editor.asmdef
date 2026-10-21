@@ -1,0 +1,19 @@
+{
+    "name": "ActionRPG.Foundation.Editor",
+    "rootNamespace": "ActionRPG.Core.EditorTools",
+    "references": [
+        "ActionRPG.Foundation",
+        "Unity.Netcode.Runtime"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

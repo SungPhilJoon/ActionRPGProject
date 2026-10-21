@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f15acb3a709d694394a68f05240857f, type: 3}
+  m_Name: ESR_goblin_warrior
+  m_EditorClassIdentifier: ActionRPG.Runtime::ActionRPG.Data.EnemyStatRow
+  Id: goblin_warrior
+  DisplayName: "\uACE0\uBE14\uB9B0 \uC804\uC0AC"
+  MaxHealth: 60
+  AttackPower: 8
+  Defense: 2
+  MoveSpeed: 3.4
+  ExperienceReward: 10
+  IsBoss: 0
+  Tags:
+  - "\uADFC\uC811"
+  - "\uC815\uCC30"

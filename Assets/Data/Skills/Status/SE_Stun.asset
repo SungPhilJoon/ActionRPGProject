@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 77ab8697eb3a3144e97dc52e91c6f4c5, type: 3}
+  m_Name: SE_Stun
+  m_EditorClassIdentifier: ActionRPG.Runtime::ActionRPG.Combat.StatusEffectDefinition
+  Id: 1
+  DisplayName: "\uAE30\uC808"
+  Description: "\uC7A0\uC2DC \uC544\uBB34\uAC83\uB3C4 \uD560 \uC218 \uC5C6\uB2E4."
+  Icon: {fileID: 0}
+  IsDebuff: 1
+  Duration: 1.2
+  Stackable: 0
+  MaxStacks: 1
+  RefreshOnReapply: 1
+  Modifiers: []
+  CrowdControl: 7
+  DamagePerSecond: 0
+  TickDamageType: 1
+  TickInterval: 1
+  AttachVfxPrefab: {fileID: 0}

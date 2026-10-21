@@ -1,0 +1,22 @@
+{
+    "name": "ActionRPG.Foundation",
+    "rootNamespace": "ActionRPG.Core",
+    "references": [
+        "Unity.Netcode.Runtime",
+        "UniTask",
+        "Unity.Addressables",
+        "Unity.ResourceManager"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": true,
+    "precompiledReferences": [
+        "protobuf-net.dll",
+        "protobuf-net.Core.dll"
+    ],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

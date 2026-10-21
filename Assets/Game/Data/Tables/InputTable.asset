@@ -1,0 +1,104 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e5381d35c2639dc4d93ec540dd875565, type: 3}
+  m_Name: InputTable
+  m_EditorClassIdentifier: Game.Runtime::InputTable
+  Source: {fileID: 4900000, guid: b51b9071187e72144898e98b975664fb, type: 3}
+  Rows:
+  - Index: 0
+    Binding1: <Keyboard>/w;<Keyboard>/s;<Keyboard>/a;<Keyboard>/d
+    Binding2: <Gamepad>/leftStick
+    Composite: 2DVector
+  - Index: 1
+    Binding1: <Mouse>/leftButton
+    Binding2: <Gamepad>/rightTrigger
+    Composite: 
+  - Index: 2
+    Binding1: <Keyboard>/q
+    Binding2: <Gamepad>/buttonWest
+    Composite: 
+  - Index: 3
+    Binding1: <Keyboard>/e
+    Binding2: <Gamepad>/buttonNorth
+    Composite: 
+  - Index: 4
+    Binding1: <Keyboard>/space
+    Binding2: <Gamepad>/buttonSouth
+    Composite: 
+  - Index: 5
+    Binding1: <Keyboard>/r
+    Binding2: <Gamepad>/leftShoulder
+    Composite: 
+  - Index: 6
+    Binding1: <Keyboard>/c
+    Binding2: <Gamepad>/rightShoulder
+    Composite: 
+  - Index: 7
+    Binding1: <Keyboard>/t
+    Binding2: <Gamepad>/leftTrigger
+    Composite: 
+  - Index: 8
+    Binding1: <Keyboard>/f
+    Binding2: <Gamepad>/buttonEast
+    Composite: 
+  - Index: 9
+    Binding1: <Keyboard>/g
+    Binding2: <Gamepad>/dpad/up
+    Composite: 
+  - Index: 10
+    Binding1: <Keyboard>/tab
+    Binding2: <Gamepad>/select
+    Composite: 
+  - Index: 11
+    Binding1: <Keyboard>/b
+    Binding2: 
+    Composite: 
+  - Index: 12
+    Binding1: <Keyboard>/k
+    Binding2: 
+    Composite: 
+  - Index: 13
+    Binding1: <Keyboard>/p
+    Binding2: 
+    Composite: 
+  - Index: 14
+    Binding1: <Keyboard>/backquote
+    Binding2: 
+    Composite: 
+  - Index: 15
+    Binding1: <Keyboard>/escape
+    Binding2: <Gamepad>/start
+    Composite: 
+  - Index: 16
+    Binding1: <Mouse>/middleButton
+    Binding2: 
+    Composite: 
+  - Index: 17
+    Binding1: <Mouse>/scroll/y
+    Binding2: 
+    Composite: 
+  - Index: 18
+    Binding1: <Mouse>/position
+    Binding2: 
+    Composite: 
+  - Index: 19
+    Binding1: <Keyboard>/f8
+    Binding2: 
+    Composite: 
+  - Index: 20
+    Binding1: <Keyboard>/x
+    Binding2: 
+    Composite: 
+  - Index: 21
+    Binding1: <Keyboard>/enter
+    Binding2: 
+    Composite: 

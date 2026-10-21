@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 0}
+  m_Name: TS_06_SwapWeapon
+  m_EditorClassIdentifier: ActionRPG.Runtime:ActionRPG.Tutorial:PerformActionStep
+  ObjectiveText: "Tab \uC73C\uB85C \uAC80\uACFC \uD65C \uBC14\uAFB8\uAE30"
+  DialogueLine: "\uAC80\uC73C\uB85C\uB294 \uBD99\uC5B4\uC11C, \uD65C\uB85C\uB294
+    \uB5A8\uC5B4\uC838\uC11C \uC2F8\uC6B4\uB2E4. Tab \uC73C\uB85C \uBC14\uAFBC\uB2E4."
+  DialogueDuration: 4
+  CompletionDelay: 0.6
+  TimeoutSeconds: 0
+  Action: 3
+  SkillSlot: 0
+  RequiredCount: 2
+  RequiredWeapon: 0

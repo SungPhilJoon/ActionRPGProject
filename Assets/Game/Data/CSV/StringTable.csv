@@ -1,0 +1,131 @@
+Index,Text
+1,BLOODLINE  -  V Rising Demo
+2,Single Player (Offline)
+3,Co-op (up to 4) - Coming soon
+4,Quit
+10,Inventory
+11,Equipment
+12,Crafting
+13,Build
+14,Shop
+15,FREE
+16,Get
+17,Craft
+18,Close
+19,Gear
+20,Blood
+21,Day
+22,Night
+23,IN SUNLIGHT! Find shade
+24,In shadow
+25,Interact
+26,Feed
+27,YOU DIED
+28,Respawning in
+29,Not enough materials
+30,Build a Castle Heart first
+31,V Blood consumed:
+32,New ability unlocked:
+33,Inventory full
+34,Cheat Console
+35,Type 'help' for commands. Toggle with ` key.
+36,Balance Meter
+37,Requires
+38,Owned
+39,Place
+40,Rotate
+41,LMB: place   X: rotate   ESC: cancel
+42,Talk to Merchant
+43,No blood
+44,Quality
+45,"WASD move | LMB attack | Q/E weapon skills | Space Veil of Blood | R/C spells | T ultimate | F feed (low HP enemy) | G interact
+Tab inventory | K craft | B build | P shop | ` cheats | F8 balance meter | Wheel zoom | Middle mouse rotate camera"
+46,Loading world...
+47,Damage dealt by ability (total / DPS)
+48,Player damage taken
+49,Recent hits
+1000,Vampire
+1001,Medusa Sentinel
+1002,Cobra Snake
+1003,Cave Troll
+1004,Minotaur Warlord
+1005,Wandering Merchant
+2001,Lumber
+2002,Stone
+2003,Plant Fiber
+2004,Copper Ore
+2005,Blood Essence
+2006,Copper Ingot
+2010,Bone Sword
+2011,Copper Sword
+2012,Bone Spear
+2013,Copper Spear
+2020,Cloth Robe
+2021,Cloth Pants
+2022,Cloth Boots
+2023,Cloth Gloves
+2024,Reinforced Chest
+2025,Reinforced Pants
+2026,Reinforced Boots
+2027,Reinforced Gloves
+2030,Blood Potion
+2031,Sun Resistance Brew
+2101,Basic resource for building.
+2102,Basic resource for building.
+2103,Used for cloth and potions.
+2104,Smelt into Copper Ingots.
+2105,Dropped by the living. Fuels vampire crafts.
+2106,Refined metal.
+2110,A crude blade. Combo slashes.
+2111,A sharp copper blade.
+2112,Long reach. Thrust and charge.
+2113,A sturdy copper spear.
+2120,Light armor.
+2124,Reinforced armor.
+2130,Restores 150 health.
+2131,+50 Sun Resistance for 120 seconds.
+3101,Sword Slash
+3102,Whirlwind
+3103,Shockwave
+3111,Spear Thrust
+3112,Charge
+3113,Sweep
+3121,Punch
+3201,Veil of Blood
+3301,Chaos Volley
+3302,Blood Rite
+3303,Ice Nova
+3304,Ball Lightning
+3305,Corrupted Skull
+3306,Wraith Spear
+3401,Crimson Storm
+3701,Feed
+3501,Club
+3502,Arrow
+3503,Smash
+3504,Charge
+3511,Stone Slam
+3512,Leap
+3513,Rock Throw
+3514,Enrage
+4001,Castle Heart
+4002,Stone Floor
+4003,Stone Wall
+4004,Workbench
+4005,Smelter
+4006,Coffin
+4007,Iron Lamp
+5001,Warrior
+5002,Rogue
+5003,Scholar
+5004,Brute
+5005,Creature
+6001,Pine Tree
+6002,Oak Tree
+6003,Rock
+6004,Boulder
+6005,Copper Vein
+6006,Bush
+4008,Stone Wall (Door)
+4009,Stone Wall (Window)
+4010,Stone Pillar

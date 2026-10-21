@@ -1,0 +1,443 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: GameContent
+  m_EditorClassIdentifier: Unity.Addressables.Editor::UnityEditor.AddressableAssets.Settings.AddressableAssetGroup
+  m_GroupName: GameContent
+  m_GUID: 1f65702e3ee4ed947bade2bdea892124
+  m_SerializeEntries:
+  - m_GUID: 009d626aba1f662499ce5e1c2f57dbe9
+    m_Address: Projectiles/Rock
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 0238b43c4987e124ebd7078a735f010c
+    m_Address: Projectiles/Shockwave
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 0440411d1e4c8f24ebebc214fe038b22
+    m_Address: VFX/ShieldBubble
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 0cb43006b02dacb4e81dec2a9f0c0e69
+    m_Address: VFX/Status/Weaken
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 0da7083d895b55e4e87b78e62b360b3c
+    m_Address: VFX/Status/Leech
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 0eb142fc699c7014f91e939cd4ea69b6
+    m_Address: VFX/Skill/BloodNova
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 11dbb053d187f834ea2c6247345c6a72
+    m_Address: Weapons/Spear
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 136da0fd6d9f2594f971750f5c23fc8d
+    m_Address: VFX/DashTrail
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 1632847ed0b038c4bb511d82257df9c4
+    m_Address: VFX/Status/Frozen
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 16d5d3690a986264889244c61f0acca3
+    m_Address: Structures/Pillar
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 17050d37ad3efad4f82ac1668a1e565c
+    m_Address: Icons/Wall
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 185399908394f3c4b965092934657326
+    m_Address: Icons/Mushroom
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 21a8066c68fef324d99d00be7b02572a
+    m_Address: Projectiles/BallLightning
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 23ca574b11d039d40b3ccc29e6d0cbac
+    m_Address: Icons/Potion
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 2556d95b29ba0274987308456e05d185
+    m_Address: Projectiles/BloodBolt
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 2adaeff87edfd024fb65f6cbd737ab9c
+    m_Address: Structures/Floor
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 2ecf7a76b3cfbbd41b9b4465cf498a81
+    m_Address: VFX/Skill/DarkBurst
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 33207f04e8e02b547a2508e984614ac4
+    m_Address: Structures/WallDoor
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 36cf4f9e079a2b14688990773fb0f12b
+    m_Address: VFX/Heal
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 374805e22b263e14db9a9d755db4326e
+    m_Address: VFX/Skill/FireBlast
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 37c74714f995ee64f9909fdb6af707e2
+    m_Address: Nodes/CopperVein
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 3c068a69e083147479c79536e723bf68
+    m_Address: AI/ST_Boss
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 3cb15265b6d8ca24880137a8eff4c1cc
+    m_Address: Structures/Coffin
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 3e3156fcd65007b4da76c90bf3e3743b
+    m_Address: Projectiles/FireBall
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 3e614b88e84ba664d93cf6084fd8be29
+    m_Address: Projectiles/CorruptedSkull
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 3f6522a7a13229a47a67cf1f74bea646
+    m_Address: VFX/Status/Chill
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 3fa2f600a8a2bea40a915f7e864a7a01
+    m_Address: Structures/Wall
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 41ed1a259b40ff24da51e7fbb67f7e94
+    m_Address: Icons/Coin
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 48a5ffd865cf24a428f518cb5c6ded10
+    m_Address: Icons/Tent
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 48e3d126ee7debf49827aa0a183bc5f9
+    m_Address: Weapons/Sword
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 4c06f60442e3a7c479c92eae0913205e
+    m_Address: VFX/Skill/WraithHit
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 4dfef61d18ef3a549b32fa5c7b8b0fe1
+    m_Address: Icons/Sword
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 4f177e3385643ef4d990d2c7edcc0825
+    m_Address: Icons/Banner
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 4fc0fc840a9510b48afcc7b59aa85e43
+    m_Address: VFX/Status/Ignite
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 4fde81b79c5af1841b2365176c043939
+    m_Address: VFX/Empower
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 4ff0e9cfad398a44dac661580f5ac138
+    m_Address: Projectiles/WraithSpear
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 5103c246f7421b64bb8fb5944ec18014
+    m_Address: VFX/Skill/CrimsonStorm
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 51cf38746d706b649a8cece16be99c2f
+    m_Address: Icons/Lumber
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 5878544abc912754198577605c050b62
+    m_Address: VFX/Skill/IceNova
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 598c48be404182d4bb970efe8f5270ac
+    m_Address: VFX/Skill/Whirlwind
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 5f52715f1e7893541a08ba899a43e6ea
+    m_Address: Icons/Barrel
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 62b0c824c6305284e8a25fa0eb143611
+    m_Address: Characters/BanditThug
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 63c203896e9840141baed51a808c4c83
+    m_Address: Icons/Stone
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 63ea936bb4239bb4380ec9e608ffb7c1
+    m_Address: Icons/Workbench
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 6c4ad11a4f7795a4ab0b9b9cbddc4756
+    m_Address: Icons/CopperOre
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 71d1135da8fe9f04e8d139191dbb6018
+    m_Address: Icons/Floor
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 7836d2fffa687c942a0044eb6da744f3
+    m_Address: Characters/Player
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 7b7095f48c6f36a4c9674c79f7ce74be
+    m_Address: VFX/SunSmoke
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 7ed004097c1d11241a1d9ae15a8ff72d
+    m_Address: VFX/FeedBeam
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 7f2769e901774d4489a6660f6b6624a5
+    m_Address: VFX/Status/Condemn
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 7f4cd4cce88de514493b410e9661dfbf
+    m_Address: Icons/Shield
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 7fc42e2148d85664ba60afedd0986b1d
+    m_Address: VFX/Skill/VeilBlood
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 8786d39f8c9423e4893fdf0f5152e837
+    m_Address: AI/ST_RangedMonster
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 8ec3b8090ebc8914fbcd6b7ec64ee24f
+    m_Address: Icons/PlantFiber
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 8f80d3b7f76948c42b63000b44434607
+    m_Address: VFX/BloodBurst
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 939acc41eda42884fb5ee29a02fc8933
+    m_Address: Icons/CastleHeart
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 9422d264223bb3546bc3aff052c8ee93
+    m_Address: VFX/GroundSlam
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 9844310433a9257429fd5fcf3b973f30
+    m_Address: Icons/Spear
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: a2395fee30b97bc49a231a677053b3a1
+    m_Address: Nodes/OakTree
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: a3a910cff679b814bb2754b2e51274dd
+    m_Address: Structures/Banner
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: aa7d29383d59c294a8c9a400d1394c73
+    m_Address: Characters/BanditArcher
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: aaf000805e59460419a4847faafb7b68
+    m_Address: VFX/Status/Static
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: add084d19c226ff49b6e584750240a80
+    m_Address: VFX/Skill/HitImpact
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ba3244a09ee451942b638ad22c631843
+    m_Address: VFX/Skill/LightningBurst
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: bee514a5b5055164cadee243766e2168
+    m_Address: AI/ST_MeleeMonster
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c19c7ceca5f84c34ba7dba5c4c07490c
+    m_Address: VFX/HitSpark
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c5ecbb3cf369a394e80cc7fde7ead9a7
+    m_Address: Nodes/Boulder
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c846b1632bf056e449207e0fa187155c
+    m_Address: VFX/Stun
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: cc64d5c74b0ea7248b2759c1485ceb1a
+    m_Address: VFX/Skill/BloodRiteAura
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: cff5b0529f096304a800d68d9d180d1b
+    m_Address: Structures/WallWindow
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: da6c06ce260cc1840a1325e8cd815943
+    m_Address: Characters/BossGrimgor
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: dbfeca56726c5d84ebde5815fe9c4ba5
+    m_Address: Structures/Smelter
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: deb00751cff6caf4dbee58aae6754c64
+    m_Address: Structures/CastleHeart
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: df9654a6f7d94b8418e772237169cbe9
+    m_Address: Projectiles/Arrow
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e05e38f8bb6f85a43aba92ae8821ecba
+    m_Address: Characters/Merchant
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e0cc6e8e84e8cce40ae5f0887b134db4
+    m_Address: Characters/OrcBrute
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e2453644ccfa3784097ec23a613786fa
+    m_Address: Structures/Workbench
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e310166affab9b749a1aa30f4c42b6bd
+    m_Address: VFX/Skill/SwordSlash
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: eaf568bdff7ea644c8671a9fe20d69f9
+    m_Address: Icons/Chest
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: f543e324225672a439df265f1ba6c7d1
+    m_Address: VFX/Slash
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: f54f7d215e9c66c43996078b071fe412
+    m_Address: Nodes/Rock
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: f5d0359c29b24294db0fcd60c37a5ed3
+    m_Address: Nodes/Bush
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: f90fdefcc49a7e64b97ea07d2def60d5
+    m_Address: Nodes/PineTree
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: feb69da3e38d16a4c8d61de8825442ad
+    m_Address: Icons/Campfire
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: 651e888497b58724a943038650d7afa6, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: c50e17370c83baa4eb30c741cb912cf6, type: 2}
+    - {fileID: 11400000, guid: e7877f2210296384d83715bc05845dbb, type: 2}

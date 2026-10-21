@@ -1,0 +1,383 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d7c40548c91350469cff2c534dd4b5d, type: 3}
+  m_Name: ST_Boss
+  m_EditorClassIdentifier: Game.Framework::Framework.StateTree.StateTreeAsset
+  Description: "V Blood \uBCF4\uC2A4: 1\uD398\uC774\uC988(\uD22C\uC11D/\uADFC\uC811)
+    \u2192 \uCCB4\uB825 50% \uC774\uD558 2\uD398\uC774\uC988(\uACA9\uB178 + \uB3C4\uC57D/\uC804
+    \uC2A4\uD0AC)"
+  States:
+  - Id: 1
+    Name: Root
+    ParentId: 0
+    Enabled: 1
+    Selection: 0
+    Color: {r: 0.3, g: 0.3, b: 0.35, a: 1}
+    EnterConditions: []
+    Tasks: []
+    Transitions: []
+  - Id: 2
+    Name: Return
+    ParentId: 1
+    Enabled: 1
+    Selection: 0
+    Color: {r: 0.25, g: 0.35, b: 0.55, a: 1}
+    EnterConditions:
+    - rid: 2912541715739443328
+    Tasks:
+    - rid: 2912541715739443329
+    Transitions:
+    - Trigger: 0
+      EventId: 0
+      Type: 2
+      TargetStateId: 0
+      Delay: 0
+      Enabled: 1
+      Conditions: []
+  - Id: 3
+    Name: Combat
+    ParentId: 1
+    Enabled: 1
+    Selection: 0
+    Color: {r: 0.55, g: 0.2, b: 0.2, a: 1}
+    EnterConditions:
+    - rid: 2912541715739443330
+    Tasks: []
+    Transitions:
+    - Trigger: 3
+      EventId: 0
+      Type: 2
+      TargetStateId: 0
+      Delay: 0
+      Enabled: 1
+      Conditions:
+      - rid: 2912541715739443331
+    - Trigger: 3
+      EventId: 0
+      Type: 0
+      TargetStateId: 2
+      Delay: 0
+      Enabled: 1
+      Conditions:
+      - rid: 2912541715739443332
+  - Id: 4
+    Name: Phase2
+    ParentId: 3
+    Enabled: 1
+    Selection: 0
+    Color: {r: 0.6, g: 0.35, b: 0.15, a: 1}
+    EnterConditions:
+    - rid: 2912541715739443333
+    Tasks:
+    - rid: 2912541715739443334
+    Transitions: []
+  - Id: 5
+    Name: Attack
+    ParentId: 4
+    Enabled: 1
+    Selection: 0
+    Color: {r: 0.55, g: 0.2, b: 0.2, a: 1}
+    EnterConditions:
+    - rid: 2912541715739443335
+    Tasks:
+    - rid: 2912541715739443336
+    Transitions:
+    - Trigger: 0
+      EventId: 0
+      Type: 0
+      TargetStateId: 4
+      Delay: 0
+      Enabled: 1
+      Conditions: []
+  - Id: 6
+    Name: Chase
+    ParentId: 4
+    Enabled: 1
+    Selection: 0
+    Color: {r: 0.55, g: 0.2, b: 0.2, a: 1}
+    EnterConditions:
+    - rid: 2912541715739443337
+    Tasks:
+    - rid: 2912541715739443338
+    Transitions:
+    - Trigger: 0
+      EventId: 0
+      Type: 0
+      TargetStateId: 4
+      Delay: 0
+      Enabled: 1
+      Conditions: []
+  - Id: 7
+    Name: Hold
+    ParentId: 4
+    Enabled: 1
+    Selection: 0
+    Color: {r: 0.55, g: 0.2, b: 0.2, a: 1}
+    EnterConditions: []
+    Tasks:
+    - rid: 2912541715739443339
+    - rid: 2912541715739443340
+    Transitions:
+    - Trigger: 0
+      EventId: 0
+      Type: 0
+      TargetStateId: 4
+      Delay: 0
+      Enabled: 1
+      Conditions: []
+  - Id: 8
+    Name: Phase1
+    ParentId: 3
+    Enabled: 1
+    Selection: 0
+    Color: {r: 0.6, g: 0.35, b: 0.15, a: 1}
+    EnterConditions: []
+    Tasks: []
+    Transitions:
+    - Trigger: 3
+      EventId: 0
+      Type: 0
+      TargetStateId: 4
+      Delay: 0
+      Enabled: 1
+      Conditions:
+      - rid: 2912541715739443341
+  - Id: 9
+    Name: Attack
+    ParentId: 8
+    Enabled: 1
+    Selection: 0
+    Color: {r: 0.55, g: 0.2, b: 0.2, a: 1}
+    EnterConditions:
+    - rid: 2912541715739443342
+    Tasks:
+    - rid: 2912541715739443343
+    Transitions:
+    - Trigger: 0
+      EventId: 0
+      Type: 0
+      TargetStateId: 8
+      Delay: 0
+      Enabled: 1
+      Conditions: []
+  - Id: 10
+    Name: Chase
+    ParentId: 8
+    Enabled: 1
+    Selection: 0
+    Color: {r: 0.55, g: 0.2, b: 0.2, a: 1}
+    EnterConditions:
+    - rid: 2912541715739443344
+    Tasks:
+    - rid: 2912541715739443345
+    Transitions:
+    - Trigger: 0
+      EventId: 0
+      Type: 0
+      TargetStateId: 8
+      Delay: 0
+      Enabled: 1
+      Conditions: []
+  - Id: 11
+    Name: Hold
+    ParentId: 8
+    Enabled: 1
+    Selection: 0
+    Color: {r: 0.55, g: 0.2, b: 0.2, a: 1}
+    EnterConditions: []
+    Tasks:
+    - rid: 2912541715739443346
+    - rid: 2912541715739443347
+    Transitions:
+    - Trigger: 0
+      EventId: 0
+      Type: 0
+      TargetStateId: 8
+      Delay: 0
+      Enabled: 1
+      Conditions: []
+  - Id: 12
+    Name: Idle
+    ParentId: 1
+    Enabled: 1
+    Selection: 1
+    Color: {r: 0.25, g: 0.45, b: 0.3, a: 1}
+    EnterConditions: []
+    Tasks:
+    - rid: 2912541715739443348
+    - rid: 2912541715739443349
+    Transitions:
+    - Trigger: 4
+      EventId: 2
+      Type: 0
+      TargetStateId: 3
+      Delay: 0
+      Enabled: 1
+      Conditions: []
+    - Trigger: 0
+      EventId: 0
+      Type: 2
+      TargetStateId: 0
+      Delay: 0
+      Enabled: 1
+      Conditions: []
+  Evaluators:
+  - rid: 2912541715739443350
+  GlobalTasks: []
+  NextStateId: 13
+  references:
+    version: 2
+    RefIds:
+    - rid: 2912541715739443328
+      type: {class: LeashExceededCondition, ns: , asm: Game.Runtime}
+      data:
+        Enabled: 1
+        Operand: 0
+        Invert: 0
+        LeashRange: 30
+    - rid: 2912541715739443329
+      type: {class: ReturnHomeTask, ns: , asm: Game.Runtime}
+      data:
+        Enabled: 1
+        HealOnArrive: 1
+        ArriveDistance: 2
+    - rid: 2912541715739443330
+      type: {class: HasTargetCondition, ns: , asm: Game.Runtime}
+      data:
+        Enabled: 1
+        Operand: 0
+        Invert: 0
+    - rid: 2912541715739443331
+      type: {class: HasTargetCondition, ns: , asm: Game.Runtime}
+      data:
+        Enabled: 1
+        Operand: 0
+        Invert: 1
+    - rid: 2912541715739443332
+      type: {class: LeashExceededCondition, ns: , asm: Game.Runtime}
+      data:
+        Enabled: 1
+        Operand: 0
+        Invert: 0
+        LeashRange: 0
+    - rid: 2912541715739443333
+      type: {class: BlackboardCompareCondition, ns: , asm: Game.Runtime}
+      data:
+        Enabled: 1
+        Operand: 0
+        Invert: 0
+        Key: 4
+        Op: 1
+        Value: 0.5
+    - rid: 2912541715739443334
+      type: {class: ApplyEffectToSelfTask, ns: , asm: Game.Runtime}
+      data:
+        Enabled: 1
+        EffectId: 23
+        OncePerLife: 1
+        CompleteImmediately: 0
+    - rid: 2912541715739443335
+      type: {class: AbilityReadyCondition, ns: , asm: Game.Runtime}
+      data:
+        Enabled: 1
+        Operand: 0
+        Invert: 0
+        Slots: 04000000010000000200000000000000
+    - rid: 2912541715739443336
+      type: {class: UseAbilityTask, ns: , asm: Game.Runtime}
+      data:
+        Enabled: 1
+        Slots: 04000000010000000200000000000000
+    - rid: 2912541715739443337
+      type: {class: InAttackRangeCondition, ns: , asm: Game.Runtime}
+      data:
+        Enabled: 1
+        Operand: 0
+        Invert: 1
+        Multiplier: 0.9
+    - rid: 2912541715739443338
+      type: {class: ChaseTargetTask, ns: , asm: Game.Runtime}
+      data:
+        Enabled: 1
+        StopMultiplier: 0.8
+        RepathInterval: 0.25
+    - rid: 2912541715739443339
+      type: {class: FaceTargetTask, ns: , asm: Game.Runtime}
+      data:
+        Enabled: 1
+    - rid: 2912541715739443340
+      type: {class: WaitTask, ns: Framework.StateTree, asm: Framework.Runtime}
+      data:
+        Enabled: 1
+        Duration: 0.25
+        RandomDeviation: 0
+    - rid: 2912541715739443341
+      type: {class: BlackboardCompareCondition, ns: , asm: Game.Runtime}
+      data:
+        Enabled: 1
+        Operand: 0
+        Invert: 0
+        Key: 4
+        Op: 1
+        Value: 0.5
+    - rid: 2912541715739443342
+      type: {class: AbilityReadyCondition, ns: , asm: Game.Runtime}
+      data:
+        Enabled: 1
+        Operand: 0
+        Invert: 0
+        Slots: 0200000000000000
+    - rid: 2912541715739443343
+      type: {class: UseAbilityTask, ns: , asm: Game.Runtime}
+      data:
+        Enabled: 1
+        Slots: 0200000000000000
+    - rid: 2912541715739443344
+      type: {class: InAttackRangeCondition, ns: , asm: Game.Runtime}
+      data:
+        Enabled: 1
+        Operand: 0
+        Invert: 1
+        Multiplier: 0.9
+    - rid: 2912541715739443345
+      type: {class: ChaseTargetTask, ns: , asm: Game.Runtime}
+      data:
+        Enabled: 1
+        StopMultiplier: 0.8
+        RepathInterval: 0.25
+    - rid: 2912541715739443346
+      type: {class: FaceTargetTask, ns: , asm: Game.Runtime}
+      data:
+        Enabled: 1
+    - rid: 2912541715739443347
+      type: {class: WaitTask, ns: Framework.StateTree, asm: Framework.Runtime}
+      data:
+        Enabled: 1
+        Duration: 0.25
+        RandomDeviation: 0
+    - rid: 2912541715739443348
+      type: {class: FaceTargetTask, ns: , asm: Game.Runtime}
+      data:
+        Enabled: 1
+    - rid: 2912541715739443349
+      type: {class: WaitTask, ns: Framework.StateTree, asm: Framework.Runtime}
+      data:
+        Enabled: 1
+        Duration: 1
+        RandomDeviation: 0
+    - rid: 2912541715739443350
+      type: {class: MonsterPerceptionEvaluator, ns: , asm: Game.Runtime}
+      data:
+        Enabled: 1
+        AggroRange: 0
+        LoseTargetMultiplier: 2.5
+        ScanInterval: 0.25

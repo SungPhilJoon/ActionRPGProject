@@ -1,0 +1,84 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c7258a1544aa0864facd1e640920e131, type: 3}
+  m_Name: ConstTable
+  m_EditorClassIdentifier: Game.Runtime::ConstTable
+  Source: {fileID: 4900000, guid: c4cc9e022de67874faf73cf1bc861512, type: 3}
+  Rows:
+  - Index: 1
+    Value: 480
+  - Index: 2
+    Value: 0.5
+  - Index: 3
+    Value: 18.5
+  - Index: 4
+    Value: 6
+  - Index: 5
+    Value: 5
+  - Index: 6
+    Value: 8
+  - Index: 7
+    Value: 0.08
+  - Index: 8
+    Value: 1
+  - Index: 9
+    Value: 0.25
+  - Index: 10
+    Value: 2
+  - Index: 11
+    Value: 0.04
+  - Index: 12
+    Value: 0.5
+  - Index: 13
+    Value: 1.5
+  - Index: 14
+    Value: 24
+  - Index: 15
+    Value: 3
+  - Index: 16
+    Value: 6
+  - Index: 17
+    Value: 30
+  - Index: 18
+    Value: 1
+  - Index: 19
+    Value: 3
+  - Index: 20
+    Value: 50
+  - Index: 21
+    Value: 18
+  - Index: 22
+    Value: 45
+  - Index: 23
+    Value: 1.5
+  - Index: 24
+    Value: 10
+  - Index: 25
+    Value: 3
+  - Index: 26
+    Value: 45
+  - Index: 27
+    Value: 4
+  - Index: 28
+    Value: 7
+  - Index: 29
+    Value: 10
+  - Index: 30
+    Value: 15
+  - Index: 31
+    Value: 15
+  - Index: 32
+    Value: 0.3
+  - Index: 33
+    Value: 11
+  - Index: 34
+    Value: 4

@@ -1,0 +1,6 @@
+Index,NameId,Color,Thresholds,TierEffects
+Warrior,5001,#C03030,10|30|60,40|41|42
+Rogue,5002,#30A040,10|30|60,43|44|45
+Scholar,5003,#6040C0,10|30|60,46|47|48
+Brute,5004,#D08020,10|30|60,49|50|51
+Creature,5005,#A0A0A0,10|30|60,52|53|54

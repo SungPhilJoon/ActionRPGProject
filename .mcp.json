@@ -1,0 +1,9 @@
+{
+  "mcpServers": {
+    "unity-editor": {
+      "type": "stdio",
+      "command": "unity",
+      "args": ["mcp", "--project-path", "E:/PhilJoon/UnityProject/ActionRPGProject"]
+    }
+  }
+}

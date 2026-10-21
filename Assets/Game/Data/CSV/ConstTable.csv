@@ -1,0 +1,35 @@
+Index,Value,#Memo
+1,480,DayLengthSeconds (하루 길이 초)
+2,0.5,NightRatio (WeatherMaker 추분 기준 일출 6시/일몰 18시와 맞춤)
+3,18.5,StartHour (시작 시각)
+4,6,"SunDamagePercentPerSec (최대체력 %/초, 램프 100% 기준)"
+5,5,SunDamageRampSeconds
+6,8,SunMinElevation (도)
+7,0.08,BloodDrainPerSecond
+8,1,BloodEmptyDamagePercent (최대체력 %/초)
+9,0.25,FeedHealthRatio
+10,2,FeedDuration
+11,0.04,LevelDamageScalePerLevel
+12,0.5,LevelDamageScaleMin
+13,1.5,LevelDamageScaleMax
+14,24,CastleHeartRadius
+15,3,BuildGridSize (ASTROFISH 모듈 3m)
+16,6,RespawnSeconds
+17,30,InventorySize
+18,1,PlayerCharacterId
+19,3,InteractRange
+20,50,CameraPitch
+21,18,CameraDistance
+22,45,CameraYaw
+23,1.5,CritBaseMultiplier
+24,10,StartingWeaponItem
+25,3,UnarmedWeaponId
+26,45,MonsterLeashRange
+27,4,MaxPartySize
+28,7,LeechHealPercent (attacker heals % of physical damage dealt to a Leeched target)
+29,10,StaticBonusPercent (extra % physical damage on Static target)
+30,15,CondemnDamageTakenPercent (Condemn: damage taken +%)
+31,15,WeakenDamageDealtPercent (Weaken: damage dealt -%)
+32,0.3,ConsumeMinAgeSeconds (consume only statuses applied at least this long ago)
+33,11,BuildAnim (AnimationTable Index)
+34,4,InteractAnim (AnimationTable Index)

@@ -1,0 +1,18 @@
+Index,Kind,RefId,Position,Count,Radius,Respawn,#Memo
+1,PlayerStart,0,256;0;96,1,0,0,Silverlight Glade (시작 지점)
+2,Merchant,6,272;0;110,1,0,0,떠돌이 상인
+10,Resource,1,130;0;210,70,60,0,Dunley Woods 서쪽 소나무 숲
+11,Resource,2,150;0;330,30,40,0,Dunley Woods 북쪽 참나무
+12,Resource,6,230;0;170,45,55,0,Meadow 덤불 초원
+13,Resource,3,360;0;150,22,40,0,Rocky Highlands 바위
+14,Resource,4,400;0;240,12,35,0,Rocky Highlands 큰 바위
+15,Resource,5,430;0;350,12,28,0,Copper Hollow 구리 광맥
+16,Resource,1,300;0;70,20,30,0,시작 지점 동쪽 숲 (그늘)
+17,Resource,6,190;0;380,20,35,0,Serpent Marsh 덤불
+20,Monster,2,256;0;160,2,15,45,시작 지점 근처 메두사
+21,Monster,2,300;0;215,5,18,60,Ruined Hamlet 메두사
+22,Monster,3,300;0;215,2,18,60,Ruined Hamlet 코브라
+23,Monster,3,175;0;300,4,22,60,Serpent Marsh 코브라
+24,Monster,4,250;0;385,4,20,90,Troll Ridge 트롤
+25,Monster,2,250;0;385,2,20,60,Troll Ridge 메두사
+26,Monster,5,390;0;430,1,0,300,Minotaur Arena (V Blood)

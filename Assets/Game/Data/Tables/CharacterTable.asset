@@ -1,0 +1,160 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc08b912b2758304a970fa3d3869e5a4, type: 3}
+  m_Name: CharacterTable
+  m_EditorClassIdentifier: Game.Runtime::CharacterTable
+  Source: {fileID: 4900000, guid: c7aec1e6d99f6514495f208e42e37493, type: 3}
+  Rows:
+  - Index: 1
+    NameId: 1000
+    Prefab: 100
+    Team: 1
+    MaxHealth: 400
+    PhysicalPower: 25
+    SpellPower: 20
+    PhysicalResist: 0
+    SpellResist: 0
+    MoveSpeed: 6.2
+    Level: 0
+    Abilities: bd020000c90000002d0100002e010000
+    AI: 0
+    AggroRange: 0
+    AttackRange: 0
+    BloodType: 0
+    BloodQuality: 0
+    IsVBlood: 0
+    VBloodUnlocks: 
+    Loot: 0
+    Scale: 1
+    Tint: {r: 1, g: 1, b: 1, a: 1}
+    Weapon: 0
+    StateTree: 0
+  - Index: 2
+    NameId: 1001
+    Prefab: 101
+    Team: 2
+    MaxHealth: 280
+    PhysicalPower: 22
+    SpellPower: 0
+    PhysicalResist: 5
+    SpellResist: 0
+    MoveSpeed: 4.2
+    Level: 8
+    Abilities: f5010000
+    AI: 1
+    AggroRange: 12
+    AttackRange: 2.2
+    BloodType: 1
+    BloodQuality: 25
+    IsVBlood: 0
+    VBloodUnlocks: 
+    Loot: 1
+    Scale: 1
+    Tint: {r: 1, g: 1, b: 1, a: 1}
+    Weapon: 0
+    StateTree: 300
+  - Index: 3
+    NameId: 1002
+    Prefab: 102
+    Team: 2
+    MaxHealth: 220
+    PhysicalPower: 20
+    SpellPower: 0
+    PhysicalResist: 0
+    SpellResist: 5
+    MoveSpeed: 4.4
+    Level: 10
+    Abilities: f6010000
+    AI: 2
+    AggroRange: 15
+    AttackRange: 12
+    BloodType: 2
+    BloodQuality: 30
+    IsVBlood: 0
+    VBloodUnlocks: 
+    Loot: 2
+    Scale: 1
+    Tint: {r: 1, g: 1, b: 1, a: 1}
+    Weapon: 0
+    StateTree: 301
+  - Index: 4
+    NameId: 1003
+    Prefab: 103
+    Team: 2
+    MaxHealth: 520
+    PhysicalPower: 30
+    SpellPower: 0
+    PhysicalResist: 10
+    SpellResist: 5
+    MoveSpeed: 4
+    Level: 14
+    Abilities: f7010000f8010000
+    AI: 1
+    AggroRange: 12
+    AttackRange: 3
+    BloodType: 4
+    BloodQuality: 40
+    IsVBlood: 0
+    VBloodUnlocks: 
+    Loot: 3
+    Scale: 1
+    Tint: {r: 1, g: 1, b: 1, a: 1}
+    Weapon: 0
+    StateTree: 300
+  - Index: 5
+    NameId: 1004
+    Prefab: 104
+    Team: 2
+    MaxHealth: 3200
+    PhysicalPower: 34
+    SpellPower: 0
+    PhysicalResist: 15
+    SpellResist: 10
+    MoveSpeed: 4.6
+    Level: 16
+    Abilities: ff010000000200000102000002020000
+    AI: 3
+    AggroRange: 16
+    AttackRange: 3.6
+    BloodType: 4
+    BloodQuality: 70
+    IsVBlood: 1
+    VBloodUnlocks: 91010000
+    Loot: 4
+    Scale: 1.5
+    Tint: {r: 1, g: 0.6901961, b: 0.6901961, a: 1}
+    Weapon: 0
+    StateTree: 302
+  - Index: 6
+    NameId: 1005
+    Prefab: 105
+    Team: 0
+    MaxHealth: 1000
+    PhysicalPower: 0
+    SpellPower: 0
+    PhysicalResist: 0
+    SpellResist: 0
+    MoveSpeed: 0
+    Level: 0
+    Abilities: 
+    AI: 4
+    AggroRange: 0
+    AttackRange: 0
+    BloodType: 0
+    BloodQuality: 0
+    IsVBlood: 0
+    VBloodUnlocks: 
+    Loot: 0
+    Scale: 1
+    Tint: {r: 1, g: 1, b: 1, a: 1}
+    Weapon: 0
+    StateTree: 0

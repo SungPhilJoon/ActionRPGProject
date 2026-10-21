@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 722fc0756e42f7e44a2b77c26147bd9f, type: 3}
+  m_Name: SK_EarthRender
+  m_EditorClassIdentifier: ActionRPG.Runtime::ActionRPG.Skills.SkillDefinition
+  Id: 4
+  DisplayName: "\uB300\uC9C0 \uAC00\uB974\uAE30"
+  Description: "\uC9C0\uC815\uD55C \uC9C0\uC810\uC758 \uB545\uC744 \uAC08\uB77C \uD070
+    \uD53C\uD574\uB97C \uC8FC\uACE0 \uB454\uD654\uC2DC\uD0A8\uB2E4."
+  Icon: {fileID: 0}
+  Category: 4
+  DeckCost: 3
+  RequiredWeapon: 1
+  AutoSwapWeapon: 1
+  Cooldown: 14
+  ManaCost: 30
+  MovementLockTime: 0.6
+  CastTime: 0.35
+  UsesGlobalCooldown: 1
+  Targeting: 2
+  Range: 9
+  Effects:
+  - {fileID: 11400000, guid: 62973395c1c04d041b7ab9631ece4fef, type: 2}
+  CastVfxPrefab: {fileID: 0}
+  CastSfx: {fileID: 0}

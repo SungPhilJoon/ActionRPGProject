@@ -1,0 +1,68 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f84d63cd9f0edb46a32058acb3f1a96, type: 3}
+  m_Name: ShopTable
+  m_EditorClassIdentifier: Game.Runtime::ShopTable
+  Source: {fileID: 4900000, guid: cfe1e12f845f8e2448707f3a2a0b9b21, type: 3}
+  Rows:
+  - Index: 1
+    Item: 30
+    Count: 5
+    Price: 0
+  - Index: 2
+    Item: 31
+    Count: 2
+    Price: 0
+  - Index: 3
+    Item: 1
+    Count: 50
+    Price: 0
+  - Index: 4
+    Item: 2
+    Count: 50
+    Price: 0
+  - Index: 5
+    Item: 3
+    Count: 50
+    Price: 0
+  - Index: 6
+    Item: 6
+    Count: 10
+    Price: 0
+  - Index: 7
+    Item: 5
+    Count: 20
+    Price: 0
+  - Index: 8
+    Item: 11
+    Count: 1
+    Price: 0
+  - Index: 9
+    Item: 13
+    Count: 1
+    Price: 0
+  - Index: 10
+    Item: 24
+    Count: 1
+    Price: 0
+  - Index: 11
+    Item: 25
+    Count: 1
+    Price: 0
+  - Index: 12
+    Item: 26
+    Count: 1
+    Price: 0
+  - Index: 13
+    Item: 27
+    Count: 1
+    Price: 0

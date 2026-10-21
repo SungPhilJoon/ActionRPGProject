@@ -1,0 +1,161 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42f935c2cc7a74e41813de7a248b19e1, type: 3}
+  m_Name: CueTable
+  m_EditorClassIdentifier: Game.Runtime::CueTable
+  Source: {fileID: 4900000, guid: c040151b0a5c0ef4eae0658aa761b6e4, type: 3}
+  Rows:
+  - Index: 1
+    Asset: 180
+    Lifetime: 0.8
+    Attach: 0
+    Scale: 1
+  - Index: 2
+    Asset: 181
+    Lifetime: 0.6
+    Attach: 0
+    Scale: 1
+  - Index: 3
+    Asset: 132
+    Lifetime: 1
+    Attach: 0
+    Scale: 1.2
+  - Index: 4
+    Asset: 133
+    Lifetime: 0.6
+    Attach: 0
+    Scale: 1
+  - Index: 5
+    Asset: 134
+    Lifetime: 0
+    Attach: 1
+    Scale: 1
+  - Index: 6
+    Asset: 135
+    Lifetime: 0
+    Attach: 1
+    Scale: 1
+  - Index: 7
+    Asset: 137
+    Lifetime: 1.2
+    Attach: 0
+    Scale: 1.6
+  - Index: 8
+    Asset: 136
+    Lifetime: 1
+    Attach: 1
+    Scale: 1
+  - Index: 9
+    Asset: 138
+    Lifetime: 2.2
+    Attach: 0
+    Scale: 1
+  - Index: 10
+    Asset: 139
+    Lifetime: 0
+    Attach: 1
+    Scale: 1
+  - Index: 11
+    Asset: 140
+    Lifetime: 0
+    Attach: 1
+    Scale: 1
+  - Index: 12
+    Asset: 196
+    Lifetime: 2.5
+    Attach: 0
+    Scale: 1
+  - Index: 13
+    Asset: 181
+    Lifetime: 0.6
+    Attach: 0
+    Scale: 1.4
+  - Index: 20
+    Asset: 183
+    Lifetime: 1.5
+    Attach: 0
+    Scale: 1
+  - Index: 21
+    Asset: 184
+    Lifetime: 1.5
+    Attach: 0
+    Scale: 0.3
+  - Index: 22
+    Asset: 185
+    Lifetime: 0
+    Attach: 1
+    Scale: 1
+  - Index: 23
+    Asset: 186
+    Lifetime: 2.5
+    Attach: 0
+    Scale: 1
+  - Index: 24
+    Asset: 187
+    Lifetime: 2.5
+    Attach: 0
+    Scale: 1
+  - Index: 25
+    Asset: 188
+    Lifetime: 0
+    Attach: 1
+    Scale: 1
+  - Index: 26
+    Asset: 189
+    Lifetime: 1.5
+    Attach: 0
+    Scale: 0.6
+  - Index: 27
+    Asset: 190
+    Lifetime: 0
+    Attach: 1
+    Scale: 1
+  - Index: 28
+    Asset: 191
+    Lifetime: 0
+    Attach: 1
+    Scale: 1
+  - Index: 29
+    Asset: 192
+    Lifetime: 0
+    Attach: 1
+    Scale: 1
+  - Index: 30
+    Asset: 193
+    Lifetime: 0
+    Attach: 1
+    Scale: 1
+  - Index: 31
+    Asset: 194
+    Lifetime: 0
+    Attach: 1
+    Scale: 1
+  - Index: 32
+    Asset: 195
+    Lifetime: 0
+    Attach: 1
+    Scale: 1
+  - Index: 33
+    Asset: 182
+    Lifetime: 1.2
+    Attach: 0
+    Scale: 1
+  - Index: 34
+    Asset: 197
+    Lifetime: 1.5
+    Attach: 0
+    Scale: 1
+  - Index: 35
+    Asset: 198
+    Lifetime: 1
+    Attach: 0
+    Scale: 1

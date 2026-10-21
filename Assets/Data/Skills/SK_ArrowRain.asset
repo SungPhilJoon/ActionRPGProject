@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 722fc0756e42f7e44a2b77c26147bd9f, type: 3}
+  m_Name: SK_ArrowRain
+  m_EditorClassIdentifier: ActionRPG.Runtime::ActionRPG.Skills.SkillDefinition
+  Id: 7
+  DisplayName: "\uD654\uC0B4\uBE44"
+  Description: "\uC9C0\uC815\uD55C \uC9C0\uC5ED\uC5D0 \uD654\uC0B4\uC744 \uB450 \uCC28\uB840
+    \uD37C\uBD93\uB294\uB2E4."
+  Icon: {fileID: 0}
+  Category: 4
+  DeckCost: 3
+  RequiredWeapon: 2
+  AutoSwapWeapon: 1
+  Cooldown: 16
+  ManaCost: 32
+  MovementLockTime: 0.5
+  CastTime: 0.4
+  UsesGlobalCooldown: 1
+  Targeting: 2
+  Range: 18
+  Effects:
+  - {fileID: 11400000, guid: deed643833fd88242a3187a377c7ed2c, type: 2}
+  - {fileID: 11400000, guid: 7adff4e49d4d7d644bebbf4f63f83762, type: 2}
+  CastVfxPrefab: {fileID: 0}
+  CastSfx: {fileID: 0}

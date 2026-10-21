@@ -1,0 +1,7 @@
+Index,NameId,Prefab,Team,MaxHealth,PhysicalPower,SpellPower,PhysicalResist,SpellResist,MoveSpeed,Level,Abilities,AI,AggroRange,AttackRange,BloodType,BloodQuality,IsVBlood,VBloodUnlocks,Loot,Scale,Tint,Weapon,StateTree
+1,1000,100,Player,400,25,20,0,0,6.2,0,701|201|301|302,None,0,0,None,0,0,,0,1,#FFFFFF,0,0
+2,1001,101,Monster,280,22,0,5,0,4.2,8,501,Melee,12,2.2,Warrior,25,0,,1,1,#FFFFFF,0,300
+3,1002,102,Monster,220,20,0,0,5,4.4,10,502,Ranged,15,12,Rogue,30,0,,2,1,#FFFFFF,0,301
+4,1003,103,Monster,520,30,0,10,5,4.0,14,503|504,Melee,12,3.0,Brute,40,0,,3,1,#FFFFFF,0,300
+5,1004,104,Monster,3200,34,0,15,10,4.6,16,511|512|513|514,Boss,16,3.6,Brute,70,1,401,4,1.5,#FFB0B0,0,302
+6,1005,105,Neutral,1000,0,0,0,0,0,0,,Passive,0,0,None,0,0,,0,1,#FFFFFF,0,0

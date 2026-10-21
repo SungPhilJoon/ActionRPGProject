@@ -1,0 +1,279 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c683008c4dd502d469a799db9f9555a0, type: 3}
+  m_Name: StringTable
+  m_EditorClassIdentifier: Game.Runtime::StringTable
+  Source: {fileID: 4900000, guid: 76d8c3b1964e13142941d8de117049b6, type: 3}
+  Rows:
+  - Index: 1
+    Text: BLOODLINE  -  V Rising Demo
+  - Index: 2
+    Text: Single Player (Offline)
+  - Index: 3
+    Text: Co-op (up to 4) - Coming soon
+  - Index: 4
+    Text: Quit
+  - Index: 10
+    Text: Inventory
+  - Index: 11
+    Text: Equipment
+  - Index: 12
+    Text: Crafting
+  - Index: 13
+    Text: Build
+  - Index: 14
+    Text: Shop
+  - Index: 15
+    Text: FREE
+  - Index: 16
+    Text: Get
+  - Index: 17
+    Text: Craft
+  - Index: 18
+    Text: Close
+  - Index: 19
+    Text: Gear
+  - Index: 20
+    Text: Blood
+  - Index: 21
+    Text: Day
+  - Index: 22
+    Text: Night
+  - Index: 23
+    Text: IN SUNLIGHT! Find shade
+  - Index: 24
+    Text: In shadow
+  - Index: 25
+    Text: Interact
+  - Index: 26
+    Text: Feed
+  - Index: 27
+    Text: YOU DIED
+  - Index: 28
+    Text: Respawning in
+  - Index: 29
+    Text: Not enough materials
+  - Index: 30
+    Text: Build a Castle Heart first
+  - Index: 31
+    Text: 'V Blood consumed:'
+  - Index: 32
+    Text: 'New ability unlocked:'
+  - Index: 33
+    Text: Inventory full
+  - Index: 34
+    Text: Cheat Console
+  - Index: 35
+    Text: Type 'help' for commands. Toggle with ` key.
+  - Index: 36
+    Text: Balance Meter
+  - Index: 37
+    Text: Requires
+  - Index: 38
+    Text: Owned
+  - Index: 39
+    Text: Place
+  - Index: 40
+    Text: Rotate
+  - Index: 41
+    Text: 'LMB: place   X: rotate   ESC: cancel'
+  - Index: 42
+    Text: Talk to Merchant
+  - Index: 43
+    Text: No blood
+  - Index: 44
+    Text: Quality
+  - Index: 45
+    Text: 'WASD move | LMB attack | Q/E weapon skills | Space Veil of Blood | R/C
+      spells | T ultimate | F feed (low HP enemy) | G interact
+
+      Tab inventory
+      | K craft | B build | P shop | ` cheats | F8 balance meter | Wheel zoom | Middle
+      mouse rotate camera'
+  - Index: 46
+    Text: Loading world...
+  - Index: 47
+    Text: Damage dealt by ability (total / DPS)
+  - Index: 48
+    Text: Player damage taken
+  - Index: 49
+    Text: Recent hits
+  - Index: 1000
+    Text: Vampire
+  - Index: 1001
+    Text: Medusa Sentinel
+  - Index: 1002
+    Text: Cobra Snake
+  - Index: 1003
+    Text: Cave Troll
+  - Index: 1004
+    Text: Minotaur Warlord
+  - Index: 1005
+    Text: Wandering Merchant
+  - Index: 2001
+    Text: Lumber
+  - Index: 2002
+    Text: Stone
+  - Index: 2003
+    Text: Plant Fiber
+  - Index: 2004
+    Text: Copper Ore
+  - Index: 2005
+    Text: Blood Essence
+  - Index: 2006
+    Text: Copper Ingot
+  - Index: 2010
+    Text: Bone Sword
+  - Index: 2011
+    Text: Copper Sword
+  - Index: 2012
+    Text: Bone Spear
+  - Index: 2013
+    Text: Copper Spear
+  - Index: 2020
+    Text: Cloth Robe
+  - Index: 2021
+    Text: Cloth Pants
+  - Index: 2022
+    Text: Cloth Boots
+  - Index: 2023
+    Text: Cloth Gloves
+  - Index: 2024
+    Text: Reinforced Chest
+  - Index: 2025
+    Text: Reinforced Pants
+  - Index: 2026
+    Text: Reinforced Boots
+  - Index: 2027
+    Text: Reinforced Gloves
+  - Index: 2030
+    Text: Blood Potion
+  - Index: 2031
+    Text: Sun Resistance Brew
+  - Index: 2101
+    Text: Basic resource for building.
+  - Index: 2102
+    Text: Basic resource for building.
+  - Index: 2103
+    Text: Used for cloth and potions.
+  - Index: 2104
+    Text: Smelt into Copper Ingots.
+  - Index: 2105
+    Text: Dropped by the living. Fuels vampire crafts.
+  - Index: 2106
+    Text: Refined metal.
+  - Index: 2110
+    Text: A crude blade. Combo slashes.
+  - Index: 2111
+    Text: A sharp copper blade.
+  - Index: 2112
+    Text: Long reach. Thrust and charge.
+  - Index: 2113
+    Text: A sturdy copper spear.
+  - Index: 2120
+    Text: Light armor.
+  - Index: 2124
+    Text: Reinforced armor.
+  - Index: 2130
+    Text: Restores 150 health.
+  - Index: 2131
+    Text: +50 Sun Resistance for 120 seconds.
+  - Index: 3101
+    Text: Sword Slash
+  - Index: 3102
+    Text: Whirlwind
+  - Index: 3103
+    Text: Shockwave
+  - Index: 3111
+    Text: Spear Thrust
+  - Index: 3112
+    Text: Charge
+  - Index: 3113
+    Text: Sweep
+  - Index: 3121
+    Text: Punch
+  - Index: 3201
+    Text: Veil of Blood
+  - Index: 3301
+    Text: Chaos Volley
+  - Index: 3302
+    Text: Blood Rite
+  - Index: 3303
+    Text: Ice Nova
+  - Index: 3304
+    Text: Ball Lightning
+  - Index: 3305
+    Text: Corrupted Skull
+  - Index: 3306
+    Text: Wraith Spear
+  - Index: 3401
+    Text: Crimson Storm
+  - Index: 3701
+    Text: Feed
+  - Index: 3501
+    Text: Club
+  - Index: 3502
+    Text: Arrow
+  - Index: 3503
+    Text: Smash
+  - Index: 3504
+    Text: Charge
+  - Index: 3511
+    Text: Stone Slam
+  - Index: 3512
+    Text: Leap
+  - Index: 3513
+    Text: Rock Throw
+  - Index: 3514
+    Text: Enrage
+  - Index: 4001
+    Text: Castle Heart
+  - Index: 4002
+    Text: Stone Floor
+  - Index: 4003
+    Text: Stone Wall
+  - Index: 4004
+    Text: Workbench
+  - Index: 4005
+    Text: Smelter
+  - Index: 4006
+    Text: Coffin
+  - Index: 4007
+    Text: Iron Lamp
+  - Index: 5001
+    Text: Warrior
+  - Index: 5002
+    Text: Rogue
+  - Index: 5003
+    Text: Scholar
+  - Index: 5004
+    Text: Brute
+  - Index: 5005
+    Text: Creature
+  - Index: 6001
+    Text: Pine Tree
+  - Index: 6002
+    Text: Oak Tree
+  - Index: 6003
+    Text: Rock
+  - Index: 6004
+    Text: Boulder
+  - Index: 6005
+    Text: Copper Vein
+  - Index: 6006
+    Text: Bush
+  - Index: 4008
+    Text: Stone Wall (Door)
+  - Index: 4009
+    Text: Stone Wall (Window)
+  - Index: 4010
+    Text: Stone Pillar

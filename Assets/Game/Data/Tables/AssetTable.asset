@@ -1,0 +1,268 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fda83833b3c0c9a4f9aa0ce89fd2b014, type: 3}
+  m_Name: AssetTable
+  m_EditorClassIdentifier: Game.Runtime::AssetTable
+  Source: {fileID: 4900000, guid: 01fa26f062e15894cab20a12806cbd68, type: 3}
+  Rows:
+  - Index: 100
+    Address: Characters/Player
+    Kind: 0
+  - Index: 101
+    Address: Characters/BanditThug
+    Kind: 0
+  - Index: 102
+    Address: Characters/BanditArcher
+    Kind: 0
+  - Index: 103
+    Address: Characters/OrcBrute
+    Kind: 0
+  - Index: 104
+    Address: Characters/BossGrimgor
+    Kind: 0
+  - Index: 105
+    Address: Characters/Merchant
+    Kind: 0
+  - Index: 110
+    Address: Weapons/Sword
+    Kind: 0
+  - Index: 111
+    Address: Weapons/Spear
+    Kind: 0
+  - Index: 120
+    Address: Projectiles/BloodBolt
+    Kind: 0
+  - Index: 121
+    Address: Projectiles/Shockwave
+    Kind: 0
+  - Index: 122
+    Address: Projectiles/Arrow
+    Kind: 0
+  - Index: 123
+    Address: Projectiles/Rock
+    Kind: 0
+  - Index: 124
+    Address: Projectiles/FireBall
+    Kind: 0
+  - Index: 125
+    Address: Projectiles/BallLightning
+    Kind: 0
+  - Index: 126
+    Address: Projectiles/CorruptedSkull
+    Kind: 0
+  - Index: 127
+    Address: Projectiles/WraithSpear
+    Kind: 0
+  - Index: 130
+    Address: VFX/Slash
+    Kind: 0
+  - Index: 131
+    Address: VFX/HitSpark
+    Kind: 0
+  - Index: 132
+    Address: VFX/BloodBurst
+    Kind: 0
+  - Index: 133
+    Address: VFX/DashTrail
+    Kind: 0
+  - Index: 134
+    Address: VFX/ShieldBubble
+    Kind: 0
+  - Index: 135
+    Address: VFX/SunSmoke
+    Kind: 0
+  - Index: 136
+    Address: VFX/Heal
+    Kind: 0
+  - Index: 137
+    Address: VFX/GroundSlam
+    Kind: 0
+  - Index: 138
+    Address: VFX/FeedBeam
+    Kind: 0
+  - Index: 139
+    Address: VFX/Empower
+    Kind: 0
+  - Index: 140
+    Address: VFX/Stun
+    Kind: 0
+  - Index: 150
+    Address: Nodes/PineTree
+    Kind: 0
+  - Index: 151
+    Address: Nodes/OakTree
+    Kind: 0
+  - Index: 152
+    Address: Nodes/Rock
+    Kind: 0
+  - Index: 153
+    Address: Nodes/Boulder
+    Kind: 0
+  - Index: 154
+    Address: Nodes/Bush
+    Kind: 0
+  - Index: 155
+    Address: Nodes/CopperVein
+    Kind: 0
+  - Index: 170
+    Address: Structures/CastleHeart
+    Kind: 0
+  - Index: 171
+    Address: Structures/Floor
+    Kind: 0
+  - Index: 172
+    Address: Structures/Wall
+    Kind: 0
+  - Index: 173
+    Address: Structures/Workbench
+    Kind: 0
+  - Index: 174
+    Address: Structures/Coffin
+    Kind: 0
+  - Index: 175
+    Address: Structures/Smelter
+    Kind: 0
+  - Index: 176
+    Address: Structures/Banner
+    Kind: 0
+  - Index: 177
+    Address: Structures/WallDoor
+    Kind: 0
+  - Index: 178
+    Address: Structures/WallWindow
+    Kind: 0
+  - Index: 179
+    Address: Structures/Pillar
+    Kind: 0
+  - Index: 180
+    Address: VFX/Skill/SwordSlash
+    Kind: 0
+  - Index: 181
+    Address: VFX/Skill/HitImpact
+    Kind: 0
+  - Index: 182
+    Address: VFX/Skill/Whirlwind
+    Kind: 0
+  - Index: 183
+    Address: VFX/Skill/VeilBlood
+    Kind: 0
+  - Index: 184
+    Address: VFX/Skill/FireBlast
+    Kind: 0
+  - Index: 185
+    Address: VFX/Skill/BloodRiteAura
+    Kind: 0
+  - Index: 186
+    Address: VFX/Skill/BloodNova
+    Kind: 0
+  - Index: 187
+    Address: VFX/Skill/IceNova
+    Kind: 0
+  - Index: 188
+    Address: VFX/Status/Frozen
+    Kind: 0
+  - Index: 189
+    Address: VFX/Skill/LightningBurst
+    Kind: 0
+  - Index: 190
+    Address: VFX/Status/Ignite
+    Kind: 0
+  - Index: 191
+    Address: VFX/Status/Condemn
+    Kind: 0
+  - Index: 192
+    Address: VFX/Status/Weaken
+    Kind: 0
+  - Index: 193
+    Address: VFX/Status/Chill
+    Kind: 0
+  - Index: 194
+    Address: VFX/Status/Static
+    Kind: 0
+  - Index: 195
+    Address: VFX/Status/Leech
+    Kind: 0
+  - Index: 196
+    Address: VFX/Skill/CrimsonStorm
+    Kind: 0
+  - Index: 197
+    Address: VFX/Skill/DarkBurst
+    Kind: 0
+  - Index: 198
+    Address: VFX/Skill/WraithHit
+    Kind: 0
+  - Index: 200
+    Address: Icons/Sword
+    Kind: 1
+  - Index: 201
+    Address: Icons/Spear
+    Kind: 1
+  - Index: 202
+    Address: Icons/Potion
+    Kind: 1
+  - Index: 203
+    Address: Icons/Coin
+    Kind: 1
+  - Index: 204
+    Address: Icons/Chest
+    Kind: 1
+  - Index: 205
+    Address: Icons/Shield
+    Kind: 1
+  - Index: 206
+    Address: Icons/Wall
+    Kind: 1
+  - Index: 207
+    Address: Icons/Floor
+    Kind: 1
+  - Index: 208
+    Address: Icons/Lumber
+    Kind: 1
+  - Index: 209
+    Address: Icons/Stone
+    Kind: 1
+  - Index: 210
+    Address: Icons/PlantFiber
+    Kind: 1
+  - Index: 211
+    Address: Icons/Mushroom
+    Kind: 1
+  - Index: 212
+    Address: Icons/CopperOre
+    Kind: 1
+  - Index: 213
+    Address: Icons/CastleHeart
+    Kind: 1
+  - Index: 214
+    Address: Icons/Workbench
+    Kind: 1
+  - Index: 215
+    Address: Icons/Barrel
+    Kind: 1
+  - Index: 216
+    Address: Icons/Banner
+    Kind: 1
+  - Index: 217
+    Address: Icons/Campfire
+    Kind: 1
+  - Index: 218
+    Address: Icons/Tent
+    Kind: 1
+  - Index: 300
+    Address: AI/ST_MeleeMonster
+    Kind: 3
+  - Index: 301
+    Address: AI/ST_RangedMonster
+    Kind: 3
+  - Index: 302
+    Address: AI/ST_Boss
+    Kind: 3

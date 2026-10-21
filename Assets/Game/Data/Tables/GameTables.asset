@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f67337a55e3710a44a03af22079f9273, type: 3}
+  m_Name: GameTables
+  m_EditorClassIdentifier: Game.Runtime::GameTables
+  Const: {fileID: 11400000, guid: b570c11cb6564544ea21f663916e75f1, type: 2}
+  Tag: {fileID: 11400000, guid: 81f6a530d641c77408bb45e013a187f4, type: 2}
+  String: {fileID: 11400000, guid: bc891a649852ecb4c9eed66de939e44e, type: 2}
+  Asset: {fileID: 11400000, guid: f13696895c3b2fa4e892f5ec79d83f4b, type: 2}
+  Character: {fileID: 11400000, guid: 09c8ee06f8df9334db4d3d9822cfed19, type: 2}
+  Ability: {fileID: 11400000, guid: 498a1f07f1e70d9499229704f045e171, type: 2}
+  Effect: {fileID: 11400000, guid: 2c85b98ffe76f8b48907689939056013, type: 2}
+  Item: {fileID: 11400000, guid: 183c3008a6c5f7d41b902fd36f95b946, type: 2}
+  Weapon: {fileID: 11400000, guid: 8db4ecc85b4165f4d8c0f0d4844bfddd, type: 2}
+  Recipe: {fileID: 11400000, guid: bf5b2d64d41969540a135453f70ff582, type: 2}
+  Structure: {fileID: 11400000, guid: c32e72c43e705db4d8e81ce7211f5b01, type: 2}
+  ResourceNode: {fileID: 11400000, guid: d4196f5434e81f8489fa7f19f0638c52, type: 2}
+  Spawn: {fileID: 11400000, guid: 2097954385ff23847ac2b63e90f83fb4, type: 2}
+  Loot: {fileID: 11400000, guid: dad7d582a57169142b3c0ff5a3b7a5ec, type: 2}
+  BloodType: {fileID: 11400000, guid: 0f432d24cd4be3d44bd2711ef0aeef43, type: 2}
+  Shop: {fileID: 11400000, guid: 9c4672049de818147926149d2e7278f4, type: 2}
+  Cue: {fileID: 11400000, guid: b9f0038f9f9e2674a82ac1eeab86d62b, type: 2}
+  Input: {fileID: 11400000, guid: ab968171556b67c499a1d7919433d85c, type: 2}
+  Animation: {fileID: 11400000, guid: 8b9078579f3d42e46beff6cc79f2260d, type: 2}

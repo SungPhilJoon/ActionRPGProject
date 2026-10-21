@@ -1,0 +1,28 @@
+{
+    "name": "ActionRPG.Editor",
+    "rootNamespace": "ActionRPG.EditorTools",
+    "references": [
+        "ActionRPG.Runtime",
+        "ActionRPG.Foundation",
+        "Unity.Netcode.Runtime",
+        "Unity.InputSystem",
+        "Unity.TextMeshPro",
+        "UnityEngine.UI",
+        "Unity.Addressables",
+        "Unity.Addressables.Editor",
+        "Unity.ResourceManager",
+        "Unity.AI.Navigation",
+        "ActionRPG.Foundation.Editor"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

@@ -1,0 +1,16 @@
+{
+  "name": "com.actionrpg.foundation",
+  "version": "0.1.0",
+  "displayName": "ActionRPG Foundation",
+  "description": "자주 변경되지 않는 기반 코드 모음. 전투 기초 타입(IDamageable, Faction, DamageInfo, StatBlock), 전역 이벤트 버스, 액터 레지스트리, 직렬화(Protobuf), 오브젝트 라이프사이클 트래킹, 세이브 시스템 추상화를 담는다. 게임플레이 코드(Assets/Scripts)와 분리해 두어 독립적으로 버전 관리하고, 다른 프로젝트에도 그대로 재사용할 수 있게 한다.",
+  "unity": "6000.3",
+  "keywords": [ "actionrpg", "foundation", "core" ],
+  "author": {
+    "name": "ActionRPGProject"
+  },
+  "dependencies": {
+    "com.unity.netcode.gameobjects": "2.0.0",
+    "com.cysharp.unitask": "2.5.11",
+    "org.nuget.protobuf-net": "3.4.30"
+  }
+}

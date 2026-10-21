@@ -1,0 +1,712 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b7142b5483b34f4e9eebcd1ca5029f8, type: 3}
+  m_Name: AbilityTable
+  m_EditorClassIdentifier: Game.Runtime::AbilityTable
+  Source: {fileID: 4900000, guid: cd9829ccb2f50a54da768755547b4f44, type: 3}
+  Rows:
+  - Index: 101
+    NameId: 3101
+    DescId: 0
+    Type: 1
+    Slot: 0
+    AbilityTags: 15000000
+    CastTime: 0.18
+    Cooldown: 0
+    Range: 2.6
+    Radius: 0
+    Angle: 120
+    Speed: 0
+    Count: 3
+    Spread: 0
+    Damage: 100
+    DamageType: 0
+    HitEffects: 
+    SelfEffects: 
+    Anims: 010000000200000007000000
+    CastCue: 1
+    HitCue: 2
+    Projectile: 0
+    Icon: 0
+    IconColor: {r: 0.5411765, g: 0.10980392, b: 0.10980392, a: 1}
+    ComboWindow: 0.5
+    MoveLock: 0.45
+    StartEffects: 
+    ConsumeTag: -1
+    ConsumeEffects: 
+  - Index: 102
+    NameId: 3102
+    DescId: 0
+    Type: 4
+    Slot: 1
+    AbilityTags: 16000000
+    CastTime: 0.15
+    Cooldown: 8
+    Range: 0
+    Radius: 3.2
+    Angle: 0
+    Speed: 0
+    Count: 4
+    Spread: 0.3
+    Damage: 45
+    DamageType: 0
+    HitEffects: 
+    SelfEffects: 
+    Anims: 02000000
+    CastCue: 33
+    HitCue: 2
+    Projectile: 0
+    Icon: 0
+    IconColor: {r: 0.6901961, g: 0.1882353, b: 0.1882353, a: 1}
+    ComboWindow: 0
+    MoveLock: 0
+    StartEffects: 
+    ConsumeTag: -1
+    ConsumeEffects: 
+  - Index: 103
+    NameId: 3103
+    DescId: 0
+    Type: 2
+    Slot: 2
+    AbilityTags: 16000000
+    CastTime: 0.25
+    Cooldown: 10
+    Range: 14
+    Radius: 0.9
+    Angle: 0
+    Speed: 18
+    Count: 1
+    Spread: 0
+    Damage: 140
+    DamageType: 0
+    HitEffects: 0c000000
+    SelfEffects: 
+    Anims: 01000000
+    CastCue: 0
+    HitCue: 13
+    Projectile: 121
+    Icon: 0
+    IconColor: {r: 0.7529412, g: 0.2509804, b: 0.2509804, a: 1}
+    ComboWindow: 0
+    MoveLock: 0.35
+    StartEffects: 
+    ConsumeTag: -1
+    ConsumeEffects: 
+  - Index: 111
+    NameId: 3111
+    DescId: 0
+    Type: 1
+    Slot: 0
+    AbilityTags: 15000000
+    CastTime: 0.22
+    Cooldown: 0
+    Range: 3.4
+    Radius: 0
+    Angle: 50
+    Speed: 0
+    Count: 2
+    Spread: 0
+    Damage: 110
+    DamageType: 0
+    HitEffects: 
+    SelfEffects: 
+    Anims: 0100000002000000
+    CastCue: 1
+    HitCue: 2
+    Projectile: 0
+    Icon: 0
+    IconColor: {r: 0.47843137, g: 0.22745098, b: 0.10980392, a: 1}
+    ComboWindow: 0.5
+    MoveLock: 0.5
+    StartEffects: 
+    ConsumeTag: -1
+    ConsumeEffects: 
+  - Index: 112
+    NameId: 3112
+    DescId: 0
+    Type: 3
+    Slot: 1
+    AbilityTags: 16000000
+    CastTime: 0.3
+    Cooldown: 8
+    Range: 7
+    Radius: 1.3
+    Angle: 0
+    Speed: 0
+    Count: 1
+    Spread: 0
+    Damage: 120
+    DamageType: 0
+    HitEffects: 0b000000
+    SelfEffects: 
+    Anims: 02000000
+    CastCue: 4
+    HitCue: 2
+    Projectile: 0
+    Icon: 0
+    IconColor: {r: 0.6039216, g: 0.2901961, b: 0.17254902, a: 1}
+    ComboWindow: 0
+    MoveLock: 0
+    StartEffects: 
+    ConsumeTag: -1
+    ConsumeEffects: 
+  - Index: 113
+    NameId: 3113
+    DescId: 0
+    Type: 4
+    Slot: 2
+    AbilityTags: 16000000
+    CastTime: 0.35
+    Cooldown: 10
+    Range: 0
+    Radius: 3.6
+    Angle: 0
+    Speed: 0
+    Count: 1
+    Spread: 0
+    Damage: 160
+    DamageType: 0
+    HitEffects: 0c000000
+    SelfEffects: 
+    Anims: 02000000
+    CastCue: 3
+    HitCue: 2
+    Projectile: 0
+    Icon: 0
+    IconColor: {r: 0.6666667, g: 0.3529412, b: 0.23529412, a: 1}
+    ComboWindow: 0
+    MoveLock: 0.5
+    StartEffects: 
+    ConsumeTag: -1
+    ConsumeEffects: 
+  - Index: 121
+    NameId: 3121
+    DescId: 0
+    Type: 1
+    Slot: 0
+    AbilityTags: 15000000
+    CastTime: 0.15
+    Cooldown: 0
+    Range: 1.8
+    Radius: 0
+    Angle: 90
+    Speed: 0
+    Count: 2
+    Spread: 0
+    Damage: 60
+    DamageType: 0
+    HitEffects: 
+    SelfEffects: 
+    Anims: 0100000002000000
+    CastCue: 0
+    HitCue: 2
+    Projectile: 0
+    Icon: 0
+    IconColor: {r: 0.3529412, g: 0.2901961, b: 0.2901961, a: 1}
+    ComboWindow: 0.5
+    MoveLock: 0.35
+    StartEffects: 
+    ConsumeTag: -1
+    ConsumeEffects: 
+  - Index: 201
+    NameId: 3201
+    DescId: 0
+    Type: 3
+    Slot: 3
+    AbilityTags: 18000000
+    CastTime: 0.2
+    Cooldown: 6
+    Range: 6
+    Radius: 1.3
+    Angle: 0
+    Speed: 0
+    Count: 1
+    Spread: 0
+    Damage: 30
+    DamageType: 0
+    HitEffects: 50000000
+    SelfEffects: 1400000015000000
+    Anims: 09000000
+    CastCue: 20
+    HitCue: 2
+    Projectile: 0
+    Icon: 0
+    IconColor: {r: 0.3764706, g: 0, b: 0.0627451, a: 1}
+    ComboWindow: 0
+    MoveLock: 0
+    StartEffects: 51000000
+    ConsumeTag: -1
+    ConsumeEffects: 
+  - Index: 301
+    NameId: 3301
+    DescId: 0
+    Type: 2
+    Slot: 4
+    AbilityTags: 17000000
+    CastTime: 0.25
+    Cooldown: 8
+    Range: 16
+    Radius: 0.6
+    Angle: 0
+    Speed: 20
+    Count: 2
+    Spread: 14
+    Damage: 55
+    DamageType: 1
+    HitEffects: 52000000
+    SelfEffects: 
+    Anims: 03000000
+    CastCue: 0
+    HitCue: 21
+    Projectile: 124
+    Icon: 0
+    IconColor: {r: 0.8784314, g: 0.3764706, b: 0.16470589, a: 1}
+    ComboWindow: 0
+    MoveLock: 0.3
+    StartEffects: 
+    ConsumeTag: 6
+    ConsumeEffects: 53000000
+  - Index: 302
+    NameId: 3302
+    DescId: 0
+    Type: 4
+    Slot: 5
+    AbilityTags: 17000000
+    CastTime: 1.2
+    Cooldown: 12
+    Range: 0
+    Radius: 4
+    Angle: 0
+    Speed: 0
+    Count: 1
+    Spread: 0
+    Damage: 75
+    DamageType: 1
+    HitEffects: 50000000
+    SelfEffects: 5b000000
+    Anims: 03000000
+    CastCue: 23
+    HitCue: 2
+    Projectile: 0
+    Icon: 0
+    IconColor: {r: 0.6901961, g: 0.0627451, b: 0.16470589, a: 1}
+    ComboWindow: 0
+    MoveLock: 0
+    StartEffects: 5a000000
+    ConsumeTag: -1
+    ConsumeEffects: 
+  - Index: 401
+    NameId: 3401
+    DescId: 0
+    Type: 4
+    Slot: 6
+    AbilityTags: 19000000
+    CastTime: 0.5
+    Cooldown: 40
+    Range: 12
+    Radius: 5
+    Angle: 0
+    Speed: 0
+    Count: 5
+    Spread: 0.4
+    Damage: 70
+    DamageType: 1
+    HitEffects: 0c00000050000000
+    SelfEffects: 
+    Anims: 03000000
+    CastCue: 12
+    HitCue: 2
+    Projectile: 0
+    Icon: 0
+    IconColor: {r: 0.8156863, g: 0.1254902, b: 0.2509804, a: 1}
+    ComboWindow: 0
+    MoveLock: 0.5
+    StartEffects: 
+    ConsumeTag: -1
+    ConsumeEffects: 
+  - Index: 701
+    NameId: 3701
+    DescId: 0
+    Type: 6
+    Slot: 7
+    AbilityTags: 1a000000
+    CastTime: 0
+    Cooldown: 1
+    Range: 2.5
+    Radius: 0
+    Angle: 0
+    Speed: 0
+    Count: 1
+    Spread: 0
+    Damage: 0
+    DamageType: 0
+    HitEffects: 
+    SelfEffects: 
+    Anims: 04000000
+    CastCue: 9
+    HitCue: 0
+    Projectile: 0
+    Icon: 0
+    IconColor: {r: 0.2509804, g: 0, b: 0.03137255, a: 1}
+    ComboWindow: 0
+    MoveLock: 0
+    StartEffects: 
+    ConsumeTag: -1
+    ConsumeEffects: 
+  - Index: 501
+    NameId: 3501
+    DescId: 0
+    Type: 1
+    Slot: 0
+    AbilityTags: 1b000000
+    CastTime: 0.45
+    Cooldown: 1.2
+    Range: 2.2
+    Radius: 0
+    Angle: 100
+    Speed: 0
+    Count: 1
+    Spread: 0
+    Damage: 100
+    DamageType: 0
+    HitEffects: 54000000
+    SelfEffects: 
+    Anims: 01000000
+    CastCue: 1
+    HitCue: 2
+    Projectile: 0
+    Icon: 0
+    IconColor: {r: 0.33333334, g: 0.33333334, b: 0.33333334, a: 1}
+    ComboWindow: 0
+    MoveLock: 0.9
+    StartEffects: 
+    ConsumeTag: -1
+    ConsumeEffects: 
+  - Index: 502
+    NameId: 3502
+    DescId: 0
+    Type: 2
+    Slot: 0
+    AbilityTags: 1b000000
+    CastTime: 0.5
+    Cooldown: 1.6
+    Range: 14
+    Radius: 0.4
+    Angle: 0
+    Speed: 22
+    Count: 1
+    Spread: 0
+    Damage: 90
+    DamageType: 0
+    HitEffects: 59000000
+    SelfEffects: 
+    Anims: 03000000
+    CastCue: 0
+    HitCue: 2
+    Projectile: 122
+    Icon: 0
+    IconColor: {r: 0.33333334, g: 0.33333334, b: 0.33333334, a: 1}
+    ComboWindow: 0
+    MoveLock: 0.8
+    StartEffects: 
+    ConsumeTag: -1
+    ConsumeEffects: 
+  - Index: 503
+    NameId: 3503
+    DescId: 0
+    Type: 1
+    Slot: 0
+    AbilityTags: 1b000000
+    CastTime: 0.55
+    Cooldown: 1.5
+    Range: 2.6
+    Radius: 0
+    Angle: 120
+    Speed: 0
+    Count: 1
+    Spread: 0
+    Damage: 110
+    DamageType: 0
+    HitEffects: 58000000
+    SelfEffects: 
+    Anims: 01000000
+    CastCue: 1
+    HitCue: 2
+    Projectile: 0
+    Icon: 0
+    IconColor: {r: 0.33333334, g: 0.33333334, b: 0.33333334, a: 1}
+    ComboWindow: 0
+    MoveLock: 1
+    StartEffects: 
+    ConsumeTag: -1
+    ConsumeEffects: 
+  - Index: 504
+    NameId: 3504
+    DescId: 0
+    Type: 3
+    Slot: 1
+    AbilityTags: 1b000000
+    CastTime: 0.45
+    Cooldown: 9
+    Range: 8
+    Radius: 1.4
+    Angle: 0
+    Speed: 0
+    Count: 1
+    Spread: 0
+    Damage: 120
+    DamageType: 0
+    HitEffects: 0b000000
+    SelfEffects: 
+    Anims: 08000000
+    CastCue: 4
+    HitCue: 2
+    Projectile: 0
+    Icon: 0
+    IconColor: {r: 0.33333334, g: 0.33333334, b: 0.33333334, a: 1}
+    ComboWindow: 0
+    MoveLock: 0
+    StartEffects: 
+    ConsumeTag: -1
+    ConsumeEffects: 
+  - Index: 511
+    NameId: 3511
+    DescId: 0
+    Type: 1
+    Slot: 0
+    AbilityTags: 1b000000
+    CastTime: 0.6
+    Cooldown: 1.4
+    Range: 3.2
+    Radius: 0
+    Angle: 140
+    Speed: 0
+    Count: 2
+    Spread: 0
+    Damage: 130
+    DamageType: 0
+    HitEffects: 
+    SelfEffects: 
+    Anims: 0100000002000000
+    CastCue: 1
+    HitCue: 2
+    Projectile: 0
+    Icon: 0
+    IconColor: {r: 0.33333334, g: 0.33333334, b: 0.33333334, a: 1}
+    ComboWindow: 2
+    MoveLock: 1.1
+    StartEffects: 
+    ConsumeTag: -1
+    ConsumeEffects: 
+  - Index: 512
+    NameId: 3512
+    DescId: 0
+    Type: 7
+    Slot: 1
+    AbilityTags: 1b000000
+    CastTime: 0.8
+    Cooldown: 10
+    Range: 12
+    Radius: 4
+    Angle: 0
+    Speed: 0
+    Count: 1
+    Spread: 0
+    Damage: 180
+    DamageType: 0
+    HitEffects: 0b00000056000000
+    SelfEffects: 
+    Anims: 08000000
+    CastCue: 7
+    HitCue: 2
+    Projectile: 0
+    Icon: 0
+    IconColor: {r: 0.33333334, g: 0.33333334, b: 0.33333334, a: 1}
+    ComboWindow: 0
+    MoveLock: 0.6
+    StartEffects: 
+    ConsumeTag: -1
+    ConsumeEffects: 
+  - Index: 513
+    NameId: 3513
+    DescId: 0
+    Type: 2
+    Slot: 2
+    AbilityTags: 1b000000
+    CastTime: 0.6
+    Cooldown: 7
+    Range: 18
+    Radius: 0.9
+    Angle: 0
+    Speed: 16
+    Count: 3
+    Spread: 30
+    Damage: 110
+    DamageType: 0
+    HitEffects: 
+    SelfEffects: 
+    Anims: 03000000
+    CastCue: 0
+    HitCue: 13
+    Projectile: 123
+    Icon: 0
+    IconColor: {r: 0.33333334, g: 0.33333334, b: 0.33333334, a: 1}
+    ComboWindow: 0
+    MoveLock: 0.8
+    StartEffects: 
+    ConsumeTag: 74
+    ConsumeEffects: 57000000
+  - Index: 514
+    NameId: 3514
+    DescId: 0
+    Type: 5
+    Slot: 4
+    AbilityTags: 1b000000
+    CastTime: 0.5
+    Cooldown: 25
+    Range: 0
+    Radius: 0
+    Angle: 0
+    Speed: 0
+    Count: 1
+    Spread: 0
+    Damage: 0
+    DamageType: 0
+    HitEffects: 
+    SelfEffects: 17000000
+    Anims: 03000000
+    CastCue: 3
+    HitCue: 0
+    Projectile: 0
+    Icon: 0
+    IconColor: {r: 0.33333334, g: 0.33333334, b: 0.33333334, a: 1}
+    ComboWindow: 0
+    MoveLock: 0.8
+    StartEffects: 
+    ConsumeTag: -1
+    ConsumeEffects: 
+  - Index: 303
+    NameId: 3303
+    DescId: 0
+    Type: 4
+    Slot: 4
+    AbilityTags: 17000000
+    CastTime: 0.35
+    Cooldown: 8
+    Range: 12
+    Radius: 3.5
+    Angle: 0
+    Speed: 0
+    Count: 1
+    Spread: 0
+    Damage: 65
+    DamageType: 1
+    HitEffects: 54000000
+    SelfEffects: 
+    Anims: 03000000
+    CastCue: 24
+    HitCue: 0
+    Projectile: 0
+    Icon: 0
+    IconColor: {r: 0.43529412, g: 0.78431374, b: 1, a: 1}
+    ComboWindow: 0
+    MoveLock: 0.35
+    StartEffects: 
+    ConsumeTag: 72
+    ConsumeEffects: 55000000
+  - Index: 304
+    NameId: 3304
+    DescId: 0
+    Type: 2
+    Slot: 4
+    AbilityTags: 17000000
+    CastTime: 0.3
+    Cooldown: 8
+    Range: 12
+    Radius: 1.4
+    Angle: 0
+    Speed: 9
+    Count: 1
+    Spread: 0
+    Damage: 55
+    DamageType: 1
+    HitEffects: 56000000
+    SelfEffects: 
+    Anims: 03000000
+    CastCue: 0
+    HitCue: 26
+    Projectile: 125
+    Icon: 0
+    IconColor: {r: 0.7058824, g: 0.54901963, b: 1, a: 1}
+    ComboWindow: 0
+    MoveLock: 0.3
+    StartEffects: 
+    ConsumeTag: 74
+    ConsumeEffects: 57000000
+  - Index: 305
+    NameId: 3305
+    DescId: 0
+    Type: 2
+    Slot: 5
+    AbilityTags: 17000000
+    CastTime: 0.3
+    Cooldown: 7
+    Range: 14
+    Radius: 0.7
+    Angle: 0
+    Speed: 16
+    Count: 1
+    Spread: 0
+    Damage: 60
+    DamageType: 1
+    HitEffects: 58000000
+    SelfEffects: 
+    Anims: 03000000
+    CastCue: 0
+    HitCue: 34
+    Projectile: 126
+    Icon: 0
+    IconColor: {r: 0.3529412, g: 0.627451, b: 0.3529412, a: 1}
+    ComboWindow: 0
+    MoveLock: 0.3
+    StartEffects: 
+    ConsumeTag: -1
+    ConsumeEffects: 
+  - Index: 306
+    NameId: 3306
+    DescId: 0
+    Type: 2
+    Slot: 5
+    AbilityTags: 17000000
+    CastTime: 0.25
+    Cooldown: 7
+    Range: 16
+    Radius: 0.5
+    Angle: 0
+    Speed: 26
+    Count: 1
+    Spread: 0
+    Damage: 50
+    DamageType: 1
+    HitEffects: 59000000
+    SelfEffects: 
+    Anims: 03000000
+    CastCue: 0
+    HitCue: 35
+    Projectile: 127
+    Icon: 0
+    IconColor: {r: 0.47058824, g: 0.8235294, b: 0.78431374, a: 1}
+    ComboWindow: 0
+    MoveLock: 0.25
+    StartEffects: 
+    ConsumeTag: -1
+    ConsumeEffects: 

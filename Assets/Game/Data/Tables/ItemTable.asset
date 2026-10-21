@@ -1,0 +1,236 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d8f635a695d8074e9422dbd5926393c, type: 3}
+  m_Name: ItemTable
+  m_EditorClassIdentifier: Game.Runtime::ItemTable
+  Source: {fileID: 4900000, guid: 6c7d00bfb11eff64bbf53cc3601eff4c, type: 3}
+  Rows:
+  - Index: 1
+    NameId: 2001
+    DescId: 2101
+    Icon: 208
+    Type: 0
+    MaxStack: 500
+    GearLevel: 0
+    EquipSlot: -1
+    Weapon: 0
+    Effects: 
+    DropModel: 0
+  - Index: 2
+    NameId: 2002
+    DescId: 2102
+    Icon: 209
+    Type: 0
+    MaxStack: 500
+    GearLevel: 0
+    EquipSlot: -1
+    Weapon: 0
+    Effects: 
+    DropModel: 0
+  - Index: 3
+    NameId: 2003
+    DescId: 2103
+    Icon: 210
+    Type: 0
+    MaxStack: 500
+    GearLevel: 0
+    EquipSlot: -1
+    Weapon: 0
+    Effects: 
+    DropModel: 0
+  - Index: 4
+    NameId: 2004
+    DescId: 2104
+    Icon: 212
+    Type: 0
+    MaxStack: 500
+    GearLevel: 0
+    EquipSlot: -1
+    Weapon: 0
+    Effects: 
+    DropModel: 0
+  - Index: 5
+    NameId: 2005
+    DescId: 2105
+    Icon: 202
+    Type: 0
+    MaxStack: 500
+    GearLevel: 0
+    EquipSlot: -1
+    Weapon: 0
+    Effects: 
+    DropModel: 0
+  - Index: 6
+    NameId: 2006
+    DescId: 2106
+    Icon: 203
+    Type: 0
+    MaxStack: 200
+    GearLevel: 0
+    EquipSlot: -1
+    Weapon: 0
+    Effects: 
+    DropModel: 0
+  - Index: 10
+    NameId: 2010
+    DescId: 2110
+    Icon: 200
+    Type: 1
+    MaxStack: 1
+    GearLevel: 6
+    EquipSlot: 0
+    Weapon: 1
+    Effects: 3c000000
+    DropModel: 0
+  - Index: 11
+    NameId: 2011
+    DescId: 2111
+    Icon: 200
+    Type: 1
+    MaxStack: 1
+    GearLevel: 16
+    EquipSlot: 0
+    Weapon: 1
+    Effects: 3d000000
+    DropModel: 0
+  - Index: 12
+    NameId: 2012
+    DescId: 2112
+    Icon: 201
+    Type: 1
+    MaxStack: 1
+    GearLevel: 6
+    EquipSlot: 0
+    Weapon: 2
+    Effects: 3e000000
+    DropModel: 0
+  - Index: 13
+    NameId: 2013
+    DescId: 2113
+    Icon: 201
+    Type: 1
+    MaxStack: 1
+    GearLevel: 16
+    EquipSlot: 0
+    Weapon: 2
+    Effects: 3f000000
+    DropModel: 0
+  - Index: 20
+    NameId: 2020
+    DescId: 2120
+    Icon: 205
+    Type: 2
+    MaxStack: 1
+    GearLevel: 6
+    EquipSlot: 1
+    Weapon: 0
+    Effects: 40000000
+    DropModel: 0
+  - Index: 21
+    NameId: 2021
+    DescId: 2120
+    Icon: 205
+    Type: 2
+    MaxStack: 1
+    GearLevel: 6
+    EquipSlot: 2
+    Weapon: 0
+    Effects: 40000000
+    DropModel: 0
+  - Index: 22
+    NameId: 2022
+    DescId: 2120
+    Icon: 205
+    Type: 2
+    MaxStack: 1
+    GearLevel: 6
+    EquipSlot: 3
+    Weapon: 0
+    Effects: 40000000
+    DropModel: 0
+  - Index: 23
+    NameId: 2023
+    DescId: 2120
+    Icon: 205
+    Type: 2
+    MaxStack: 1
+    GearLevel: 6
+    EquipSlot: 4
+    Weapon: 0
+    Effects: 40000000
+    DropModel: 0
+  - Index: 24
+    NameId: 2024
+    DescId: 2124
+    Icon: 204
+    Type: 2
+    MaxStack: 1
+    GearLevel: 16
+    EquipSlot: 1
+    Weapon: 0
+    Effects: 41000000
+    DropModel: 0
+  - Index: 25
+    NameId: 2025
+    DescId: 2124
+    Icon: 204
+    Type: 2
+    MaxStack: 1
+    GearLevel: 16
+    EquipSlot: 2
+    Weapon: 0
+    Effects: 41000000
+    DropModel: 0
+  - Index: 26
+    NameId: 2026
+    DescId: 2124
+    Icon: 204
+    Type: 2
+    MaxStack: 1
+    GearLevel: 16
+    EquipSlot: 3
+    Weapon: 0
+    Effects: 41000000
+    DropModel: 0
+  - Index: 27
+    NameId: 2027
+    DescId: 2124
+    Icon: 204
+    Type: 2
+    MaxStack: 1
+    GearLevel: 16
+    EquipSlot: 4
+    Weapon: 0
+    Effects: 41000000
+    DropModel: 0
+  - Index: 30
+    NameId: 2030
+    DescId: 2130
+    Icon: 202
+    Type: 3
+    MaxStack: 20
+    GearLevel: 0
+    EquipSlot: -1
+    Weapon: 0
+    Effects: 1f000000
+    DropModel: 0
+  - Index: 31
+    NameId: 2031
+    DescId: 2131
+    Icon: 215
+    Type: 3
+    MaxStack: 10
+    GearLevel: 0
+    EquipSlot: -1
+    Weapon: 0
+    Effects: 20000000
+    DropModel: 0

@@ -1,0 +1,48 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 690304f46be983b489f9f026721cc40c, type: 3}
+  m_Name: LootTable
+  m_EditorClassIdentifier: Game.Runtime::LootTable
+  Source: {fileID: 4900000, guid: 983853a9a2005ec4f89a67d5751df7ce, type: 3}
+  Rows:
+  - Index: 1
+    Items: 050000000300000001000000
+    Min: 010000000200000001000000
+    Max: 020000000400000003000000
+    Chance:
+    - 0.8
+    - 0.5
+    - 0.4
+  - Index: 2
+    Items: 0500000003000000
+    Min: 0100000002000000
+    Max: 0200000004000000
+    Chance:
+    - 0.8
+    - 0.6
+  - Index: 3
+    Items: 050000000400000006000000
+    Min: 020000000200000001000000
+    Max: 040000000400000002000000
+    Chance:
+    - 1
+    - 0.7
+    - 0.4
+  - Index: 4
+    Items: 05000000060000000b00000018000000
+    Min: 08000000080000000100000001000000
+    Max: 0c0000000f0000000100000001000000
+    Chance:
+    - 1
+    - 1
+    - 1
+    - 1

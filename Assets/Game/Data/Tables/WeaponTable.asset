@@ -1,0 +1,40 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c74cee7c2094764798b66b825d4df02, type: 3}
+  m_Name: WeaponTable
+  m_EditorClassIdentifier: Game.Runtime::WeaponTable
+  Source: {fileID: 4900000, guid: 8920bd62077e52545b8a12759b28b8dd, type: 3}
+  Rows:
+  - Index: 1
+    Primary: 101
+    SkillQ: 102
+    SkillE: 103
+    Model: 110
+    HarvestWood: 1
+    HarvestStone: 0.6
+    HarvestPlant: 1.5
+  - Index: 2
+    Primary: 111
+    SkillQ: 112
+    SkillE: 113
+    Model: 111
+    HarvestWood: 0.6
+    HarvestStone: 1.2
+    HarvestPlant: 1
+  - Index: 3
+    Primary: 121
+    SkillQ: 0
+    SkillE: 0
+    Model: 0
+    HarvestWood: 0.3
+    HarvestStone: 0.3
+    HarvestPlant: 1

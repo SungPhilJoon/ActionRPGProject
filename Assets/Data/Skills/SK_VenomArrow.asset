@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 722fc0756e42f7e44a2b77c26147bd9f, type: 3}
+  m_Name: SK_VenomArrow
+  m_EditorClassIdentifier: ActionRPG.Runtime::ActionRPG.Skills.SkillDefinition
+  Id: 8
+  DisplayName: "\uB3C5\uD654\uC0B4"
+  Description: "\uB9DE\uC740 \uC801\uC744 \uC911\uB3C5\uC2DC\uD0A4\uB294 \uD654\uC0B4.
+    \uCD5C\uB300 3\uBC88\uAE4C\uC9C0 \uC911\uCCA9\uB41C\uB2E4."
+  Icon: {fileID: 0}
+  Category: 3
+  DeckCost: 2
+  RequiredWeapon: 2
+  AutoSwapWeapon: 1
+  Cooldown: 8
+  ManaCost: 16
+  MovementLockTime: 0.35
+  CastTime: 0.25
+  UsesGlobalCooldown: 1
+  Targeting: 1
+  Range: 28
+  Effects:
+  - {fileID: 11400000, guid: da50999053aec73488deeec2170a75c7, type: 2}
+  CastVfxPrefab: {fileID: 0}
+  CastSfx: {fileID: 0}
