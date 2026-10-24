@@ -39,13 +39,9 @@
 | 배치 | `WeatherMakerPrefab` 인스턴스 (태양/달/하늘/구름) |
 | 시간 | 게임(`DayNightManager`)이 주인. `WeatherMakerSkyBridge.SetHour` 가 매 프레임 `TimeOfDay` 를 덮어쓰고 WeatherMaker 자체 Speed 는 0 |
 | 태양 궤적 | 위도 40°, 경도 0, 시간대 0, 9월 21일(추분) → 일출/일몰 ≈ 6시/18시, 정오에 최고 고도 |
-| 밝기 | `DirectionalLightIntensityMultipliers["GameSunBoost"] = 1.7` (쿼터뷰에서 지면이 어둡지 않도록) |
-| 햇빛 판정 | `SkyBridge.Controller.DirectionToSun` = WeatherMaker Sun 라이트 방향 → 화면의 해와 `SunExposure` 레이캐스트 방향이 일치. 그림자 메시와 같은 모양의 SunBlocker 콜라이더로 판정 형태도 일치 (Issues 26) |
-| 밤 | 밤 Ambient ×6, 달빛 ×1.6, VP_Night 노출 1.5 (Issues 27) |
-| 구름 그림자 | 끔 (판정과 일치시키기 위해) |
-| 볼륨 | 태양 고도(0~12°)로 Day/Night Volume weight 블렌드 |
-| 렌더 설정 | 카메라 Solid Color(0,0,0,0)+HDR, Skybox = WeatherMakerSkyBoxMaterial, Ambient Trilight (색은 WeatherMaker DayNight 프로필이 런타임에 결정), Reflection Custom, Unity Fog 끔 |
+| 햇빛 판정 | `SkyBridge.Controller.DirectionToSun` = WeatherMaker Sun 라이트 방향 → 화면의 해와 `SunExposure` 레이캐스트 방향이 일치 (Issues 26) |
 
+밝기 배율, 밤 Ambient, 구름 그림자, 낮/밤 볼륨, 카메라·Skybox·Fog 등 **렌더 설정은 [URP.md 1~3절](URP.md#1-조명--그림자)** 이 원본입니다.
 WeatherMaker 를 지우면 `SkyBridge.Controller == null` 이 되어 `DayNightManager` 가 기존 방식(자체 Directional Light 회전)으로 동작합니다.
 
 ## 4. 건축 모듈 (ASTROFISH, 3m 그리드)
@@ -72,10 +68,10 @@ WeatherMaker 를 지우면 `SkyBridge.Controller == null` 이 되어 `DayNightMa
 | 상인 | Crafting Pack Crafter | Idle/Wave |
 
 - 무기 소켓: 같은 포즈(`2Hand-Sword-Idle` 0프레임)를 RPG-Character 와 unity-chan 에 샘플링해 RPG 검 위치를 unity-chan RightHand 기준으로 변환 (`computeWeaponSocket`), 크기 보정 0.7.
-- 근접 콤보는 범위 안에 적이 없고 채집 노드가 있으면 노드 종류에 맞는 채집 애니메이션(Chop/Mine/Gather)을 재생 (`ResourceNode.FindHarvestAnim`).
-- 건축 시 1.1초 이동 잠금 + Build 애니메이션.
+- 근접 콤보는 범위 안에 적이 없고 채집 노드가 있으면 그 노드의 채집 애니메이션(`ResourceNodeTable.Anim` → AnimationTable 12~14: Chop/Mine/Gather)을 재생 (`ResourceNode.FindHarvestAnim`).
+- 건축 시 1.1초 이동 잠금 + Build 애니메이션 (`ConstTable.BuildAnim`).
+- 애니메이션 재생 규칙(AnimationTable)은 [README.md 5절](README.md#5-데이터-테이블-csv--scriptableobject).
 
-## 6. 미검증 / 알려진 문제 (솔직하게)
+## 6. 미검증 / 알려진 문제
 
-- **Play 모드에서 지형 풀이 보이지 않음 (조사 중)**: 편집 모드 Scene 뷰 (256,100) 에서는 풀이 그려지는 것을 확인했지만, Play 중 (215,150)·(256,96) 의 `GetDetailLayer` 합이 0 으로 읽혔고 화면에도 풀이 없었다. 시작 지점은 의도적으로 흙바닥이라 0 이 맞지만 (215,150) 은 원인 미확정. 후보: 샘플링 좌표 변환 오류, 해당 위치 Splat 가중치가 낮아 풀이 심어지지 않음, 런타임 변경. Issues 19.
-- 육안 확인을 다 하지 못한 곳: Troll Ridge, Minotaur Arena, 호수 근처 근접 화면, 신규 몬스터 전투 애니메이션 전체, 건축 모듈 연결부(벽-기둥 이음새), 밤 화면 톤.
+지형 풀 미표시(Issues 19), 육안 미확인 지역 목록은 [Status.md 3절](Status.md#3-알려진-문제).

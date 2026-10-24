@@ -1,7 +1,8 @@
 # URP 기능 사용 내역 (2026-10-14 갱신: WeatherMaker 통합, 512m 오픈월드)
 
 파이프라인 에셋: `Assets/Settings/PC_RPAsset.asset` + `PC_Renderer.asset` (기존 프로젝트 설정을 그대로 사용하고, WorldBuilder 가 일부 값을 조정).
-최적화는 요구사항에 따라 아직 하지 않았습니다. 비용이 큰 지점은 마지막 절에 정리했습니다.
+최적화는 요구사항에 따라 아직 하지 않았습니다. 비용이 큰 지점은 [Issues.md 18](Issues.md#18-성능-관찰-포인트-최적화는-직접-진행-예정) 에 모아 두었습니다.
+게임 시간·태양 궤적·지역 배치는 [World.md](World.md) 가 원본이고, 이 문서는 **렌더 설정**의 원본입니다.
 
 > 참고: `Packages/manifest.json` 에 **HDRP 패키지도 들어 있습니다** (외부 에셋 임포트 때 추가된 것으로 보입니다). 활성 파이프라인은 URP 이고, 제가 제거하지는 않았습니다. 쓰지 않는다면 제거하면 임포트/컴파일 시간이 줄어듭니다.
 
@@ -71,16 +72,6 @@ WeatherMaker 의 "Enable URP" 메뉴는 파이프라인 에셋을 교체하므�
 - Tree: 재채색 Kenney 나무 메시 (빌보드 미사용)
 - 호수: URP Lit Transparent 평면
 
-## 7. 성능 관찰 포인트 (직접 프로파일링할 후보)
+## 7. 성능 관찰 포인트
 
-| 지점 | 예상 비용 | 메모 |
-|---|---|---|
-| Soft Shadow + Cascade 2 + 그림자 거리 90 | GPU | 쿼터뷰라 거리를 줄일 여지가 큼 |
-| SSAO | GPU (풀해상도) | Downsample 옵션 |
-| WeatherMaker 구름/대기 | GPU 풀스크린 | 구름 프로필 품질 조정 가능 |
-| Detail 풀 인스턴싱 | GPU 정점 | 밀도 / detailObjectDistance |
-| Terrain Tree 메시 약 2,300 (빌보드 끔) | 드로우콜/정점 | 빌보드 지원 나무로 교체 시 개선 |
-| TheTalesFactory 포토스캔 바위 | 정점 / 텍스처 메모리 | LOD 확인 |
-| 횃불/투사체 Point Light | Forward 라이트 수 제한 | Forward+ 전환 검토 |
-| 파티클 Overdraw | GPU | 가산 블렌드 겹침 |
-| TMP 데미지 숫자 | Canvas 리빌드 | 숫자마다 별도 텍스트 |
+렌더링(GPU) 항목을 포함한 전체 목록은 [Issues.md 18](Issues.md#18-성능-관찰-포인트-최적화는-직접-진행-예정) 이 원본입니다.

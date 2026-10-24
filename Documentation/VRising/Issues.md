@@ -35,7 +35,8 @@
 
 ## 7. 에디터가 포커스가 없으면 Play 모드 프레임이 진행되지 않음
 
-- 자동화 테스트 중 `Time.frameCount` 가 1 에 멈춤. Editor 창 포커스 + `Application.runInBackground = true` 로 해결 (게임 코드 문제 아님).
+- 자동화 테스트 중 `Time.frameCount` 가 1~2 에 멈춤 (2026-10-21 에도 재현). 게임 코드 문제가 아니라 에디터가 비활성 창의 플레이 루프를 멈추기 때문.
+- 해결: Editor 창 포커스 + `Application.runInBackground = true`. 포커스를 줄 수 없을 때는 일시정지 후 `EditorApplication.Step()` 반복 호출로 프레임 진행.
 
 ## 8. Kenney 나무와 Terrain Tree 빌보드
 
@@ -62,9 +63,9 @@
   - 스크린 좌표 변환에 캔버스 카메라를 넘기도록 `CanvasUtil.GetEventCamera` 를 추가해, 캔버스를 Camera 모드로 바꿔도 위치가 맞게 했다 (DamageNumberLayer 도 동일 적용).
 - **성능 메모**: 매 프레임 전 액터 순회 + 스크린 변환. 프로파일링 후보.
 
-## 13. (테스트 환경) 에디터 비활성 시 Play 모드 정지
+## 13. (7 로 통합)
 
-- 에디터 창이 포커스를 잃으면 플레이 루프가 멈춰 자동 테스트가 진행되지 않았다. 일시정지 후 `EditorApplication.Step()` 을 반복 호출해 프레임을 진행시켜 확인했다. 게임 코드 문제는 아니다.
+- 같은 문제(에디터 비활성 시 Play 정지)라 Issues 7 에 합쳤다. 번호는 다른 문서의 참조 때문에 유지.
 
 ## 15. CSV 컬럼 추가와 컴파일 순서
 
@@ -103,6 +104,12 @@
 | TheTalesFactory 포토스캔 바위 | 고폴리 메시 + 4K 텍스처. LOD 확인 필요 |
 | WeatherMaker 구름/하늘 패스 | 풀스크린 GPU 패스. 구름 품질 프로필로 조정 가능 |
 | Magic Pig / unity-chan 스키닝 | 몬스터 20마리 SkinnedMesh. Animator Culling Mode 확인 후보 |
+| Soft Shadow + Cascade 2 + 그림자 거리 90 (GPU) | 쿼터뷰라 거리를 줄일 여지가 큼 |
+| SSAO (GPU, 풀해상도) | Downsample 옵션 |
+| 횃불/투사체 Point Light | Forward 라이트 수 제한. Forward+ 전환 검토 |
+| 파티클 Overdraw (GPU) | 가산 블렌드 겹침 |
+| TMP 데미지 숫자 | Canvas 리빌드, 숫자마다 별도 텍스트 |
+| Batches 700~900 | 원인 분해는 Issues 34 |
 
 ## 19. 지형 풀이 그려지지 않음 (부분 해결, 조사 중)
 
@@ -125,7 +132,7 @@
 ## 22. WeatherMaker 와 게임 낮밤의 시간 주인 충돌
 
 - **문제**: WeatherMaker 도 자체 시간 흐름이 있어, 두 시스템이 각자 해를 돌리면 화면의 해와 햇빛 화상 판정 방향이 어긋난다.
-- **해결**: 게임이 시간의 주인. WeatherMaker Speed/NightSpeed = 0, 매 프레임 `TimeOfDay = hour × 3600`. 태양 방향은 거꾸로 WeatherMaker Sun 라이트에서 읽어 판정에 사용 (`ISkyController` 브리지, DesignPatterns 참고).
+- **해결**: 게임이 시간의 주인. WeatherMaker Speed/NightSpeed = 0, 매 프레임 `TimeOfDay = hour × 3600`. 태양 방향은 거꾸로 WeatherMaker Sun 라이트에서 읽어 판정에 사용 (`ISkyController` 브리지, [Architecture.md 5절](Architecture.md#5-사용한-디자인-패턴) 참고).
 - **어셈블리 문제**: WeatherMaker 는 asmdef 가 없어 Assembly-CSharp 에 있다. Game.Runtime(asmdef)은 Assembly-CSharp 를 참조할 수 없으므로, 인터페이스(`ISkyController`)는 Game.Runtime 에, 구현(`WeatherMakerSkyBridge`)은 asmdef 없는 `Assets/Game/Integration` 에 두었다. 브리지는 `RuntimeInitializeOnLoadMethod` 로 씬의 WeatherMaker 에 자동 부착.
 - **밝기**: WeatherMaker 태양만으로는 쿼터뷰 지면이 어두워 `DirectionalLightIntensityMultipliers` 에 1.7 배율 + Day 볼륨 노출 0.35.
 
@@ -304,6 +311,8 @@ Play 중 폐허 마을(300, 205), 낮 13시, `UnityStats` 를 항목별로 끄�
 - **확인 (Play, 걷기 중, 애니메이션 컬링 끈 상태)**: 이동 뼈의 루트 대비 전방 오프셋 — 코브라 0.00m, 트롤 0.00m, 메두사 메시 중심 −0.05~−0.04m (여러 루프 동안 1cm 범위, 되돌아오기 0회). 수정 전 메두사 0~1.2m 왕복.
 - **측정 함정**: 몬스터 Animator 는 `CullUpdateTransforms` 라서 화면 밖에서는 뼈가 갱신되지 않는다 → 화면 밖 측정은 "멈춤" 으로 보인다. 그리고 편집 모드에서 `Animator.Update` 수동 호출로 잰 값도 뼈가 움직이지 않아 무효였다.
 - 부수 효과: 공격 동작 안의 전진(돌진 모션)도 제자리가 된다. 실제 돌진은 어빌리티(Dash/Leap)가 이동시키므로 위치의 주인은 Agent 하나로 유지된다.
+- **2026-10-21 갱신**: 2단계 `AnimationInPlace` 는 사용자 결정으로 삭제했다 (빌더의 부착 코드도 제거, 몬스터 프리팹 4개의 빈 컴포넌트 정리). 지금은 1단계 임포트 설정만 남아 있다.
+  메두사는 임포트 설정만으로는 해결되지 않았던 경우라 **다시 확인이 필요**하다 (Status.md 3절).
 
 ## 36. 귀환(ReturnHome) 중 몬스터가 제자리에 멈춤 — 매 프레임 SetDestination
 

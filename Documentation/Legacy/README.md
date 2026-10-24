@@ -1,4 +1,15 @@
-# ActionRPGProject — 3D 협동 액션 RPG 프레임워크
+# ActionRPGProject — 3D 협동 액션 RPG 프레임워크 (이전 프로젝트)
+
+> **이전 프로젝트 문서입니다.** `Assets/Scripts` · `Assets/Editor` · `Packages/com.actionrpg.foundation` 의 Netcode 덱/던전 RPG 를 설명합니다.
+> 현재 개발 중인 게임(BLOODLINE, `Assets/Game`)은 [../VRising/README.md](../VRising/README.md) 를 보세요.
+>
+> | 문서 | 내용 |
+> |---|---|
+> | 이 문서 | 셋업, 조작, 시스템별 사용법 |
+> | [Architecture.md](Architecture.md) | 어셈블리 · 권한 모델 · 클래스 역할 · 동작 흐름 |
+> | [AbilitySystem.md](AbilitySystem.md) | GAS 상세 (어트리뷰트, 이펙트, 태그, 큐, 리슨 서버 예측) |
+> | [UML.md](UML.md) | 클래스 다이어그램 (Mermaid) |
+> | [CHANGELOG.md](CHANGELOG.md) | 1~3차 작업 기록 |
 
 Unity 6000.3.24f1 / URP / Netcode for GameObjects 2.0.0 기반.
 중세 배경, 검과 활, 4인 협동 던전, 덱에서 고른 스킬 4개로 싸우는 3D 액션 RPG의 뼈대다.
@@ -23,7 +34,7 @@ ActionRPGProject/
     Resources/          SkillDatabase, 네트워크 프리팹 목록
     Prefabs/            캐릭터 · 적 · 발사체 · UI
     Scenes/             MainMenu, Tutorial, Dungeon_01
-    Documentation/       이 문서
+  Documentation/       이 문서 (2026-10-24 에 Assets 밖 저장소 루트로 이동)
   Packages/
     manifest.json        패키지 의존성 (OpenUPM scoped registry 포함)
     com.actionrpg.foundation/   로컬 패키지 — 자주 바뀌지 않는 기반 코드 (아래 1장)
@@ -127,17 +138,9 @@ Attack.AddBinding("<Gamepad>/rightTrigger");
 
 ### 3.1 권한 모델
 
-PvE 협동이라 "조작감 우선 / 전투는 서버 판정"으로 나눴다.
-
-| 대상 | 권한 | 이유 |
-|---|---|---|
-| 플레이어 이동 | **소유 클라이언트** (`ClientNetworkTransform`) | 입력 지연 없이 즉시 움직여야 액션 게임이 된다 |
-| 적 이동 / AI | **서버** (`NetworkTransform`) | 모두가 같은 적 위치를 봐야 한다 |
-| 체력 · 마나 · 능력치 · 상태이상 | **서버** (GAS 어트리뷰트 · 이펙트) | 치팅 방지의 핵심 지점 |
-| 평타 · 스킬 | **리슨 서버식 GAS 예측** — 소유 클라이언트가 먼저 실행, 서버가 검증 | 거절되면 `ClientActivateAbilityFailedRpc` 로 예측 쿨다운 · 비용을 되돌린다 |
-| 발사체 | 궤적은 **모든 피어가 동일 계산**, 명중은 **서버** (발사 시점 피해 스펙 적용) | 빠른 화살이 끊겨 보이지 않게 |
-
-> 능력치 · 스킬 시스템은 언리얼 GAS 구조로 되어 있다. 자세한 내용은 [AbilitySystem.md](AbilitySystem.md).
+PvE 협동이라 "조작감 우선 / 전투는 서버 판정"으로 나눴다. 이동은 소유 클라이언트, 적 · 능력치 · 피해 판정은 서버,
+평타 · 스킬은 리슨 서버식 GAS 예측(클라이언트 선실행 → 서버 검증)이다.
+대상별 표는 [Architecture.md 1.2](Architecture.md#12-권한-모델--누가-무엇을-결정하는가-리슨-서버), 예측 흐름은 [AbilitySystem.md 9장](AbilitySystem.md#9-리슨-서버-네트워크-모델).
 
 > 소유자가 아닌 피어에서는 `CharacterMotor` 를 **꺼야** 한다.
 > 켜 두면 CharacterController 의 중력이 복제된 좌표와 매 프레임 싸운다.
@@ -145,26 +148,8 @@ PvE 협동이라 "조작감 우선 / 전투는 서버 판정"으로 나눴다.
 
 ### 3.2 폴더 (게임플레이 어셈블리)
 
-```
-Assets/Scripts/                 ActionRPG.Runtime asmdef
-  Input/       InputReader, RPGInputActions (Input System 코드 기반 액션)
-  Abilities/   GAS 게임 쪽: 태그, AttributeSet(Health/Mana/Combat), 피해 · 회복 Execution, 쿨다운 MMC, GA_BasicAttack, GameData
-  Combat/      Health(HealthSet 래퍼), Projectile, 피해 수식, 범위 판정
-  Character/   CharacterMotor, PlayerController, 카메라 리그, 무기, 상호작용
-  Skills/      SkillDefinition(GameplayAbility), SkillCaster, SkillDatabase, 덱, Effects/
-  AI/          EnemyDefinition, EnemyBrain, ThreatTable
-  Dungeon/     DungeonManager, DungeonRoom, DungeonDoor
-  Networking/  ConnectionManager, SessionManager, PlayerSpawnSystem, PlayerNetworkIdentity
-  Save/        PlayerProfileData(Protobuf), PlayerProfileService — Foundation 의 Save 계층에 얹는 게임 쪽 데이터
-  Tutorial/    TutorialDirector, TutorialStep + 스텝 구현들
-  UI/          HUD, 스킬 슬롯, 파티 프레임, 덱 편집, 메인 메뉴, 데미지 숫자
-  Data/        CSV 로 데이터 드리븐하는 예시 (EnemyStatRow)
-Assets/Editor/                  ActionRPG.Editor asmdef — 샘플 콘텐츠 · 프리팹 · 씬 생성기, Addressables 부트스트랩
-Packages/com.actionrpg.foundation/   ActionRPG.Foundation asmdef — 1장 참고
-```
-
-`ActionRPG.Runtime` 은 `ActionRPG.Foundation` 을 참조한다 (반대 방향은 성립하지 않는다 —
-Foundation 은 게임플레이 코드를 몰라야 재사용 가능한 기반이 된다).
+의존은 **Editor → Runtime(`Assets/Scripts`) → Foundation(`Packages/com.actionrpg.foundation`)** 한 방향이다.
+폴더별 클래스 역할은 [Architecture.md 1.1 · 3장](Architecture.md#3-클래스별-역할).
 
 ### 3.3 시스템 간 결합
 
@@ -192,14 +177,9 @@ SkillDefinition : GameplayAbility (ScriptableObject)
 
 ### 4.2 시전 흐름 (GAS)
 
-1. 소유자 `SkillCaster.TryCast(slot, aimDir, groundPoint)` — 조준 정보를 만들어 `ASC.AbilityLocalInputPressed(slot, targetData)`
-2. 원격 클라이언트는 예측 키를 만들어 어빌리티를 먼저 실행하고 `ServerTryActivateAbilityRpc` 를 보낸다 (호스트는 바로 권한 실행)
-3. `CommitAbility` 가 쿨다운 · 마나 이펙트를 적용 (클라이언트는 예측 적용 → HUD 즉시 반영)
-4. 서버가 태그(사망 · 기절 · 침묵) · 쿨다운 · 비용을 재검증하고 같은 어빌리티를 실행
-5. `CastTime` 뒤 효과 조각 실행 (효과별 `DelaySeconds` 로 다단히트)
-6. 거절되면 `ClientActivateAbilityFailedRpc` 로 예측 실행 · 쿨다운 · 비용을 되돌림
-
-자세한 흐름은 [AbilitySystem.md](AbilitySystem.md) 9장.
+`SkillCaster.TryCast` → ASC 입력 → (원격 클라이언트) 예측 실행 + `ServerTryActivateAbilityRpc` → 서버 재검증 →
+`CastTime` 뒤 효과 조각 실행, 거절 시 `ClientActivateAbilityFailedRpc` 로 되돌림.
+단계별 설명은 [AbilitySystem.md 9.2](AbilitySystem.md#92-원격-클라이언트의-스킬-발동-예측), 클래스 호출 순서는 [Architecture.md 4.7](Architecture.md#47-스킬-시전).
 
 ### 4.3 새 스킬 만들기
 
@@ -252,34 +232,14 @@ public class MyEffect : SkillEffect
 
 ## 5. 전투 시스템
 
-### 5.1 피해 공식 (`DamageExecution`)
+전투는 전부 GAS 를 거친다. 밸런싱은 `DamageExecution` · `DamageCalculator` 와 각 효과 에셋의 수치에서 만진다.
 
-```
-원 피해 = SetByCaller.Damage + 공격력 × AttackPowerScale + 주문력 × AbilityPowerScale   (공격자 값은 스냅샷)
-치명타면 × 치명타 배율
-최종 피해 = 원 피해 × (100 / (100 + 방어력))      ※ Damage.Type.True 태그면 감소 없음
-→ HealthSet.IncomingDamage 에 더해지고, HealthSet.PostGameplayEffectExecute 가 Health 를 깎는다
-```
-
-밸런싱은 `DamageExecution` · `DamageCalculator` 와 각 효과 에셋의 수치에서 만진다.
-
-### 5.2 상태이상 = 게임플레이 이펙트
-
-버프 · 디버프 · 도트 · 군중제어는 모두 `GameplayEffect` 에셋이다 (`GE_Stun`, `GE_Poison`, `GE_Slow`, `GE_Rally`).
-행동 제한은 이펙트가 부여하는 태그로 표현한다.
-
-| 태그 | 막는 것 | 확인하는 곳 |
-|---|---|---|
-| `State.Debuff.Stun` | 이동 · 평타 · 스킬 · AI | PlayerController, 어빌리티 ActivationBlockedTags, EnemyBrain |
-| `State.Debuff.Root` | 이동 | PlayerController |
-| `State.Debuff.Silence` | 스킬 | SkillDefinition ActivationBlockedTags |
-| `State.Debuff.Disarm` | 평타 | GA_BasicAttack ActivationBlockedTags |
-
-### 5.3 능력치 = 어트리뷰트
-
-`HealthSet` · `ManaSet` · `CombatSet` 이 능력치를 가진다. 플레이어 기본값은 `GE_InitStats_Player`(Override 이펙트),
-적 기본값은 `EnemyDefinition.Stats`(StatBlock)을 `AttributeInitializer` 가 옮긴다.
-보정은 지속형 이펙트의 모디파이어로 하며, 집계 순서는 언리얼과 같다: ((Base + ΣAdd) × ΣMul) ÷ ΣDiv.
+| 주제 | 원본 위치 |
+|---|---|
+| 피해 공식 (`DamageExecution`, 방어력 `100/(100+Defense)`, True 피해) | [AbilitySystem.md 5.3](AbilitySystem.md#53-execution--피해-공식) |
+| 상태이상 = 게임플레이 이펙트, 행동 제한 태그(Stun/Root/Silence/Disarm) | [AbilitySystem.md 7장](AbilitySystem.md#7-게임플레이-태그) |
+| 능력치 = 어트리뷰트 (`HealthSet` · `ManaSet` · `CombatSet`, 초기값, 집계 순서) | [AbilitySystem.md 4장](AbilitySystem.md#4-어트리뷰트) |
+| 피해 → 사망 → 부활 흐름 | [Architecture.md 4.8](Architecture.md#48-피해--사망--부활) |
 
 ---
 

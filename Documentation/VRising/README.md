@@ -1,20 +1,26 @@
 # BLOODLINE — V Rising 리버스 데모 (오프라인 1인 플레이 1차 구현)
 
-`Assets/Documentation/Project.md` 요구사항을 기준으로 만든 **V Rising 데모**입니다.
+[Project.md](../Project.md) 요구사항을 기준으로 만든 **V Rising 데모**입니다.
 기존 `Assets/Scripts`(덱/던전 액션 RPG) 코드는 건드리지 않고, 새 게임은 전부 `Assets/Game/` 아래에 독립 어셈블리로 만들었습니다.
 
-| 문서 | 내용 |
+### 문서 지도
+
+각 주제는 **한 문서에만** 자세히 쓰고, 다른 문서는 링크로 연결합니다.
+
+| 문서 | 이 문서가 원본인 내용 |
 |---|---|
-| [Status.md](Status.md) | **현재 개발 상태 요약** |
-| [CodeStructure.md](CodeStructure.md) | 코드 폴더 / 어셈블리 구조와 규칙 |
-| [StateTree.md](StateTree.md) | 언리얼 StateTree 구현, 몬스터 AI, StateTree 에디터 |
-| [World.md](World.md) | 512m 오픈월드 지역, WeatherMaker 햇빛, 건축 모듈, 캐릭터/애니메이션 에셋 매핑 |
-| [GAS.md](GAS.md) | 언리얼 GAS 구조를 Unity 로 옮긴 방식, 데이터 흐름, 피해 공식 |
-| [URP.md](URP.md) | URP 기능 사용 내역 (그림자/SSAO/볼륨/블룸/WeatherMaker 통합/Terrain) |
-| [DesignPatterns.md](DesignPatterns.md) | 사용한 디자인 패턴과 위치 |
-| [Issues.md](Issues.md) | 개발 중 문제 상황과 해결 방법 |
-| [AssetRequests.md](AssetRequests.md) | 사용 중인 외부 에셋과 부족한 에셋 목록 (조율 필요) |
-| [Multiplayer.md](Multiplayer.md) | 4인 협동 확장 계획 (미구현, 설계만) |
+| **README.md** (이 문서) | 실행 방법, 조작, 게임 루프, 데이터 테이블 규칙, 툴, 코딩 규칙 적용 |
+| [Status.md](Status.md) | 기능별 상태, 규모, **알려진 문제**, 미구현 범위, 다음 단계 |
+| [Architecture.md](Architecture.md) | 어셈블리 · 폴더 구조, 의존 규칙, 새 코드 위치, 디자인 패턴 |
+| [GAS.md](GAS.md) | 언리얼 GAS 대응, 이펙트 · 어빌리티 흐름, 피해 공식, 태그 규칙, 상태이상 |
+| [StateTree.md](StateTree.md) | 언리얼 StateTree 대응, 실행 규칙, 몬스터 트리, 에디터 사용법 |
+| [World.md](World.md) | 지형 규격, 지역, 건축 모듈, 캐릭터 · 애니메이션 매핑 |
+| [URP.md](URP.md) | 조명 · 그림자, **WeatherMaker 하늘 설정**, 포스트프로세싱, 머티리얼 변환, Terrain 렌더 |
+| [Issues.md](Issues.md) | 문제와 해결 (번호로 참조), **성능 관찰 포인트(18)** |
+| [AssetRequests.md](AssetRequests.md) | 사용 중인 외부 에셋, 부족한 에셋 요청 |
+| [Multiplayer.md](Multiplayer.md) | 4인 협동 확장 설계 (미구현) |
+| [CHANGELOG.md](CHANGELOG.md) | 날짜별 작업 기록 |
+| [../Project.md](../Project.md) | 요구사항 · 개발 규칙 원문 |
 
 ---
 
@@ -55,25 +61,19 @@
 
 ## 4. 폴더 구조
 
-```
-Assets/Framework/                    ← 게임을 모르는 재사용 기반 (다른 프로젝트로 폴더째 복사 가능)
-  Runtime/   Framework.Runtime.asmdef  GAS, StateTree, 매니저, 이벤트, 풀, Addressables 로더, CSV/테이블, UIFactory
-  Editor/    Framework.Editor.asmdef   StateTree 에디터, CSV→테이블 변환 + 자동 재변환, 에디터 유틸
-Assets/Game/                         ← 이 게임 전용
-  Runtime/   Game.Runtime.asmdef       게임플레이 (Actor, 어빌리티, 몬스터 AI, 월드, 인벤토리, 건축, 치트, UI)
-  Editor/    Game.Editor.asmdef        게임 테이블 임포트/검증, 콘텐츠·월드 빌더, Addressables 셋업, 밸런스·UI Factory 툴
-  Data/CSV     원본 데이터 18종 (기획 수정 지점)
-  Data/Tables  CSV → ScriptableObject 결과 + GameTables.asset (런타임은 이것만 읽음)
-  Content/     Addressables 루트. 파일 상대 경로(확장자 제외) = 주소 = AssetTable.Address
-  Art/ThirdParty  Kenney(CC0) 나무/아이콘 (각 폴더에 License)
-  Art/Generated   코드 생성 재질(URP 변환 복사본 포함)/애니메이터/지형 데이터/풀·나무 프리팹/볼륨 프로필
-  Integration/    asmdef 없는 외부 에셋 어댑터 (WeatherMakerSkyBridge, Assembly-CSharp)
-Assets/ExternalAssets/               ← 외부 에셋 원본 (unity-chan, ExplosiveLLC, Magic Pig, ASTROFISH, TerrainSampleAssets, TheTalesFactory, WeatherMaker). 수정하지 않음
-  Scenes/World.unity
-```
+| 위치 | 내용 |
+|---|---|
+| `Assets/Framework/` | 게임을 모르는 재사용 기반 (GAS, StateTree, 매니저, CSV 테이블, UIFactory …) |
+| `Assets/Game/Runtime`, `Editor`, `Integration` | 이 게임의 코드 |
+| `Assets/Game/Data/CSV` → `Data/Tables` | 원본 데이터 19종 → ScriptableObject (런타임은 Tables 만 읽음) |
+| `Assets/Game/Content/` | Addressables 루트. 파일 상대 경로(확장자 제외) = 주소 = AssetTable.Address |
+| `Assets/Game/Art/` | `ThirdParty`(Kenney CC0), `Generated`(코드가 만든 재질·애니메이터·지형 데이터) |
+| `Assets/Game/Scenes/World.unity` | 게임 씬 (WorldBuilder 가 생성) |
+| `Assets/ExternalAssets/` | 외부 에셋 원본. 수정하지 않음 ([AssetRequests.md](AssetRequests.md)) |
+| `Documentation/` | 이 문서들 (저장소 루트, Unity 밖) |
+| `Tools/GitBatchPush/` | 대용량 저장소 분할 커밋/푸시 스크립트 (저장소 루트, Unity 밖) |
 
-의존 방향: `Game.Editor → Game.Runtime → Framework.Runtime`, `Game.Editor → Framework.Editor → Framework.Runtime` (역방향 없음).
-세부 폴더와 규칙은 [CodeStructure.md](CodeStructure.md).
+의존 방향과 폴더별 세부 내용은 [Architecture.md](Architecture.md).
 
 ## 5. 데이터 테이블 (CSV → ScriptableObject)
 
@@ -82,7 +82,7 @@ Assets/ExternalAssets/               ← 외부 에셋 원본 (unity-chan, Explo
 | ConstTable | EConst | 낮 길이, 햇빛 피해, 혈액 소모, 레벨 보정, 카메라 등 상수 |
 | TagTable | ETag | 게임플레이 태그 계층 (자식→부모) |
 | StringTable | int | 모든 표시 문자열 |
-| AssetTable | int | Addressables 주소 + 종류(Prefab/Sprite) |
+| AssetTable | int | Addressables 주소 + 종류(`EAssetKind`: Prefab/Sprite/Material/Data) |
 | CharacterTable | int | 플레이어/몬스터/보스/상인 능력치, 어빌리티, AI, 혈액, 드랍 |
 | AbilityTable | int | 어빌리티 종류/슬롯/시전·쿨다운/범위/피해계수/부가 이펙트/큐 |
 | EffectTable | int | GameplayEffect (지속 정책, 주기, Execution, 태그, 모디파이어 3개) |
@@ -109,6 +109,8 @@ Assets/ExternalAssets/               ← 외부 에셋 원본 (unity-chan, Explo
 
 ## 7. 코딩 규칙 적용
 
+규칙 원문은 [../Project.md](../Project.md). 이 코드에서 지킨 방식:
+
 - 문자열 비교/하드코딩 대신 int 인덱스·enum·계층 태그 비트셋(`GameplayTagContainer`, 언리얼과 같은 비교 규칙)·FNV 해시(`HashUtil`) 사용
 - 조건식은 `== null`, `== false`, `== true` 로 명시 (`!` 미사용), `_` 접두 필드 없음, private 메서드 소문자 시작, 매개변수 `In` 접두 (frameworkLib 스타일)
 - 공통 로직은 `Framework/Runtime/Util`, 게임 공통은 `CombatUtil`, `UIUtil`, `LootUtil`, `TagUtil`
@@ -117,8 +119,4 @@ Assets/ExternalAssets/               ← 외부 에셋 원본 (unity-chan, Explo
 
 ## 8. 현재 범위 / 미구현
 
-- 멀티플레이(최대 4인)는 **미구현** — 오프라인 우선 요구에 따라 설계만 [Multiplayer.md](Multiplayer.md) 에 정리
-- 세이브/로드 없음, 성 심장 혈액 연료/붕괴, 하인(Servant), 연구 트리 없음
-- 제작은 즉시 완료 (CraftTime 컬럼은 예약)
-- 지형 풀(Detail)이 Play 모드에서 보이지 않는 문제 조사 중 (Issues 19)
-- 최적화/프로파일링은 요구사항대로 손대지 않음 — 의심 지점은 Issues.md "성능 관찰 포인트" 에 정리
+멀티플레이 미구현(설계만), 세이브 없음, 제작 즉시 완료 등 범위와 알려진 문제는 [Status.md 3~4절](Status.md#3-알려진-문제).

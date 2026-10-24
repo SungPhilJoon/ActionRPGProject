@@ -87,7 +87,7 @@ PlayerController / MonsterBrain → Actor.TryActivate(slot, aimPoint)
 - **새 피해 공식**: `IGameplayEffectExecution` 구현 → `EExecution` 에 값 추가 → `GameExecutions.RegisterAll` 에 등록 → EffectTable.Execution 에 이름 기입.
 
 
-## 태그 비교 규칙 (2026-10-14 개편, 언리얼과 동일한 의미)
+## 7. 태그 비교 규칙 (언리얼과 같은 의미, 2026-10-14 개편)
 
 - **명시 태그**: 실제로 부여/지정된 태그. **부모 캐시**: 명시 태그의 조상(자동 계산).
 - "가진 쪽" 은 명시 + 부모로, "질의 쪽" 은 명시 태그만으로 비교한다. 질의 쪽은 절대 부모로 펼치지 않는다.
@@ -107,7 +107,7 @@ PlayerController / MonsterBrain → Actor.TryActivate(slot, aimPoint)
 - 소유용 `GameplayTagCountContainer` 는 명시 카운트와 부모 포함 카운트를 따로 두어, 여러 이펙트가 같은 태그를 줘도 마지막이 빠질 때까지 유지.
 - 언리얼과의 차이: 컨테이너 크기가 "가진 태그 수" 가 아니라 "전체 태그 수 / 64" 워드. 태그가 수천 개가 되면 메모리·비교 비용이 커지므로 그때 다시 검토.
 
-## V Rising 상태이상 / 무적 (2026-10-14)
+## 8. V Rising 상태이상 / 무적
 
 수치는 V Rising 커뮤니티 정리 자료(젬 효과 표·가이드)를 기준으로 했다. 패치마다 바뀌므로 **ConstTable / EffectTable 에서 조정**한다.
 
