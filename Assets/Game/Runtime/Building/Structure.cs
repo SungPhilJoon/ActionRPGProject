@@ -6,7 +6,7 @@ using UnityEngine;
 /// 지어진 건축물. 종류(StructureTable.Type)에 따라 성 심장(영역), 관(리스폰), 작업대(제작) 역할을 한다.
 /// 벽/바닥은 Structure 레이어라 햇빛을 가려 그늘을 만든다.
 /// </summary>
-public class Structure : MonoBehaviour, IInteractable
+public class Structure : BaseBehaviour, IInteractable
 {
     public StructureRow Row { get; private set; }
 
@@ -24,15 +24,18 @@ public class Structure : MonoBehaviour, IInteractable
     {
         Row = InRow;
         ComponentUtil.SetLayerRecursive(gameObject, LayerId.Structure);
+        // 벽/기둥이 카메라와 캐릭터 사이를 가리면 숨긴다 (CameraOcclusionSystem).
+        ComponentUtil.GetOrAdd<CameraOccluder>(gameObject);
         if (isInteractable() == true)
         {
             InteractableRegistry.Add(this);
         }
     }
 
-    private void OnDestroy()
+    protected override void OnUnityDestroy()
     {
         InteractableRegistry.Remove(this);
+        base.OnUnityDestroy();
     }
 
     public bool CanInteract(PlayerCharacter InPlayer)

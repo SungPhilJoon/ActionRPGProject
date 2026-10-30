@@ -9,24 +9,11 @@ public class CheatConsoleWindow : UIWindow
 {
     private const int VisibleLines = 18;
 
-    private TMP_InputField Input;
-    private TextMeshProUGUI Output;
+    public TMP_InputField Input;
+    public TextMeshProUGUI Output;
 
-    protected override void Build()
+    protected override void OnInitialize()
     {
-        var frame = UIFactory.CreateWindowFrame(Rect, "Frame");
-        UIFactory.Place(frame, new Vector2(0.0f, 1.0f), new Vector2(20.0f, -20.0f), new Vector2(900.0f, 520.0f));
-
-        var title = UIFactory.CreateText(frame, "Title", Tables.Text(EText.CheatTitle), 24.0f, TextAlignmentOptions.Left);
-        UIFactory.Place(title, new Vector2(0.0f, 1.0f), new Vector2(16.0f, -8.0f), new Vector2(860.0f, 34.0f));
-
-        Output = UIFactory.CreateText(frame, "Output", Tables.Text(EText.CheatHint), 17.0f, TextAlignmentOptions.BottomLeft);
-        Output.textWrappingMode = TextWrappingModes.Normal;
-        Output.overflowMode = TextOverflowModes.Truncate;
-        UIFactory.Place(Output, new Vector2(0.0f, 0.0f), new Vector2(16.0f, 64.0f), new Vector2(868.0f, 410.0f));
-
-        Input = UIFactory.CreateInputField(frame, "Input", "help", 20.0f);
-        UIFactory.Place(Input, new Vector2(0.0f, 0.0f), new Vector2(12.0f, 12.0f), new Vector2(876.0f, 44.0f));
         Input.onSubmit.AddListener(submit);
         Input.onSelect.AddListener(text => setFocus(true));
         Input.onDeselect.AddListener(text => setFocus(false));

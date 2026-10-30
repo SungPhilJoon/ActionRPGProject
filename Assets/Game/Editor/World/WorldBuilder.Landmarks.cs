@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.Rendering;
 
 /// <summary>
-/// 지역 랜드마크: 산악 바위(TheTalesFactory), 폐허 마을(ASTROFISH 건물), 트롤 능선, 미노타우로스 아레나, 호수, 시작 지점 쉼터.
+/// 지역 랜드마크: 산악 바위(TheTalesFactory), 폐허 마을(ASTROFISH 건물), 트롤 능선, 미노타우로스 아레나, 시작 지점 쉼터. (호수/강 = WorldBuilder.Water)
 /// 모든 건물/바위는 Default 레이어 콜라이더를 가져 햇빛을 가리는 그늘이 된다.
 /// </summary>
 public static partial class WorldBuilder
@@ -28,7 +28,6 @@ public static partial class WorldBuilder
         buildRuinedHamlet(InTerrain);
         buildTrollRidge(InTerrain);
         buildMinotaurArena(InTerrain);
-        buildLake(InTerrain);
         buildStartGlade(InTerrain);
     }
 
@@ -147,44 +146,6 @@ public static partial class WorldBuilder
         }
     }
 
-    // ------------------------------------------------------------------ lake
-
-    /// <summary>호수: URP Lit 반투명 수면 (WeatherMaker 물 프리팹은 무한 바다용이라 사용하지 않음).</summary>
-    private static void buildLake(Terrain InTerrain)
-    {
-        string path = EditorPaths.Generated + "/World/M_LakeWater.mat";
-        var material = AssetDatabase.LoadAssetAtPath<Material>(path);
-        if (material == null)
-        {
-            material = new Material(Shader.Find("Universal Render Pipeline/Lit"));
-            AssetDatabase.CreateAsset(material, path);
-        }
-
-        material.SetColor("_BaseColor", new Color(0.08f, 0.18f, 0.22f, 0.78f));
-        material.SetFloat("_Smoothness", 0.95f);
-        material.SetFloat("_Metallic", 0.0f);
-        material.SetFloat("_Surface", 1.0f);
-        material.SetFloat("_Blend", 0.0f);
-        material.SetFloat("_SrcBlend", (float)BlendMode.SrcAlpha);
-        material.SetFloat("_DstBlend", (float)BlendMode.OneMinusSrcAlpha);
-        material.SetFloat("_ZWrite", 0.0f);
-        material.EnableKeyword("_SURFACE_TYPE_TRANSPARENT");
-        material.renderQueue = (int)RenderQueue.Transparent;
-        EditorUtility.SetDirty(material);
-
-        var water = GameObject.CreatePrimitive(PrimitiveType.Plane);
-        water.name = "Lake";
-        Object.DestroyImmediate(water.GetComponent<Collider>());
-        water.transform.SetParent(LandmarkRoot, false);
-        water.transform.position = new Vector3(WorldRegions.Lake.x, WorldRegions.WaterLevel, WorldRegions.Lake.y);
-        float diameter = (WorldRegions.LakeRadius + 10.0f) * 2.0f;
-        water.transform.localScale = new Vector3(diameter / 10.0f, 1.0f, diameter / 10.0f);
-        var renderer = water.GetComponent<MeshRenderer>();
-        renderer.sharedMaterial = material;
-        renderer.shadowCastingMode = ShadowCastingMode.Off;
-        water.isStatic = true;
-    }
-
     // ------------------------------------------------------------------ start glade
 
     /// <summary>시작 지점: 무너진 석벽과 작은 쉼터 — 첫 낮에 들어갈 그늘을 보여 준다.</summary>
@@ -232,6 +193,8 @@ public static partial class WorldBuilder
         instance.transform.SetPositionAndRotation(position, Quaternion.Euler(0.0f, InYaw, 0.0f));
         instance.transform.localScale = prefab.transform.localScale * InScale;
         instance.isStatic = true;
+        // 건물/바위가 카메라와 캐릭터 사이를 가리면 숨긴다 (CameraOcclusionSystem).
+        Framework.ComponentUtil.GetOrAdd<Framework.CameraOccluder>(instance);
         MaterialUpgradeUtil.UpgradeRenderers(instance, EditorPaths.Generated + "/Materials/World");
 
         if (InAddCollider == true && instance.GetComponentInChildren<Collider>() == null)

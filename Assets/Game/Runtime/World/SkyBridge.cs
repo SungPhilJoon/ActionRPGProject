@@ -1,10 +1,10 @@
 using UnityEngine;
 
 /// <summary>
-/// 외부 하늘/날씨 시스템(WeatherMaker 등) 연결 인터페이스 (Dependency Inversion).
-/// WeatherMaker 스크립트는 asmdef 가 없어 Assembly-CSharp 에 있으므로 Game.Runtime 이 직접 참조할 수 없다.
-/// 대신 Game.Runtime 이 이 인터페이스를 정의하고, Assembly-CSharp 쪽 어댑터(Game/Integration/WeatherMaker)가 구현해 등록한다.
-/// 등록된 컨트롤러가 없으면 DayNightManager 가 기존 방식(직접 라이트/볼륨 제어)으로 동작한다.
+/// 외부 하늘/날씨 시스템 연결 인터페이스 (Dependency Inversion).
+/// asmdef 없는 외부 에셋은 Assembly-CSharp 에 있어 Game.Runtime 이 직접 참조할 수 없으므로, Game.Runtime 이 이 인터페이스를 정의하고
+/// Game/Integration 쪽 어댑터가 구현해 등록한다. 2026-10-30 WeatherMaker(유일한 구현)를 제거해 지금은 등록된 것이 없고,
+/// DayNightManager 가 자체 라이트 · 스카이박스 · 안개 · 볼륨 제어로 동작한다 (Null Object / Fallback).
 /// </summary>
 public interface ISkyController
 {

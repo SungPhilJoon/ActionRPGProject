@@ -30,6 +30,16 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 09e1de61a859797499026f94c285bc0f
+    m_Address: UI/Windows/ShopWindow
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 0ac604f6dd4c3354aa0e60384af1b863
+    m_Address: Characters/NewMonster
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 0cb43006b02dacb4e81dec2a9f0c0e69
     m_Address: VFX/Status/Weaken
     m_ReadOnly: 0
@@ -55,6 +65,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 14de90bf271b406479f718462228f2a9
+    m_Address: UI/Layers/DamageNumberLayer
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 1632847ed0b038c4bb511d82257df9c4
     m_Address: VFX/Status/Frozen
     m_ReadOnly: 0
@@ -75,6 +90,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 1d413857392c1eb4c8ff5496e578be3b
+    m_Address: UI/Widgets/ListRow
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 21a8066c68fef324d99d00be7b02572a
     m_Address: Projectiles/BallLightning
     m_ReadOnly: 0
@@ -90,6 +110,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 2673f2a63fde95443b0bbe88f93d356f
+    m_Address: UI/Windows/BalanceOverlayWindow
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 2adaeff87edfd024fb65f6cbd737ab9c
     m_Address: Structures/Floor
     m_ReadOnly: 0
@@ -102,6 +127,11 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 33207f04e8e02b547a2508e984614ac4
     m_Address: Structures/WallDoor
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 367860c1bc2c0a747b661816789b2f22
+    m_Address: UI/Windows/TitleWindow
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -155,6 +185,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 4705ae1342e3a9843830e7d84fde2c4b
+    m_Address: UI/Windows/InventoryWindow
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 48a5ffd865cf24a428f518cb5c6ded10
     m_Address: Icons/Tent
     m_ReadOnly: 0
@@ -205,6 +240,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 556a35c0e4b127a498960befd4932f25
+    m_Address: UI/Windows/CraftWindow
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 5878544abc912754198577605c050b62
     m_Address: VFX/Skill/IceNova
     m_ReadOnly: 0
@@ -232,6 +272,11 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 63ea936bb4239bb4380ec9e608ffb7c1
     m_Address: Icons/Workbench
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 6728735a804b35449b9deb202e5d7868
+    m_Address: UI/Widgets/ItemSlot
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -280,6 +325,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 8a60e423157d8de428f3c5fb28cc94cb
+    m_Address: UI/Widgets/DamageNumber
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 8ec3b8090ebc8914fbcd6b7ec64ee24f
     m_Address: Icons/PlantFiber
     m_ReadOnly: 0
@@ -305,6 +355,16 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 9ba6ed875e24580438d467f15b6161af
+    m_Address: UI/LayerCanvas
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: a12a71de3d87fa749943ded737cfad7e
+    m_Address: UI/Windows/BuildWindow
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: a2395fee30b97bc49a231a677053b3a1
     m_Address: Nodes/OakTree
     m_ReadOnly: 0
@@ -322,6 +382,11 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: aaf000805e59460419a4847faafb7b68
     m_Address: VFX/Status/Static
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: abfa25b2f51aac049a98e6c94c0c3317
+    m_Address: UI/Widgets/WorldHealthBar
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -355,6 +420,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c94ea6918b11ae34b8b9a79a5db946f0
+    m_Address: UI/Layers/WorldHealthBarLayer
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: cc64d5c74b0ea7248b2759c1485ceb1a
     m_Address: VFX/Skill/BloodRiteAura
     m_ReadOnly: 0
@@ -372,6 +442,11 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: dbfeca56726c5d84ebde5815fe9c4ba5
     m_Address: Structures/Smelter
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: dc3a92ceff88b6144b2bcf8a74ddba50
+    m_Address: UI/Windows/HudWindow
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -427,6 +502,11 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: f90fdefcc49a7e64b97ea07d2def60d5
     m_Address: Nodes/PineTree
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: fadd3c44d7511474e9dbb209788def56
+    m_Address: UI/Windows/CheatConsoleWindow
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0

@@ -52,7 +52,7 @@ public class MonsterPerceptionEvaluator : MonsterEvaluator
         bb.SetFloat((int)EBBKey.HealthRatio, owner.HealthRatio);
         bb.SetFloat((int)EBBKey.TargetHealthRatio, target != null ? target.HealthRatio : 0.0f);
         bb.SetFloat((int)EBBKey.TimeInCombat, brain.TimeInCombat);
-        bb.SetBool((int)EBBKey.IsInvulnerable, owner.Asc.Tags.HasTag((int)ETag.State_Invulnerable));
+        bb.SetBool((int)EBBKey.IsInvulnerable, owner.HasTag((int)ETag.State_Invulnerable));
     }
 
     public override string Describe()

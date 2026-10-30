@@ -87,6 +87,8 @@
 
 ## 18. 성능 관찰 포인트 (최적화는 직접 진행 예정)
 
+어떤 툴로 어떻게 잴지는 [Optimization.md](Optimization.md).
+
 | 지점 | 내용 |
 |---|---|
 | `ActorRegistry.FindHostiles` | 매 히트/발사체 프레임마다 전 액터 순회 O(N). 액터 수 증가 시 공간 분할(그리드) 후보 |
@@ -100,9 +102,12 @@
 | `WorldHealthBarLayer.LateUpdate` | 매 프레임 전 액터 순회 + WorldToScreenPoint |
 | StateTree | 몬스터마다 매 프레임 Tick, AbilityReadyCondition 이 상태 선택마다 PickAbility 호출, 노드 JSON 복제(스폰 시) |
 | 지형 Detail (InstanceCountMode, 해상도 512 / 패치 16) | 풀 인스턴스 수가 많음. detailObjectDistance·밀도 조정 후보 |
-| Terrain Tree 약 2,300그루 (메시, 빌보드 없음) | 정점/드로우콜. 빌보드 지원 나무로 교체 시 개선 |
+| 장식 나무 GameObject 약 3,500 + 덤불 670 (2026-10-29) | LODGroup 컬링 CPU 비용, 나무 2 머티리얼 × 그림자 패스 드로우콜, SunShade MeshCollider(잎 카드 포함) 메모리. 후보: GPU Resident Drawer(URP 에셋에서 꺼져 있음), LOD1 거리 조정, 그늘 콜라이더를 LOD1 메시로 |
+| 풀 Detail 12종 (셀당 최대 4~5개) | 이전보다 종 · 밀도 증가. detailObjectDistance 70 / density 0.8 |
+| 물 셰이더 | 불투명 텍스처 복사 + 깊이 텍스처 2회 샘플(굴절 검사). 카메라에 물이 없을 때도 Opaque Texture 복사는 매 프레임 일어남 |
+| CameraOcclusionSystem | 프레임당 SphereCast + OverlapSphere 1회씩 (NonAlloc) |
 | TheTalesFactory 포토스캔 바위 | 고폴리 메시 + 4K 텍스처. LOD 확인 필요 |
-| WeatherMaker 구름/하늘 패스 | 풀스크린 GPU 패스. 구름 품질 프로필로 조정 가능 |
+| 포스트 프로세싱 볼륨 6개 + 대기 패스 (2026-10-30) | 보케 DoF(풀해상도), 모션 블러, 스크린 스페이스 렌즈 플레어, 블룸 HQ 필터, 필름 그레인, 대기 풀스크린 1패스. WeatherMaker(구름 · 대기 · temporal reprojection 풀스크린 패스 여러 개)는 제거됨 |
 | Magic Pig / unity-chan 스키닝 | 몬스터 20마리 SkinnedMesh. Animator Culling Mode 확인 후보 |
 | Soft Shadow + Cascade 2 + 그림자 거리 90 (GPU) | 쿼터뷰라 거리를 줄일 여지가 큼 |
 | SSAO (GPU, 풀해상도) | Downsample 옵션 |
@@ -319,3 +324,57 @@ Play 중 폐허 마을(300, 205), 낮 13시, `UnityStats` 를 항목별로 끄�
 - **원인**: `ReturnHomeTask.Tick` 이 매 프레임 `SetDestination(Home)`. 240m 처럼 먼 경로는 계산에 여러 프레임이 걸리는데 매 프레임 처음부터 다시 요청돼 `pathPending = true`, `hasPath = false`, 속도 0 으로 멈춰 있었다 (Play 에서 확인).
 - **해결**: 진입 때 한 번만 요청, 경로를 잃었을 때(`HasPathOrPending == false`)만 재요청. `ChaseTargetTask` 도 계산 중(`IsPathPending`)에는 재요청하지 않는다.
 - **확인**: 귀환 상태 몬스터가 4.2m/s 로 이동.
+
+## 37. Frame Debugger 를 켜면 화면이 깜빡이고 Draw Event 가 생겼다 사라짐
+
+> 2026-10-30 WeatherMaker 를 제거해 아래 후보 1 · 2 는 더 이상 해당하지 않는다. 다시 깜빡이면 후보 3(횃불 그림자 수) 부터 본다.
+
+- **현상 (2026-10-29 사용자 보고)**: Frame Debugger 에서 Enable 하면 화면이 깜빡이고, 이벤트 목록의 어떤 항목이 계속 생겼다 없어졌다 한다.
+- **재현 시도**: MCP 로 Frame Debugger 를 켜고(`FrameDebuggerWindow.EnableFrameDebugger`, `FrameDebugger.enabled = true` 확인) 이벤트 목록을 읽으려 했으나,
+  창이 보조 모니터에 떠 있고 에디터에 포커스가 없으면 창의 캡처 대기 카운터가 줄지 않아 **이벤트를 0개밖에 읽지 못했다**. 렌더마다 패스 구성을 기록하는 프로브도
+  Play 프레임이 포커스 없이는 진행되지 않아(Time.frameCount 2 에서 정지) 결과를 얻지 못했다. → **아래 원인은 코드 분석 결과이며 실측으로 확정하지 않았다.**
+- **Frame Debugger 의 동작**: 켜 두면 선택한 이벤트까지 같은 프레임을 **에디터가 다시 그릴 때마다 다시 렌더**한다. 렌더할 때마다 다른 패스를 넣는 코드가 있으면 목록과 화면이 매번 바뀐다.
+  이번 변경(10-29)의 코드는 원인이 아닐 가능성이 높다 — `CameraOcclusionSystem` 은 LateUpdate 에서만 바뀌고 Play 모드 Frame Debugger 는 게임을 일시정지시킨다. 바람 셰이더는 정점만 움직이고 Draw 수는 그대로다.
+- **원인 후보 (가능성 순)**
+
+  | 후보 | 근거 (코드) | 깜빡이는 이벤트 이름 예 |
+  |---|---|---|
+  | **1. WeatherMaker 구름 temporal reprojection** | `WeatherMakerTemporalReprojectionState`: 렌더마다 sub-frame 오프셋이 바뀌고(`frameNumbers` 순환), 렌더 해상도가 바뀌면 `NeedsFirstFrameHandling = true` → 그 렌더에만 Blit 3개 추가 (`WeatherMakerFullScreenEffect.AttachTemporalReprojection`). Frame Debugger 를 켜면 Game 뷰와 도킹/크기가 바뀌는 경우가 있다 | `WeatherMaker AfterForwardOpaque` / `BeforeForwardAlpha` 아래 Blit 수 변화, 구름 · 하늘이 번쩍임 |
+  | **2. WeatherMaker 날씨맵 · 구름 그림자 패스 조건부 생성** | `WeatherMakerFullScreenCloudsScript.CameraPreCull` → `CameraStackCount < 2` 일 때만 `GenerateWeatherMap`, 매 PreCull 마다 액션 제거 → 재등록. URP 렌더 피처(`WeatherMakerURPRenderFeatureScript.AddRenderPasses`)는 **그 순간 액션이 있는 CameraEvent 만** 패스를 넣는다. `AllowSceneCamera = True` 라 Scene 뷰 카메라도 같은 매니저를 거친다 | `WeatherMapAndCloudShadows`, `WeatherMaker AfterDepthTexture` 가 있다 없다 함 |
+  | **3. 추가 라이트(횃불) 그림자 수 변화** | 콘솔에 "Reduced additional punctual light shadows … **6** shadow maps" 와 "… **12** shadow maps" 가 번갈아 찍힘 = 렌더마다 그림자 횃불이 1개 ↔ 2개. 횃불 라이트는 정적(깜빡임 스크립트 없음) → Game 뷰와 Scene 뷰 카메라가 번갈아 렌더되며 보이는 횃불 수가 다름 | `AdditionalLightsShadow` / `Render Additional Shadows` 아래 Draw 수 변화 |
+
+- **확인 방법 (사용자 쪽에서 1~2분)**
+  1. 깜빡이는 **이벤트 이름** 을 본다 → 위 표의 어느 행인지 바로 갈린다.
+  2. **Scene 뷰 탭을 닫거나** 다른 탭 뒤로 보낸 뒤 다시 Enable → 사라지면 2 · 3 (Scene 카메라 끼어듦). WeatherMakerScript 의 `AllowSceneCamera` 를 끄고 확인해도 된다.
+  3. Play 중이면 Frame Debugger 가 자동 일시정지한다. 편집 모드에서 켰다면 Play 로 들어가 다시 확인 (편집 모드는 에디터 갱신마다 프레임이 바뀐다).
+  4. Hierarchy 에서 `WeatherMaker` 오브젝트를 잠시 끄고 Enable → 깜빡임이 멈추면 1 · 2 (WeatherMaker).
+  5. WeatherMaker 구름 프로필의 Temporal Reprojection 을 None 으로 → 멈추면 1.
+- **영향**: 게임 화면 자체가 아니라 **Frame Debugger 표시** 문제다. 다만 2 가 맞다면 Scene 뷰가 열려 있는 에디터 Play 측정에서는 구름 그림자/날씨맵 패스가 매 프레임 일정하지 않아 **에디터 GPU 측정값이 흔들린다** → 최적화 측정은 Development Build 에서 ([Optimization.md 2절](Optimization.md#측정할-때-지킬-것)).
+- **2026-10-29 추가 (사용자 확인 + 측정)**
+  - 사용자: **Game 뷰에서만** 깜빡이고 Scene 뷰로 바꾸면 깜빡이지 않음. 생겼다 사라지는 이벤트는 **`WeatherMapAndCloudShadows`** 아래 → 후보 2 (WeatherMaker 날씨맵 · 구름 그림자).
+  - 측정 (`Temp/AgentScripts/WeatherMapProbe.cs`, Play + Frame Debugger 켜짐, `beginCameraRendering`/`endCameraRendering` 에 기록, 0.33초 동안 20회): Scene 뷰가 보이던 때라 SceneCamera 만 렌더됐고 프레임당 2회씩 렌더됐다. **렌더마다 날씨맵 액션이 새 클로저로 교체**됐고 (액션 해시가 매 렌더 다름), 커맨드 버퍼(`weatherMapCommandBuffer`)도 코드상 매 렌더 `Clear()` 후 다시 기록된다. 이 측정 동안 `Time.frameCount` 가 증가하고 있어서 일시정지 상태였는지는 확인하지 못했다.
+  - **일시정지인데 이벤트가 계속 생기는 이유**: 일시정지는 게임 로직(Update · 시간)만 멈춘다. Frame Debugger 는 고른 이벤트까지 보여 주려고 **에디터가 다시 그릴 때마다 같은 프레임을 다시 렌더**하고, WeatherMaker 는 날씨맵 명령을 Update 가 아니라 **렌더 콜백**(`beginCameraRendering` → `CameraPreCull` → `GenerateWeatherMap`)에서 매번 새로 만든다. 그래서 멈춘 상태에서도 렌더마다 명령이 다시 만들어지고 다시 캡처된다.
+  - **생겼다 사라지는 이유 (가설, Game 뷰 측정 대기)**: 이 명령들은 렌더 패스의 커맨드 버퍼에 기록되지 않고, 액션 안에서 `Graphics.ExecuteCommandBuffer(capturedCmd)` 로 **즉시 실행**된다 (`WeatherMakerFullScreenCloudsScript.AddWeatherMapCameraWork`). 렌더 그래프 패스 밖에서 즉시 실행되는 명령이라 Frame Debugger 가 캡처할 때마다 같은 위치에 안정적으로 넣지 못하는 것으로 보인다. 또 이 버퍼는 모든 카메라가 같이 쓰는 객체 하나라 다시 기록되는 시점과도 겹친다. Game 뷰 렌더 기록은 아직 없다.
+  - **영향**: 게임 화면에는 문제 없음 (Frame Debugger 표시만 흔들림). 날씨맵 · 구름 그림자를 렌더마다 다시 만드는 것은 GPU 비용이므로 Optimization.md 3.1 의 WeatherMaker 항목에서 같이 본다.
+- **상태**: 원인 확정 전, 수정 안 함 (WeatherMaker 는 외부 에셋 · 사용자가 URP 포팅한 코드). 고친다면 액션이 `Graphics.ExecuteCommandBuffer` 대신 패스의 `ctx.CommandBuffer` 에 명령을 기록하도록 바꾸는 방향.
+
+## 38. 실시간 반사 프로브를 켜면 캐릭터가 청록색 실루엣으로 깨짐
+
+- **현상 (2026-10-30)**: WeatherMaker 를 지운 뒤 금속 무기 · 갑옷이 검게 보여(반사 소스 없음) 실시간 Reflection Probe 를 넣었더니, `Game/Character` 를 쓰는 캐릭터가 청록색 실루엣으로 그려졌다.
+- **원인**: 확정하지 못함 (실시간 프로브가 캐릭터 자신을 포함해 렌더하는 순서 · 프로브 블렌딩 쪽으로 추정).
+- **해결**: 실시간 프로브를 쓰지 않고, 빌드 때 하늘만 한 번 구운 큐브맵(`SkyReflection.cubemap`, 해 원반 제외)을 Custom 반사로 쓴다 (`WorldBuilder.bakeSkyReflection`). 밤에는 `DayNightManager` 가 반사 세기를 0.2 로 낮춘다.
+
+## 39. 포스트 프로세싱을 넣었는데 화면이 탁함 — 새까만 그늘 · 누런 풀밭 · 햇빛 화상 효과가 화면을 덮음
+
+- **현상 (2026-10-30, Play 화면 캡처로 확인)**: (1) 나무 그림자 안이 완전히 검게 뭉개짐, (2) 풀밭 전체가 누런 올리브색, (3) 햇빛 속에 서면 Sunburn 볼륨이 화면 전체를 주황색으로 덮어 지형이 안 보임, (4) 밤 화면이 보라빛 회색으로 뿌옇게 뜸.
+- **원인**:
+  1. `DayNightManager` 가 Trilight 중 **하늘 색만** 바꾸고 지평선 · 바닥 색은 빌드 값(어두운 회색 · 갈색)에 고정 → SH 앰비언트가 위쪽 0.2 정도라 해(1.6)와 차이가 8배. 여기에 Day 볼륨의 Shadows/Lift 를 음수로 눌렀고(−0.04, −0.03) 대비 18 + ACES 가 겹침.
+  2. White Balance +3 · Split Toning 금빛 하이라이트 · 블룸 웜 틴트가 겹쳐 녹색이 누렇게 이동.
+  3. Sunburn 볼륨이 노출 +0.7, 채도 +20, 웜 컬러 필터, 비네트 0.5 — weight 가 0.25 + 노출이라 햇빛 속에서는 거의 1.
+  4. Night 볼륨 노출 +1.4 에 대비 10 → 검은 영역이 들려 뿌옇게 됨.
+- **해결 (Play 중 볼륨 · RenderSettings 를 바꿔 가며 캡처로 맞춘 값을 코드에 옮김)**:
+  - 앰비언트 하늘 · 지평선 · 바닥 3색을 낮/밤 모두 보간 (`DayNightManager`, `WorldBuilder.Sky`), 해 그림자 세기 0.92 → 0.8.
+  - Day: 대비 12, 채도 18, White Balance −4, Split Toning 하이라이트를 옅게, 그늘 들어올림(+0.03), Lift 0.
+  - Sunburn: 비네트 0.38, 색수차 0.3, 노출 +0.3, 채도 +8 — 가장자리 위주로 경고만.
+  - Night: 노출 +1.3, 대비 14, 더 푸른 필터, Split Toning 균형 −10 → 푸른 달빛 + 횃불 주황 대비.
+  - 기존 프로필 에셋 · World 씬에도 같은 값을 직접 넣어 저장 (World 다시 빌드 없이 반영).

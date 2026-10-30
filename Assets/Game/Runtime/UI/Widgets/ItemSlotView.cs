@@ -1,9 +1,10 @@
+using Framework;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 /// <summary>아이템 슬롯 1칸 (아이콘 + 개수 + 버튼).</summary>
-public class ItemSlotView : MonoBehaviour
+public class ItemSlotView : UIBehaviour
 {
     public Image Icon;
     public TextMeshProUGUI Count;

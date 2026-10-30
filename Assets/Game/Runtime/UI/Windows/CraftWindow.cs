@@ -6,7 +6,7 @@ public class CraftWindow : ListWindow
 {
     private EStation Station = EStation.Hand;
 
-    protected override int TitleTextId
+    public override int TitleTextId
     {
         get { return (int)EText.Crafting; }
     }
@@ -86,7 +86,9 @@ public class CraftWindow : ListWindow
             return;
         }
 
-        player.Inventory.Add(InRecipe.Result, Mathf.Max(1, InRecipe.ResultCount));
+        int count = Mathf.Max(1, InRecipe.ResultCount);
+        player.Inventory.Add(InRecipe.Result, count);
+        EventBus<ItemObtainedEvent>.Publish(new ItemObtainedEvent { Player = player, ItemId = InRecipe.Result, Count = count, Source = EItemSource.Craft });
         EventBus<NotifyEvent>.Publish(new NotifyEvent { TextId = (int)EText.Craft, Arg = UIUtil.ItemName(InRecipe.Result), Color = UIUtil.GoldColor });
     }
 }

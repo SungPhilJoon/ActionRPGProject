@@ -10,10 +10,31 @@ namespace Framework.Ability
     /// 현재는 오프라인(로컬 권한) 기준으로 동작한다. 멀티플레이 단계에서는
     /// ApplyGameplayEffectSpecToSelf / TryActivateAbility 를 서버 권한 경로로 감싸는 방식으로 확장한다.
     /// </summary>
-    public class AbilitySystemComponent : MonoBehaviour
+    public class AbilitySystemComponent : BaseBehaviour
     {
         public AttributeSet Attributes { get; private set; }
         public readonly GameplayTagCountContainer Tags = new GameplayTagCountContainer();
+
+        /// <summary>
+        /// 이 ASC 를 가진 Behaviour (언리얼 OwnerActor). ActorBehaviour.InitializeActor 가 연결한다.
+        /// 설치물처럼 액터가 아닌 Behaviour 도 가질 수 있으므로 BaseBehaviour 로 두고, 쓰는 쪽이 타입(is)으로 확인한다.
+        /// </summary>
+        public BaseBehaviour OwnerBehaviour { get; private set; }
+
+        /// <summary>소유자가 Actor 이면 그 ActorBehaviour, 아니면 null (GetComponent 탐색 없음).</summary>
+        public ActorBehaviour OwnerActor
+        {
+            get
+            {
+                // Unity == 로 파괴 여부를 먼저 거른다 (is 는 파괴된 객체도 통과시킨다).
+                if (OwnerBehaviour == null)
+                {
+                    return null;
+                }
+
+                return OwnerBehaviour is ActorBehaviour actor ? actor : null;
+            }
+        }
 
         /// <summary>쿨다운 배율 (공격속도/쿨감 속성을 게임 쪽에서 연결).</summary>
         public Func<float> CooldownScaleProvider;
@@ -42,6 +63,11 @@ namespace Framework.Ability
         public IReadOnlyList<GameplayAbility> GrantedAbilities
         {
             get { return Abilities; }
+        }
+
+        public void BindOwner(BaseBehaviour InOwner)
+        {
+            OwnerBehaviour = InOwner;
         }
 
         public void InitAttributes(AttributeSet InAttributes)

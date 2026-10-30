@@ -1,0 +1,129 @@
+{
+    "Scenario": "Ability_CastAllSlots",
+    "Description": "플레이어 어빌리티 8칸을 모두 시전 (스킬 · 발사체 · 큐 VFX)",
+    "StartedAt": "2026-10-31 05:40:28",
+    "DurationSeconds": 15.494836807250977,
+    "Repeat": 3,
+    "ExpectsCleanup": true,
+    "LoadEvents": 36,
+    "ReleaseEvents": 0,
+    "SyncWaits": 0,
+    "SyncWaitMilliseconds": 0.0,
+    "LiveBefore": 100,
+    "LiveAfter": 100,
+    "Failures": [],
+    "Assets": [
+        {
+            "Address": "Projectiles/FireBall",
+            "Type": "GameObject",
+            "Loads": 6,
+            "Releases": 0,
+            "RefCountBefore": 1,
+            "RefCountAfter": 7,
+            "LoadMilliseconds": 0.0,
+            "SyncWaitMilliseconds": 0.0,
+            "Failed": false,
+            "Owners": [
+                "ProjectileSystem.Fire"
+            ]
+        },
+        {
+            "Address": "VFX/Empower",
+            "Type": "GameObject",
+            "Loads": 3,
+            "Releases": 0,
+            "RefCountBefore": 1,
+            "RefCountAfter": 4,
+            "LoadMilliseconds": 0.0,
+            "SyncWaitMilliseconds": 0.0,
+            "Failed": false,
+            "Owners": [
+                "CueSpawner.spawnInternal"
+            ]
+        },
+        {
+            "Address": "VFX/Heal",
+            "Type": "GameObject",
+            "Loads": 3,
+            "Releases": 0,
+            "RefCountBefore": 1,
+            "RefCountAfter": 4,
+            "LoadMilliseconds": 0.0,
+            "SyncWaitMilliseconds": 0.0,
+            "Failed": false,
+            "Owners": [
+                "CueSpawner.spawnInternal"
+            ]
+        },
+        {
+            "Address": "VFX/Skill/BloodNova",
+            "Type": "GameObject",
+            "Loads": 3,
+            "Releases": 0,
+            "RefCountBefore": 1,
+            "RefCountAfter": 4,
+            "LoadMilliseconds": 0.0,
+            "SyncWaitMilliseconds": 0.0,
+            "Failed": false,
+            "Owners": [
+                "CueSpawner.spawnInternal"
+            ]
+        },
+        {
+            "Address": "VFX/Skill/BloodRiteAura",
+            "Type": "GameObject",
+            "Loads": 3,
+            "Releases": 0,
+            "RefCountBefore": 1,
+            "RefCountAfter": 4,
+            "LoadMilliseconds": 0.0,
+            "SyncWaitMilliseconds": 0.0,
+            "Failed": false,
+            "Owners": [
+                "CueSpawner.spawnInternal"
+            ]
+        },
+        {
+            "Address": "VFX/Skill/SwordSlash",
+            "Type": "GameObject",
+            "Loads": 3,
+            "Releases": 0,
+            "RefCountBefore": 1,
+            "RefCountAfter": 4,
+            "LoadMilliseconds": 0.0,
+            "SyncWaitMilliseconds": 0.0,
+            "Failed": false,
+            "Owners": [
+                "CueSpawner.spawnInternal"
+            ]
+        },
+        {
+            "Address": "VFX/Skill/VeilBlood",
+            "Type": "GameObject",
+            "Loads": 3,
+            "Releases": 0,
+            "RefCountBefore": 1,
+            "RefCountAfter": 4,
+            "LoadMilliseconds": 0.0,
+            "SyncWaitMilliseconds": 0.0,
+            "Failed": false,
+            "Owners": [
+                "CueSpawner.spawnInternal"
+            ]
+        },
+        {
+            "Address": "VFX/Skill/Whirlwind",
+            "Type": "GameObject",
+            "Loads": 12,
+            "Releases": 0,
+            "RefCountBefore": 1,
+            "RefCountAfter": 13,
+            "LoadMilliseconds": 0.0,
+            "SyncWaitMilliseconds": 0.0,
+            "Failed": false,
+            "Owners": [
+                "CueSpawner.spawnInternal"
+            ]
+        }
+    ]
+}

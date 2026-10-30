@@ -2,7 +2,12 @@
     "name": "Framework.Editor",
     "rootNamespace": "Framework.Editor",
     "references": [
-        "Framework.Runtime"
+        "Framework.Runtime",
+        "Unity.TextMeshPro",
+        "UnityEngine.UI",
+        "Unity.Addressables",
+        "Unity.Addressables.Editor",
+        "Unity.ResourceManager"
     ],
     "includePlatforms": [
         "Editor"

@@ -7,7 +7,7 @@ using UnityEngine;
 /// </summary>
 public class ShopWindow : ListWindow
 {
-    protected override int TitleTextId
+    public override int TitleTextId
     {
         get { return (int)EText.Shop; }
     }
@@ -43,6 +43,7 @@ public class ShopWindow : ListWindow
         if (left < InRow.Count)
         {
             EventBus<NotifyEvent>.Publish(new NotifyEvent { TextId = (int)EText.Buy, Arg = UIUtil.ItemName(InRow.Item), Color = new Color(0.5f, 0.9f, 0.5f) });
+            EventBus<ItemObtainedEvent>.Publish(new ItemObtainedEvent { Player = player, ItemId = InRow.Item, Count = Mathf.Max(1, InRow.Count) - left, Source = EItemSource.Shop });
         }
     }
 }

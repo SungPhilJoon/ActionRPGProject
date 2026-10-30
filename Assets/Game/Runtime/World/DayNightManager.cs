@@ -5,17 +5,37 @@ using UnityEngine;
 /// 낮/밤 주기. 하루 = DayLengthSeconds 초, 밤 비율 = NightRatio.
 /// 태양(Directional Light)을 회전시키고, 낮/밤 Post-processing Volume 의 weight 를 섞는다.
 /// 밤에는 같은 라이트를 달빛(푸른색, 약한 세기)으로 쓴다 — 그림자 맵을 하나만 유지하기 위함.
+/// 하늘(절차 스카이박스 노출 · 색), 안개 색 · 밀도, 반사 세기도 시간대에 맞춰 바꾼다 (2026-10-30 WeatherMaker 대체).
 /// </summary>
 public class DayNightManager : IManager
 {
     private static readonly Color DayColor = new Color(1.0f, 0.93f, 0.82f);
     private static readonly Color DuskColor = new Color(1.0f, 0.55f, 0.35f);
     private static readonly Color MoonColor = new Color(0.45f, 0.55f, 0.9f);
-    private static readonly Color DayAmbient = new Color(0.55f, 0.55f, 0.6f);
-    private static readonly Color NightAmbient = new Color(0.3f, 0.32f, 0.48f);
+    // Trilight 앰비언트 (하늘 / 지평선 / 바닥). 하늘 색만 바꾸고 지평선 · 바닥을 고정했을 때는 그늘이 새까맣게 뭉개졌다.
+    private static readonly Color DayAmbientSky = new Color(0.78f, 0.8f, 0.88f);
+    private static readonly Color DayAmbientEquator = new Color(0.6f, 0.58f, 0.54f);
+    private static readonly Color DayAmbientGround = new Color(0.36f, 0.32f, 0.27f);
+    private static readonly Color NightAmbientSky = new Color(0.38f, 0.42f, 0.62f);
+    private static readonly Color NightAmbientEquator = new Color(0.26f, 0.28f, 0.4f);
+    private static readonly Color NightAmbientGround = new Color(0.12f, 0.12f, 0.16f);
+
+    private static readonly Color DayFog = new Color(0.62f, 0.68f, 0.74f);
+    private static readonly Color DuskFog = new Color(0.78f, 0.52f, 0.42f);
+    private static readonly Color NightFog = new Color(0.07f, 0.09f, 0.16f);
+    private static readonly Color DaySkyTint = new Color(0.52f, 0.56f, 0.62f);
+    private static readonly Color NightSkyTint = new Color(0.12f, 0.16f, 0.32f);
+    private static readonly int ExposureId = Shader.PropertyToID("_Exposure");
+    private static readonly int SkyTintId = Shader.PropertyToID("_SkyTint");
 
     private const float DayIntensity = 1.6f;
     private const float MoonIntensity = 0.9f;
+    private const float DayFogDensity = 0.0042f;
+    private const float NightFogDensity = 0.0065f;
+    private const float DayReflection = 0.65f;
+    private const float NightReflection = 0.2f;
+
+    private Material SkyMaterial;
 
     private SceneContext Context;
     private float DayLength;
@@ -51,11 +71,24 @@ public class DayNightManager : IManager
         SunriseHour = 12.0f - dayHours * 0.5f;
         SunsetHour = 12.0f + dayHours * 0.5f;
         Hour = Tables.Const(EConst.StartHour);
+
+        // 스카이박스 에셋을 직접 고치면 에디터 Play 중 변경이 디스크에 남으므로 사본을 만들어 쓴다.
+        if (RenderSettings.skybox != null)
+        {
+            SkyMaterial = new Material(RenderSettings.skybox);
+            RenderSettings.skybox = SkyMaterial;
+        }
+
         apply();
     }
 
     void IManager.UnInitialize()
     {
+        if (SkyMaterial != null)
+        {
+            Object.Destroy(SkyMaterial);
+            SkyMaterial = null;
+        }
     }
 
     void IManager.Update(float InDeltaTime)
@@ -96,8 +129,8 @@ public class DayNightManager : IManager
 
     private void apply()
     {
-        // 외부 하늘 시스템(WeatherMaker)이 연결되어 있으면 시간만 넘기고, 태양 방향/고도는 그쪽 값을 쓴다.
-        // 라이트·스카이·앰비언트는 WeatherMaker 가 담당하고 우리는 컬러 그레이딩 볼륨 가중치만 조절한다.
+        // 외부 하늘 시스템(ISkyController)이 등록되어 있으면 시간만 넘기고, 태양 방향/고도는 그쪽 값을 쓴다.
+        // 2026-10-30 WeatherMaker 를 제거해 지금은 등록된 것이 없다 → 아래 자체 라이트 · 하늘 · 안개 제어로 동작한다.
         var sky = SkyBridge.Controller;
         if (sky != null)
         {
@@ -150,8 +183,28 @@ public class DayNightManager : IManager
             dayWeight = 0.0f;
         }
 
-        RenderSettings.ambientLight = Color.Lerp(NightAmbient, DayAmbient, dayWeight);
+        RenderSettings.ambientSkyColor = Color.Lerp(NightAmbientSky, DayAmbientSky, dayWeight);
+        RenderSettings.ambientEquatorColor = Color.Lerp(NightAmbientEquator, DayAmbientEquator, dayWeight);
+        RenderSettings.ambientGroundColor = Color.Lerp(NightAmbientGround, DayAmbientGround, dayWeight);
+        applyAtmosphere(dayWeight);
         applyVolumes(dayWeight);
+    }
+
+    /// <summary>하늘 노출 · 색, 안개, 반사 세기. InDayWeight: 0 = 밤, 1 = 한낮 (해질녘은 중간값 → 노을색).</summary>
+    private void applyAtmosphere(float InDayWeight)
+    {
+        float dusk = IsDay == true ? 1.0f - Mathf.Clamp01(SunElevation / 18.0f) : 0.0f;
+        Color dayFog = Color.Lerp(DayFog, DuskFog, dusk);
+        RenderSettings.fogColor = Color.Lerp(NightFog, dayFog, InDayWeight);
+        RenderSettings.fogDensity = Mathf.Lerp(NightFogDensity, DayFogDensity, InDayWeight);
+        if (SkyMaterial != null)
+        {
+            SkyMaterial.SetFloat(ExposureId, Mathf.Lerp(0.14f, 1.25f, InDayWeight));
+            SkyMaterial.SetColor(SkyTintId, Color.Lerp(NightSkyTint, DaySkyTint, InDayWeight));
+        }
+
+        // 반사 큐브맵은 낮 하늘로 한 번 구운 것이라 밤에는 세기만 낮춘다.
+        RenderSettings.reflectionIntensity = Mathf.Lerp(NightReflection, DayReflection, InDayWeight);
     }
 
     private void applyVolumes(float InDayWeight)

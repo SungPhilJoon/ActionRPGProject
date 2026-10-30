@@ -1,0 +1,40 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca7083da52a1e0f4a817a35a828a46ba, type: 3}
+  m_Name: BanditArcher
+  m_EditorClassIdentifier: Game.Editor::MonsterAuthoring
+  CharacterId: 3
+  Address: Characters/BanditArcher
+  Model: {fileID: 1088499713875132, guid: 546ac9ae3a0bb42ab8358565f28b4d2f, type: 3}
+  ModelScale: 0.55
+  Radius: 0.9
+  AgentHeight: 2
+  MotionNode: base_snake
+  Idle: {fileID: 7400020, guid: 3416ab0f3d8ca4e48aec75bc83531080, type: 3}
+  Walk: {fileID: 7400012, guid: 3416ab0f3d8ca4e48aec75bc83531080, type: 3}
+  Dead: {fileID: 7400030, guid: 3416ab0f3d8ca4e48aec75bc83531080, type: 3}
+  WalkThreshold: 0.5
+  Actions:
+  - Anim: 1
+    Clip: {fileID: 7400000, guid: 3416ab0f3d8ca4e48aec75bc83531080, type: 3}
+  - Anim: 2
+    Clip: {fileID: 7400002, guid: 3416ab0f3d8ca4e48aec75bc83531080, type: 3}
+  - Anim: 7
+    Clip: {fileID: 7400004, guid: 3416ab0f3d8ca4e48aec75bc83531080, type: 3}
+  - Anim: 3
+    Clip: {fileID: 7400006, guid: 3416ab0f3d8ca4e48aec75bc83531080, type: 3}
+  - Anim: 8
+    Clip: {fileID: 7400008, guid: 3416ab0f3d8ca4e48aec75bc83531080, type: 3}
+  - Anim: 9
+    Clip: {fileID: 7400028, guid: 3416ab0f3d8ca4e48aec75bc83531080, type: 3}
+  - Anim: 10
+    Clip: {fileID: 7400026, guid: 3416ab0f3d8ca4e48aec75bc83531080, type: 3}

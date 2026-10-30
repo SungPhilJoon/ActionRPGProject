@@ -43,6 +43,7 @@ MonoBehaviour:
     StartEffects: 
     ConsumeTag: -1
     ConsumeEffects: 
+    Graph: 0
   - Index: 102
     NameId: 3102
     DescId: 0
@@ -72,6 +73,7 @@ MonoBehaviour:
     StartEffects: 
     ConsumeTag: -1
     ConsumeEffects: 
+    Graph: 0
   - Index: 103
     NameId: 3103
     DescId: 0
@@ -101,6 +103,7 @@ MonoBehaviour:
     StartEffects: 
     ConsumeTag: -1
     ConsumeEffects: 
+    Graph: 0
   - Index: 111
     NameId: 3111
     DescId: 0
@@ -130,6 +133,7 @@ MonoBehaviour:
     StartEffects: 
     ConsumeTag: -1
     ConsumeEffects: 
+    Graph: 0
   - Index: 112
     NameId: 3112
     DescId: 0
@@ -159,6 +163,7 @@ MonoBehaviour:
     StartEffects: 
     ConsumeTag: -1
     ConsumeEffects: 
+    Graph: 0
   - Index: 113
     NameId: 3113
     DescId: 0
@@ -188,6 +193,7 @@ MonoBehaviour:
     StartEffects: 
     ConsumeTag: -1
     ConsumeEffects: 
+    Graph: 0
   - Index: 121
     NameId: 3121
     DescId: 0
@@ -217,6 +223,7 @@ MonoBehaviour:
     StartEffects: 
     ConsumeTag: -1
     ConsumeEffects: 
+    Graph: 0
   - Index: 201
     NameId: 3201
     DescId: 0
@@ -246,6 +253,7 @@ MonoBehaviour:
     StartEffects: 51000000
     ConsumeTag: -1
     ConsumeEffects: 
+    Graph: 0
   - Index: 301
     NameId: 3301
     DescId: 0
@@ -275,6 +283,7 @@ MonoBehaviour:
     StartEffects: 
     ConsumeTag: 6
     ConsumeEffects: 53000000
+    Graph: 0
   - Index: 302
     NameId: 3302
     DescId: 0
@@ -304,6 +313,7 @@ MonoBehaviour:
     StartEffects: 5a000000
     ConsumeTag: -1
     ConsumeEffects: 
+    Graph: 0
   - Index: 401
     NameId: 3401
     DescId: 0
@@ -333,6 +343,7 @@ MonoBehaviour:
     StartEffects: 
     ConsumeTag: -1
     ConsumeEffects: 
+    Graph: 0
   - Index: 701
     NameId: 3701
     DescId: 0
@@ -362,6 +373,7 @@ MonoBehaviour:
     StartEffects: 
     ConsumeTag: -1
     ConsumeEffects: 
+    Graph: 0
   - Index: 501
     NameId: 3501
     DescId: 0
@@ -391,6 +403,7 @@ MonoBehaviour:
     StartEffects: 
     ConsumeTag: -1
     ConsumeEffects: 
+    Graph: 0
   - Index: 502
     NameId: 3502
     DescId: 0
@@ -420,6 +433,7 @@ MonoBehaviour:
     StartEffects: 
     ConsumeTag: -1
     ConsumeEffects: 
+    Graph: 0
   - Index: 503
     NameId: 3503
     DescId: 0
@@ -449,6 +463,7 @@ MonoBehaviour:
     StartEffects: 
     ConsumeTag: -1
     ConsumeEffects: 
+    Graph: 0
   - Index: 504
     NameId: 3504
     DescId: 0
@@ -478,6 +493,7 @@ MonoBehaviour:
     StartEffects: 
     ConsumeTag: -1
     ConsumeEffects: 
+    Graph: 0
   - Index: 511
     NameId: 3511
     DescId: 0
@@ -507,6 +523,7 @@ MonoBehaviour:
     StartEffects: 
     ConsumeTag: -1
     ConsumeEffects: 
+    Graph: 0
   - Index: 512
     NameId: 3512
     DescId: 0
@@ -536,6 +553,7 @@ MonoBehaviour:
     StartEffects: 
     ConsumeTag: -1
     ConsumeEffects: 
+    Graph: 0
   - Index: 513
     NameId: 3513
     DescId: 0
@@ -565,6 +583,7 @@ MonoBehaviour:
     StartEffects: 
     ConsumeTag: 74
     ConsumeEffects: 57000000
+    Graph: 0
   - Index: 514
     NameId: 3514
     DescId: 0
@@ -594,6 +613,7 @@ MonoBehaviour:
     StartEffects: 
     ConsumeTag: -1
     ConsumeEffects: 
+    Graph: 0
   - Index: 303
     NameId: 3303
     DescId: 0
@@ -623,6 +643,7 @@ MonoBehaviour:
     StartEffects: 
     ConsumeTag: 72
     ConsumeEffects: 55000000
+    Graph: 0
   - Index: 304
     NameId: 3304
     DescId: 0
@@ -652,6 +673,7 @@ MonoBehaviour:
     StartEffects: 
     ConsumeTag: 74
     ConsumeEffects: 57000000
+    Graph: 0
   - Index: 305
     NameId: 3305
     DescId: 0
@@ -681,6 +703,7 @@ MonoBehaviour:
     StartEffects: 
     ConsumeTag: -1
     ConsumeEffects: 
+    Graph: 0
   - Index: 306
     NameId: 3306
     DescId: 0
@@ -710,3 +733,4 @@ MonoBehaviour:
     StartEffects: 
     ConsumeTag: -1
     ConsumeEffects: 
+    Graph: 0

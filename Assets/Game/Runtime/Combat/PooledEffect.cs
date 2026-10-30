@@ -8,7 +8,7 @@ using UnityEngine;
 /// → 래퍼(루트)만 풀링하고, 꺼낼 때마다 원본 이펙트를 자식으로 새로 만든다 (돌려놓을 때 삭제).
 /// 크기는 자식에 적용한다 (루트 스케일은 CueTable.Scale 이 덮어쓰기 때문).
 /// </summary>
-public class PooledEffect : MonoBehaviour, IPoolable
+public class PooledEffect : BaseBehaviour, IPoolable
 {
     [Tooltip("원본 이펙트 프리팹")]
     public GameObject Source;

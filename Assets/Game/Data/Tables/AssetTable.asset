@@ -266,3 +266,51 @@ MonoBehaviour:
   - Index: 302
     Address: AI/ST_Boss
     Kind: 3
+  - Index: 106
+    Address: Characters/NewMonster
+    Kind: 0
+  - Index: 400
+    Address: UI/LayerCanvas
+    Kind: 0
+  - Index: 401
+    Address: UI/Windows/HudWindow
+    Kind: 0
+  - Index: 402
+    Address: UI/Windows/InventoryWindow
+    Kind: 0
+  - Index: 403
+    Address: UI/Windows/CraftWindow
+    Kind: 0
+  - Index: 404
+    Address: UI/Windows/BuildWindow
+    Kind: 0
+  - Index: 405
+    Address: UI/Windows/ShopWindow
+    Kind: 0
+  - Index: 406
+    Address: UI/Windows/BalanceOverlayWindow
+    Kind: 0
+  - Index: 407
+    Address: UI/Windows/CheatConsoleWindow
+    Kind: 0
+  - Index: 408
+    Address: UI/Windows/TitleWindow
+    Kind: 0
+  - Index: 409
+    Address: UI/Layers/WorldHealthBarLayer
+    Kind: 0
+  - Index: 410
+    Address: UI/Layers/DamageNumberLayer
+    Kind: 0
+  - Index: 411
+    Address: UI/Widgets/ListRow
+    Kind: 0
+  - Index: 412
+    Address: UI/Widgets/ItemSlot
+    Kind: 0
+  - Index: 413
+    Address: UI/Widgets/WorldHealthBar
+    Kind: 0
+  - Index: 414
+    Address: UI/Widgets/DamageNumber
+    Kind: 0

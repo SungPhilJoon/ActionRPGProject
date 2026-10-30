@@ -1,13 +1,12 @@
 using System.Collections.Generic;
 using Framework;
-using Framework.UI;
 using TMPro;
 using UnityEngine;
 
 /// <summary>
-/// 데미지/회복 숫자. 월드 좌표를 매 프레임 스크린 좌표로 옮기는 오버레이 텍스트이며, 텍스트 객체는 직접 풀링한다.
+/// 데미지/회복 숫자. 월드 좌표를 매 프레임 스크린 좌표로 옮기는 오버레이 텍스트이며, 숫자 프리팹(NumberPrefab)을 직접 풀링한다.
 /// </summary>
-public class DamageNumberLayer : MonoBehaviour
+public class DamageNumberLayer : UIBehaviour
 {
     private class Entry
     {
@@ -24,14 +23,14 @@ public class DamageNumberLayer : MonoBehaviour
     private static readonly Color HealColor = new Color(0.4f, 1.0f, 0.45f);
     private static readonly Color PlayerHurtColor = new Color(1.0f, 0.3f, 0.3f);
 
+    public TextMeshProUGUI NumberPrefab;
+
     private readonly List<Entry> Active = new List<Entry>();
     private readonly Stack<Entry> Free = new Stack<Entry>();
-    private RectTransform Rect;
     private Camera WorldCamera;
 
     public void Setup(Camera InCamera)
     {
-        Rect = GetComponent<RectTransform>();
         WorldCamera = InCamera;
     }
 
@@ -100,18 +99,18 @@ public class DamageNumberLayer : MonoBehaviour
         Active.Add(entry);
     }
 
+    /// <summary>숫자 위젯은 프리팹(UI/Widgets/DamageNumber)을 복제해 풀링한다.</summary>
     private Entry create()
     {
         var entry = new Entry();
-        entry.Text = UIFactory.CreateText(transform, "Number", string.Empty, 26.0f, TextAlignmentOptions.Center);
-        entry.Text.fontStyle = FontStyles.Bold;
-        entry.Text.rectTransform.sizeDelta = new Vector2(200.0f, 50.0f);
+        entry.Text = Instantiate(NumberPrefab, transform, false);
+        entry.Text.name = NumberPrefab.name;
         return entry;
     }
 
     private void LateUpdate()
     {
-        if (WorldCamera == null || Rect == null)
+        if (WorldCamera == null)
         {
             return;
         }

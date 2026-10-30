@@ -4,7 +4,7 @@ using UnityEngine;
 /// <summary>건축 목록. 선택하면 창을 닫고 BuildManager 고스트 배치 모드로 들어간다.</summary>
 public class BuildWindow : ListWindow
 {
-    protected override int TitleTextId
+    public override int TitleTextId
     {
         get { return (int)EText.Build; }
     }

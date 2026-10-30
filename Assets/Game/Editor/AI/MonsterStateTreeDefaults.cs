@@ -14,7 +14,11 @@ public static class MonsterStateTreeDefaults
     private static readonly Color IdleColor = new Color(0.25f, 0.45f, 0.3f);
     private static readonly Color PhaseColor = new Color(0.6f, 0.35f, 0.15f);
 
-    /// <summary>Framework 의 범용 StateTree 에디터를 게임 메뉴에서도 연다.</summary>
+    /// <summary>
+    /// Framework 의 범용 StateTree 에디터를 게임 메뉴에서도 연다. 게임 쪽 MonsterAIExtension 이 붙어
+    /// 몬스터 AI 템플릿·블록·컨텍스트 패널·Play 스폰이 붙은 StateTree Tool 이 된다.
+    /// </summary>
+    [MenuItem("Game/Tools/StateTree Tool", priority = 32)]
     [MenuItem("Game/AI/StateTree Editor", priority = 41)]
     public static void OpenEditor()
     {
@@ -37,32 +41,32 @@ public static class MonsterStateTreeDefaults
     public static void CreateAllSilently()
     {
         EditorAssetUtil.EnsureFolder(EditorPaths.Content + "/AI");
-        save(buildMelee(), "ST_MeleeMonster");
-        save(buildRanged(), "ST_RangedMonster");
-        save(buildBoss(), "ST_Boss");
+        save(BuildMelee(), "ST_MeleeMonster");
+        save(BuildRanged(), "ST_RangedMonster");
+        save(BuildBoss(), "ST_Boss");
         AssetDatabase.SaveAssets();
         Debug.Log("[StateTree] default monster trees created");
     }
 
     // ------------------------------------------------------------------ trees
 
-    private static StateTreeAsset buildMelee()
+    public static StateTreeAsset BuildMelee()
     {
         var asset = create("근접 몬스터: 귀환 → 전투(공격/추적/대기) → 배회/휴식");
         var root = asset.AddState("Root", 0);
-        var ret = addReturn(asset, root.Id, 0.0f);
-        var combat = addCombat(asset, root.Id, ret.Id);
-        addAttackChaseHold(asset, combat.Id, new EAbilitySlot[0]);
-        addIdle(asset, root.Id, combat.Id, true);
+        var ret = AddReturn(asset, root.Id, 0.0f);
+        var combat = AddCombat(asset, root.Id, ret.Id);
+        AddAttackChaseHold(asset, combat.Id, new EAbilitySlot[0]);
+        AddIdle(asset, root.Id, combat.Id, true);
         return asset;
     }
 
-    private static StateTreeAsset buildRanged()
+    public static StateTreeAsset BuildRanged()
     {
         var asset = create("원거리 몬스터: 너무 가까우면 거리 벌리기 → 공격/추적/대기");
         var root = asset.AddState("Root", 0);
-        var ret = addReturn(asset, root.Id, 0.0f);
-        var combat = addCombat(asset, root.Id, ret.Id);
+        var ret = AddReturn(asset, root.Id, 0.0f);
+        var combat = AddCombat(asset, root.Id, ret.Id);
 
         var retreat = asset.AddState("Retreat", combat.Id);
         retreat.Color = CombatColor;
@@ -70,37 +74,37 @@ public static class MonsterStateTreeDefaults
         retreat.Tasks.Add(new KeepDistanceTask { MinDistance = 7.0f, StepDistance = 6.0f });
         gotoOnComplete(retreat, combat.Id);
 
-        addAttackChaseHold(asset, combat.Id, new EAbilitySlot[0]);
-        addIdle(asset, root.Id, combat.Id, true);
+        AddAttackChaseHold(asset, combat.Id, new EAbilitySlot[0]);
+        AddIdle(asset, root.Id, combat.Id, true);
         return asset;
     }
 
-    private static StateTreeAsset buildBoss()
+    public static StateTreeAsset BuildBoss()
     {
         var asset = create("V Blood 보스: 1페이즈(투석/근접) → 체력 50% 이하 2페이즈(격노 + 도약/전 스킬)");
         var root = asset.AddState("Root", 0);
-        var ret = addReturn(asset, root.Id, 30.0f);
-        var combat = addCombat(asset, root.Id, ret.Id);
+        var ret = AddReturn(asset, root.Id, 30.0f);
+        var combat = AddCombat(asset, root.Id, ret.Id);
 
         var phase2 = asset.AddState("Phase2", combat.Id);
         phase2.Color = PhaseColor;
         phase2.EnterConditions.Add(new BlackboardCompareCondition { Key = EBBKey.HealthRatio, Op = ECompareOp.LessOrEqual, Value = 0.5f });
         phase2.Tasks.Add(new ApplyEffectToSelfTask { EffectId = 23, OncePerLife = true });
-        addAttackChaseHold(asset, phase2.Id, new[] { EAbilitySlot.Spell1, EAbilitySlot.WeaponQ, EAbilitySlot.WeaponE, EAbilitySlot.Primary });
+        AddAttackChaseHold(asset, phase2.Id, new[] { EAbilitySlot.Spell1, EAbilitySlot.WeaponQ, EAbilitySlot.WeaponE, EAbilitySlot.Primary });
 
         var phase1 = asset.AddState("Phase1", combat.Id);
         phase1.Color = PhaseColor;
         var toPhase2 = transition(phase1, ETransitionTrigger.OnTick, ETransitionType.GotoState, phase2.Id);
         toPhase2.Conditions.Add(new BlackboardCompareCondition { Key = EBBKey.HealthRatio, Op = ECompareOp.LessOrEqual, Value = 0.5f });
-        addAttackChaseHold(asset, phase1.Id, new[] { EAbilitySlot.WeaponE, EAbilitySlot.Primary });
+        AddAttackChaseHold(asset, phase1.Id, new[] { EAbilitySlot.WeaponE, EAbilitySlot.Primary });
 
-        addIdle(asset, root.Id, combat.Id, false);
+        AddIdle(asset, root.Id, combat.Id, false);
         return asset;
     }
 
     // ------------------------------------------------------------------ building blocks
 
-    private static StateTreeState addReturn(StateTreeAsset InAsset, int InParent, float InLeash)
+    public static StateTreeState AddReturn(StateTreeAsset InAsset, int InParent, float InLeash)
     {
         var state = InAsset.AddState("Return", InParent);
         state.Color = ReturnColor;
@@ -110,7 +114,7 @@ public static class MonsterStateTreeDefaults
         return state;
     }
 
-    private static StateTreeState addCombat(StateTreeAsset InAsset, int InParent, int InReturnId)
+    public static StateTreeState AddCombat(StateTreeAsset InAsset, int InParent, int InReturnId)
     {
         var combat = InAsset.AddState("Combat", InParent);
         combat.Color = CombatColor;
@@ -125,7 +129,7 @@ public static class MonsterStateTreeDefaults
     }
 
     /// <summary>Attack(쓸 수 있으면 공격) → Chase(사거리 밖이면 추적) → Hold(사거리 안인데 쿨다운이면 바라보며 대기).</summary>
-    private static void addAttackChaseHold(StateTreeAsset InAsset, int InParent, EAbilitySlot[] InSlots)
+    public static void AddAttackChaseHold(StateTreeAsset InAsset, int InParent, EAbilitySlot[] InSlots)
     {
         var attack = InAsset.AddState("Attack", InParent);
         attack.Color = CombatColor;
@@ -146,7 +150,7 @@ public static class MonsterStateTreeDefaults
         gotoOnComplete(hold, InParent);
     }
 
-    private static void addIdle(StateTreeAsset InAsset, int InParent, int InCombatId, bool InWander)
+    public static void AddIdle(StateTreeAsset InAsset, int InParent, int InCombatId, bool InWander)
     {
         var idle = InAsset.AddState("Idle", InParent);
         idle.Color = IdleColor;

@@ -1,4 +1,4 @@
-Index,NameId,DescId,Type,Slot,AbilityTags,CastTime,Cooldown,Range,Radius,Angle,Speed,Count,Spread,Damage,DamageType,HitEffects,SelfEffects,Anims,CastCue,HitCue,Projectile,Icon,IconColor,ComboWindow,MoveLock,StartEffects,ConsumeTag,ConsumeEffects
+Index,NameId,DescId,Type,Slot,AbilityTags,CastTime,Cooldown,Range,Radius,Angle,Speed,Count,Spread,Damage,DamageType,HitEffects,SelfEffects,Anims,CastCue,HitCue,Projectile,Icon,IconColor,ComboWindow,MoveLock,StartEffects,ConsumeTag,ConsumeEffects,Graph
 101,3101,0,MeleeCombo,Primary,Ability_Primary,0.18,0,2.6,0,120,0,3,0,100,Physical,,,1|2|7,1,2,0,0,#8A1C1C,0.5,0.45,,None,
 102,3102,0,AreaBurst,WeaponQ,Ability_Weapon,0.15,8,0,3.2,0,0,4,0.3,45,Physical,,,2,33,2,0,0,#B03030,0,0,,None,
 103,3103,0,Projectile,WeaponE,Ability_Weapon,0.25,10,14,0.9,0,18,1,0,140,Physical,12,,1,0,13,121,0,#C04040,0,0.35,,None,

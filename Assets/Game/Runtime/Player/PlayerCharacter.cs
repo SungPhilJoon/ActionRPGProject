@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using Framework;
+using Framework.Ability;
 using UnityEngine;
 
 /// <summary>
@@ -58,13 +59,14 @@ public class PlayerCharacter : Actor
         EventBus<PlayerSpawnedEvent>.Publish(new PlayerSpawnedEvent { Player = this });
     }
 
-    protected override void OnDestroy()
+    protected override void OnUnityDestroy()
     {
-        base.OnDestroy();
         if (Local == this)
         {
             Local = null;
         }
+
+        base.OnUnityDestroy();
     }
 
     protected override void Update()
@@ -109,6 +111,18 @@ public class PlayerCharacter : Actor
                 EventBus<NotifyEvent>.Publish(new NotifyEvent { TextId = (int)EText.AbilityUnlocked, Arg = Tables.Text(row.NameId), Color = new Color(0.9f, 0.75f, 0.3f) });
             }
         }
+    }
+
+    protected override void OnAbilityActivated(GameplayAbility InAbility)
+    {
+        base.OnAbilityActivated(InAbility);
+        var ability = InAbility as GameAbility;
+        if (ability == null)
+        {
+            return;
+        }
+
+        EventBus<PlayerAbilityUsedEvent>.Publish(new PlayerAbilityUsedEvent { Player = this, Slot = ability.Row.Slot, AbilityId = ability.AbilityId });
     }
 
     public override void Die(Actor InKiller)

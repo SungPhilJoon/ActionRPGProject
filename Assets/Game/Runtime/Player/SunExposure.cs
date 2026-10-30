@@ -8,7 +8,7 @@ using UnityEngine;
 /// 그늘 판정은 그림자 맵이 아니라 물리 레이캐스트 (SunBlocker/Structure/Ground 레이어) — URP.md 참고.
 /// 그림자를 드리우는 메시에는 빌더가 SunBlocker 레이어 MeshCollider(ShadeColliderUtil)를 붙여, 보이는 그림자와 판정 형태를 맞춘다.
 /// </summary>
-public class SunExposure : MonoBehaviour
+public class SunExposure : BaseBehaviour
 {
     private const float CheckInterval = 0.15f;
     /// <summary>먼 산·언덕 그림자까지 포함 (그림자 거리 90m 보다 길게).</summary>
@@ -78,7 +78,7 @@ public class SunExposure : MonoBehaviour
             return false;
         }
 
-        if (Owner.Asc.Tags.HasTag((int)ETag.Cheat_God) == true)
+        if (Owner.HasTag((int)ETag.Cheat_God) == true)
         {
             return false;
         }
@@ -146,7 +146,7 @@ public class SunExposure : MonoBehaviour
         {
             if (BurnHandle != 0 && Owner != null)
             {
-                Owner.Asc.RemoveActiveEffect(BurnHandle);
+                Owner.RemoveEffect(BurnHandle);
             }
 
             BurnHandle = 0;

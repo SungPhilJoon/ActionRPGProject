@@ -1,0 +1,18 @@
+Index,Chapter,TitleId,DescId,Objective,Target,Count,Key,RewardItem,RewardCount,Next,#Memo
+1,Tutorial,7001,7101,Move,0,25,Count,0,0,2,이동 25m
+2,Tutorial,7002,7102,UseAbility,0,3,Count,0,0,3,좌클릭 공격 3회 (Target = EAbilitySlot.Primary)
+3,Tutorial,7003,7103,UseAbility,1,1,WeaponQ,0,0,4,무기 스킬 Q
+4,Tutorial,7004,7104,UseAbility,3,1,Travel,0,0,5,Veil of Blood (Space)
+5,Tutorial,7005,7105,UseAbility,4,1,Spell1,0,0,6,주문 R
+6,Tutorial,7006,7106,Buy,0,1,Interact,0,0,7,상인에게서 아무 아이템
+7,Tutorial,7007,7107,Gather,0,10,Count,30,2,8,채집 10개 → 피의 물약 2
+8,Tutorial,7008,7108,Craft,0,1,Craft,0,0,9,아무거나 제작 1회
+9,Tutorial,7009,7109,Equip,1,1,Inventory,0,0,10,흉갑 칸 장착 (Target = EEquipSlot.Chest)
+10,Tutorial,7010,7110,Build,1,1,Build,1,10,11,성 심장 → 목재 10
+11,Tutorial,7011,7111,Build,6,1,Build,31,1,12,관 → 햇빛 저항 물약 1
+12,Hunt,7012,7112,Kill,2,3,Count,30,2,13,메두사 3 → 피의 물약 2
+13,Hunt,7013,7113,Feed,0,1,Feed,5,5,14,아무 적 흡혈 → 피의 정수 5
+14,Hunt,7014,7114,Kill,3,3,Count,6,8,15,코브라 3 → 구리 주괴 8
+15,Hunt,7015,7115,GearLevel,0,16,Inventory,0,0,16,기어 레벨 16
+16,Hunt,7016,7116,Kill,4,3,Count,30,3,17,트롤 3 → 피의 물약 3
+17,Boss,7017,7117,Kill,5,1,Count,0,0,0,보스 처치 (흡혈로 처치해도 됨) = 마지막

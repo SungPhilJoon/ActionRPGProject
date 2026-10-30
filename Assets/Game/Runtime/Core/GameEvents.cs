@@ -24,6 +24,13 @@ public struct HealEvent : IGameEvent
     public Vector3 Position;
 }
 
+/// <summary>건축물 설치 완료. Bounds = 설치된 건축물의 월드 바운드 (식생 제거 등에 쓴다).</summary>
+public struct StructurePlacedEvent : IGameEvent
+{
+    public Structure Structure;
+    public Bounds Bounds;
+}
+
 public struct ActorDiedEvent : IGameEvent
 {
     public Actor Victim;
@@ -84,4 +91,41 @@ public struct BossEngagedEvent : IGameEvent
 public struct InteractTargetChangedEvent : IGameEvent
 {
     public IInteractable Target;
+}
+
+/// <summary>플레이어가 아이템을 얻음 (채집 · 제작 · 상점 · 보상). 인벤토리 변경과 달리 "어디서 몇 개" 를 알려 준다 (퀘스트 목표용).</summary>
+public struct ItemObtainedEvent : IGameEvent
+{
+    public PlayerCharacter Player;
+    public int ItemId;
+    public int Count;
+    public EItemSource Source;
+}
+
+/// <summary>플레이어가 어빌리티를 발동함 (콤보 다음 단계 입력은 새 발동이 아니라서 세지 않는다).</summary>
+public struct PlayerAbilityUsedEvent : IGameEvent
+{
+    public PlayerCharacter Player;
+    public EAbilitySlot Slot;
+    public int AbilityId;
+}
+
+/// <summary>플레이어가 흡혈을 마침 (대상은 곧 처치된다).</summary>
+public struct PlayerFedEvent : IGameEvent
+{
+    public PlayerCharacter Player;
+    public int CharacterId;
+}
+
+/// <summary>현재 퀘스트가 바뀌거나 진행도가 올라감. Quest 가 null 이면 진행 중인 퀘스트 없음.</summary>
+public struct QuestChangedEvent : IGameEvent
+{
+    public QuestRow Quest;
+    public int Progress;
+    public bool Completed;
+}
+
+/// <summary>마지막 퀘스트(보스)까지 모두 끝남.</summary>
+public struct QuestsCompletedEvent : IGameEvent
+{
 }

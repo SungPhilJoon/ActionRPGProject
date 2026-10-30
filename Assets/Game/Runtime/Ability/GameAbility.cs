@@ -51,6 +51,12 @@ public abstract class GameAbility : GameplayAbility
         CooldownEffect = EffectLibrary.Get(EffectLibrary.CooldownEffectId);
         CooldownDuration = InRow.Cooldown;
         SetByCallerCooldownKey = (int)ESetByCaller.Cooldown;
+        OnSetup();
+    }
+
+    /// <summary>Setup 의 기본 규칙을 정한 뒤 호출된다. 하위 클래스가 태그/비용을 덮어쓸 때 사용 (GraphAbility).</summary>
+    protected virtual void OnSetup()
+    {
     }
 
     /// <summary>공격 속도 배율 (AttackSpeed 속성 %).</summary>
@@ -166,6 +172,9 @@ public static class AbilityFactory
                 break;
             case EAbilityType.Leap:
                 ability = new LeapAbility();
+                break;
+            case EAbilityType.Graph:
+                ability = new GraphAbility();
                 break;
         }
 

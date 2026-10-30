@@ -8,7 +8,7 @@ using UnityEngine.EventSystems;
 /// PlayerCharacter 는 서버 권한으로 실행된다 — Multiplayer.md 의 확장 계획 참고)
 /// </summary>
 [RequireComponent(typeof(PlayerCharacter))]
-public class PlayerController : MonoBehaviour
+public class PlayerController : BaseBehaviour
 {
     private static readonly EInputAction[] SlotInputs =
     {

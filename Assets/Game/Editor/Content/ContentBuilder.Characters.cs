@@ -24,7 +24,6 @@ public static partial class ContentBuilder
     private const string CraftRoot = External + "/ExplosiveLLC/Crafting Mecanim Animation Pack";
     private const string CraftAnim = CraftRoot + "/Animations";
     private const string CraftSpear = CraftRoot + "/Props/Spear.FBX";
-    private const string MagicPig = External + "/Magic Pig Games (Infinity PBR)/Characters";
 
     /// <summary>unity-chan 데모 스크립트 중 구 Input 매니저/OnGUI 를 써서 이 프로젝트(Input System 전용)에서 예외를 내는 것.</summary>
     private static readonly HashSet<string> StripUnityChanComponents = new HashSet<string> { "IdleChanger", "FaceUpdate", "IKCtrlRightHand", "RandomWind" };
@@ -47,24 +46,25 @@ public static partial class ContentBuilder
     private static float SocketScale = 1.0f;
 
     /// <summary>
-    /// Magic Pig 몬스터 FBX 와 클립 안에서 실제로 앞으로 이동하는 뼈 (Root node).
-    /// Generic 리그에 Root node 가 없으면 걷기 클립의 전진 이동이 그대로 이 뼈에 들어가서, 메시가 NavMeshAgent 루트보다
-    /// 앞서 걷다가 클립이 반복될 때 루트로 튀어 돌아온다 (Issues 35). 측정한 클립 1회당 전진량을 주석에 남긴다.
+    /// 몬스터 클립을 제자리로 (MonsterAuthoring.MotionNode 가 있는 몬스터만).
+    /// Generic 리그에 Root node 가 없으면 걷기 클립의 전진 이동이 그대로 뼈에 들어가서, 메시가 NavMeshAgent 루트보다
+    /// 앞서 걷다가 클립이 반복될 때 루트로 튀어 돌아온다 (Issues 35).
+    /// 기본 몬스터의 이동 뼈 / 클립 1회당 전진량: Medusa Root 1.18m, Cobra base_snake 9.93m, Troll Ogre_root 1.91m, Minotaur Hips 0.97m.
     /// </summary>
-    private static readonly string[,] MonsterMotionNodes =
-    {
-        { MagicPig + "/Medusa/Models/Medusa_Humanoid DEMO.FBX", "Root" },        // Walk 1.18m / 0.83초
-        { MagicPig + "/Cobra Snake/Model/CobraSnake Demo.fbx", "base_snake" },   // AlertWalk 9.93m / 3.93초
-        { MagicPig + "/Troll/Models/Troll Demo.fbx", "Ogre_root" },              // Walk 1.91m / 1.5초
-        { MagicPig + "/Minotaur/Models/Minotaur.fbx", "Hips" },                  // Walk 0.97m / 0.93초
-    };
-
     [MenuItem("Game/Setup/3c. Make Monster Animations In-Place", priority = 3)]
     public static void MakeMonsterAnimationsInPlace()
     {
-        for (int i = 0; i < MonsterMotionNodes.GetLength(0); ++i)
+        foreach (var monster in MonsterAuthoringUtil.LoadAll())
         {
-            makeInPlace(MonsterMotionNodes[i, 0], MonsterMotionNodes[i, 1]);
+            makeInPlace(monster);
+        }
+    }
+
+    private static void makeInPlace(MonsterAuthoring InMonster)
+    {
+        if (string.IsNullOrEmpty(InMonster.MotionNode) == false)
+        {
+            makeInPlace(MonsterAuthoringUtil.GetClipSource(InMonster.Model), InMonster.MotionNode);
         }
     }
 
@@ -80,6 +80,12 @@ public static partial class ContentBuilder
         if (importer == null)
         {
             Debug.LogWarning("[Content] model importer not found: " + InFbx);
+            return;
+        }
+
+        // 이미 처리된 모델은 다시 임포트하지 않는다 (StateTree Tool 에서 몬스터 하나만 다시 구울 때 대기 시간 방지).
+        if (importer.motionNodeName == InMotionNode)
+        {
             return;
         }
 
@@ -108,15 +114,12 @@ public static partial class ContentBuilder
         MakeMonsterAnimationsInPlace();
         buildPlayer();
 
-        // 몬스터: (주소, 프리팹, 애니메이션 매핑, 프리팹 스케일, 판정 반지름)
-        buildMonster("Characters/BanditThug", MagicPig + "/Medusa/_Prefabs/Medusa_Humanoid DEMO.prefab", 1.0f, 0.5f,
-            "Idle", "Walk", "Death", new[] { "Attack1", "Attack2", "Attack3", "Taunt", "Attack3", "Dodge", "GotHit" });
-        buildMonster("Characters/BanditArcher", MagicPig + "/Cobra Snake/_Prefabs/CobraSnake.prefab", 0.55f, 0.9f,
-            "AlertIdle", "AlertWalk", "Death", new[] { "Attack1", "Attack2", "Attack3", "Spit1", "Spit2", "Dodge", "GotHit" });
-        buildMonster("Characters/OrcBrute", MagicPig + "/Troll/_Prefabs/Troll.prefab", 1.0f, 0.9f,
-            "Idle", "Walk", "Death", new[] { "Attack 1", "Attack 2", "Attack 3", "Taunt", "Jump", "Dodge", "Got Hit" });
-        buildMonster("Characters/BossGrimgor", MagicPig + "/Minotaur/_Prefabs/Minotaur.prefab", 1.0f, 0.8f,
-            "Idle", "Walk", "Death", new[] { "Attack1", "Attack2", "Attack3", "Taunt", "RamAttack", "Dodge", "GotHit" });
+        // 몬스터: 외형/애니메이션은 MonsterAuthoring 에셋(인스펙터로 편집)이 원본.
+        foreach (var monster in MonsterAuthoringUtil.LoadAll())
+        {
+            buildMonster(monster);
+        }
+
         buildMerchant();
     }
 
@@ -165,6 +168,7 @@ public static partial class ContentBuilder
         actorAnimator.Animator = animator;
         actorAnimator.WeaponSocket = socket;
         setLayer(root, LayerId.Player);
+        CharacterLook.Apply(root, true);
         savePrefab(root, "Characters/Player");
     }
 
@@ -248,48 +252,67 @@ public static partial class ContentBuilder
 
     // ------------------------------------------------------------------ monsters
 
-    /// <summary>InActions 순서: Attack1, Attack2, Attack3, Cast, Special1, Dodge, Hit.</summary>
-    private static void buildMonster(string InAddress, string InPrefab, float InScale, float InRadius, string InIdle, string InWalk, string InDead, string[] InActions)
+    /// <summary>MonsterAuthoring 인스펙터의 "프리팹 빌드": 몬스터 하나만 제자리 처리 → 프리팹/컨트롤러 생성 → 저장.</summary>
+    public static GameObject BuildMonster(MonsterAuthoring InMonster)
     {
-        var root = new GameObject(Path.GetFileName(InAddress));
-        var model = instantiateExternal(InPrefab, root.transform);
+        MaterialUpgradeUtil.ClearCache();
+        makeInPlace(InMonster);
+        var prefab = buildMonster(InMonster);
+        AssetDatabase.SaveAssets();
+        return prefab;
+    }
+
+    private static GameObject buildMonster(MonsterAuthoring InMonster)
+    {
+        if (InMonster.Model == null || string.IsNullOrEmpty(InMonster.Address) == true)
+        {
+            Debug.LogError($"[Content] monster '{InMonster.name}' has no model or address", InMonster);
+            return null;
+        }
+
+        var root = new GameObject(Path.GetFileName(InMonster.Address));
+        var model = instantiateExternal(AssetDatabase.GetAssetPath(InMonster.Model), root.transform);
         model.name = "Model";
-        model.transform.localScale = Vector3.one * InScale;
+        model.transform.localScale = Vector3.one * InMonster.ModelScale;
         stripToVisuals(model);
         MaterialUpgradeUtil.UpgradeRenderers(model, EditorPaths.Generated + "/Materials/Monsters");
 
         var animator = model.GetComponentInChildren<Animator>();
-        animator.applyRootMotion = false;
-        animator.cullingMode = AnimatorCullingMode.CullUpdateTransforms;
-        string clipSource = AssetDatabase.GetAssetPath(animator.avatar);
-
-        var set = new AnimSet();
-        set.Idle = clip(clipSource, InIdle);
-        set.Walk = clip(clipSource, InWalk);
-        set.Dead = clip(clipSource, InDead);
-        EAnim[] order = { EAnim.Attack1, EAnim.Attack2, EAnim.Attack3, EAnim.Cast, EAnim.Special1, EAnim.Dodge, EAnim.Hit };
-        set.Actions = new Dictionary<EAnim, AnimationClip>();
-        for (int i = 0; i < order.Length && i < InActions.Length; ++i)
+        if (animator == null)
         {
-            set.Actions[order[i]] = clip(clipSource, InActions[i]);
+            animator = model.AddComponent<Animator>();
         }
 
-        animator.runtimeAnimatorController = buildController("Monster_" + root.name, set, 0.5f);
+        animator.applyRootMotion = false;
+        animator.cullingMode = AnimatorCullingMode.CullUpdateTransforms;
+
+        var set = new AnimSet();
+        set.Idle = InMonster.Idle;
+        set.Walk = InMonster.Walk != null ? InMonster.Walk : InMonster.Idle;
+        set.Dead = InMonster.Dead;
+        set.Actions = new Dictionary<EAnim, AnimationClip>();
+        for (int i = 0; i < InMonster.Actions.Count; ++i)
+        {
+            set.Actions[InMonster.Actions[i].Anim] = InMonster.Actions[i].Clip;
+        }
+
+        animator.runtimeAnimatorController = buildController("Monster_" + root.name, set, InMonster.WalkThreshold);
         animator.fireEvents = false;
 
         var agent = root.AddComponent<NavMeshAgent>();
-        agent.radius = InRadius;
-        agent.height = 2.0f;
+        agent.radius = InMonster.Radius;
+        agent.height = InMonster.AgentHeight;
         agent.speed = 4.0f;
         agent.stoppingDistance = 0.3f;
         agent.obstacleAvoidanceType = ObstacleAvoidanceType.LowQualityObstacleAvoidance;
         var monster = root.AddComponent<MonsterCharacter>();
-        monster.Radius = InRadius;
+        monster.Radius = InMonster.Radius;
 
         var actorAnimator = root.AddComponent<ActorAnimator>();
         actorAnimator.Animator = animator;
         setLayer(root, LayerId.Monster);
-        savePrefab(root, InAddress);
+        CharacterLook.Apply(root, false);
+        return savePrefab(root, InMonster.Address);
     }
 
     private static void buildMerchant()

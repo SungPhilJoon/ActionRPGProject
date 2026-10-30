@@ -1,0 +1,1441 @@
+{
+    "Scenario": "Boot",
+    "Description": "게임 시작 ~ 싱글 플레이 시작까지 로드된 에셋 (프리로드 포함)",
+    "StartedAt": "2026-10-31 05:40:44",
+    "DurationSeconds": 0.006031036376953125,
+    "Repeat": 1,
+    "ExpectsCleanup": false,
+    "LoadEvents": 421,
+    "ReleaseEvents": 0,
+    "SyncWaits": 2,
+    "SyncWaitMilliseconds": 6.573300361633301,
+    "LiveBefore": 100,
+    "LiveAfter": 100,
+    "Failures": [],
+    "Assets": [
+        {
+            "Address": "AI/ST_Boss",
+            "Type": "ScriptableObject",
+            "Loads": 2,
+            "Releases": 0,
+            "RefCountBefore": 0,
+            "RefCountAfter": 2,
+            "LoadMilliseconds": 218.994140625,
+            "SyncWaitMilliseconds": 0.0,
+            "Failed": false,
+            "Owners": [
+                "[GameBootstrap] (GameBootstrap)",
+                "MonsterBrain.loadTree"
+            ]
+        },
+        {
+            "Address": "AI/ST_MeleeMonster",
+            "Type": "ScriptableObject",
+            "Loads": 14,
+            "Releases": 0,
+            "RefCountBefore": 0,
+            "RefCountAfter": 14,
+            "LoadMilliseconds": 219.06280517578126,
+            "SyncWaitMilliseconds": 0.0,
+            "Failed": false,
+            "Owners": [
+                "[GameBootstrap] (GameBootstrap)",
+                "MonsterBrain.loadTree"
+            ]
+        },
+        {
+            "Address": "AI/ST_RangedMonster",
+            "Type": "ScriptableObject",
+            "Loads": 7,
+            "Releases": 0,
+            "RefCountBefore": 0,
+            "RefCountAfter": 7,
+            "LoadMilliseconds": 218.92642211914063,
+            "SyncWaitMilliseconds": 0.0,
+            "Failed": false,
+            "Owners": [
+                "[GameBootstrap] (GameBootstrap)",
+                "MonsterBrain.loadTree"
+            ]
+        },
+        {
+            "Address": "Characters/BanditArcher",
+            "Type": "GameObject",
+            "Loads": 7,
+            "Releases": 0,
+            "RefCountBefore": 0,
+            "RefCountAfter": 7,
+            "LoadMilliseconds": 354.939453125,
+            "SyncWaitMilliseconds": 0.0,
+            "Failed": false,
+            "Owners": [
+                "[GameBootstrap] (GameBootstrap)",
+                "SpawnManager.spawnMonsterAsync"
+            ]
+        },
+        {
+            "Address": "Characters/BanditThug",
+            "Type": "GameObject",
+            "Loads": 10,
+            "Releases": 0,
+            "RefCountBefore": 0,
+            "RefCountAfter": 10,
+            "LoadMilliseconds": 354.8031005859375,
+            "SyncWaitMilliseconds": 0.0,
+            "Failed": false,
+            "Owners": [
+                "[GameBootstrap] (GameBootstrap)",
+                "SpawnManager.spawnMonsterAsync"
+            ]
+        },
+        {
+            "Address": "Characters/BossGrimgor",
+            "Type": "GameObject",
+            "Loads": 2,
+            "Releases": 0,
+            "RefCountBefore": 0,
+            "RefCountAfter": 2,
+            "LoadMilliseconds": 355.0882263183594,
+            "SyncWaitMilliseconds": 0.0,
+            "Failed": false,
+            "Owners": [
+                "[GameBootstrap] (GameBootstrap)",
+                "SpawnManager.spawnMonsterAsync"
+            ]
+        },
+        {
+            "Address": "Characters/Merchant",
+            "Type": "GameObject",
+            "Loads": 2,
+            "Releases": 0,
+            "RefCountBefore": 0,
+            "RefCountAfter": 2,
+            "LoadMilliseconds": 355.1568908691406,
+            "SyncWaitMilliseconds": 0.0,
+            "Failed": false,
+            "Owners": [
+                "[GameBootstrap] (GameBootstrap)",
+                "SpawnManager.spawnMerchantAsync"
+            ]
+        },
+        {
+            "Address": "Characters/NewMonster",
+            "Type": "GameObject",
+            "Loads": 1,
+            "Releases": 0,
+            "RefCountBefore": 0,
+            "RefCountAfter": 1,
+            "LoadMilliseconds": 219.06280517578126,
+            "SyncWaitMilliseconds": 0.0,
+            "Failed": false,
+            "Owners": [
+                "[GameBootstrap] (GameBootstrap)"
+            ]
+        },
+        {
+            "Address": "Characters/OrcBrute",
+            "Type": "GameObject",
+            "Loads": 5,
+            "Releases": 0,
+            "RefCountBefore": 0,
+            "RefCountAfter": 5,
+            "LoadMilliseconds": 355.0167236328125,
+            "SyncWaitMilliseconds": 0.0,
+            "Failed": false,
+            "Owners": [
+                "[GameBootstrap] (GameBootstrap)",
+                "SpawnManager.spawnMonsterAsync"
+            ]
+        },
+        {
+            "Address": "Characters/Player",
+            "Type": "GameObject",
+            "Loads": 2,
+            "Releases": 0,
+            "RefCountBefore": 0,
+            "RefCountAfter": 2,
+            "LoadMilliseconds": 207.90576171875,
+            "SyncWaitMilliseconds": 6.103000164031982,
+            "Failed": false,
+            "Owners": [
+                "[GameBootstrap] (GameBootstrap)",
+                "GameBootstrap.startSinglePlayer"
+            ]
+        },
+        {
+            "Address": "Icons/Banner",
+            "Type": "Sprite",
+            "Loads": 1,
+            "Releases": 0,
+            "RefCountBefore": 0,
+            "RefCountAfter": 1,
+            "LoadMilliseconds": 220.09182739257813,
+            "SyncWaitMilliseconds": 0.0,
+            "Failed": false,
+            "Owners": [
+                "[GameBootstrap] (GameBootstrap)"
+            ]
+        },
+        {
+            "Address": "Icons/Barrel",
+            "Type": "Sprite",
+            "Loads": 1,
+            "Releases": 0,
+            "RefCountBefore": 0,
+            "RefCountAfter": 1,
+            "LoadMilliseconds": 220.19004821777345,
+            "SyncWaitMilliseconds": 0.0,
+            "Failed": false,
+            "Owners": [
+                "[GameBootstrap] (GameBootstrap)"
+            ]
+        },
+        {
+            "Address": "Icons/Campfire",
+            "Type": "Sprite",
+            "Loads": 1,
+            "Releases": 0,
+            "RefCountBefore": 0,
+            "RefCountAfter": 1,
+            "LoadMilliseconds": 220.0031280517578,
+            "SyncWaitMilliseconds": 0.0,
+            "Failed": false,
+            "Owners": [
+                "[GameBootstrap] (GameBootstrap)"
+            ]
+        },
+        {
+            "Address": "Icons/CastleHeart",
+            "Type": "Sprite",
+            "Loads": 1,
+            "Releases": 0,
+            "RefCountBefore": 0,
+            "RefCountAfter": 1,
+            "LoadMilliseconds": 220.3826904296875,
+            "SyncWaitMilliseconds": 0.0,
+            "Failed": false,
+            "Owners": [
+                "[GameBootstrap] (GameBootstrap)"
+            ]
+        },
+        {
+            "Address": "Icons/Chest",
+            "Type": "Sprite",
+            "Loads": 1,
+            "Releases": 0,
+            "RefCountBefore": 0,
+            "RefCountAfter": 1,
+            "LoadMilliseconds": 221.2266845703125,
+            "SyncWaitMilliseconds": 0.0,
+            "Failed": false,
+            "Owners": [
+                "[GameBootstrap] (GameBootstrap)"
+            ]
+        },
+        {
+            "Address": "Icons/Coin",
+            "Type": "Sprite",
+            "Loads": 1,
+            "Releases": 0,
+            "RefCountBefore": 0,
+            "RefCountAfter": 1,
+            "LoadMilliseconds": 221.31253051757813,
+            "SyncWaitMilliseconds": 0.0,
+            "Failed": false,
+            "Owners": [
+                "[GameBootstrap] (GameBootstrap)"
+            ]
+        },
+        {
+            "Address": "Icons/CopperOre",
+            "Type": "Sprite",
+            "Loads": 1,
+            "Releases": 0,
+            "RefCountBefore": 0,
+            "RefCountAfter": 1,
+            "LoadMilliseconds": 220.4761505126953,
+            "SyncWaitMilliseconds": 0.0,
+            "Failed": false,
+            "Owners": [
+                "[GameBootstrap] (GameBootstrap)"
+            ]
+        },
+        {
+            "Address": "Icons/Floor",
+            "Type": "Sprite",
+            "Loads": 1,
+            "Releases": 0,
+            "RefCountBefore": 0,
+            "RefCountAfter": 1,
+            "LoadMilliseconds": 220.95394897460938,
+            "SyncWaitMilliseconds": 0.0,
+            "Failed": false,
+            "Owners": [
+                "[GameBootstrap] (GameBootstrap)"
+            ]
+        },
+        {
+            "Address": "Icons/Lumber",
+            "Type": "Sprite",
+            "Loads": 1,
+            "Releases": 0,
+            "RefCountBefore": 0,
+            "RefCountAfter": 1,
+            "LoadMilliseconds": 220.85476684570313,
+            "SyncWaitMilliseconds": 0.0,
+            "Failed": false,
+            "Owners": [
+                "[GameBootstrap] (GameBootstrap)"
+            ]
+        },
+        {
+            "Address": "Icons/Mushroom",
+            "Type": "Sprite",
+            "Loads": 1,
+            "Releases": 0,
+            "RefCountBefore": 0,
+            "RefCountAfter": 1,
+            "LoadMilliseconds": 220.56961059570313,
+            "SyncWaitMilliseconds": 0.0,
+            "Failed": false,
+            "Owners": [
+                "[GameBootstrap] (GameBootstrap)"
+            ]
+        },
+        {
+            "Address": "Icons/PlantFiber",
+            "Type": "Sprite",
+            "Loads": 1,
+            "Releases": 0,
+            "RefCountBefore": 0,
+            "RefCountAfter": 1,
+            "LoadMilliseconds": 220.66403198242188,
+            "SyncWaitMilliseconds": 0.0,
+            "Failed": false,
+            "Owners": [
+                "[GameBootstrap] (GameBootstrap)"
+            ]
+        },
+        {
+            "Address": "Icons/Potion",
+            "Type": "Sprite",
+            "Loads": 1,
+            "Releases": 0,
+            "RefCountBefore": 0,
+            "RefCountAfter": 1,
+            "LoadMilliseconds": 221.41647338867188,
+            "SyncWaitMilliseconds": 0.0,
+            "Failed": false,
+            "Owners": [
+                "[GameBootstrap] (GameBootstrap)"
+            ]
+        },
+        {
+            "Address": "Icons/Shield",
+            "Type": "Sprite",
+            "Loads": 1,
+            "Releases": 0,
+            "RefCountBefore": 0,
+            "RefCountAfter": 1,
+            "LoadMilliseconds": 221.14276123046876,
+            "SyncWaitMilliseconds": 0.0,
+            "Failed": false,
+            "Owners": [
+                "[GameBootstrap] (GameBootstrap)"
+            ]
+        },
+        {
+            "Address": "Icons/Spear",
+            "Type": "Sprite",
+            "Loads": 1,
+            "Releases": 0,
+            "RefCountBefore": 0,
+            "RefCountAfter": 1,
+            "LoadMilliseconds": 221.5166015625,
+            "SyncWaitMilliseconds": 0.0,
+            "Failed": false,
+            "Owners": [
+                "[GameBootstrap] (GameBootstrap)"
+            ]
+        },
+        {
+            "Address": "Icons/Stone",
+            "Type": "Sprite",
+            "Loads": 1,
+            "Releases": 0,
+            "RefCountBefore": 0,
+            "RefCountAfter": 1,
+            "LoadMilliseconds": 220.75747680664063,
+            "SyncWaitMilliseconds": 0.0,
+            "Failed": false,
+            "Owners": [
+                "[GameBootstrap] (GameBootstrap)"
+            ]
+        },
+        {
+            "Address": "Icons/Sword",
+            "Type": "Sprite",
+            "Loads": 1,
+            "Releases": 0,
+            "RefCountBefore": 0,
+            "RefCountAfter": 1,
+            "LoadMilliseconds": 221.9371795654297,
+            "SyncWaitMilliseconds": 0.0,
+            "Failed": false,
+            "Owners": [
+                "[GameBootstrap] (GameBootstrap)"
+            ]
+        },
+        {
+            "Address": "Icons/Tent",
+            "Type": "Sprite",
+            "Loads": 1,
+            "Releases": 0,
+            "RefCountBefore": 0,
+            "RefCountAfter": 1,
+            "LoadMilliseconds": 219.87628173828126,
+            "SyncWaitMilliseconds": 0.0,
+            "Failed": false,
+            "Owners": [
+                "[GameBootstrap] (GameBootstrap)"
+            ]
+        },
+        {
+            "Address": "Icons/Wall",
+            "Type": "Sprite",
+            "Loads": 1,
+            "Releases": 0,
+            "RefCountBefore": 0,
+            "RefCountAfter": 1,
+            "LoadMilliseconds": 221.05694580078126,
+            "SyncWaitMilliseconds": 0.0,
+            "Failed": false,
+            "Owners": [
+                "[GameBootstrap] (GameBootstrap)"
+            ]
+        },
+        {
+            "Address": "Icons/Workbench",
+            "Type": "Sprite",
+            "Loads": 1,
+            "Releases": 0,
+            "RefCountBefore": 0,
+            "RefCountAfter": 1,
+            "LoadMilliseconds": 220.29019165039063,
+            "SyncWaitMilliseconds": 0.0,
+            "Failed": false,
+            "Owners": [
+                "[GameBootstrap] (GameBootstrap)"
+            ]
+        },
+        {
+            "Address": "Nodes/Boulder",
+            "Type": "GameObject",
+            "Loads": 13,
+            "Releases": 0,
+            "RefCountBefore": 0,
+            "RefCountAfter": 13,
+            "LoadMilliseconds": 356.85540771484377,
+            "SyncWaitMilliseconds": 0.0,
+            "Failed": false,
+            "Owners": [
+                "[GameBootstrap] (GameBootstrap)",
+                "SpawnManager.spawnResourceAsync"
+            ]
+        },
+        {
+            "Address": "Nodes/Bush",
+            "Type": "GameObject",
+            "Loads": 66,
+            "Releases": 0,
+            "RefCountBefore": 0,
+            "RefCountAfter": 66,
+            "LoadMilliseconds": 356.9297790527344,
+            "SyncWaitMilliseconds": 0.0,
+            "Failed": false,
+            "Owners": [
+                "[GameBootstrap] (GameBootstrap)",
+                "SpawnManager.spawnResourceAsync"
+            ]
+        },
+        {
+            "Address": "Nodes/CopperVein",
+            "Type": "GameObject",
+            "Loads": 13,
+            "Releases": 0,
+            "RefCountBefore": 0,
+            "RefCountAfter": 13,
+            "LoadMilliseconds": 356.9860534667969,
+            "SyncWaitMilliseconds": 0.0,
+            "Failed": false,
+            "Owners": [
+                "[GameBootstrap] (GameBootstrap)",
+                "SpawnManager.spawnResourceAsync"
+            ]
+        },
+        {
+            "Address": "Nodes/OakTree",
+            "Type": "GameObject",
+            "Loads": 31,
+            "Releases": 0,
+            "RefCountBefore": 0,
+            "RefCountAfter": 31,
+            "LoadMilliseconds": 356.7161560058594,
+            "SyncWaitMilliseconds": 0.0,
+            "Failed": false,
+            "Owners": [
+                "[GameBootstrap] (GameBootstrap)",
+                "SpawnManager.spawnResourceAsync"
+            ]
+        },
+        {
+            "Address": "Nodes/PineTree",
+            "Type": "GameObject",
+            "Loads": 91,
+            "Releases": 0,
+            "RefCountBefore": 0,
+            "RefCountAfter": 91,
+            "LoadMilliseconds": 356.6474914550781,
+            "SyncWaitMilliseconds": 0.0,
+            "Failed": false,
+            "Owners": [
+                "[GameBootstrap] (GameBootstrap)",
+                "SpawnManager.spawnResourceAsync"
+            ]
+        },
+        {
+            "Address": "Nodes/Rock",
+            "Type": "GameObject",
+            "Loads": 23,
+            "Releases": 0,
+            "RefCountBefore": 0,
+            "RefCountAfter": 23,
+            "LoadMilliseconds": 356.7857666015625,
+            "SyncWaitMilliseconds": 0.0,
+            "Failed": false,
+            "Owners": [
+                "[GameBootstrap] (GameBootstrap)",
+                "SpawnManager.spawnResourceAsync"
+            ]
+        },
+        {
+            "Address": "Projectiles/Arrow",
+            "Type": "GameObject",
+            "Loads": 1,
+            "Releases": 0,
+            "RefCountBefore": 0,
+            "RefCountAfter": 1,
+            "LoadMilliseconds": 355.397216796875,
+            "SyncWaitMilliseconds": 0.0,
+            "Failed": false,
+            "Owners": [
+                "[GameBootstrap] (GameBootstrap)"
+            ]
+        },
+        {
+            "Address": "Projectiles/BallLightning",
+            "Type": "GameObject",
+            "Loads": 1,
+            "Releases": 0,
+            "RefCountBefore": 0,
+            "RefCountAfter": 1,
+            "LoadMilliseconds": 355.61846923828127,
+            "SyncWaitMilliseconds": 0.0,
+            "Failed": false,
+            "Owners": [
+                "[GameBootstrap] (GameBootstrap)"
+            ]
+        },
+        {
+            "Address": "Projectiles/BloodBolt",
+            "Type": "GameObject",
+            "Loads": 1,
+            "Releases": 0,
+            "RefCountBefore": 0,
+            "RefCountAfter": 1,
+            "LoadMilliseconds": 355.255126953125,
+            "SyncWaitMilliseconds": 0.0,
+            "Failed": false,
+            "Owners": [
+                "[GameBootstrap] (GameBootstrap)"
+            ]
+        },
+        {
+            "Address": "Projectiles/CorruptedSkull",
+            "Type": "GameObject",
+            "Loads": 1,
+            "Releases": 0,
+            "RefCountBefore": 0,
+            "RefCountAfter": 1,
+            "LoadMilliseconds": 355.6909484863281,
+            "SyncWaitMilliseconds": 0.0,
+            "Failed": false,
+            "Owners": [
+                "[GameBootstrap] (GameBootstrap)"
+            ]
+        },
+        {
+            "Address": "Projectiles/FireBall",
+            "Type": "GameObject",
+            "Loads": 7,
+            "Releases": 0,
+            "RefCountBefore": 0,
+            "RefCountAfter": 7,
+            "LoadMilliseconds": 355.5412292480469,
+            "SyncWaitMilliseconds": 0.0,
+            "Failed": false,
+            "Owners": [
+                "[GameBootstrap] (GameBootstrap)",
+                "ProjectileSystem.Fire"
+            ]
+        },
+        {
+            "Address": "Projectiles/Rock",
+            "Type": "GameObject",
+            "Loads": 1,
+            "Releases": 0,
+            "RefCountBefore": 0,
+            "RefCountAfter": 1,
+            "LoadMilliseconds": 355.46588134765627,
+            "SyncWaitMilliseconds": 0.0,
+            "Failed": false,
+            "Owners": [
+                "[GameBootstrap] (GameBootstrap)"
+            ]
+        },
+        {
+            "Address": "Projectiles/Shockwave",
+            "Type": "GameObject",
+            "Loads": 1,
+            "Releases": 0,
+            "RefCountBefore": 0,
+            "RefCountAfter": 1,
+            "LoadMilliseconds": 355.3276062011719,
+            "SyncWaitMilliseconds": 0.0,
+            "Failed": false,
+            "Owners": [
+                "[GameBootstrap] (GameBootstrap)"
+            ]
+        },
+        {
+            "Address": "Projectiles/WraithSpear",
+            "Type": "GameObject",
+            "Loads": 1,
+            "Releases": 0,
+            "RefCountBefore": 0,
+            "RefCountAfter": 1,
+            "LoadMilliseconds": 355.763427734375,
+            "SyncWaitMilliseconds": 0.0,
+            "Failed": false,
+            "Owners": [
+                "[GameBootstrap] (GameBootstrap)"
+            ]
+        },
+        {
+            "Address": "Structures/Banner",
+            "Type": "GameObject",
+            "Loads": 1,
+            "Releases": 0,
+            "RefCountBefore": 0,
+            "RefCountAfter": 1,
+            "LoadMilliseconds": 357.80047607421877,
+            "SyncWaitMilliseconds": 0.0,
+            "Failed": false,
+            "Owners": [
+                "[GameBootstrap] (GameBootstrap)"
+            ]
+        },
+        {
+            "Address": "Structures/CastleHeart",
+            "Type": "GameObject",
+            "Loads": 1,
+            "Releases": 0,
+            "RefCountBefore": 0,
+            "RefCountAfter": 1,
+            "LoadMilliseconds": 357.35321044921877,
+            "SyncWaitMilliseconds": 0.0,
+            "Failed": false,
+            "Owners": [
+                "[GameBootstrap] (GameBootstrap)"
+            ]
+        },
+        {
+            "Address": "Structures/Coffin",
+            "Type": "GameObject",
+            "Loads": 1,
+            "Releases": 0,
+            "RefCountBefore": 0,
+            "RefCountAfter": 1,
+            "LoadMilliseconds": 357.6602783203125,
+            "SyncWaitMilliseconds": 0.0,
+            "Failed": false,
+            "Owners": [
+                "[GameBootstrap] (GameBootstrap)"
+            ]
+        },
+        {
+            "Address": "Structures/Floor",
+            "Type": "GameObject",
+            "Loads": 1,
+            "Releases": 0,
+            "RefCountBefore": 0,
+            "RefCountAfter": 1,
+            "LoadMilliseconds": 357.4409484863281,
+            "SyncWaitMilliseconds": 0.0,
+            "Failed": false,
+            "Owners": [
+                "[GameBootstrap] (GameBootstrap)"
+            ]
+        },
+        {
+            "Address": "Structures/Pillar",
+            "Type": "GameObject",
+            "Loads": 1,
+            "Releases": 0,
+            "RefCountBefore": 0,
+            "RefCountAfter": 1,
+            "LoadMilliseconds": 358.0131530761719,
+            "SyncWaitMilliseconds": 0.0,
+            "Failed": false,
+            "Owners": [
+                "[GameBootstrap] (GameBootstrap)"
+            ]
+        },
+        {
+            "Address": "Structures/Smelter",
+            "Type": "GameObject",
+            "Loads": 1,
+            "Releases": 0,
+            "RefCountBefore": 0,
+            "RefCountAfter": 1,
+            "LoadMilliseconds": 357.7318115234375,
+            "SyncWaitMilliseconds": 0.0,
+            "Failed": false,
+            "Owners": [
+                "[GameBootstrap] (GameBootstrap)"
+            ]
+        },
+        {
+            "Address": "Structures/Wall",
+            "Type": "GameObject",
+            "Loads": 1,
+            "Releases": 0,
+            "RefCountBefore": 0,
+            "RefCountAfter": 1,
+            "LoadMilliseconds": 357.5172424316406,
+            "SyncWaitMilliseconds": 0.0,
+            "Failed": false,
+            "Owners": [
+                "[GameBootstrap] (GameBootstrap)"
+            ]
+        },
+        {
+            "Address": "Structures/WallDoor",
+            "Type": "GameObject",
+            "Loads": 1,
+            "Releases": 0,
+            "RefCountBefore": 0,
+            "RefCountAfter": 1,
+            "LoadMilliseconds": 357.8701171875,
+            "SyncWaitMilliseconds": 0.0,
+            "Failed": false,
+            "Owners": [
+                "[GameBootstrap] (GameBootstrap)"
+            ]
+        },
+        {
+            "Address": "Structures/WallWindow",
+            "Type": "GameObject",
+            "Loads": 1,
+            "Releases": 0,
+            "RefCountBefore": 0,
+            "RefCountAfter": 1,
+            "LoadMilliseconds": 357.9416198730469,
+            "SyncWaitMilliseconds": 0.0,
+            "Failed": false,
+            "Owners": [
+                "[GameBootstrap] (GameBootstrap)"
+            ]
+        },
+        {
+            "Address": "Structures/Workbench",
+            "Type": "GameObject",
+            "Loads": 1,
+            "Releases": 0,
+            "RefCountBefore": 0,
+            "RefCountAfter": 1,
+            "LoadMilliseconds": 357.5887756347656,
+            "SyncWaitMilliseconds": 0.0,
+            "Failed": false,
+            "Owners": [
+                "[GameBootstrap] (GameBootstrap)"
+            ]
+        },
+        {
+            "Address": "UI/LayerCanvas",
+            "Type": "GameObject",
+            "Loads": 2,
+            "Releases": 0,
+            "RefCountBefore": 0,
+            "RefCountAfter": 2,
+            "LoadMilliseconds": 75.31070709228516,
+            "SyncWaitMilliseconds": 0.0,
+            "Failed": false,
+            "Owners": [
+                "[GameBootstrap] (GameBootstrap)"
+            ]
+        },
+        {
+            "Address": "UI/Layers/DamageNumberLayer",
+            "Type": "GameObject",
+            "Loads": 2,
+            "Releases": 0,
+            "RefCountBefore": 0,
+            "RefCountAfter": 2,
+            "LoadMilliseconds": 106.33087158203125,
+            "SyncWaitMilliseconds": 0.0,
+            "Failed": false,
+            "Owners": [
+                "[GameBootstrap] (GameBootstrap)"
+            ]
+        },
+        {
+            "Address": "UI/Layers/WorldHealthBarLayer",
+            "Type": "GameObject",
+            "Loads": 2,
+            "Releases": 0,
+            "RefCountBefore": 0,
+            "RefCountAfter": 2,
+            "LoadMilliseconds": 128.47805786132813,
+            "SyncWaitMilliseconds": 0.0,
+            "Failed": false,
+            "Owners": [
+                "[GameBootstrap] (GameBootstrap)"
+            ]
+        },
+        {
+            "Address": "UI/Widgets/DamageNumber",
+            "Type": "GameObject",
+            "Loads": 1,
+            "Releases": 0,
+            "RefCountBefore": 0,
+            "RefCountAfter": 1,
+            "LoadMilliseconds": 218.99032592773438,
+            "SyncWaitMilliseconds": 0.0,
+            "Failed": false,
+            "Owners": [
+                "[GameBootstrap] (GameBootstrap)"
+            ]
+        },
+        {
+            "Address": "UI/Widgets/ItemSlot",
+            "Type": "GameObject",
+            "Loads": 1,
+            "Releases": 0,
+            "RefCountBefore": 0,
+            "RefCountAfter": 1,
+            "LoadMilliseconds": 218.8568115234375,
+            "SyncWaitMilliseconds": 0.0,
+            "Failed": false,
+            "Owners": [
+                "[GameBootstrap] (GameBootstrap)"
+            ]
+        },
+        {
+            "Address": "UI/Widgets/ListRow",
+            "Type": "GameObject",
+            "Loads": 1,
+            "Releases": 0,
+            "RefCountBefore": 0,
+            "RefCountAfter": 1,
+            "LoadMilliseconds": 218.78720092773438,
+            "SyncWaitMilliseconds": 0.0,
+            "Failed": false,
+            "Owners": [
+                "[GameBootstrap] (GameBootstrap)"
+            ]
+        },
+        {
+            "Address": "UI/Widgets/WorldHealthBar",
+            "Type": "GameObject",
+            "Loads": 1,
+            "Releases": 0,
+            "RefCountBefore": 0,
+            "RefCountAfter": 1,
+            "LoadMilliseconds": 218.92453002929688,
+            "SyncWaitMilliseconds": 0.0,
+            "Failed": false,
+            "Owners": [
+                "[GameBootstrap] (GameBootstrap)"
+            ]
+        },
+        {
+            "Address": "UI/Windows/BalanceOverlayWindow",
+            "Type": "GameObject",
+            "Loads": 2,
+            "Releases": 0,
+            "RefCountBefore": 0,
+            "RefCountAfter": 2,
+            "LoadMilliseconds": 106.7953109741211,
+            "SyncWaitMilliseconds": 0.0,
+            "Failed": false,
+            "Owners": [
+                "[GameBootstrap] (GameBootstrap)"
+            ]
+        },
+        {
+            "Address": "UI/Windows/BuildWindow",
+            "Type": "GameObject",
+            "Loads": 2,
+            "Releases": 0,
+            "RefCountBefore": 0,
+            "RefCountAfter": 2,
+            "LoadMilliseconds": 104.3539047241211,
+            "SyncWaitMilliseconds": 0.0,
+            "Failed": false,
+            "Owners": [
+                "[GameBootstrap] (GameBootstrap)"
+            ]
+        },
+        {
+            "Address": "UI/Windows/CheatConsoleWindow",
+            "Type": "GameObject",
+            "Loads": 2,
+            "Releases": 0,
+            "RefCountBefore": 0,
+            "RefCountAfter": 2,
+            "LoadMilliseconds": 108.57295989990235,
+            "SyncWaitMilliseconds": 0.0,
+            "Failed": false,
+            "Owners": [
+                "[GameBootstrap] (GameBootstrap)"
+            ]
+        },
+        {
+            "Address": "UI/Windows/CraftWindow",
+            "Type": "GameObject",
+            "Loads": 2,
+            "Releases": 0,
+            "RefCountBefore": 0,
+            "RefCountAfter": 2,
+            "LoadMilliseconds": 95.4446792602539,
+            "SyncWaitMilliseconds": 0.0,
+            "Failed": false,
+            "Owners": [
+                "[GameBootstrap] (GameBootstrap)"
+            ]
+        },
+        {
+            "Address": "UI/Windows/HudWindow",
+            "Type": "GameObject",
+            "Loads": 2,
+            "Releases": 0,
+            "RefCountBefore": 0,
+            "RefCountAfter": 2,
+            "LoadMilliseconds": 112.81681060791016,
+            "SyncWaitMilliseconds": 0.0,
+            "Failed": false,
+            "Owners": [
+                "[GameBootstrap] (GameBootstrap)"
+            ]
+        },
+        {
+            "Address": "UI/Windows/InventoryWindow",
+            "Type": "GameObject",
+            "Loads": 2,
+            "Releases": 0,
+            "RefCountBefore": 0,
+            "RefCountAfter": 2,
+            "LoadMilliseconds": 80.6417465209961,
+            "SyncWaitMilliseconds": 0.0,
+            "Failed": false,
+            "Owners": [
+                "[GameBootstrap] (GameBootstrap)"
+            ]
+        },
+        {
+            "Address": "UI/Windows/ShopWindow",
+            "Type": "GameObject",
+            "Loads": 2,
+            "Releases": 0,
+            "RefCountBefore": 0,
+            "RefCountAfter": 2,
+            "LoadMilliseconds": 108.19244384765625,
+            "SyncWaitMilliseconds": 0.0,
+            "Failed": false,
+            "Owners": [
+                "[GameBootstrap] (GameBootstrap)"
+            ]
+        },
+        {
+            "Address": "UI/Windows/TitleWindow",
+            "Type": "GameObject",
+            "Loads": 2,
+            "Releases": 0,
+            "RefCountBefore": 0,
+            "RefCountAfter": 2,
+            "LoadMilliseconds": 99.9593734741211,
+            "SyncWaitMilliseconds": 0.0,
+            "Failed": false,
+            "Owners": [
+                "[GameBootstrap] (GameBootstrap)"
+            ]
+        },
+        {
+            "Address": "VFX/BloodBurst",
+            "Type": "GameObject",
+            "Loads": 1,
+            "Releases": 0,
+            "RefCountBefore": 0,
+            "RefCountAfter": 1,
+            "LoadMilliseconds": 355.99517822265627,
+            "SyncWaitMilliseconds": 0.0,
+            "Failed": false,
+            "Owners": [
+                "[GameBootstrap] (GameBootstrap)"
+            ]
+        },
+        {
+            "Address": "VFX/DashTrail",
+            "Type": "GameObject",
+            "Loads": 1,
+            "Releases": 0,
+            "RefCountBefore": 0,
+            "RefCountAfter": 1,
+            "LoadMilliseconds": 356.068603515625,
+            "SyncWaitMilliseconds": 0.0,
+            "Failed": false,
+            "Owners": [
+                "[GameBootstrap] (GameBootstrap)"
+            ]
+        },
+        {
+            "Address": "VFX/Empower",
+            "Type": "GameObject",
+            "Loads": 4,
+            "Releases": 0,
+            "RefCountBefore": 0,
+            "RefCountAfter": 4,
+            "LoadMilliseconds": 356.5111083984375,
+            "SyncWaitMilliseconds": 0.0,
+            "Failed": false,
+            "Owners": [
+                "[GameBootstrap] (GameBootstrap)",
+                "CueSpawner.spawnInternal"
+            ]
+        },
+        {
+            "Address": "VFX/FeedBeam",
+            "Type": "GameObject",
+            "Loads": 1,
+            "Releases": 0,
+            "RefCountBefore": 0,
+            "RefCountAfter": 1,
+            "LoadMilliseconds": 356.44342041015627,
+            "SyncWaitMilliseconds": 0.0,
+            "Failed": false,
+            "Owners": [
+                "[GameBootstrap] (GameBootstrap)"
+            ]
+        },
+        {
+            "Address": "VFX/GroundSlam",
+            "Type": "GameObject",
+            "Loads": 1,
+            "Releases": 0,
+            "RefCountBefore": 0,
+            "RefCountAfter": 1,
+            "LoadMilliseconds": 356.37188720703127,
+            "SyncWaitMilliseconds": 0.0,
+            "Failed": false,
+            "Owners": [
+                "[GameBootstrap] (GameBootstrap)"
+            ]
+        },
+        {
+            "Address": "VFX/Heal",
+            "Type": "GameObject",
+            "Loads": 4,
+            "Releases": 0,
+            "RefCountBefore": 0,
+            "RefCountAfter": 4,
+            "LoadMilliseconds": 356.2994079589844,
+            "SyncWaitMilliseconds": 0.0,
+            "Failed": false,
+            "Owners": [
+                "[GameBootstrap] (GameBootstrap)",
+                "CueSpawner.spawnInternal"
+            ]
+        },
+        {
+            "Address": "VFX/HitSpark",
+            "Type": "GameObject",
+            "Loads": 1,
+            "Releases": 0,
+            "RefCountBefore": 0,
+            "RefCountAfter": 1,
+            "LoadMilliseconds": 355.9122009277344,
+            "SyncWaitMilliseconds": 0.0,
+            "Failed": false,
+            "Owners": [
+                "[GameBootstrap] (GameBootstrap)"
+            ]
+        },
+        {
+            "Address": "VFX/ShieldBubble",
+            "Type": "GameObject",
+            "Loads": 1,
+            "Releases": 0,
+            "RefCountBefore": 0,
+            "RefCountAfter": 1,
+            "LoadMilliseconds": 356.14300537109377,
+            "SyncWaitMilliseconds": 0.0,
+            "Failed": false,
+            "Owners": [
+                "[GameBootstrap] (GameBootstrap)"
+            ]
+        },
+        {
+            "Address": "VFX/Skill/BloodNova",
+            "Type": "GameObject",
+            "Loads": 4,
+            "Releases": 0,
+            "RefCountBefore": 0,
+            "RefCountAfter": 4,
+            "LoadMilliseconds": 358.50335693359377,
+            "SyncWaitMilliseconds": 0.0,
+            "Failed": false,
+            "Owners": [
+                "[GameBootstrap] (GameBootstrap)",
+                "CueSpawner.spawnInternal"
+            ]
+        },
+        {
+            "Address": "VFX/Skill/BloodRiteAura",
+            "Type": "GameObject",
+            "Loads": 4,
+            "Releases": 0,
+            "RefCountBefore": 0,
+            "RefCountAfter": 4,
+            "LoadMilliseconds": 358.4337158203125,
+            "SyncWaitMilliseconds": 0.0,
+            "Failed": false,
+            "Owners": [
+                "[GameBootstrap] (GameBootstrap)",
+                "CueSpawner.spawnInternal"
+            ]
+        },
+        {
+            "Address": "VFX/Skill/CrimsonStorm",
+            "Type": "GameObject",
+            "Loads": 1,
+            "Releases": 0,
+            "RefCountBefore": 0,
+            "RefCountAfter": 1,
+            "LoadMilliseconds": 359.2062072753906,
+            "SyncWaitMilliseconds": 0.0,
+            "Failed": false,
+            "Owners": [
+                "[GameBootstrap] (GameBootstrap)"
+            ]
+        },
+        {
+            "Address": "VFX/Skill/DarkBurst",
+            "Type": "GameObject",
+            "Loads": 1,
+            "Releases": 0,
+            "RefCountBefore": 0,
+            "RefCountAfter": 1,
+            "LoadMilliseconds": 359.2786865234375,
+            "SyncWaitMilliseconds": 0.0,
+            "Failed": false,
+            "Owners": [
+                "[GameBootstrap] (GameBootstrap)"
+            ]
+        },
+        {
+            "Address": "VFX/Skill/FireBlast",
+            "Type": "GameObject",
+            "Loads": 1,
+            "Releases": 0,
+            "RefCountBefore": 0,
+            "RefCountAfter": 1,
+            "LoadMilliseconds": 358.3641052246094,
+            "SyncWaitMilliseconds": 0.0,
+            "Failed": false,
+            "Owners": [
+                "[GameBootstrap] (GameBootstrap)"
+            ]
+        },
+        {
+            "Address": "VFX/Skill/HitImpact",
+            "Type": "GameObject",
+            "Loads": 1,
+            "Releases": 0,
+            "RefCountBefore": 0,
+            "RefCountAfter": 1,
+            "LoadMilliseconds": 358.1485595703125,
+            "SyncWaitMilliseconds": 0.0,
+            "Failed": false,
+            "Owners": [
+                "[GameBootstrap] (GameBootstrap)"
+            ]
+        },
+        {
+            "Address": "VFX/Skill/IceNova",
+            "Type": "GameObject",
+            "Loads": 1,
+            "Releases": 0,
+            "RefCountBefore": 0,
+            "RefCountAfter": 1,
+            "LoadMilliseconds": 358.571044921875,
+            "SyncWaitMilliseconds": 0.0,
+            "Failed": false,
+            "Owners": [
+                "[GameBootstrap] (GameBootstrap)"
+            ]
+        },
+        {
+            "Address": "VFX/Skill/LightningBurst",
+            "Type": "GameObject",
+            "Loads": 1,
+            "Releases": 0,
+            "RefCountBefore": 0,
+            "RefCountAfter": 1,
+            "LoadMilliseconds": 358.714111328125,
+            "SyncWaitMilliseconds": 0.0,
+            "Failed": false,
+            "Owners": [
+                "[GameBootstrap] (GameBootstrap)"
+            ]
+        },
+        {
+            "Address": "VFX/Skill/SwordSlash",
+            "Type": "GameObject",
+            "Loads": 4,
+            "Releases": 0,
+            "RefCountBefore": 0,
+            "RefCountAfter": 4,
+            "LoadMilliseconds": 358.07989501953127,
+            "SyncWaitMilliseconds": 0.0,
+            "Failed": false,
+            "Owners": [
+                "[GameBootstrap] (GameBootstrap)",
+                "CueSpawner.spawnInternal"
+            ]
+        },
+        {
+            "Address": "VFX/Skill/VeilBlood",
+            "Type": "GameObject",
+            "Loads": 4,
+            "Releases": 0,
+            "RefCountBefore": 0,
+            "RefCountAfter": 4,
+            "LoadMilliseconds": 358.2925720214844,
+            "SyncWaitMilliseconds": 0.0,
+            "Failed": false,
+            "Owners": [
+                "[GameBootstrap] (GameBootstrap)",
+                "CueSpawner.spawnInternal"
+            ]
+        },
+        {
+            "Address": "VFX/Skill/Whirlwind",
+            "Type": "GameObject",
+            "Loads": 13,
+            "Releases": 0,
+            "RefCountBefore": 0,
+            "RefCountAfter": 13,
+            "LoadMilliseconds": 358.2220153808594,
+            "SyncWaitMilliseconds": 0.0,
+            "Failed": false,
+            "Owners": [
+                "[GameBootstrap] (GameBootstrap)",
+                "CueSpawner.spawnInternal"
+            ]
+        },
+        {
+            "Address": "VFX/Skill/WraithHit",
+            "Type": "GameObject",
+            "Loads": 1,
+            "Releases": 0,
+            "RefCountBefore": 0,
+            "RefCountAfter": 1,
+            "LoadMilliseconds": 359.3482971191406,
+            "SyncWaitMilliseconds": 0.0,
+            "Failed": false,
+            "Owners": [
+                "[GameBootstrap] (GameBootstrap)"
+            ]
+        },
+        {
+            "Address": "VFX/Slash",
+            "Type": "GameObject",
+            "Loads": 1,
+            "Releases": 0,
+            "RefCountBefore": 0,
+            "RefCountAfter": 1,
+            "LoadMilliseconds": 355.8359069824219,
+            "SyncWaitMilliseconds": 0.0,
+            "Failed": false,
+            "Owners": [
+                "[GameBootstrap] (GameBootstrap)"
+            ]
+        },
+        {
+            "Address": "VFX/Status/Chill",
+            "Type": "GameObject",
+            "Loads": 1,
+            "Releases": 0,
+            "RefCountBefore": 0,
+            "RefCountAfter": 1,
+            "LoadMilliseconds": 358.998291015625,
+            "SyncWaitMilliseconds": 0.0,
+            "Failed": false,
+            "Owners": [
+                "[GameBootstrap] (GameBootstrap)"
+            ]
+        },
+        {
+            "Address": "VFX/Status/Condemn",
+            "Type": "GameObject",
+            "Loads": 1,
+            "Releases": 0,
+            "RefCountBefore": 0,
+            "RefCountAfter": 1,
+            "LoadMilliseconds": 358.85809326171877,
+            "SyncWaitMilliseconds": 0.0,
+            "Failed": false,
+            "Owners": [
+                "[GameBootstrap] (GameBootstrap)"
+            ]
+        },
+        {
+            "Address": "VFX/Status/Frozen",
+            "Type": "GameObject",
+            "Loads": 1,
+            "Releases": 0,
+            "RefCountBefore": 0,
+            "RefCountAfter": 1,
+            "LoadMilliseconds": 358.642578125,
+            "SyncWaitMilliseconds": 0.0,
+            "Failed": false,
+            "Owners": [
+                "[GameBootstrap] (GameBootstrap)"
+            ]
+        },
+        {
+            "Address": "VFX/Status/Ignite",
+            "Type": "GameObject",
+            "Loads": 1,
+            "Releases": 0,
+            "RefCountBefore": 0,
+            "RefCountAfter": 1,
+            "LoadMilliseconds": 358.78753662109377,
+            "SyncWaitMilliseconds": 0.0,
+            "Failed": false,
+            "Owners": [
+                "[GameBootstrap] (GameBootstrap)"
+            ]
+        },
+        {
+            "Address": "VFX/Status/Leech",
+            "Type": "GameObject",
+            "Loads": 1,
+            "Releases": 0,
+            "RefCountBefore": 0,
+            "RefCountAfter": 1,
+            "LoadMilliseconds": 359.13848876953127,
+            "SyncWaitMilliseconds": 0.0,
+            "Failed": false,
+            "Owners": [
+                "[GameBootstrap] (GameBootstrap)"
+            ]
+        },
+        {
+            "Address": "VFX/Status/Static",
+            "Type": "GameObject",
+            "Loads": 1,
+            "Releases": 0,
+            "RefCountBefore": 0,
+            "RefCountAfter": 1,
+            "LoadMilliseconds": 359.06793212890627,
+            "SyncWaitMilliseconds": 0.0,
+            "Failed": false,
+            "Owners": [
+                "[GameBootstrap] (GameBootstrap)"
+            ]
+        },
+        {
+            "Address": "VFX/Status/Weaken",
+            "Type": "GameObject",
+            "Loads": 1,
+            "Releases": 0,
+            "RefCountBefore": 0,
+            "RefCountAfter": 1,
+            "LoadMilliseconds": 358.92962646484377,
+            "SyncWaitMilliseconds": 0.0,
+            "Failed": false,
+            "Owners": [
+                "[GameBootstrap] (GameBootstrap)"
+            ]
+        },
+        {
+            "Address": "VFX/Stun",
+            "Type": "GameObject",
+            "Loads": 1,
+            "Releases": 0,
+            "RefCountBefore": 0,
+            "RefCountAfter": 1,
+            "LoadMilliseconds": 356.576904296875,
+            "SyncWaitMilliseconds": 0.0,
+            "Failed": false,
+            "Owners": [
+                "[GameBootstrap] (GameBootstrap)"
+            ]
+        },
+        {
+            "Address": "VFX/SunSmoke",
+            "Type": "GameObject",
+            "Loads": 1,
+            "Releases": 0,
+            "RefCountBefore": 0,
+            "RefCountAfter": 1,
+            "LoadMilliseconds": 356.2259521484375,
+            "SyncWaitMilliseconds": 0.0,
+            "Failed": false,
+            "Owners": [
+                "[GameBootstrap] (GameBootstrap)"
+            ]
+        },
+        {
+            "Address": "Weapons/Spear",
+            "Type": "GameObject",
+            "Loads": 1,
+            "Releases": 0,
+            "RefCountBefore": 0,
+            "RefCountAfter": 1,
+            "LoadMilliseconds": 355.18072509765627,
+            "SyncWaitMilliseconds": 0.0,
+            "Failed": false,
+            "Owners": [
+                "[GameBootstrap] (GameBootstrap)"
+            ]
+        },
+        {
+            "Address": "Weapons/Sword",
+            "Type": "GameObject",
+            "Loads": 2,
+            "Releases": 0,
+            "RefCountBefore": 0,
+            "RefCountAfter": 2,
+            "LoadMilliseconds": 225.941650390625,
+            "SyncWaitMilliseconds": 0.47029998898506167,
+            "Failed": false,
+            "Owners": [
+                "[GameBootstrap] (GameBootstrap)",
+                "Equipment.applyWeapon"
+            ]
+        }
+    ]
+}

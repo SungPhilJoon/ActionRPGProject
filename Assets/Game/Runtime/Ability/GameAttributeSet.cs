@@ -9,7 +9,11 @@ using UnityEngine;
 /// </summary>
 public class GameAttributeSet : AttributeSet
 {
-    public Actor Actor;
+    /// <summary>이 속성 세트를 가진 액터 (ASC 소유자에서 얻는다).</summary>
+    public Actor Actor
+    {
+        get { return Actor.From(Owner); }
+    }
 
     public GameAttributeSet() : base((int)EAttribute.Count)
     {
@@ -86,7 +90,7 @@ public class GameAttributeSet : AttributeSet
         }
 
         var spec = InData.Spec;
-        Actor source = spec.Source != null ? spec.Source.GetComponent<Actor>() : null;
+        Actor source = Actor.From(spec.Source);
         var damageType = (EDamageType)Mathf.RoundToInt(spec.GetSetByCaller((int)ESetByCaller.DamageType));
         damage = applyStatusModifiers(damage, source, damageType);
 
@@ -190,7 +194,7 @@ public class GameAttributeSet : AttributeSet
             scale += Tables.Const(EConst.StaticBonusPercent) * 0.01f;
         }
 
-        if (InSource != null && InSource.Asc.Tags.HasTag((int)ETag.State_Debuff_Weaken) == true)
+        if (InSource != null && InSource.HasTag((int)ETag.State_Debuff_Weaken) == true)
         {
             scale -= Tables.Const(EConst.WeakenDamageDealtPercent) * 0.01f;
         }

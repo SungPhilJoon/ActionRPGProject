@@ -56,7 +56,7 @@ public static class CombatUtil
             return false;
         }
 
-        if (InTarget.Asc.Tags.HasTag((int)InRow.ConsumeTag) == false || hasAgedEffect(InTarget.Asc, InRow.ConsumeTag) == false)
+        if (InTarget.HasTag((int)InRow.ConsumeTag) == false || hasAgedEffect(InTarget, InRow.ConsumeTag) == false)
         {
             return false;
         }
@@ -69,10 +69,10 @@ public static class CombatUtil
     /// 소모할 상태가 ConsumeMinAgeSeconds 이상 지났는가.
     /// 같은 시전의 여러 발(Chaos Volley 2발 등)이 방금 건 상태를 바로 소모하지 않게 한다 — "이전에 걸어 둔 상태" 만 터뜨린다.
     /// </summary>
-    private static bool hasAgedEffect(AbilitySystemComponent InAsc, ETag InTag)
+    private static bool hasAgedEffect(Actor InActor, ETag InTag)
     {
         float minAge = Tables.Const(EConst.ConsumeMinAgeSeconds);
-        var effects = InAsc.Effects;
+        var effects = InActor.Effects;
         for (int i = 0; i < effects.Count; ++i)
         {
             var effect = effects[i];

@@ -1,3 +1,4 @@
+using Framework;
 using UnityEngine;
 
 /// <summary>
@@ -19,7 +20,7 @@ public static class AnimatorParam
 }
 
 /// <summary>Animator 래퍼. 모델이 없거나 Animator 가 없어도 안전하게 무시한다.</summary>
-public class ActorAnimator : MonoBehaviour
+public class ActorAnimator : BaseBehaviour
 {
     public Animator Animator;
     /// <summary>무기 모델을 붙일 손 본. PrefabBuilder 가 연결한다.</summary>
@@ -27,8 +28,10 @@ public class ActorAnimator : MonoBehaviour
 
     private GameObject WeaponModel;
 
-    private void Awake()
+    protected override void OnUnityAwake()
     {
+        base.OnUnityAwake();
+
         if (Animator == null)
         {
             Animator = GetComponentInChildren<Animator>();

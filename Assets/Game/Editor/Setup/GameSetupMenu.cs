@@ -2,7 +2,7 @@ using UnityEditor;
 using UnityEditor.SceneManagement;
 using UnityEngine;
 
-/// <summary>처음 한 번: Game/Setup/0. Run All → 레이어, CSV, 콘텐츠, Addressables, 월드 씬을 순서대로 만든다.</summary>
+/// <summary>처음 한 번: Game/Setup/0. Run All → 레이어, CSV, 콘텐츠, UI 프리팹, Addressables, 월드 씬을 순서대로 만든다.</summary>
 public static class GameSetupMenu
 {
     [MenuItem("Game/Setup/0. Run All (First Time)", priority = 0)]
@@ -16,6 +16,7 @@ public static class GameSetupMenu
         ProjectSetup.Run();
         CsvTableImporter.ImportAll();
         ContentBuilder.BuildAll();
+        UIPrefabBuilder.BuildAll();
         MonsterStateTreeDefaults.CreateAllSilently();
         AddressablesSetup.Run();
         CsvTableImporter.Validate();

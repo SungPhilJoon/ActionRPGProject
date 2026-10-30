@@ -162,6 +162,8 @@ public static class CsvTableImporter
             }
         }
 
+        validateQuests(t, warn);
+
         foreach (var asset in t.Asset.All)
         {
             string ext = asset.Kind == EAssetKind.Sprite ? ".png" : (asset.Kind == EAssetKind.Material ? ".mat" : (asset.Kind == EAssetKind.Data ? ".asset" : ".prefab"));
@@ -173,6 +175,78 @@ public static class CsvTableImporter
         }
 
         Debug.Log(problems == 0 ? "[Validate] OK" : $"[Validate] {problems} problem(s)");
+    }
+
+    /// <summary>퀘스트: 문구 · 보상 아이템 · 대상(몬스터/건축물/아이템) · Next 가 있는지, 체인이 고리를 이루지 않는지.</summary>
+    private static void validateQuests(GameTables InTables, Action<string> InWarn)
+    {
+        if (InTables.Quest == null)
+        {
+            InWarn("QuestTable missing");
+            return;
+        }
+
+        foreach (var quest in InTables.Quest.All)
+        {
+            string context = $"Quest {quest.Index}";
+            checkText(InTables, quest.TitleId, context + ".TitleId", InWarn);
+            checkText(InTables, quest.DescId, context + ".DescId", InWarn);
+            if (quest.RewardItem != 0 && InTables.Item.TryGet(quest.RewardItem, out _) == false)
+            {
+                InWarn($"{context}.RewardItem: item {quest.RewardItem} missing");
+            }
+
+            if (quest.Next != 0 && InTables.Quest.TryGet(quest.Next, out _) == false)
+            {
+                InWarn($"{context}.Next: quest {quest.Next} missing");
+            }
+
+            bool missingTarget = false;
+            switch (quest.Objective)
+            {
+                case EQuestObjective.Kill:
+                case EQuestObjective.Feed:
+                    missingTarget = quest.Target != 0 && InTables.Character.TryGet(quest.Target, out _) == false;
+                    break;
+                case EQuestObjective.Build:
+                    missingTarget = quest.Target != 0 && InTables.Structure.TryGet(quest.Target, out _) == false;
+                    break;
+                case EQuestObjective.Buy:
+                case EQuestObjective.Gather:
+                case EQuestObjective.Craft:
+                    missingTarget = quest.Target != 0 && InTables.Item.TryGet(quest.Target, out _) == false;
+                    break;
+                case EQuestObjective.None:
+                    InWarn($"{context}: Objective is None");
+                    break;
+            }
+
+            if (missingTarget == true)
+            {
+                InWarn($"{context}.Target: {quest.Objective} target {quest.Target} missing");
+            }
+        }
+
+        int first = Mathf.RoundToInt(constValue(InTables, EConst.FirstQuestId));
+        var visited = new HashSet<int>();
+        int current = first;
+        while (current != 0)
+        {
+            QuestRow row;
+            if (InTables.Quest.TryGet(current, out row) == false)
+            {
+                InWarn($"Quest chain: quest {current} missing (Const FirstQuestId = {first})");
+                break;
+            }
+
+            if (visited.Add(current) == false)
+            {
+                InWarn($"Quest chain loops at quest {current}");
+                break;
+            }
+
+            current = row.Next;
+        }
     }
 
     private static void checkEffects(GameTables InTables, int[] InIds, string InContext, Action<string> InWarn)

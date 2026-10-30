@@ -6,7 +6,7 @@ using UnityEngine;
 /// 장비. 무기는 평타/Q/E 어빌리티와 무기 모델을 교체하고, 방어구는 ItemTable.Effects(Infinite 이펙트)로 능력치를 올린다.
 /// 기어 레벨 = 장착 슬롯 GearLevel 평균 → Level 속성 (피해 계산의 레벨 보정에 사용).
 /// </summary>
-public class Equipment : MonoBehaviour
+public class Equipment : BaseBehaviour
 {
     private readonly int[] Equipped = new int[(int)EEquipSlot.Count];
     private readonly int[][] EffectHandles = new int[(int)EEquipSlot.Count][];
@@ -70,14 +70,7 @@ public class Equipment : MonoBehaviour
         EffectHandles[slot] = new int[effects.Length];
         for (int i = 0; i < effects.Length; ++i)
         {
-            var def = EffectLibrary.Get(effects[i]);
-            if (def == null)
-            {
-                continue;
-            }
-
-            var spec = new GameplayEffectSpec(def, Owner.Asc, 0);
-            EffectHandles[slot][i] = Owner.Asc.ApplyGameplayEffectSpecToSelf(spec);
+            EffectHandles[slot][i] = Owner.ApplyEffectToSelf(EffectLibrary.Get(effects[i]), 0);
         }
 
         recalculateGearLevel();
@@ -115,10 +108,7 @@ public class Equipment : MonoBehaviour
         {
             for (int i = 0; i < handles.Length; ++i)
             {
-                if (handles[i] != 0)
-                {
-                    Owner.Asc.RemoveActiveEffect(handles[i]);
-                }
+                Owner.RemoveEffect(handles[i]);
             }
         }
 

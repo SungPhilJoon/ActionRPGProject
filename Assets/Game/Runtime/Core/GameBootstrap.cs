@@ -13,12 +13,12 @@ using UnityEngine.ResourceManagement.AsyncOperations;
 /// 게임 진입점. 순서:
 ///  1) 기반 매니저(AssetLoader, Pool) 등록
 ///  2) GameTables 비동기 로드 → Tables.Bind → 태그 계층 / Execution / Cue 등록
-///  3) 게임 매니저 등록 (입력, 액터, 낮밤, 스폰, 건축, 치트, UI)
-///  4) 타이틀 표시 + 에셋 프리로드 + 월드 스폰 (비동기, 로딩 표시)
+///  3) 게임 매니저 등록 (입력, 액터, 낮밤, 스폰, 건축, 퀘스트, 치트, UI)
+///  4) UI 프리팹 로드(Addressables) → 타이틀 표시 + 에셋 프리로드 + 월드 스폰 (비동기, 로딩 표시)
 ///  5) "싱글 플레이" → 플레이어 생성 → HUD
 /// 매니저 업데이트는 이 컴포넌트의 Update 한 곳에서 순서대로 호출한다.
 /// </summary>
-public class GameBootstrap : MonoBehaviour
+public class GameBootstrap : BaseBehaviour
 {
     public AssetReferenceT<GameTables> TablesReference;
     public SceneContext Context;
@@ -62,8 +62,14 @@ public class GameBootstrap : MonoBehaviour
         Managers.Regist(new DayNightManager());
         Managers.Regist(new SpawnManager());
         Managers.Regist(new BuildManager());
+        Managers.Regist(new FoliageManager());
+        Managers.Regist(new QuestManager());
         Managers.Regist(new CheatManager());
-        setupUI();
+        await setupUIAsync();
+        if (this == null || Title == null)
+        {
+            return;
+        }
 
         Title.SetLoading(true);
         Ready = true;
@@ -100,7 +106,11 @@ public class GameBootstrap : MonoBehaviour
         InteractableRegistry.Clear();
     }
 
-    private void setupUI()
+    /// <summary>
+    /// UI: 레이어 캔버스 · 창 · 월드 레이어 프리팹을 Addressables 로 로드해 Instantiate 한다 (EUIAsset = AssetTable Index).
+    /// 프리팹은 Game > Setup > 3b. Build UI Prefabs 가 만든다 (Documentation/VRising/UI.md).
+    /// </summary>
+    private async UniTask setupUIAsync()
     {
         if (EventSystem.current == null)
         {
@@ -109,30 +119,49 @@ public class GameBootstrap : MonoBehaviour
         }
 
         var ui = Managers.Regist(new UIManager());
-        ui.RegistLayer(UILayerId.World, "World");
-        ui.RegistLayer(UILayerId.Hud, "Hud");
-        ui.RegistLayer(UILayerId.Window, "Window");
-        ui.RegistLayer(UILayerId.Popup, "Popup");
-        ui.RegistLayer(UILayerId.System, "System");
+        var canvas = await loadUIPrefab(EUIAsset.LayerCanvas);
+        if (canvas == null)
+        {
+            Log.Error("GameBootstrap: UI prefabs missing. Run 'Game/Setup/3b. Build UI Prefabs' and 'Game/Setup/4. Addressables'.");
+            return;
+        }
+
+        ui.RegistLayer(UILayerId.World, "World", canvas);
+        ui.RegistLayer(UILayerId.Hud, "Hud", canvas);
+        ui.RegistLayer(UILayerId.Window, "Window", canvas);
+        ui.RegistLayer(UILayerId.Popup, "Popup", canvas);
+        ui.RegistLayer(UILayerId.System, "System", canvas);
 
         var worldCamera = Context != null && Context.Camera != null ? Context.Camera.GetComponent<Camera>() : Camera.main;
-        var healthBarRoot = UIFactory.CreateRect(ui.GetLayer(UILayerId.World).transform, "HealthBars");
-        UIFactory.Stretch(healthBarRoot, 0.0f);
-        healthBarRoot.gameObject.AddComponent<WorldHealthBarLayer>().Setup(worldCamera);
+        var healthBars = ui.Spawn<WorldHealthBarLayer>(UILayerId.World, await loadUIPrefab(EUIAsset.WorldHealthBarLayer));
+        if (healthBars != null)
+        {
+            healthBars.Setup(worldCamera);
+        }
 
-        var damageRoot = UIFactory.CreateRect(ui.GetLayer(UILayerId.World).transform, "DamageNumbers");
-        UIFactory.Stretch(damageRoot, 0.0f);
-        damageRoot.gameObject.AddComponent<DamageNumberLayer>().Setup(worldCamera);
+        var damageNumbers = ui.Spawn<DamageNumberLayer>(UILayerId.World, await loadUIPrefab(EUIAsset.DamageNumberLayer));
+        if (damageNumbers != null)
+        {
+            damageNumbers.Setup(worldCamera);
+        }
 
-        Hud = ui.Create<HudWindow>(UILayerId.Hud);
-        ui.Create<InventoryWindow>(UILayerId.Window);
-        ui.Create<CraftWindow>(UILayerId.Window);
-        ui.Create<BuildWindow>(UILayerId.Window);
-        ui.Create<ShopWindow>(UILayerId.Window);
-        Balance = ui.Create<BalanceOverlayWindow>(UILayerId.Popup);
-        ui.Create<CheatConsoleWindow>(UILayerId.System);
-        Title = ui.Create<TitleWindow>(UILayerId.System, true);
-        Title.OnStartSinglePlayer = startSinglePlayer;
+        Hud = ui.Create<HudWindow>(UILayerId.Hud, await loadUIPrefab(EUIAsset.HudWindow));
+        ui.Create<InventoryWindow>(UILayerId.Window, await loadUIPrefab(EUIAsset.InventoryWindow));
+        ui.Create<CraftWindow>(UILayerId.Window, await loadUIPrefab(EUIAsset.CraftWindow));
+        ui.Create<BuildWindow>(UILayerId.Window, await loadUIPrefab(EUIAsset.BuildWindow));
+        ui.Create<ShopWindow>(UILayerId.Window, await loadUIPrefab(EUIAsset.ShopWindow));
+        Balance = ui.Create<BalanceOverlayWindow>(UILayerId.Popup, await loadUIPrefab(EUIAsset.BalanceOverlayWindow));
+        ui.Create<CheatConsoleWindow>(UILayerId.System, await loadUIPrefab(EUIAsset.CheatConsoleWindow));
+        Title = ui.Create<TitleWindow>(UILayerId.System, await loadUIPrefab(EUIAsset.TitleWindow), true);
+        if (Title != null)
+        {
+            Title.OnStartSinglePlayer = startSinglePlayer;
+        }
+    }
+
+    private UniTask<GameObject> loadUIPrefab(EUIAsset InAsset)
+    {
+        return Managers.Get<AssetLoader>().LoadAsync<GameObject>(Tables.Address((int)InAsset), this);
     }
 
     /// <summary>AssetTable 의 모든 에셋을 비동기 로드해 캐시에 올린다. 이후 LoadSync 는 즉시 반환된다.</summary>
@@ -253,7 +282,7 @@ public class GameBootstrap : MonoBehaviour
         }
     }
 
-    private void OnDestroy()
+    protected override void OnUnityDestroy()
     {
         Managers.Clear();
         Tables.Bind(null);
@@ -261,5 +290,7 @@ public class GameBootstrap : MonoBehaviour
         {
             Addressables.Release(TablesHandle);
         }
+
+        base.OnUnityDestroy();
     }
 }

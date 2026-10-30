@@ -7,7 +7,8 @@ Framework 쪽은 게임 데이터를 전혀 모르므로 다른 프로젝트에 
 
 | 언리얼 | 이 프로젝트 | 파일 |
 |---|---|---|
-| UAbilitySystemComponent | `AbilitySystemComponent` (MonoBehaviour) | Framework/Ability/AbilitySystemComponent.cs |
+| UAbilitySystemComponent | `AbilitySystemComponent` (BaseBehaviour) | Framework/Ability/AbilitySystemComponent.cs |
+| GetOwnerActor / AvatarActor | `ASC.OwnerBehaviour` / `OwnerActor` (소유자 `is ActorBehaviour` 일 때), 게임은 `Actor.From(asc)` | AbilitySystemComponent.cs, Actor.cs |
 | FGameplayTag | `ETag` (int id, 상한은 등록된 태그 수에 맞춰 늘어남) | GameEnums.cs |
 | UGameplayTagsManager (계층 A.B.C) | `GameplayTagManager` (TagTable.csv 의 Parent) | GameplayTagManager.cs |
 | FGameplayTagContainer | `GameplayTagContainer` — 명시 태그 비트 + 부모 포함 비트(캐시) | GameplayTagContainer.cs |
@@ -68,6 +69,27 @@ PlayerController / MonsterBrain → Actor.TryActivate(slot, aimPoint)
 
 어빌리티는 **데이터 + 종류(EAbilityType)** 로 정의됩니다. 새 스킬은 대부분 AbilityTable/EffectTable 행 추가만으로 만들 수 있고,
 새로운 "동작 방식"이 필요할 때만 `GameAbility` 하위 클래스를 추가하고 `AbilityFactory` 에 등록합니다.
+
+### 4.1 그래프 어빌리티 (Type=Graph, 언리얼 Blueprint 어빌리티 방식)
+
+코드 없이 에디터(**GAS Tool**, [Tool.md 1절](Tool.md#1-gas-tool))에서 만드는 어빌리티입니다.
+
+```
+AbilityTable 행 (Type=Graph, Slot, AbilityTags, Cooldown, Range=AI 거리, Graph=AssetTable 번호)
+  └ AbilityGraphAsset (Content/Abilities, Addressables Abilities/이름)
+      ├ Tags: Cancel / Block / ActivationOwned / ActivationRequired / ActivationBlocked   ← UGameplayAbility 의 같은 프로퍼티
+      ├ Cost: BloodCost (범용 비용 GE)
+      └ Steps [SerializeReference]: PlayAnimation → Wait → MeleeHit / AreaHit / Projectile / ApplyEffectToSelf … ← AbilityTask
+GraphAbility (GameAbility 하위)
+  OnSetup  : 에셋 로드, 기본 규칙 대신 에셋 태그 적용 (사망/기절/흡혈 중 발동 불가는 유지), 비용 설정
+  Activate : Commit(쿨다운·비용) → 단계를 위에서부터 실행 (Wait 가 돌려준 시간만큼 WaitDelayTask) → EndAbility
+  End      : "종료 시 제거" GE 제거 (가드처럼 시전 중에만 유지되는 방어), 대시 중이면 취소
+```
+
+- 공격 = 피해 단계(부채꼴/원형/발사체 — CombatUtil · ProjectileSystem 재사용), 방어 = 자신에게 GE(저항 증가·무적·보호막) + 대기.
+- 단계 객체는 에셋을 공유하므로 상태를 갖지 않고, 실행 상태(진행 단계, 제거할 GE 핸들)는 `GraphAbility` 가 가진다.
+- 기존 타입 기반 어빌리티(MeleeCombo 등)는 그대로 둔다 — 콤보처럼 상태가 필요한 동작은 아직 그래프로 만들 수 없다 (분기·입력 대기 없음).
+- 코드에서 직접 만들기: `GraphAbility.Create(row, actor, graph)` → `actor.GiveAbility(ability)` (슬롯에 넣어야 AI 의 UseAbility 가 찾는다). 테스트가 이 경로를 쓴다.
 
 ## 5. 언리얼과 다르게 단순화한 부분 (의도적)
 

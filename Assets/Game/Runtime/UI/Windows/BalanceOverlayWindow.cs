@@ -15,23 +15,14 @@ public class BalanceOverlayWindow : UIWindow
 {
     private const float RefreshInterval = 0.25f;
 
-    private TextMeshProUGUI Body;
+    public TextMeshProUGUI Body;
+
     private float Timer;
     private readonly List<KeyValuePair<long, float>> Sorted = new List<KeyValuePair<long, float>>();
 
     public override bool BlocksGameInput
     {
         get { return false; }
-    }
-
-    protected override void Build()
-    {
-        var frame = UIFactory.CreatePanel(Rect, "Frame", new Color(0.0f, 0.0f, 0.0f, 0.65f));
-        UIFactory.Place(frame, new Vector2(0.0f, 1.0f), new Vector2(20.0f, -20.0f), new Vector2(560.0f, 640.0f));
-        Body = UIFactory.CreateText(frame, "Body", string.Empty, 16.0f, TextAlignmentOptions.TopLeft);
-        UIFactory.Stretch(Body.rectTransform, 12.0f);
-        Body.raycastTarget = false;
-        frame.GetComponent<UnityEngine.UI.Image>().raycastTarget = false;
     }
 
     private void Update()

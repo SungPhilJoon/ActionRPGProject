@@ -6,7 +6,7 @@ using UnityEngine;
 /// 직선 발사체. 물리 콜라이더 대신 ActorRegistry 거리 판정으로 액터 명중을 확인하고,
 /// 지형/구조물은 SphereCast 로 막는다. 풀에서 재사용된다.
 /// </summary>
-public class Projectile : MonoBehaviour, IPoolable
+public class Projectile : BaseBehaviour, IPoolable
 {
     private Actor Source;
     private AbilityRow Row;

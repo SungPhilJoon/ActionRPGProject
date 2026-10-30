@@ -76,7 +76,11 @@ Root                                     Root                              Root
 
 메뉴 **Game > AI > Create Default Monster StateTrees (Overwrite)** 로 다시 만들 수 있습니다 (툴에서 고친 내용은 덮어써짐).
 
-## 5. 에디터 툴 사용법 (Window > Framework > StateTree Editor (또는 Game > AI > StateTree Editor))
+## 5. 에디터 툴 사용법 (Window > Framework > StateTree Editor (또는 Game > Tools > StateTree Tool))
+
+게임 쪽 확장(`StateTreeEditorExtension` → `MonsterAIExtension`)이 몬스터 템플릿(New ▾), `+ 블록`, 컨텍스트 패널(이 트리를 쓰는 몬스터와 어빌리티), Play 스폰 버튼을 붙입니다 → [Tool.md 2절](Tool.md#2-statetree-tool).
+런타임에서 다른 트리로 바꿔 돌리려면 `MonsterBrain.RunTree(asset)`.
+
 
 - 프로젝트 창에서 StateTree 에셋을 **더블클릭**하면 열립니다. `New` 로 새 트리 생성.
 - **왼쪽**: Evaluators / Global Tasks 목록, 상태 트리 뷰 (색 막대 = 상태 색, 회색 글씨 = 태스크 요약, 마우스를 올리면 Enter 조건과 트랜지션 툴팁)

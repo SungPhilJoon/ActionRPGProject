@@ -3,7 +3,7 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.Rendering;
 
-/// <summary>지형: 높이, 레이어 페인팅, 디테일(풀), 장식 나무.</summary>
+/// <summary>지형: 높이(+강 파기), 레이어 페인팅, 디테일(풀). 나무는 WorldBuilder.Foliage.</summary>
 public static partial class WorldBuilder
 {
     private const string TerrainSample = External + "/TerrainSampleAssets";
@@ -35,6 +35,7 @@ public static partial class WorldBuilder
         data.baseMapResolution = 1024;
 
         Erosion = readHeightmap(TerrainSample + "/Textures/Heightmaps/Errosion01_Heightmap.tif", 256);
+        prepareRiver(InZones);
 
         var heights = new float[HeightRes, HeightRes];
         for (int y = 0; y < HeightRes; ++y)
@@ -53,7 +54,6 @@ public static partial class WorldBuilder
 
         paintSplat(data);
         addDetails(data);
-        addTrees(data, InZones);
 
         var go = Terrain.CreateTerrainGameObject(data);
         go.name = "Terrain";
@@ -115,7 +115,7 @@ public static partial class WorldBuilder
         }
 
         flatWeight *= 1.0f - mountainWeight;
-        return Mathf.Lerp(height, flatTarget + detail * 0.3f, flatWeight);
+        return carveRiver(InX, InZ, Mathf.Lerp(height, flatTarget + detail * 0.3f, flatWeight));
     }
 
     private static float fbm(float InX, float InY, int InOctaves)
@@ -244,11 +244,23 @@ public static partial class WorldBuilder
 
                 float lakeDistance = Vector2.Distance(p, WorldRegions.Lake);
                 weights[LayerSand] = Mathf.Clamp01(1.0f - Mathf.Abs(lakeDistance - WorldRegions.LakeRadius) / 7.0f) + (height < WorldRegions.WaterLevel + 0.5f ? 1.0f : 0.0f);
+                // 강: 물속은 자갈 흙, 물가는 모래·진흙
+                float riverDistance;
+                float riverWater;
+                float riverHalf;
+                if (sampleRiver(p, out riverDistance, out riverWater, out riverHalf) == true)
+                {
+                    float bank = 1.0f - Mathf.Clamp01((riverDistance - riverHalf) / 4.0f);
+                    weights[LayerSand] += bank * (0.8f + noise);
+                    weights[LayerSoil] += (riverDistance < riverHalf ? 2.5f : 0.0f);
+                    weights[LayerMud] += bank * noise * 1.2f;
+                }
+
 
                 float camp = Mathf.Max(campWeight(p, WorldRegions.RuinedHamlet, 30.0f), campWeight(p, WorldRegions.TrollRidge, 26.0f));
                 camp = Mathf.Max(camp, campWeight(p, WorldRegions.MinotaurArena, 28.0f));
                 camp = Mathf.Max(camp, campWeight(p, WorldRegions.StartGlade, 14.0f) * 0.6f);
-                weights[LayerSoil] = camp * (0.6f + noise * 0.8f) + Mathf.Clamp01((steep - 14.0f) / 10.0f) * 0.5f;
+                weights[LayerSoil] += camp * (0.6f + noise * 0.8f) + Mathf.Clamp01((steep - 14.0f) / 10.0f) * 0.5f;
 
                 weights[LayerRock] = Mathf.Clamp01((steep - 26.0f) / 10.0f) * 3.0f;
                 weights[LayerSnow] = Mathf.Clamp01((height - 78.0f) / 12.0f) * (1.0f - Mathf.Clamp01((steep - 40.0f) / 10.0f)) * 3.0f;
@@ -274,17 +286,52 @@ public static partial class WorldBuilder
         return Mathf.Clamp01(1.0f - Vector2.Distance(InPoint, InCenter) / InRadius);
     }
 
+    /// <summary>풀 Detail 종류: 지역 마스크(초원/건조/숲/물가)별 가중치와 노이즈 문턱. 레퍼런스처럼 초원은 키 큰 풀, 동쪽은 마른 금빛 풀.</summary>
+    private struct DetailSpec
+    {
+        public string Name;
+        public float Min;
+        public float Max;
+        public float Lush;
+        public float Dry;
+        public float Forest;
+        public float Wet;
+        public float Threshold;
+
+        public DetailSpec(string InName, float InMin, float InMax, float InLush, float InDry, float InForest, float InWet, float InThreshold)
+        {
+            Name = InName;
+            Min = InMin;
+            Max = InMax;
+            Lush = InLush;
+            Dry = InDry;
+            Forest = InForest;
+            Wet = InWet;
+            Threshold = InThreshold;
+        }
+    }
+
+    private static readonly DetailSpec[] DetailSpecs =
+    {
+        new DetailSpec("Grass_B", 1.0f, 1.7f, 3.5f, 0.3f, 1.0f, 1.5f, 0.25f),
+        new DetailSpec("Grass_C", 1.0f, 1.7f, 3.0f, 0.0f, 0.6f, 0.5f, 0.35f),
+        new DetailSpec("Grass_A", 0.9f, 1.5f, 1.5f, 0.0f, 0.0f, 2.0f, 0.5f),
+        new DetailSpec("Grass_D", 0.9f, 1.4f, 1.5f, 0.0f, 0.3f, 0.0f, 0.55f),
+        new DetailSpec("GrassDry_A", 1.0f, 1.6f, 0.4f, 3.0f, 0.0f, 0.0f, 0.3f),
+        new DetailSpec("GrassDry_B", 1.0f, 1.5f, 0.3f, 1.5f, 0.0f, 0.0f, 0.5f),
+        new DetailSpec("GrassDry_C", 1.0f, 1.6f, 0.0f, 3.0f, 0.0f, 0.0f, 0.25f),
+        new DetailSpec("Fern_A", 1.0f, 1.8f, 0.0f, 0.0f, 2.0f, 0.3f, 0.4f),
+        new DetailSpec("Fern_B", 1.0f, 1.6f, 0.0f, 0.0f, 1.5f, 0.6f, 0.55f),
+        new DetailSpec("Heather_A", 0.8f, 1.3f, 0.5f, 1.2f, 0.0f, 0.0f, 0.6f),
+        new DetailSpec("Plant_A", 1.0f, 1.5f, 0.6f, 0.0f, 0.6f, 0.0f, 0.75f),
+        new DetailSpec("Plant_C", 1.0f, 1.5f, 0.0f, 0.0f, 0.2f, 1.5f, 0.5f),
+    };
+
     private static void addDetails(TerrainData InData)
     {
-        // (프리팹, 최소/최대 크기, 놓일 레이어 마스크) — TerrainSampleAssets 풀 세트
-        var specs = new (string Name, float Min, float Max)[]
-        {
-            ("Grass_B", 1.0f, 1.6f), ("Grass_C", 1.0f, 1.6f), ("Grass_D", 0.9f, 1.4f),
-            ("Fern_A", 1.0f, 1.8f), ("Heather_A", 0.8f, 1.3f), ("GrassDry_C", 1.0f, 1.6f), ("Plant_A", 1.0f, 1.5f),
-        };
-
         var prototypes = new List<DetailPrototype>();
-        foreach (var spec in specs)
+        var specs = new List<DetailSpec>();
+        foreach (var spec in DetailSpecs)
         {
             var prefab = makeUrpDetail(spec.Name);
             if (prefab == null)
@@ -304,14 +351,30 @@ public static partial class WorldBuilder
             prototype.noiseSpread = 0.4f;
             prototype.alignToGround = 0.6f;
             prototypes.Add(prototype);
+            specs.Add(spec);
         }
 
         InData.detailPrototypes = prototypes.ToArray();
         int res = InData.detailResolution;
         int alphaRes = InData.alphamapResolution;
         var alphas = InData.GetAlphamaps(0, 0, alphaRes, alphaRes);
-        for (int layer = 0; layer < prototypes.Count; ++layer)
+        var random = new System.Random(Seed + 5);
+        // 물 판정은 강 선분 전체를 훑으므로 레이어마다 반복하지 않게 한 번만 계산한다.
+        var inWater = new bool[res, res];
+        var wetness = new float[res, res];
+        for (int y = 0; y < res; ++y)
         {
+            for (int x = 0; x < res; ++x)
+            {
+                var p = new Vector2((x + 0.5f) * Size / res, (y + 0.5f) * Size / res);
+                inWater[y, x] = isWater(p, 0.5f);
+                wetness[y, x] = waterProximity(p, 8.0f);
+            }
+        }
+
+        for (int layer = 0; layer < specs.Count; ++layer)
+        {
+            var spec = specs[layer];
             var map = new int[res, res];
             for (int y = 0; y < res; ++y)
             {
@@ -319,35 +382,26 @@ public static partial class WorldBuilder
                 {
                     int ax = x * alphaRes / res;
                     int ay = y * alphaRes / res;
-                    float grass = alphas[ay, ax, LayerGrass];
-                    float moss = alphas[ay, ax, LayerMoss];
-                    float dry = alphas[ay, ax, LayerDry];
-                    float noise = Mathf.PerlinNoise(x * 0.09f + layer * 17.0f, y * 0.09f);
-                    float density;
-                    switch (layer)
+                    if (inWater[y, x] == true)
                     {
-                        case 0:
-                        case 1:
-                            density = (grass + moss * 0.5f) * noise * 3.0f;
-                            break;
-                        case 2:
-                            density = grass * (noise > 0.55f ? 2.0f : 0.0f);
-                            break;
-                        case 3:
-                            density = moss * (noise > 0.5f ? 2.0f : 0.3f);
-                            break;
-                        case 4:
-                            density = dry * noise * 2.0f;
-                            break;
-                        case 5:
-                            density = dry * noise * 3.0f;
-                            break;
-                        default:
-                            density = (grass + moss) * (noise > 0.78f ? 1.0f : 0.0f);
-                            break;
+                        continue;
                     }
 
-                    map[y, x] = Mathf.FloorToInt(density);
+                    float lush = alphas[ay, ax, LayerGrass];
+                    float dry = alphas[ay, ax, LayerDry];
+                    float forest = alphas[ay, ax, LayerMoss];
+                    float wet = wetness[y, x] * (1.0f - alphas[ay, ax, LayerSand]);
+                    float noise = Mathf.PerlinNoise(x * 0.07f + layer * 17.0f, y * 0.07f + layer * 5.0f);
+                    float patch = Mathf.Clamp01((noise - spec.Threshold) / 0.2f);
+                    float density = (lush * spec.Lush + dry * spec.Dry + forest * spec.Forest + wet * spec.Wet) * patch;
+                    int count = Mathf.FloorToInt(density);
+                    // 소수부는 확률로 올림 → 경계가 계단처럼 끊기지 않는다.
+                    if (random.NextDouble() < density - count)
+                    {
+                        ++count;
+                    }
+
+                    map[y, x] = count;
                 }
             }
 
@@ -355,78 +409,8 @@ public static partial class WorldBuilder
         }
     }
 
-    /// <summary>장식 나무 (사실적인 나무 에셋이 없어 Kenney 나무 사용 — AssetRequests.md).</summary>
-    private static void addTrees(TerrainData InData, List<FlatZone> InZones)
-    {
-        var models = new[] { "tree_pineTallB", "tree_pineRoundC", "tree_detailed_dark", "tree_fat_darkh", "tree_default_dark" };
-        var prototypes = new List<TreePrototype>();
-        foreach (var name in models)
-        {
-            var prefab = ContentBuilder.GetRecoloredTree(name);
-            if (prefab != null)
-            {
-                prototypes.Add(new TreePrototype { prefab = prefab });
-            }
-        }
-
-        InData.treePrototypes = prototypes.ToArray();
-        var random = new System.Random(Seed);
-        var instances = new List<TreeInstance>();
-        for (int i = 0; i < 14000 && prototypes.Count > 0; ++i)
-        {
-            float x = (float)random.NextDouble() * Size;
-            float z = (float)random.NextDouble() * Size;
-            var p = new Vector2(x, z);
-            float nx = x / Size;
-            float nz = z / Size;
-            float steep = InData.GetSteepness(nx, nz);
-            float height = InData.GetInterpolatedHeight(nx, nz);
-            if (steep > 32.0f || height > 75.0f || height < WorldRegions.WaterLevel + 1.0f)
-            {
-                continue;
-            }
-
-            float forest = Mathf.Clamp01(1.0f - Vector2.Distance(p, WorldRegions.DunleyWoods) / 110.0f);
-            float edge = Mathf.Min(Mathf.Min(x, Size - x), Mathf.Min(z, Size - z));
-            float mountainForest = Mathf.Clamp01((90.0f - edge) / 40.0f);
-            float chance = Mathf.Max(forest * 0.75f, mountainForest * 0.5f) * Mathf.PerlinNoise(x * 0.03f, z * 0.03f) * 3.0f + 0.03f;
-            if (random.NextDouble() > chance)
-            {
-                continue;
-            }
-
-            bool blocked = Vector2.Distance(p, WorldRegions.Lake) < WorldRegions.LakeRadius + 6.0f;
-            foreach (var zone in InZones)
-            {
-                if (Vector2.Distance(p, zone.Center) < zone.Radius + 4.0f)
-                {
-                    blocked = true;
-                    break;
-                }
-            }
-
-            if (blocked == true)
-            {
-                continue;
-            }
-
-            float scale = 4.5f + (float)random.NextDouble() * 3.0f;
-            var instance = new TreeInstance();
-            instance.prototypeIndex = random.Next(prototypes.Count);
-            instance.position = new Vector3(nx, 0.0f, nz);
-            instance.widthScale = scale;
-            instance.heightScale = scale;
-            instance.rotation = (float)random.NextDouble() * Mathf.PI * 2.0f;
-            instance.color = Color.white;
-            instance.lightmapColor = Color.white;
-            instances.Add(instance);
-        }
-
-        InData.SetTreeInstances(instances.ToArray(), true);
-    }
-
     /// <summary>
-    /// TerrainSampleAssets 풀 프리팹의 메시/텍스처로 URP Lit(알파 클립, 양면) 디테일 프리팹을 만든다.
+    /// TerrainSampleAssets 풀 프리팹의 메시/텍스처로 Game/Foliage(바람, 알파 클립, 양면) 디테일 프리팹을 만든다.
     /// 원본 Shader Graph(TerrainGrass)는 HDRP 기준 설정(디퓨전 프로파일 등)이라 이 프로젝트 URP 의 Terrain Detail 에서 그려지지 않았다 (Issues.md 19).
     /// </summary>
     private static GameObject makeUrpDetail(string InName)
@@ -446,49 +430,7 @@ public static partial class WorldBuilder
 
         string folder = EditorPaths.Generated + "/World/Detail";
         Framework.Editor.EditorAssetUtil.EnsureFolder(folder);
-        var sourceMaterial = renderer.sharedMaterial;
-        string materialPath = $"{folder}/M_{sourceMaterial.name}.mat";
-        var material = AssetDatabase.LoadAssetAtPath<Material>(materialPath);
-        if (material == null)
-        {
-            material = new Material(Shader.Find("Universal Render Pipeline/Lit"));
-            AssetDatabase.CreateAsset(material, materialPath);
-        }
-
-        var shader = sourceMaterial.shader;
-        for (int i = 0; i < shader.GetPropertyCount(); ++i)
-        {
-            if (shader.GetPropertyType(i) != UnityEngine.Rendering.ShaderPropertyType.Texture)
-            {
-                continue;
-            }
-
-            var texture = sourceMaterial.GetTexture(shader.GetPropertyName(i));
-            if (texture == null)
-            {
-                continue;
-            }
-
-            if (texture.name.Contains("BaseColor") == true)
-            {
-                material.SetTexture("_BaseMap", texture);
-            }
-            else if (texture.name.Contains("Normal") == true)
-            {
-                material.SetTexture("_BumpMap", texture);
-                material.EnableKeyword("_NORMALMAP");
-            }
-        }
-
-        material.SetColor("_BaseColor", Color.white);
-        material.SetFloat("_AlphaClip", 1.0f);
-        material.SetFloat("_Cutoff", 0.45f);
-        material.EnableKeyword("_ALPHATEST_ON");
-        material.SetFloat("_Cull", 0.0f);
-        material.SetFloat("_Smoothness", 0.1f);
-        material.renderQueue = (int)RenderQueue.AlphaTest;
-        material.enableInstancing = true;
-        EditorUtility.SetDirty(material);
+        var material = TreeFactory.ConvertToFoliage(renderer.sharedMaterial, 0.8f, 0.12f);
 
         var go = new GameObject(InName);
         go.AddComponent<MeshFilter>().sharedMesh = filter.sharedMesh;

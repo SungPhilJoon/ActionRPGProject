@@ -3,7 +3,7 @@ using Framework.UI;
 using UnityEngine;
 
 /// <summary>떠돌이 상인. 상호작용하면 상점 창을 연다 (모든 상품 무료).</summary>
-public class Merchant : MonoBehaviour, IInteractable
+public class Merchant : BaseBehaviour, IInteractable
 {
     public Vector3 Position
     {

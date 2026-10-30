@@ -5,6 +5,8 @@ public static class EditorPaths
     public const string Csv = Root + "/Data/CSV";
     public const string Tables = Root + "/Data/Tables";
     public const string GameTablesAsset = Tables + "/GameTables.asset";
+    /// <summary>몬스터 외형·클립 저작 에셋 (MonsterAuthoring, 인스펙터에서 편집). 에디터 전용 — Addressables 대상 아님.</summary>
+    public const string Monsters = Root + "/Data/Monsters";
 
     /// <summary>Addressables 루트. 이 폴더 아래 파일의 "상대 경로(확장자 제외)" 가 그대로 주소가 된다.</summary>
     public const string Content = Root + "/Content";

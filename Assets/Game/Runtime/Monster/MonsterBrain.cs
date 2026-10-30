@@ -8,7 +8,7 @@ using UnityEngine;
 /// 행동 자체는 CharacterTable.StateTree 로 지정한 StateTree 에셋이 결정하고,
 /// 이 클래스는 노드들이 쓰는 공용 기능(타깃 관리, 어빌리티 선택, 귀환 처리)과 이벤트 전달만 담당한다.
 /// </summary>
-public class MonsterBrain : MonoBehaviour
+public class MonsterBrain : BaseBehaviour
 {
     private static readonly EAbilitySlot[] DefaultPriority =
     {
@@ -53,7 +53,19 @@ public class MonsterBrain : MonoBehaviour
             return;
         }
 
-        Tree = new StateTreeInstance(asset, this, Blackboard);
+        RunTree(asset);
+    }
+
+    /// <summary>InAsset 으로 AI 를 (다시) 시작한다. CharacterTable.StateTree 대신 다른 트리를 돌릴 때 (테스트, StateTree Tool 스폰).</summary>
+    public void RunTree(StateTreeAsset InAsset)
+    {
+        if (Tree != null)
+        {
+            StateTreeDebugger.Unregister(Tree);
+        }
+
+        Blackboard = new StateTreeBlackboard();
+        Tree = new StateTreeInstance(InAsset, this, Blackboard);
         StateTreeDebugger.Register($"{Tables.Text(Owner.Row.NameId)} #{Owner.ActorId}", this, Tree);
         Tree.Start();
     }
@@ -69,7 +81,7 @@ public class MonsterBrain : MonoBehaviour
         return Managers.Get<AssetLoader>().LoadSync<ScriptableObject>(address) as StateTreeAsset;
     }
 
-    private void OnDestroy()
+    protected override void OnUnityDestroy()
     {
         if (Tree != null)
         {
@@ -81,6 +93,8 @@ public class MonsterBrain : MonoBehaviour
             Owner.Asc.OnGameplayEvent -= onGameplayEvent;
             Owner.Asc.OnAbilityEnded -= onAbilityEnded;
         }
+
+        base.OnUnityDestroy();
     }
 
     private void Update()
@@ -217,7 +231,7 @@ public class MonsterBrain : MonoBehaviour
         Returning = true;
         SetTarget(null);
         Owner.Asc.CancelAllAbilities();
-        Owner.Asc.Tags.AddTag((int)ETag.State_Invulnerable);
+        Owner.AddTag((int)ETag.State_Invulnerable);
     }
 
     public void EndReturn(bool InHeal)
@@ -228,7 +242,7 @@ public class MonsterBrain : MonoBehaviour
         }
 
         Returning = false;
-        Owner.Asc.Tags.RemoveTag((int)ETag.State_Invulnerable);
+        Owner.RemoveTag((int)ETag.State_Invulnerable);
         if (InHeal == true)
         {
             Owner.Attributes.Set(EAttribute.Health, Owner.Attributes.Get(EAttribute.MaxHealth));
@@ -246,7 +260,7 @@ public class MonsterBrain : MonoBehaviour
 
         if (Target == null && InPayload.Source != null)
         {
-            var attacker = InPayload.Source.GetComponent<Actor>();
+            var attacker = Actor.From(InPayload.Source);
             if (attacker != null && Owner.IsHostileTo(attacker) == true)
             {
                 SetTarget(attacker);

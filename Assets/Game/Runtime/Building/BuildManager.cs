@@ -83,6 +83,37 @@ public class BuildManager : IManager
         }
     }
 
+    /// <summary>
+    /// 입력 없이 InWorldPoint 에 설치한다 (Begin 으로 건축 모드에 들어간 뒤). 스냅 · 위치 검사 · 비용 차감은 마우스 설치와 같다.
+    /// 설치했으면 true (테스트 시나리오, 게임패드 등).
+    /// </summary>
+    public bool PlaceAt(Vector3 InWorldPoint)
+    {
+        var player = PlayerCharacter.Local;
+        if (Current == null || player == null)
+        {
+            return false;
+        }
+
+        Vector3 point = snap(InWorldPoint);
+        IsValid = validate(player, point);
+        int before = Root.childCount;
+        place(player, point);
+        return Root.childCount > before;
+    }
+
+    /// <summary>설치 방향 (0/90/180/270). 벽은 방향에 따라 칸 경계 X/Z 중 어느 쪽에 붙을지가 정해진다. 마우스 설치는 X 키로 90° 씩 돌린다.</summary>
+    public void SetRotation(float InYaw)
+    {
+        Rotation = Mathf.Repeat(Mathf.Round(InYaw / 90.0f) * 90.0f, 360.0f);
+    }
+
+    /// <summary>설치된 건축물 수.</summary>
+    public int StructureCount
+    {
+        get { return Root != null ? Root.childCount : 0; }
+    }
+
     public void Begin(int InStructureId)
     {
         Cancel();
@@ -146,6 +177,7 @@ public class BuildManager : IManager
         var instance = Object.Instantiate(prefab, InPoint, Quaternion.Euler(0.0f, Rotation, 0.0f), Root);
         var structure = ComponentUtil.GetOrAdd<Structure>(instance);
         structure.Initialize(Current);
+        EventBus<StructurePlacedEvent>.Publish(new StructurePlacedEvent { Structure = structure, Bounds = placedBounds(instance, InPoint) });
 
         // 건축 모션 (Crafting 팩 망치질) 동안 이동을 잠근다.
         InPlayer.Motor.Face(InPoint - InPlayer.transform.position, true);
@@ -172,6 +204,24 @@ public class BuildManager : IManager
         {
             Cancel();
         }
+    }
+
+    /// <summary>
+    /// 설치된 건축물이 차지하는 영역 = 렌더러 바운드 ∪ StructureTable.Footprint(m, 회전 반영).
+    /// 성 심장처럼 모델이 칸보다 작은 건축물도 칸 전체의 나무/풀을 치우기 위해 Footprint 를 합친다.
+    /// </summary>
+    private Bounds placedBounds(GameObject InInstance, Vector3 InPoint)
+    {
+        bool rotated = Mathf.Abs(Mathf.DeltaAngle(Rotation, 90.0f)) < 45.0f || Mathf.Abs(Mathf.DeltaAngle(Rotation, 270.0f)) < 45.0f;
+        Vector2 footprint = rotated == true ? new Vector2(Current.Footprint.y, Current.Footprint.x) : Current.Footprint;
+        var bounds = new Bounds(InPoint, new Vector3(footprint.x, 0.5f, footprint.y));
+        Bounds visual;
+        if (BoundsUtil.TryGetWorldBounds(InInstance, out visual) == true)
+        {
+            bounds.Encapsulate(visual);
+        }
+
+        return bounds;
     }
 
     private bool validate(PlayerCharacter InPlayer, Vector3 InPoint)

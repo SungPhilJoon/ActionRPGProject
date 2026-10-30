@@ -7,7 +7,7 @@ using UnityEngine.AI;
 /// 어빌리티는 어느 쪽이든 같은 함수(Face / LockMovement / Dash)만 호출한다 (Adapter 역할).
 /// 이동 속도는 GAS 속성 MoveSpeed 를 매 프레임 읽으므로 슬로우/헤이스트 이펙트가 바로 반영된다.
 /// </summary>
-public class ActorMotor : MonoBehaviour
+public class ActorMotor : BaseBehaviour
 {
     private const float Gravity = -20.0f;
     private const float TurnSpeed = 720.0f;
@@ -227,7 +227,7 @@ public class ActorMotor : MonoBehaviour
         else
         {
             velocity = DesiredDirection * InMoveSpeed;
-            if (DesiredDirection.sqrMagnitude > 0.01f && Owner.Asc.Tags.HasTag((int)ETag.State_Attacking) == false)
+            if (DesiredDirection.sqrMagnitude > 0.01f && Owner.HasTag((int)ETag.State_Attacking) == false)
             {
                 Face(DesiredDirection, false);
             }
@@ -281,6 +281,6 @@ public class ActorMotor : MonoBehaviour
 
     private bool isStunned()
     {
-        return Owner != null && Owner.Asc != null && (Owner.Asc.Tags.HasTag((int)ETag.State_Debuff_Stun) == true || Owner.Asc.Tags.HasTag((int)ETag.State_Feeding) == true);
+        return Owner != null && Owner.Asc != null && (Owner.HasTag((int)ETag.State_Debuff_Stun) == true || Owner.HasTag((int)ETag.State_Feeding) == true);
     }
 }

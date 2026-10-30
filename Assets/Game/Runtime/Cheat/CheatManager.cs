@@ -36,6 +36,7 @@ public enum ECheat
     lowhp,
     spell,
     status,
+    quest,
 }
 
 public class CheatManager : IManager
@@ -83,6 +84,7 @@ public class CheatManager : IManager
         regist(ECheat.lowhp, lowHp, "lowhp [radius] : set nearby enemies to 20% hp (feed test)");
         regist(ECheat.spell, spell, "spell <abilityId> : equip spell (301 Chaos Volley, 302 Blood Rite, 303 Ice Nova, 304 Ball Lightning, 305 Corrupted Skull, 306 Wraith Spear)");
         regist(ECheat.status, status, "status <effectId> [radius] : apply effect to nearby enemies (80 Leech, 82 Ignite, 84 Chill, 85 Freeze, 86 Static, 88 Condemn, 89 Weaken)");
+        regist(ECheat.quest, quest, "quest [questId] : complete current quest, or jump to questId");
     }
 
     void IManager.UnInitialize()
@@ -173,7 +175,7 @@ public class CheatManager : IManager
 
     private bool toggleTag(Actor InActor, ETag InTag)
     {
-        var tags = InActor.Asc.Tags;
+        var tags = InActor.Tags;
         if (tags.HasTagExact((int)InTag) == true)
         {
             tags.RemoveTag((int)InTag);
@@ -387,6 +389,26 @@ public class CheatManager : IManager
         float value = argFloat(InTokens, 1, 10.0f);
         player().Attributes.Set(EAttribute.Level, value);
         print($"level {value}");
+    }
+
+    private void quest(string[] InTokens)
+    {
+        var quests = Managers.Get<QuestManager>();
+        int questId = argInt(InTokens, 1, 0);
+        if (questId != 0)
+        {
+            print(quests.Begin(questId) == true ? $"quest {questId} started" : $"quest {questId} not found");
+            return;
+        }
+
+        if (quests.Current == null)
+        {
+            print("no active quest");
+            return;
+        }
+
+        print($"quest {quests.Current.Index} completed");
+        quests.CompleteCurrent();
     }
 
     private void noSun(string[] InTokens)

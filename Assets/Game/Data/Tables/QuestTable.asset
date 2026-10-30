@@ -1,0 +1,203 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d557c29091b2b541af1d865c851be10, type: 3}
+  m_Name: QuestTable
+  m_EditorClassIdentifier: Game.Runtime::QuestTable
+  Source: {fileID: 4900000, guid: 621b07c0e6387144c87eb17b14ca5f62, type: 3}
+  Rows:
+  - Index: 1
+    Chapter: 0
+    TitleId: 7001
+    DescId: 7101
+    Objective: 1
+    Target: 0
+    Count: 25
+    Key: 22
+    RewardItem: 0
+    RewardCount: 0
+    Next: 2
+  - Index: 2
+    Chapter: 0
+    TitleId: 7002
+    DescId: 7102
+    Objective: 2
+    Target: 0
+    Count: 3
+    Key: 22
+    RewardItem: 0
+    RewardCount: 0
+    Next: 3
+  - Index: 3
+    Chapter: 0
+    TitleId: 7003
+    DescId: 7103
+    Objective: 2
+    Target: 1
+    Count: 1
+    Key: 2
+    RewardItem: 0
+    RewardCount: 0
+    Next: 4
+  - Index: 4
+    Chapter: 0
+    TitleId: 7004
+    DescId: 7104
+    Objective: 2
+    Target: 3
+    Count: 1
+    Key: 4
+    RewardItem: 0
+    RewardCount: 0
+    Next: 5
+  - Index: 5
+    Chapter: 0
+    TitleId: 7005
+    DescId: 7105
+    Objective: 2
+    Target: 4
+    Count: 1
+    Key: 5
+    RewardItem: 0
+    RewardCount: 0
+    Next: 6
+  - Index: 6
+    Chapter: 0
+    TitleId: 7006
+    DescId: 7106
+    Objective: 3
+    Target: 0
+    Count: 1
+    Key: 9
+    RewardItem: 0
+    RewardCount: 0
+    Next: 7
+  - Index: 7
+    Chapter: 0
+    TitleId: 7007
+    DescId: 7107
+    Objective: 4
+    Target: 0
+    Count: 10
+    Key: 22
+    RewardItem: 30
+    RewardCount: 2
+    Next: 8
+  - Index: 8
+    Chapter: 0
+    TitleId: 7008
+    DescId: 7108
+    Objective: 5
+    Target: 0
+    Count: 1
+    Key: 12
+    RewardItem: 0
+    RewardCount: 0
+    Next: 9
+  - Index: 9
+    Chapter: 0
+    TitleId: 7009
+    DescId: 7109
+    Objective: 6
+    Target: 1
+    Count: 1
+    Key: 10
+    RewardItem: 0
+    RewardCount: 0
+    Next: 10
+  - Index: 10
+    Chapter: 0
+    TitleId: 7010
+    DescId: 7110
+    Objective: 7
+    Target: 1
+    Count: 1
+    Key: 11
+    RewardItem: 1
+    RewardCount: 10
+    Next: 11
+  - Index: 11
+    Chapter: 0
+    TitleId: 7011
+    DescId: 7111
+    Objective: 7
+    Target: 6
+    Count: 1
+    Key: 11
+    RewardItem: 31
+    RewardCount: 1
+    Next: 12
+  - Index: 12
+    Chapter: 1
+    TitleId: 7012
+    DescId: 7112
+    Objective: 8
+    Target: 2
+    Count: 3
+    Key: 22
+    RewardItem: 30
+    RewardCount: 2
+    Next: 13
+  - Index: 13
+    Chapter: 1
+    TitleId: 7013
+    DescId: 7113
+    Objective: 9
+    Target: 0
+    Count: 1
+    Key: 8
+    RewardItem: 5
+    RewardCount: 5
+    Next: 14
+  - Index: 14
+    Chapter: 1
+    TitleId: 7014
+    DescId: 7114
+    Objective: 8
+    Target: 3
+    Count: 3
+    Key: 22
+    RewardItem: 6
+    RewardCount: 8
+    Next: 15
+  - Index: 15
+    Chapter: 1
+    TitleId: 7015
+    DescId: 7115
+    Objective: 10
+    Target: 0
+    Count: 16
+    Key: 10
+    RewardItem: 0
+    RewardCount: 0
+    Next: 16
+  - Index: 16
+    Chapter: 1
+    TitleId: 7016
+    DescId: 7116
+    Objective: 8
+    Target: 4
+    Count: 3
+    Key: 22
+    RewardItem: 30
+    RewardCount: 3
+    Next: 17
+  - Index: 17
+    Chapter: 2
+    TitleId: 7017
+    DescId: 7117
+    Objective: 8
+    Target: 5
+    Count: 1
+    Key: 22
+    RewardItem: 0
+    RewardCount: 0
+    Next: 0

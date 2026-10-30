@@ -1,10 +1,7 @@
 using Framework;
-using Framework.UI;
-using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 
-/// <summary>게임 UI 공통 조립 함수 (아이템 슬롯, 아이콘, 키 라벨 등).</summary>
+/// <summary>게임 UI 공통 함수 (아이콘 로드, 키 라벨, 비용 문구, 색).</summary>
 public static class UIUtil
 {
     public static readonly Color SlotColor = new Color(0.12f, 0.1f, 0.12f, 0.95f);
@@ -36,6 +33,19 @@ public static class UIUtil
         return Tables.Text(row.NameId);
     }
 
+    public static EText QuestChapterText(EQuestChapter InChapter)
+    {
+        switch (InChapter)
+        {
+            case EQuestChapter.Hunt:
+                return EText.QuestChapterHunt;
+            case EQuestChapter.Boss:
+                return EText.QuestChapterBoss;
+            default:
+                return EText.QuestChapterTutorial;
+        }
+    }
+
     /// <summary>"&lt;Keyboard&gt;/q" → "Q". 화면 표시용으로만 쓴다.</summary>
     public static string KeyLabel(EInputAction InAction)
     {
@@ -49,20 +59,6 @@ public static class UIUtil
         int slash = path.LastIndexOf('/');
         string key = slash >= 0 ? path.Substring(slash + 1) : path;
         return key.Length <= 2 ? key.ToUpperInvariant() : char.ToUpperInvariant(key[0]) + key.Substring(1);
-    }
-
-    public static ItemSlotView CreateItemSlot(Transform InParent, string InName)
-    {
-        var rect = UIFactory.CreatePanel(InParent, InName, SlotColor);
-        var slot = rect.gameObject.AddComponent<ItemSlotView>();
-        slot.Icon = UIFactory.CreateImage(rect, "Icon", Color.white);
-        UIFactory.Stretch(slot.Icon.rectTransform, 6.0f);
-        slot.Count = UIFactory.CreateText(rect, "Count", string.Empty, 16.0f, TextAlignmentOptions.BottomRight);
-        UIFactory.Stretch(slot.Count.rectTransform, 4.0f);
-        slot.Button = rect.gameObject.AddComponent<Button>();
-        slot.Button.targetGraphic = rect.GetComponent<Image>();
-        slot.Set(new ItemStack());
-        return slot;
     }
 
     public static string CostText(Inventory InInventory, int[] InItems, int[] InCounts)

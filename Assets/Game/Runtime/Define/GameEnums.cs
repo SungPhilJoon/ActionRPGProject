@@ -62,6 +62,8 @@ public enum ETag
     State_Debuff_Condemn = 75,
     /// <summary>Weaken: 주는 피해 −WeakenDamageDealtPercent%.</summary>
     State_Debuff_Weaken = 76,
+    /// <summary>Guard: 방어 어빌리티 시전 중 (GAS Tool 방어 템플릿의 GE 가 부여). StateTree 조건/다른 어빌리티의 차단에 사용.</summary>
+    State_Buff_Guard = 77,
 }
 
 /// <summary>속성 인덱스. AttributeSet 배열 인덱스로 그대로 쓴다.</summary>
@@ -148,6 +150,8 @@ public enum EAbilityType
     SelfBuff = 5,
     Feed = 6,
     Leap = 7,
+    /// <summary>GAS Tool 에서 만든 AbilityGraphAsset 을 실행 (언리얼 Blueprint 어빌리티 방식). AbilityRow.Graph 가 에셋.</summary>
+    Graph = 8,
 }
 
 public enum EAbilitySlot
@@ -236,6 +240,41 @@ public enum ESpawnKind
     PlayerStart = 3,
 }
 
+/// <summary>퀘스트 목표 종류 (QuestTable.Objective). Target 의 의미는 종류마다 다르다 — QuestTable.cs 참고.</summary>
+public enum EQuestObjective
+{
+    None = 0,
+    Move = 1,
+    UseAbility = 2,
+    Buy = 3,
+    Gather = 4,
+    Craft = 5,
+    Equip = 6,
+    Build = 7,
+    Kill = 8,
+    Feed = 9,
+    GearLevel = 10,
+}
+
+/// <summary>퀘스트 묶음 (HUD 추적기 머리말).</summary>
+public enum EQuestChapter
+{
+    Tutorial = 0,
+    Hunt = 1,
+    Boss = 2,
+}
+
+/// <summary>아이템을 얻은 경로 (ItemObtainedEvent). 퀘스트 목표가 채집/제작/상점을 구분한다.</summary>
+public enum EItemSource
+{
+    None = 0,
+    Harvest = 1,
+    Craft = 2,
+    Shop = 3,
+    Loot = 4,
+    Reward = 5,
+}
+
 /// <summary>AnimationTable.Parameters 의 Animator 파라미터 종류.</summary>
 public enum EAnimParamType
 {
@@ -281,6 +320,29 @@ public enum EAssetKind
     Material = 2,
     /// <summary>ScriptableObject 데이터 (StateTree 등).</summary>
     Data = 3,
+}
+
+/// <summary>
+/// UI 프리팹의 AssetTable Index (주소 = Content/UI 아래 경로). UI 프리팹 빌더(Game > Setup > 3b)가 만들고,
+/// GameBootstrap 이 Addressables 로 로드해 Instantiate 한다. 값은 AssetTable.csv 와 같아야 한다.
+/// </summary>
+public enum EUIAsset
+{
+    LayerCanvas = 400,
+    HudWindow = 401,
+    InventoryWindow = 402,
+    CraftWindow = 403,
+    BuildWindow = 404,
+    ShopWindow = 405,
+    BalanceOverlayWindow = 406,
+    CheatConsoleWindow = 407,
+    TitleWindow = 408,
+    WorldHealthBarLayer = 409,
+    DamageNumberLayer = 410,
+    ListRow = 411,
+    ItemSlot = 412,
+    WorldHealthBar = 413,
+    DamageNumber = 414,
 }
 
 /// <summary>몬스터 StateTree 블랙보드 키 (MonsterPerceptionEvaluator 가 채운다).</summary>
@@ -374,6 +436,8 @@ public enum EConst
     BuildAnim = 33,
     /// <summary>상호작용 시 재생할 AnimationTable Index.</summary>
     InteractAnim = 34,
+    /// <summary>게임 시작 시 받는 첫 퀘스트 (QuestTable Index). 0 이면 퀘스트 없음.</summary>
+    FirstQuestId = 35,
 }
 
 /// <summary>StringTable.csv 의 고정 UI 문자열 인덱스. 데이터 행(아이템 이름 등)은 각 테이블의 NameId 로 참조한다.</summary>
@@ -423,6 +487,16 @@ public enum EText
     BalanceDealt = 47,
     BalanceTaken = 48,
     BalanceRecent = 49,
+    Quest = 50,
+    QuestComplete = 51,
+    QuestNew = 52,
+    QuestAllComplete = 53,
+    QuestNearest = 54,
+    QuestVictory = 55,
+    QuestReward = 56,
+    QuestChapterTutorial = 57,
+    QuestChapterHunt = 58,
+    QuestChapterBoss = 59,
 }
 
 /// <summary>UI 캔버스 정렬 순서 = 레이어 번호.</summary>
@@ -451,4 +525,6 @@ public static class LayerId
     public const int GroundMask = (1 << Ground) | (1 << Structure);
     public const int SunBlockMask = (1 << Default) | (1 << Ground) | (1 << Structure) | (1 << SunBlocker) | (1 << Interactable);
     public const int ProjectileBlockMask = (1 << Ground) | (1 << Structure) | (1 << Interactable);
+    /// <summary>카메라 가림 판정 (나무 그늘 콜라이더 = SunBlocker, 건물/바위 = Default, 건축물, 채집 노드). CameraOccluder 가 붙은 것만 숨긴다.</summary>
+    public const int CameraOcclusionMask = (1 << Default) | (1 << Structure) | (1 << SunBlocker) | (1 << Interactable);
 }

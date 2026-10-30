@@ -11,7 +11,7 @@ using UnityEngine;
 ///  - V Blood 보스는 HUD 상단 보스 바가 따로 있으므로 제외
 ///  - 왼쪽에 레벨 숫자 (V Rising 처럼 기어 레벨 비교용)
 /// </summary>
-public class WorldHealthBarLayer : MonoBehaviour
+public class WorldHealthBarLayer : UIBehaviour
 {
     private class Entry
     {
@@ -23,21 +23,18 @@ public class WorldHealthBarLayer : MonoBehaviour
 
     private const float ShowDistance = 30.0f;
     private const float HeadHeight = 2.2f;
-    private static readonly Vector2 BarSize = new Vector2(120.0f, 14.0f);
-    private static readonly Vector2 BadgeSize = new Vector2(30.0f, 22.0f);
-    private static readonly Color FillColor = new Color(0.8f, 0.12f, 0.12f, 1.0f);
     private static readonly Color LevelHigherColor = new Color(1.0f, 0.4f, 0.35f, 1.0f);
     private static readonly Color LevelLowerColor = new Color(0.75f, 0.75f, 0.75f, 1.0f);
+
+    public WorldHealthBarView BarPrefab;
 
     private readonly Dictionary<long, Entry> Entries = new Dictionary<long, Entry>();
     private readonly Stack<Entry> Free = new Stack<Entry>();
     private readonly List<long> RemoveBuffer = new List<long>();
-    private RectTransform Rect;
     private Camera WorldCamera;
 
     public void Setup(Camera InCamera)
     {
-        Rect = GetComponent<RectTransform>();
         WorldCamera = InCamera;
     }
 
@@ -45,7 +42,7 @@ public class WorldHealthBarLayer : MonoBehaviour
     {
         var player = PlayerCharacter.Local;
         var registry = Managers.Get<ActorRegistry>();
-        if (WorldCamera == null || Rect == null || registry == null || player == null)
+        if (WorldCamera == null || registry == null || player == null)
         {
             hideAll();
             return;
@@ -130,31 +127,16 @@ public class WorldHealthBarLayer : MonoBehaviour
         return damaged == true || inCombat == true;
     }
 
+    /// <summary>체력바는 프리팹(UI/Widgets/WorldHealthBar)을 복제해 풀링한다.</summary>
     private Entry create()
     {
         var entry = new Entry();
-        entry.Root = UIFactory.CreateRect(transform, "HealthBar");
-        entry.Root.sizeDelta = BarSize;
-
-        entry.Bar = UIFactory.CreateBar(entry.Root, "Bar", FillColor, UIUtil.BarBackColor);
-        UIFactory.Stretch(entry.Bar.GetComponent<RectTransform>(), 0.0f);
+        var view = Instantiate(BarPrefab, transform, false);
+        view.name = BarPrefab.name;
+        entry.Root = view.Rect;
+        entry.Bar = view.Bar;
+        entry.Level = view.Level;
         entry.Bar.SetLabel(string.Empty);
-        entry.Bar.GetComponent<UnityEngine.UI.Image>().raycastTarget = false;
-        entry.Bar.Fill.GetComponent<UnityEngine.UI.Image>().raycastTarget = false;
-
-        // 레벨 배지: 바 왼쪽에 붙는 어두운 사각형 + 숫자.
-        var badge = UIFactory.CreatePanel(entry.Root, "LevelBadge", new Color(0.0f, 0.0f, 0.0f, 0.75f));
-        badge.anchorMin = new Vector2(0.0f, 0.5f);
-        badge.anchorMax = new Vector2(0.0f, 0.5f);
-        badge.pivot = new Vector2(1.0f, 0.5f);
-        badge.anchoredPosition = new Vector2(-2.0f, 0.0f);
-        badge.sizeDelta = BadgeSize;
-        badge.GetComponent<UnityEngine.UI.Image>().raycastTarget = false;
-
-        entry.Level = UIFactory.CreateText(badge, "Level", string.Empty, 18.0f, TextAlignmentOptions.Center);
-        UIFactory.Stretch(entry.Level.rectTransform, 0.0f);
-        entry.Level.textWrappingMode = TextWrappingModes.NoWrap;
-        entry.Level.fontStyle = FontStyles.Bold;
         return entry;
     }
 

@@ -2,7 +2,7 @@ using Framework;
 using UnityEngine;
 
 /// <summary>일정 시간 뒤 풀로 돌려보낸다. 파티클은 재사용 시 다시 재생한다.</summary>
-public class TimedDespawn : MonoBehaviour, IPoolable
+public class TimedDespawn : BaseBehaviour, IPoolable
 {
     private float Remaining = -1.0f;
 

@@ -17,6 +17,9 @@ public class SpawnManager : IManager
         public float Remaining;
     }
 
+    private const int WaterRetryCount = 8;
+    private const float WaterMargin = 1.5f;
+
     private Transform Root;
     private readonly List<PendingRespawn> Respawns = new List<PendingRespawn>();
     private readonly CancellationTokenSource Cancel = new CancellationTokenSource();
@@ -191,10 +194,21 @@ public class SpawnManager : IManager
         return InRow.Position + new Vector3(offset.x, 0.0f, offset.y);
     }
 
+    /// <summary>스폰 반경 안 임의 지점. 강/호수(WaterBody) 안이면 몇 번 다시 뽑는다.</summary>
     private static Vector3 randomPoint(SpawnRow InRow, System.Random InRandom)
     {
-        double angle = InRandom.NextDouble() * System.Math.PI * 2.0;
-        double radius = System.Math.Sqrt(InRandom.NextDouble()) * InRow.Radius;
-        return InRow.Position + new Vector3((float)(System.Math.Cos(angle) * radius), 0.0f, (float)(System.Math.Sin(angle) * radius));
+        Vector3 point = InRow.Position;
+        for (int attempt = 0; attempt < WaterRetryCount; ++attempt)
+        {
+            double angle = InRandom.NextDouble() * System.Math.PI * 2.0;
+            double radius = System.Math.Sqrt(InRandom.NextDouble()) * InRow.Radius;
+            point = InRow.Position + new Vector3((float)(System.Math.Cos(angle) * radius), 0.0f, (float)(System.Math.Sin(angle) * radius));
+            if (WaterBody.IsInWater(point, WaterMargin) == false)
+            {
+                break;
+            }
+        }
+
+        return point;
     }
 }

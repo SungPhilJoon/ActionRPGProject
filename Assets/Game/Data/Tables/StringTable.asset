@@ -277,3 +277,103 @@ MonoBehaviour:
     Text: Stone Wall (Window)
   - Index: 4010
     Text: Stone Pillar
+  - Index: 1006
+    Text: New Monster
+  - Index: 50
+    Text: Quest
+  - Index: 51
+    Text: 'Quest complete:'
+  - Index: 52
+    Text: 'New quest:'
+  - Index: 53
+    Text: All quests complete!
+  - Index: 54
+    Text: Nearest
+  - Index: 55
+    Text: 'V BLOOD CLAIMED
+
+      <size=26>The Minotaur Warlord has fallen. Demo
+      complete - thanks for playing!</size>'
+  - Index: 56
+    Text: 'Reward:'
+  - Index: 57
+    Text: Tutorial
+  - Index: 58
+    Text: The Hunt
+  - Index: 59
+    Text: V Blood
+  - Index: 7001
+    Text: Awakening
+  - Index: 7101
+    Text: You wake from a long slumber. Walk around with WASD to stretch your legs.
+  - Index: 7002
+    Text: Taste of Steel
+  - Index: 7102
+    Text: Click the Left Mouse button to swing your weapon. Click in rhythm to chain
+      a combo.
+  - Index: 7003
+    Text: Weapon Arts
+  - Index: 7103
+    Text: Use your weapon skill. Q and E change with the weapon you wield.
+  - Index: 7004
+    Text: Veil of Blood
+  - Index: 7104
+    Text: Dash with Veil of Blood. Attacks pass through you while dashing.
+  - Index: 7005
+    Text: Blood Magic
+  - Index: 7105
+    Text: Cast Chaos Volley. Hitting an Ignited enemy again makes it explode.
+  - Index: 7006
+    Text: The Merchant
+  - Index: 7106
+    Text: Talk to the Wandering Merchant beside the camp (or press P) and take any
+      item. Everything is free.
+  - Index: 7007
+    Text: Gatherer
+  - Index: 7107
+    Text: Strike trees
+  - Index: 7008
+    Text: Handiwork
+  - Index: 7108
+    Text: Open the crafting menu and make anything. Cloth armor only needs Plant
+      Fiber.
+  - Index: 7009
+    Text: Dressed for the Night
+  - Index: 7109
+    Text: Open the inventory and equip a chest armor (Cloth Robe or Reinforced Chest).
+  - Index: 7010
+    Text: A Castle of Your Own
+  - Index: 7110
+    Text: Open the build menu and place a Castle Heart (20 Lumber
+  - Index: 7011
+    Text: A Place to Rest
+  - Index: 7111
+    Text: Build a Coffin near your Castle Heart. You will rise there when you die.
+  - Index: 7012
+    Text: First Hunt
+  - Index: 7112
+    Text: Medusa Sentinels lurk just north of the camp. Slay 3 of them.
+  - Index: 7013
+    Text: The Feeding
+  - Index: 7113
+    Text: Bring an enemy below 25% health
+  - Index: 7014
+    Text: Serpents
+  - Index: 7114
+    Text: Cobra Snakes shoot from afar in the Ruined Hamlet and the Serpent Marsh.
+      Slay 3.
+  - Index: 7015
+    Text: Copper Age
+  - Index: 7115
+    Text: Stronger foes await. Craft copper gear at a Workbench (or take it from
+      the merchant) and reach Gear Level 16.
+  - Index: 7016
+    Text: Troll Ridge
+  - Index: 7116
+    Text: Cave Trolls roam Troll Ridge far to the north. Beware their charge. Slay
+      3.
+  - Index: 7017
+    Text: 'V Blood: Minotaur Warlord'
+  - Index: 7117
+    Text: The Minotaur Warlord rules the arena in the north-east. Defeat it - feed
+      on it to claim its V Blood.

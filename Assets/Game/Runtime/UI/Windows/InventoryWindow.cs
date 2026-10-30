@@ -17,54 +17,40 @@ public class InventoryWindow : UIWindow
         EAttribute.CritDamage, EAttribute.LifeLeech, EAttribute.SunResist, EAttribute.ResourceYield, EAttribute.Level,
     };
 
+    public RectTransform Grid;
+    public RectTransform EquipRoot;
+    public ItemSlotView SlotPrefab;
+    public TextMeshProUGUI Stats;
+    public TextMeshProUGUI Tooltip;
+
     private readonly List<ItemSlotView> Slots = new List<ItemSlotView>();
     private readonly List<ItemSlotView> EquipSlots = new List<ItemSlotView>();
-    private TextMeshProUGUI Stats;
-    private TextMeshProUGUI Tooltip;
 
-    protected override void Build()
+    /// <summary>칸 수는 ConstTable.InventorySize 라 프리팹에 고정할 수 없다 → 슬롯 프리팹을 그 수만큼 띄운다.</summary>
+    protected override void OnInitialize()
     {
-        var frame = UIFactory.CreateWindowFrame(Rect, "Frame");
-        UIFactory.Place(frame, new Vector2(0.5f, 0.5f), new Vector2(0.0f, 20.0f), new Vector2(1100.0f, 640.0f));
-
-        var title = UIFactory.CreateText(frame, "Title", Tables.Text(EText.Inventory), 30.0f, TextAlignmentOptions.Left);
-        UIFactory.Place(title, new Vector2(0.0f, 1.0f), new Vector2(24.0f, -12.0f), new Vector2(400.0f, 44.0f));
-
-        var close = UIFactory.CreateButton(frame, "Close", Tables.Text(EText.Close), 18.0f, Close);
-        UIFactory.Place(close, new Vector2(1.0f, 1.0f), new Vector2(-16.0f, -14.0f), new Vector2(110.0f, 38.0f));
-
-        var grid = UIFactory.CreateRect(frame, "Grid");
-        UIFactory.Place(grid, new Vector2(0.0f, 1.0f), new Vector2(16.0f, -64.0f), new Vector2(560.0f, 460.0f));
-        UIFactory.AddGrid(grid, new Vector2(80.0f, 80.0f), new Vector2(6.0f, 6.0f), 6);
-
+        var grid = new UIItemList<ItemSlotView>(SlotPrefab, Grid);
         int size = Tables.ConstInt(EConst.InventorySize);
         for (int i = 0; i < size; ++i)
         {
             int index = i;
-            var slot = UIUtil.CreateItemSlot(grid, $"Slot{i}");
+            var slot = grid.Add();
+            slot.name = $"Slot{i}";
             slot.Button.onClick.AddListener(() => onSlotClicked(index));
+            slot.Set(new ItemStack());
             Slots.Add(slot);
         }
 
-        var equipTitle = UIFactory.CreateText(frame, "EquipTitle", Tables.Text(EText.Equipment), 22.0f, TextAlignmentOptions.Left);
-        UIFactory.Place(equipTitle, new Vector2(0.0f, 1.0f), new Vector2(600.0f, -64.0f), new Vector2(200.0f, 30.0f));
-
-        var equipRoot = UIFactory.CreateRect(frame, "Equip");
-        UIFactory.Place(equipRoot, new Vector2(0.0f, 1.0f), new Vector2(592.0f, -96.0f), new Vector2(110.0f, 460.0f));
-        UIFactory.AddGrid(equipRoot, new Vector2(80.0f, 80.0f), new Vector2(6.0f, 6.0f), 1);
+        var equip = new UIItemList<ItemSlotView>(SlotPrefab, EquipRoot);
         for (int i = 0; i < (int)EEquipSlot.Count; ++i)
         {
             var slotType = (EEquipSlot)i;
-            var slot = UIUtil.CreateItemSlot(equipRoot, $"Equip{i}");
+            var slot = equip.Add();
+            slot.name = $"Equip{i}";
             slot.Button.onClick.AddListener(() => onEquipClicked(slotType));
+            slot.Set(new ItemStack());
             EquipSlots.Add(slot);
         }
-
-        Stats = UIFactory.CreateText(frame, "Stats", string.Empty, 17.0f, TextAlignmentOptions.TopLeft);
-        UIFactory.Place(Stats, new Vector2(0.0f, 1.0f), new Vector2(720.0f, -64.0f), new Vector2(360.0f, 470.0f));
-
-        Tooltip = UIFactory.CreateText(frame, "Tooltip", string.Empty, 18.0f, TextAlignmentOptions.TopLeft);
-        UIFactory.Place(Tooltip, new Vector2(0.0f, 0.0f), new Vector2(24.0f, 16.0f), new Vector2(1050.0f, 90.0f));
     }
 
     private void OnEnable()

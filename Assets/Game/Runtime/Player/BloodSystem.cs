@@ -9,7 +9,7 @@ using UnityEngine;
 ///  - 흡혈한 대상의 혈액 종류/품질을 얻고, 품질이 BloodTypeTable.Thresholds 를 넘는 단계의 TierEffects 를 부여한다.
 ///  - V Blood 보유자를 흡혈하면 CharacterTable.VBloodUnlocks 의 어빌리티를 해금한다.
 /// </summary>
-public class BloodSystem : MonoBehaviour
+public class BloodSystem : BaseBehaviour
 {
     private PlayerCharacter Owner;
     private readonly List<int> TierHandles = new List<int>();
@@ -44,13 +44,13 @@ public class BloodSystem : MonoBehaviour
         bool empty = attributes.Get(EAttribute.BloodPool) <= 0.0f;
         if (empty == true && StarveHandle == 0)
         {
-            var spec = new GameplayEffectSpec(EffectLibrary.Get(EffectLibrary.BloodStarveEffectId), Owner.Asc, 0);
+            var spec = Owner.Asc.MakeOutgoingSpec(EffectLibrary.Get(EffectLibrary.BloodStarveEffectId), 0);
             spec.SetByCaller((int)ESetByCaller.Magnitude, Tables.Const(EConst.BloodEmptyDamagePercent));
             StarveHandle = Owner.Asc.ApplyGameplayEffectSpecToSelf(spec);
         }
         else if (empty == false && StarveHandle != 0)
         {
-            Owner.Asc.RemoveActiveEffect(StarveHandle);
+            Owner.RemoveEffect(StarveHandle);
             StarveHandle = 0;
         }
     }
@@ -67,6 +67,7 @@ public class BloodSystem : MonoBehaviour
             SetBlood(row.BloodType, quality);
         }
 
+        EventBus<PlayerFedEvent>.Publish(new PlayerFedEvent { Player = Owner, CharacterId = row.Index });
         if (row.IsVBlood == true)
         {
             Owner.UnlockAbilities(row.VBloodUnlocks);
@@ -79,7 +80,7 @@ public class BloodSystem : MonoBehaviour
     {
         for (int i = 0; i < TierHandles.Count; ++i)
         {
-            Owner.Asc.RemoveActiveEffect(TierHandles[i]);
+            Owner.RemoveEffect(TierHandles[i]);
         }
 
         TierHandles.Clear();
@@ -96,14 +97,7 @@ public class BloodSystem : MonoBehaviour
                     continue;
                 }
 
-                var def = EffectLibrary.Get(row.TierEffects[i]);
-                if (def == null)
-                {
-                    continue;
-                }
-
-                var spec = new GameplayEffectSpec(def, Owner.Asc, 0);
-                int handle = Owner.Asc.ApplyGameplayEffectSpecToSelf(spec);
+                int handle = Owner.ApplyEffectToSelf(EffectLibrary.Get(row.TierEffects[i]), 0);
                 if (handle != 0)
                 {
                     TierHandles.Add(handle);

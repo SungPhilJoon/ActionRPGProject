@@ -32,7 +32,7 @@ namespace Framework.Editor
             string shader = InMaterial.shader.name;
             return shader.StartsWith("Universal Render Pipeline") == true
                 || shader.StartsWith("Shader Graphs") == true
-                || shader.StartsWith("WeatherMaker") == true
+                || shader.StartsWith("Game/") == true
                 || shader.StartsWith("Skybox") == true
                 || shader.StartsWith("Hidden") == true;
         }

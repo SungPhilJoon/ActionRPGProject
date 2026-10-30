@@ -1,0 +1,874 @@
+{
+    "UpdatedAt": "2026-10-31 05:42",
+    "Issues": [
+        {
+            "Key": "S-DUP-RESOURCES:Assets/TextMesh Pro/Resources",
+            "Code": "S-DUP-RESOURCES",
+            "Severity": 1,
+            "Title": "Resources 폴더 에셋 2개가 Addressables 번들에도 들어감",
+            "Why": "Assets/TextMesh Pro/Resources 의 에셋은 빌드 시 Resources 에 한 벌, 그 에셋을 쓰는 번들에 한 벌 들어갑니다 (용량 · 메모리 2배).",
+            "HowToFix": "외부 에셋 원본은 고치지 않는 규칙이므로, 이 에셋들을 Addressables 에 직접 등록하거나 복사본을 Content 쪽으로 옮기는 방안을 검토하세요.",
+            "Owner": "프로그래밍 · 아트",
+            "Source": "정적 검사",
+            "Assets": [
+                "Assets/TextMesh Pro/Resources",
+                "Assets/TextMesh Pro/Resources/Fonts & Materials/LiberationSans SDF.asset",
+                "Assets/TextMesh Pro/Resources/Fonts & Materials/LiberationSans SDF - Fallback.asset"
+            ],
+            "Status": 1,
+            "FirstSeen": "2026-10-30 00:03",
+            "LastSeen": "2026-10-31 05:42",
+            "ResolvedAt": ""
+        },
+        {
+            "Key": "R-LEAK:Monster_SpawnAndRemove:AI/ST_MeleeMonster",
+            "Code": "R-LEAK",
+            "Severity": 1,
+            "Title": "반납 안 된 참조: AI/ST_MeleeMonster (3회 반복에서 +6 — 반복할수록 늘어남)",
+            "Why": "'Monster_SpawnAndRemove' 를 끝내고 원래 상태로 돌아왔는데 이 에셋의 참조 카운트가 늘어난 채로 남았습니다. 계속 반복하면 메모리에서 내려가지 않습니다.",
+            "HowToFix": "이 에셋을 로드한 곳(MonsterBrain.loadTree)에서 다 쓴 뒤 AssetLoader.Release 를 호출하는지 확인하세요. 한 번 로드해 계속 쓰는 것이 의도라면 무시해도 됩니다.",
+            "Owner": "프로그래밍",
+            "Source": "테스트: Monster_SpawnAndRemove",
+            "Assets": [
+                "AI/ST_MeleeMonster"
+            ],
+            "Status": 1,
+            "FirstSeen": "2026-10-30 00:03",
+            "LastSeen": "2026-10-31 05:42",
+            "ResolvedAt": ""
+        },
+        {
+            "Key": "R-LEAK:Monster_SpawnAndRemove:AI/ST_RangedMonster",
+            "Code": "R-LEAK",
+            "Severity": 1,
+            "Title": "반납 안 된 참조: AI/ST_RangedMonster (3회 반복에서 +3 — 반복할수록 늘어남)",
+            "Why": "'Monster_SpawnAndRemove' 를 끝내고 원래 상태로 돌아왔는데 이 에셋의 참조 카운트가 늘어난 채로 남았습니다. 계속 반복하면 메모리에서 내려가지 않습니다.",
+            "HowToFix": "이 에셋을 로드한 곳(MonsterBrain.loadTree)에서 다 쓴 뒤 AssetLoader.Release 를 호출하는지 확인하세요. 한 번 로드해 계속 쓰는 것이 의도라면 무시해도 됩니다.",
+            "Owner": "프로그래밍",
+            "Source": "테스트: Monster_SpawnAndRemove",
+            "Assets": [
+                "AI/ST_RangedMonster"
+            ],
+            "Status": 1,
+            "FirstSeen": "2026-10-30 00:03",
+            "LastSeen": "2026-10-31 05:42",
+            "ResolvedAt": ""
+        },
+        {
+            "Key": "R-LEAK:Monster_SpawnAndRemove:Characters/BanditArcher",
+            "Code": "R-LEAK",
+            "Severity": 1,
+            "Title": "반납 안 된 참조: Characters/BanditArcher (3회 반복에서 +3 — 반복할수록 늘어남)",
+            "Why": "'Monster_SpawnAndRemove' 를 끝내고 원래 상태로 돌아왔는데 이 에셋의 참조 카운트가 늘어난 채로 남았습니다. 계속 반복하면 메모리에서 내려가지 않습니다.",
+            "HowToFix": "이 에셋을 로드한 곳(SpawnManager.spawnMonsterAsync)에서 다 쓴 뒤 AssetLoader.Release 를 호출하는지 확인하세요. 한 번 로드해 계속 쓰는 것이 의도라면 무시해도 됩니다.",
+            "Owner": "프로그래밍",
+            "Source": "테스트: Monster_SpawnAndRemove",
+            "Assets": [
+                "Characters/BanditArcher"
+            ],
+            "Status": 1,
+            "FirstSeen": "2026-10-30 00:03",
+            "LastSeen": "2026-10-31 05:42",
+            "ResolvedAt": ""
+        },
+        {
+            "Key": "R-LEAK:Monster_SpawnAndRemove:Characters/BanditThug",
+            "Code": "R-LEAK",
+            "Severity": 1,
+            "Title": "반납 안 된 참조: Characters/BanditThug (3회 반복에서 +3 — 반복할수록 늘어남)",
+            "Why": "'Monster_SpawnAndRemove' 를 끝내고 원래 상태로 돌아왔는데 이 에셋의 참조 카운트가 늘어난 채로 남았습니다. 계속 반복하면 메모리에서 내려가지 않습니다.",
+            "HowToFix": "이 에셋을 로드한 곳(SpawnManager.spawnMonsterAsync)에서 다 쓴 뒤 AssetLoader.Release 를 호출하는지 확인하세요. 한 번 로드해 계속 쓰는 것이 의도라면 무시해도 됩니다.",
+            "Owner": "프로그래밍",
+            "Source": "테스트: Monster_SpawnAndRemove",
+            "Assets": [
+                "Characters/BanditThug"
+            ],
+            "Status": 1,
+            "FirstSeen": "2026-10-30 00:03",
+            "LastSeen": "2026-10-31 05:42",
+            "ResolvedAt": ""
+        },
+        {
+            "Key": "R-LEAK:Monster_SpawnAndRemove:Characters/OrcBrute",
+            "Code": "R-LEAK",
+            "Severity": 1,
+            "Title": "반납 안 된 참조: Characters/OrcBrute (3회 반복에서 +3 — 반복할수록 늘어남)",
+            "Why": "'Monster_SpawnAndRemove' 를 끝내고 원래 상태로 돌아왔는데 이 에셋의 참조 카운트가 늘어난 채로 남았습니다. 계속 반복하면 메모리에서 내려가지 않습니다.",
+            "HowToFix": "이 에셋을 로드한 곳(SpawnManager.spawnMonsterAsync)에서 다 쓴 뒤 AssetLoader.Release 를 호출하는지 확인하세요. 한 번 로드해 계속 쓰는 것이 의도라면 무시해도 됩니다.",
+            "Owner": "프로그래밍",
+            "Source": "테스트: Monster_SpawnAndRemove",
+            "Assets": [
+                "Characters/OrcBrute"
+            ],
+            "Status": 1,
+            "FirstSeen": "2026-10-30 00:03",
+            "LastSeen": "2026-10-31 05:42",
+            "ResolvedAt": ""
+        },
+        {
+            "Key": "R-LEAK:UI_OpenCloseWindows:Icons/Banner",
+            "Code": "R-LEAK",
+            "Severity": 1,
+            "Title": "반납 안 된 참조: Icons/Banner (3회 반복에서 +3 — 반복할수록 늘어남)",
+            "Why": "'UI_OpenCloseWindows' 를 끝내고 원래 상태로 돌아왔는데 이 에셋의 참조 카운트가 늘어난 채로 남았습니다. 계속 반복하면 메모리에서 내려가지 않습니다.",
+            "HowToFix": "이 에셋을 로드한 곳(UIUtil.LoadSprite)에서 다 쓴 뒤 AssetLoader.Release 를 호출하는지 확인하세요. 한 번 로드해 계속 쓰는 것이 의도라면 무시해도 됩니다.",
+            "Owner": "프로그래밍",
+            "Source": "테스트: UI_OpenCloseWindows",
+            "Assets": [
+                "Icons/Banner"
+            ],
+            "Status": 1,
+            "FirstSeen": "2026-10-30 00:03",
+            "LastSeen": "2026-10-31 05:42",
+            "ResolvedAt": ""
+        },
+        {
+            "Key": "R-LEAK:UI_OpenCloseWindows:Icons/Barrel",
+            "Code": "R-LEAK",
+            "Severity": 1,
+            "Title": "반납 안 된 참조: Icons/Barrel (3회 반복에서 +6 — 반복할수록 늘어남)",
+            "Why": "'UI_OpenCloseWindows' 를 끝내고 원래 상태로 돌아왔는데 이 에셋의 참조 카운트가 늘어난 채로 남았습니다. 계속 반복하면 메모리에서 내려가지 않습니다.",
+            "HowToFix": "이 에셋을 로드한 곳(UIUtil.LoadSprite)에서 다 쓴 뒤 AssetLoader.Release 를 호출하는지 확인하세요. 한 번 로드해 계속 쓰는 것이 의도라면 무시해도 됩니다.",
+            "Owner": "프로그래밍",
+            "Source": "테스트: UI_OpenCloseWindows",
+            "Assets": [
+                "Icons/Barrel"
+            ],
+            "Status": 1,
+            "FirstSeen": "2026-10-30 00:03",
+            "LastSeen": "2026-10-31 05:42",
+            "ResolvedAt": ""
+        },
+        {
+            "Key": "R-LEAK:UI_OpenCloseWindows:Icons/CastleHeart",
+            "Code": "R-LEAK",
+            "Severity": 1,
+            "Title": "반납 안 된 참조: Icons/CastleHeart (3회 반복에서 +3 — 반복할수록 늘어남)",
+            "Why": "'UI_OpenCloseWindows' 를 끝내고 원래 상태로 돌아왔는데 이 에셋의 참조 카운트가 늘어난 채로 남았습니다. 계속 반복하면 메모리에서 내려가지 않습니다.",
+            "HowToFix": "이 에셋을 로드한 곳(UIUtil.LoadSprite)에서 다 쓴 뒤 AssetLoader.Release 를 호출하는지 확인하세요. 한 번 로드해 계속 쓰는 것이 의도라면 무시해도 됩니다.",
+            "Owner": "프로그래밍",
+            "Source": "테스트: UI_OpenCloseWindows",
+            "Assets": [
+                "Icons/CastleHeart"
+            ],
+            "Status": 1,
+            "FirstSeen": "2026-10-30 00:03",
+            "LastSeen": "2026-10-31 05:42",
+            "ResolvedAt": ""
+        },
+        {
+            "Key": "R-LEAK:UI_OpenCloseWindows:Icons/Chest",
+            "Code": "R-LEAK",
+            "Severity": 1,
+            "Title": "반납 안 된 참조: Icons/Chest (3회 반복에서 +15 — 반복할수록 늘어남)",
+            "Why": "'UI_OpenCloseWindows' 를 끝내고 원래 상태로 돌아왔는데 이 에셋의 참조 카운트가 늘어난 채로 남았습니다. 계속 반복하면 메모리에서 내려가지 않습니다.",
+            "HowToFix": "이 에셋을 로드한 곳(UIUtil.LoadSprite)에서 다 쓴 뒤 AssetLoader.Release 를 호출하는지 확인하세요. 한 번 로드해 계속 쓰는 것이 의도라면 무시해도 됩니다.",
+            "Owner": "프로그래밍",
+            "Source": "테스트: UI_OpenCloseWindows",
+            "Assets": [
+                "Icons/Chest"
+            ],
+            "Status": 1,
+            "FirstSeen": "2026-10-30 00:03",
+            "LastSeen": "2026-10-31 05:42",
+            "ResolvedAt": ""
+        },
+        {
+            "Key": "R-LEAK:UI_OpenCloseWindows:Icons/Coin",
+            "Code": "R-LEAK",
+            "Severity": 1,
+            "Title": "반납 안 된 참조: Icons/Coin (3회 반복에서 +6 — 반복할수록 늘어남)",
+            "Why": "'UI_OpenCloseWindows' 를 끝내고 원래 상태로 돌아왔는데 이 에셋의 참조 카운트가 늘어난 채로 남았습니다. 계속 반복하면 메모리에서 내려가지 않습니다.",
+            "HowToFix": "이 에셋을 로드한 곳(UIUtil.LoadSprite)에서 다 쓴 뒤 AssetLoader.Release 를 호출하는지 확인하세요. 한 번 로드해 계속 쓰는 것이 의도라면 무시해도 됩니다.",
+            "Owner": "프로그래밍",
+            "Source": "테스트: UI_OpenCloseWindows",
+            "Assets": [
+                "Icons/Coin"
+            ],
+            "Status": 1,
+            "FirstSeen": "2026-10-30 00:03",
+            "LastSeen": "2026-10-31 05:42",
+            "ResolvedAt": ""
+        },
+        {
+            "Key": "R-LEAK:UI_OpenCloseWindows:Icons/CopperOre",
+            "Code": "R-LEAK",
+            "Severity": 1,
+            "Title": "반납 안 된 참조: Icons/CopperOre (3회 반복에서 +3 — 반복할수록 늘어남)",
+            "Why": "'UI_OpenCloseWindows' 를 끝내고 원래 상태로 돌아왔는데 이 에셋의 참조 카운트가 늘어난 채로 남았습니다. 계속 반복하면 메모리에서 내려가지 않습니다.",
+            "HowToFix": "이 에셋을 로드한 곳(UIUtil.LoadSprite)에서 다 쓴 뒤 AssetLoader.Release 를 호출하는지 확인하세요. 한 번 로드해 계속 쓰는 것이 의도라면 무시해도 됩니다.",
+            "Owner": "프로그래밍",
+            "Source": "테스트: UI_OpenCloseWindows",
+            "Assets": [
+                "Icons/CopperOre"
+            ],
+            "Status": 1,
+            "FirstSeen": "2026-10-30 00:03",
+            "LastSeen": "2026-10-31 05:42",
+            "ResolvedAt": ""
+        },
+        {
+            "Key": "R-LEAK:UI_OpenCloseWindows:Icons/Floor",
+            "Code": "R-LEAK",
+            "Severity": 1,
+            "Title": "반납 안 된 참조: Icons/Floor (3회 반복에서 +3 — 반복할수록 늘어남)",
+            "Why": "'UI_OpenCloseWindows' 를 끝내고 원래 상태로 돌아왔는데 이 에셋의 참조 카운트가 늘어난 채로 남았습니다. 계속 반복하면 메모리에서 내려가지 않습니다.",
+            "HowToFix": "이 에셋을 로드한 곳(UIUtil.LoadSprite)에서 다 쓴 뒤 AssetLoader.Release 를 호출하는지 확인하세요. 한 번 로드해 계속 쓰는 것이 의도라면 무시해도 됩니다.",
+            "Owner": "프로그래밍",
+            "Source": "테스트: UI_OpenCloseWindows",
+            "Assets": [
+                "Icons/Floor"
+            ],
+            "Status": 1,
+            "FirstSeen": "2026-10-30 00:03",
+            "LastSeen": "2026-10-31 05:42",
+            "ResolvedAt": ""
+        },
+        {
+            "Key": "R-LEAK:UI_OpenCloseWindows:Icons/Lumber",
+            "Code": "R-LEAK",
+            "Severity": 1,
+            "Title": "반납 안 된 참조: Icons/Lumber (3회 반복에서 +6 — 반복할수록 늘어남)",
+            "Why": "'UI_OpenCloseWindows' 를 끝내고 원래 상태로 돌아왔는데 이 에셋의 참조 카운트가 늘어난 채로 남았습니다. 계속 반복하면 메모리에서 내려가지 않습니다.",
+            "HowToFix": "이 에셋을 로드한 곳(UIUtil.LoadSprite)에서 다 쓴 뒤 AssetLoader.Release 를 호출하는지 확인하세요. 한 번 로드해 계속 쓰는 것이 의도라면 무시해도 됩니다.",
+            "Owner": "프로그래밍",
+            "Source": "테스트: UI_OpenCloseWindows",
+            "Assets": [
+                "Icons/Lumber"
+            ],
+            "Status": 1,
+            "FirstSeen": "2026-10-30 00:03",
+            "LastSeen": "2026-10-31 05:42",
+            "ResolvedAt": ""
+        },
+        {
+            "Key": "R-LEAK:UI_OpenCloseWindows:Icons/PlantFiber",
+            "Code": "R-LEAK",
+            "Severity": 1,
+            "Title": "반납 안 된 참조: Icons/PlantFiber (3회 반복에서 +6 — 반복할수록 늘어남)",
+            "Why": "'UI_OpenCloseWindows' 를 끝내고 원래 상태로 돌아왔는데 이 에셋의 참조 카운트가 늘어난 채로 남았습니다. 계속 반복하면 메모리에서 내려가지 않습니다.",
+            "HowToFix": "이 에셋을 로드한 곳(UIUtil.LoadSprite)에서 다 쓴 뒤 AssetLoader.Release 를 호출하는지 확인하세요. 한 번 로드해 계속 쓰는 것이 의도라면 무시해도 됩니다.",
+            "Owner": "프로그래밍",
+            "Source": "테스트: UI_OpenCloseWindows",
+            "Assets": [
+                "Icons/PlantFiber"
+            ],
+            "Status": 1,
+            "FirstSeen": "2026-10-30 00:03",
+            "LastSeen": "2026-10-31 05:42",
+            "ResolvedAt": ""
+        },
+        {
+            "Key": "R-LEAK:UI_OpenCloseWindows:Icons/Potion",
+            "Code": "R-LEAK",
+            "Severity": 1,
+            "Title": "반납 안 된 참조: Icons/Potion (3회 반복에서 +12 — 반복할수록 늘어남)",
+            "Why": "'UI_OpenCloseWindows' 를 끝내고 원래 상태로 돌아왔는데 이 에셋의 참조 카운트가 늘어난 채로 남았습니다. 계속 반복하면 메모리에서 내려가지 않습니다.",
+            "HowToFix": "이 에셋을 로드한 곳(UIUtil.LoadSprite)에서 다 쓴 뒤 AssetLoader.Release 를 호출하는지 확인하세요. 한 번 로드해 계속 쓰는 것이 의도라면 무시해도 됩니다.",
+            "Owner": "프로그래밍",
+            "Source": "테스트: UI_OpenCloseWindows",
+            "Assets": [
+                "Icons/Potion"
+            ],
+            "Status": 1,
+            "FirstSeen": "2026-10-30 00:03",
+            "LastSeen": "2026-10-31 05:42",
+            "ResolvedAt": ""
+        },
+        {
+            "Key": "R-LEAK:UI_OpenCloseWindows:Icons/Shield",
+            "Code": "R-LEAK",
+            "Severity": 1,
+            "Title": "반납 안 된 참조: Icons/Shield (3회 반복에서 +12 — 반복할수록 늘어남)",
+            "Why": "'UI_OpenCloseWindows' 를 끝내고 원래 상태로 돌아왔는데 이 에셋의 참조 카운트가 늘어난 채로 남았습니다. 계속 반복하면 메모리에서 내려가지 않습니다.",
+            "HowToFix": "이 에셋을 로드한 곳(UIUtil.LoadSprite)에서 다 쓴 뒤 AssetLoader.Release 를 호출하는지 확인하세요. 한 번 로드해 계속 쓰는 것이 의도라면 무시해도 됩니다.",
+            "Owner": "프로그래밍",
+            "Source": "테스트: UI_OpenCloseWindows",
+            "Assets": [
+                "Icons/Shield"
+            ],
+            "Status": 1,
+            "FirstSeen": "2026-10-30 00:03",
+            "LastSeen": "2026-10-31 05:42",
+            "ResolvedAt": ""
+        },
+        {
+            "Key": "R-LEAK:UI_OpenCloseWindows:Icons/Spear",
+            "Code": "R-LEAK",
+            "Severity": 1,
+            "Title": "반납 안 된 참조: Icons/Spear (3회 반복에서 +6 — 반복할수록 늘어남)",
+            "Why": "'UI_OpenCloseWindows' 를 끝내고 원래 상태로 돌아왔는데 이 에셋의 참조 카운트가 늘어난 채로 남았습니다. 계속 반복하면 메모리에서 내려가지 않습니다.",
+            "HowToFix": "이 에셋을 로드한 곳(UIUtil.LoadSprite)에서 다 쓴 뒤 AssetLoader.Release 를 호출하는지 확인하세요. 한 번 로드해 계속 쓰는 것이 의도라면 무시해도 됩니다.",
+            "Owner": "프로그래밍",
+            "Source": "테스트: UI_OpenCloseWindows",
+            "Assets": [
+                "Icons/Spear"
+            ],
+            "Status": 1,
+            "FirstSeen": "2026-10-30 00:03",
+            "LastSeen": "2026-10-31 05:42",
+            "ResolvedAt": ""
+        },
+        {
+            "Key": "R-LEAK:UI_OpenCloseWindows:Icons/Stone",
+            "Code": "R-LEAK",
+            "Severity": 1,
+            "Title": "반납 안 된 참조: Icons/Stone (3회 반복에서 +3 — 반복할수록 늘어남)",
+            "Why": "'UI_OpenCloseWindows' 를 끝내고 원래 상태로 돌아왔는데 이 에셋의 참조 카운트가 늘어난 채로 남았습니다. 계속 반복하면 메모리에서 내려가지 않습니다.",
+            "HowToFix": "이 에셋을 로드한 곳(UIUtil.LoadSprite)에서 다 쓴 뒤 AssetLoader.Release 를 호출하는지 확인하세요. 한 번 로드해 계속 쓰는 것이 의도라면 무시해도 됩니다.",
+            "Owner": "프로그래밍",
+            "Source": "테스트: UI_OpenCloseWindows",
+            "Assets": [
+                "Icons/Stone"
+            ],
+            "Status": 1,
+            "FirstSeen": "2026-10-30 00:03",
+            "LastSeen": "2026-10-31 05:42",
+            "ResolvedAt": ""
+        },
+        {
+            "Key": "R-LEAK:UI_OpenCloseWindows:Icons/Sword",
+            "Code": "R-LEAK",
+            "Severity": 1,
+            "Title": "반납 안 된 참조: Icons/Sword (3회 반복에서 +6 — 반복할수록 늘어남)",
+            "Why": "'UI_OpenCloseWindows' 를 끝내고 원래 상태로 돌아왔는데 이 에셋의 참조 카운트가 늘어난 채로 남았습니다. 계속 반복하면 메모리에서 내려가지 않습니다.",
+            "HowToFix": "이 에셋을 로드한 곳(UIUtil.LoadSprite)에서 다 쓴 뒤 AssetLoader.Release 를 호출하는지 확인하세요. 한 번 로드해 계속 쓰는 것이 의도라면 무시해도 됩니다.",
+            "Owner": "프로그래밍",
+            "Source": "테스트: UI_OpenCloseWindows",
+            "Assets": [
+                "Icons/Sword"
+            ],
+            "Status": 1,
+            "FirstSeen": "2026-10-30 00:03",
+            "LastSeen": "2026-10-31 05:42",
+            "ResolvedAt": ""
+        },
+        {
+            "Key": "R-LEAK:UI_OpenCloseWindows:Icons/Wall",
+            "Code": "R-LEAK",
+            "Severity": 1,
+            "Title": "반납 안 된 참조: Icons/Wall (3회 반복에서 +12 — 반복할수록 늘어남)",
+            "Why": "'UI_OpenCloseWindows' 를 끝내고 원래 상태로 돌아왔는데 이 에셋의 참조 카운트가 늘어난 채로 남았습니다. 계속 반복하면 메모리에서 내려가지 않습니다.",
+            "HowToFix": "이 에셋을 로드한 곳(UIUtil.LoadSprite)에서 다 쓴 뒤 AssetLoader.Release 를 호출하는지 확인하세요. 한 번 로드해 계속 쓰는 것이 의도라면 무시해도 됩니다.",
+            "Owner": "프로그래밍",
+            "Source": "테스트: UI_OpenCloseWindows",
+            "Assets": [
+                "Icons/Wall"
+            ],
+            "Status": 1,
+            "FirstSeen": "2026-10-30 00:03",
+            "LastSeen": "2026-10-31 05:42",
+            "ResolvedAt": ""
+        },
+        {
+            "Key": "R-LEAK:UI_OpenCloseWindows:Icons/Workbench",
+            "Code": "R-LEAK",
+            "Severity": 1,
+            "Title": "반납 안 된 참조: Icons/Workbench (3회 반복에서 +3 — 반복할수록 늘어남)",
+            "Why": "'UI_OpenCloseWindows' 를 끝내고 원래 상태로 돌아왔는데 이 에셋의 참조 카운트가 늘어난 채로 남았습니다. 계속 반복하면 메모리에서 내려가지 않습니다.",
+            "HowToFix": "이 에셋을 로드한 곳(UIUtil.LoadSprite)에서 다 쓴 뒤 AssetLoader.Release 를 호출하는지 확인하세요. 한 번 로드해 계속 쓰는 것이 의도라면 무시해도 됩니다.",
+            "Owner": "프로그래밍",
+            "Source": "테스트: UI_OpenCloseWindows",
+            "Assets": [
+                "Icons/Workbench"
+            ],
+            "Status": 1,
+            "FirstSeen": "2026-10-30 00:03",
+            "LastSeen": "2026-10-31 05:42",
+            "ResolvedAt": ""
+        },
+        {
+            "Key": "R-LEAK:Ability_CastAllSlots:Projectiles/FireBall",
+            "Code": "R-LEAK",
+            "Severity": 1,
+            "Title": "반납 안 된 참조: Projectiles/FireBall (3회 반복에서 +6 — 반복할수록 늘어남)",
+            "Why": "'Ability_CastAllSlots' 를 끝내고 원래 상태로 돌아왔는데 이 에셋의 참조 카운트가 늘어난 채로 남았습니다. 계속 반복하면 메모리에서 내려가지 않습니다.",
+            "HowToFix": "이 에셋을 로드한 곳(ProjectileSystem.Fire)에서 다 쓴 뒤 AssetLoader.Release 를 호출하는지 확인하세요. 한 번 로드해 계속 쓰는 것이 의도라면 무시해도 됩니다.",
+            "Owner": "프로그래밍",
+            "Source": "테스트: Ability_CastAllSlots",
+            "Assets": [
+                "Projectiles/FireBall"
+            ],
+            "Status": 1,
+            "FirstSeen": "2026-10-30 00:03",
+            "LastSeen": "2026-10-31 05:42",
+            "ResolvedAt": ""
+        },
+        {
+            "Key": "R-LEAK:Build_GhostBeginCancel:Structures/Banner",
+            "Code": "R-LEAK",
+            "Severity": 1,
+            "Title": "반납 안 된 참조: Structures/Banner (3회 반복에서 +3 — 반복할수록 늘어남)",
+            "Why": "'Build_GhostBeginCancel' 를 끝내고 원래 상태로 돌아왔는데 이 에셋의 참조 카운트가 늘어난 채로 남았습니다. 계속 반복하면 메모리에서 내려가지 않습니다.",
+            "HowToFix": "이 에셋을 로드한 곳(BuildManager.Begin)에서 다 쓴 뒤 AssetLoader.Release 를 호출하는지 확인하세요. 한 번 로드해 계속 쓰는 것이 의도라면 무시해도 됩니다.",
+            "Owner": "프로그래밍",
+            "Source": "테스트: Build_GhostBeginCancel",
+            "Assets": [
+                "Structures/Banner"
+            ],
+            "Status": 1,
+            "FirstSeen": "2026-10-30 00:03",
+            "LastSeen": "2026-10-31 05:42",
+            "ResolvedAt": ""
+        },
+        {
+            "Key": "R-LEAK:Build_GhostBeginCancel:Structures/CastleHeart",
+            "Code": "R-LEAK",
+            "Severity": 1,
+            "Title": "반납 안 된 참조: Structures/CastleHeart (3회 반복에서 +3 — 반복할수록 늘어남)",
+            "Why": "'Build_GhostBeginCancel' 를 끝내고 원래 상태로 돌아왔는데 이 에셋의 참조 카운트가 늘어난 채로 남았습니다. 계속 반복하면 메모리에서 내려가지 않습니다.",
+            "HowToFix": "이 에셋을 로드한 곳(BuildManager.Begin)에서 다 쓴 뒤 AssetLoader.Release 를 호출하는지 확인하세요. 한 번 로드해 계속 쓰는 것이 의도라면 무시해도 됩니다.",
+            "Owner": "프로그래밍",
+            "Source": "테스트: Build_GhostBeginCancel",
+            "Assets": [
+                "Structures/CastleHeart"
+            ],
+            "Status": 1,
+            "FirstSeen": "2026-10-30 00:03",
+            "LastSeen": "2026-10-31 05:42",
+            "ResolvedAt": ""
+        },
+        {
+            "Key": "R-LEAK:Build_GhostBeginCancel:Structures/Coffin",
+            "Code": "R-LEAK",
+            "Severity": 1,
+            "Title": "반납 안 된 참조: Structures/Coffin (3회 반복에서 +3 — 반복할수록 늘어남)",
+            "Why": "'Build_GhostBeginCancel' 를 끝내고 원래 상태로 돌아왔는데 이 에셋의 참조 카운트가 늘어난 채로 남았습니다. 계속 반복하면 메모리에서 내려가지 않습니다.",
+            "HowToFix": "이 에셋을 로드한 곳(BuildManager.Begin)에서 다 쓴 뒤 AssetLoader.Release 를 호출하는지 확인하세요. 한 번 로드해 계속 쓰는 것이 의도라면 무시해도 됩니다.",
+            "Owner": "프로그래밍",
+            "Source": "테스트: Build_GhostBeginCancel",
+            "Assets": [
+                "Structures/Coffin"
+            ],
+            "Status": 1,
+            "FirstSeen": "2026-10-30 00:03",
+            "LastSeen": "2026-10-31 05:42",
+            "ResolvedAt": ""
+        },
+        {
+            "Key": "R-LEAK:Build_GhostBeginCancel:Structures/Floor",
+            "Code": "R-LEAK",
+            "Severity": 1,
+            "Title": "반납 안 된 참조: Structures/Floor (3회 반복에서 +3 — 반복할수록 늘어남)",
+            "Why": "'Build_GhostBeginCancel' 를 끝내고 원래 상태로 돌아왔는데 이 에셋의 참조 카운트가 늘어난 채로 남았습니다. 계속 반복하면 메모리에서 내려가지 않습니다.",
+            "HowToFix": "이 에셋을 로드한 곳(BuildManager.Begin)에서 다 쓴 뒤 AssetLoader.Release 를 호출하는지 확인하세요. 한 번 로드해 계속 쓰는 것이 의도라면 무시해도 됩니다.",
+            "Owner": "프로그래밍",
+            "Source": "테스트: Build_GhostBeginCancel",
+            "Assets": [
+                "Structures/Floor"
+            ],
+            "Status": 1,
+            "FirstSeen": "2026-10-30 00:03",
+            "LastSeen": "2026-10-31 05:42",
+            "ResolvedAt": ""
+        },
+        {
+            "Key": "R-LEAK:Build_GhostBeginCancel:Structures/Pillar",
+            "Code": "R-LEAK",
+            "Severity": 1,
+            "Title": "반납 안 된 참조: Structures/Pillar (3회 반복에서 +3 — 반복할수록 늘어남)",
+            "Why": "'Build_GhostBeginCancel' 를 끝내고 원래 상태로 돌아왔는데 이 에셋의 참조 카운트가 늘어난 채로 남았습니다. 계속 반복하면 메모리에서 내려가지 않습니다.",
+            "HowToFix": "이 에셋을 로드한 곳(BuildManager.Begin)에서 다 쓴 뒤 AssetLoader.Release 를 호출하는지 확인하세요. 한 번 로드해 계속 쓰는 것이 의도라면 무시해도 됩니다.",
+            "Owner": "프로그래밍",
+            "Source": "테스트: Build_GhostBeginCancel",
+            "Assets": [
+                "Structures/Pillar"
+            ],
+            "Status": 1,
+            "FirstSeen": "2026-10-30 00:03",
+            "LastSeen": "2026-10-31 05:42",
+            "ResolvedAt": ""
+        },
+        {
+            "Key": "R-LEAK:Build_GhostBeginCancel:Structures/Smelter",
+            "Code": "R-LEAK",
+            "Severity": 1,
+            "Title": "반납 안 된 참조: Structures/Smelter (3회 반복에서 +3 — 반복할수록 늘어남)",
+            "Why": "'Build_GhostBeginCancel' 를 끝내고 원래 상태로 돌아왔는데 이 에셋의 참조 카운트가 늘어난 채로 남았습니다. 계속 반복하면 메모리에서 내려가지 않습니다.",
+            "HowToFix": "이 에셋을 로드한 곳(BuildManager.Begin)에서 다 쓴 뒤 AssetLoader.Release 를 호출하는지 확인하세요. 한 번 로드해 계속 쓰는 것이 의도라면 무시해도 됩니다.",
+            "Owner": "프로그래밍",
+            "Source": "테스트: Build_GhostBeginCancel",
+            "Assets": [
+                "Structures/Smelter"
+            ],
+            "Status": 1,
+            "FirstSeen": "2026-10-30 00:03",
+            "LastSeen": "2026-10-31 05:42",
+            "ResolvedAt": ""
+        },
+        {
+            "Key": "R-LEAK:Build_GhostBeginCancel:Structures/Wall",
+            "Code": "R-LEAK",
+            "Severity": 1,
+            "Title": "반납 안 된 참조: Structures/Wall (3회 반복에서 +3 — 반복할수록 늘어남)",
+            "Why": "'Build_GhostBeginCancel' 를 끝내고 원래 상태로 돌아왔는데 이 에셋의 참조 카운트가 늘어난 채로 남았습니다. 계속 반복하면 메모리에서 내려가지 않습니다.",
+            "HowToFix": "이 에셋을 로드한 곳(BuildManager.Begin)에서 다 쓴 뒤 AssetLoader.Release 를 호출하는지 확인하세요. 한 번 로드해 계속 쓰는 것이 의도라면 무시해도 됩니다.",
+            "Owner": "프로그래밍",
+            "Source": "테스트: Build_GhostBeginCancel",
+            "Assets": [
+                "Structures/Wall"
+            ],
+            "Status": 1,
+            "FirstSeen": "2026-10-30 00:03",
+            "LastSeen": "2026-10-31 05:42",
+            "ResolvedAt": ""
+        },
+        {
+            "Key": "R-LEAK:Build_GhostBeginCancel:Structures/WallDoor",
+            "Code": "R-LEAK",
+            "Severity": 1,
+            "Title": "반납 안 된 참조: Structures/WallDoor (3회 반복에서 +3 — 반복할수록 늘어남)",
+            "Why": "'Build_GhostBeginCancel' 를 끝내고 원래 상태로 돌아왔는데 이 에셋의 참조 카운트가 늘어난 채로 남았습니다. 계속 반복하면 메모리에서 내려가지 않습니다.",
+            "HowToFix": "이 에셋을 로드한 곳(BuildManager.Begin)에서 다 쓴 뒤 AssetLoader.Release 를 호출하는지 확인하세요. 한 번 로드해 계속 쓰는 것이 의도라면 무시해도 됩니다.",
+            "Owner": "프로그래밍",
+            "Source": "테스트: Build_GhostBeginCancel",
+            "Assets": [
+                "Structures/WallDoor"
+            ],
+            "Status": 1,
+            "FirstSeen": "2026-10-30 00:03",
+            "LastSeen": "2026-10-31 05:42",
+            "ResolvedAt": ""
+        },
+        {
+            "Key": "R-LEAK:Build_GhostBeginCancel:Structures/WallWindow",
+            "Code": "R-LEAK",
+            "Severity": 1,
+            "Title": "반납 안 된 참조: Structures/WallWindow (3회 반복에서 +3 — 반복할수록 늘어남)",
+            "Why": "'Build_GhostBeginCancel' 를 끝내고 원래 상태로 돌아왔는데 이 에셋의 참조 카운트가 늘어난 채로 남았습니다. 계속 반복하면 메모리에서 내려가지 않습니다.",
+            "HowToFix": "이 에셋을 로드한 곳(BuildManager.Begin)에서 다 쓴 뒤 AssetLoader.Release 를 호출하는지 확인하세요. 한 번 로드해 계속 쓰는 것이 의도라면 무시해도 됩니다.",
+            "Owner": "프로그래밍",
+            "Source": "테스트: Build_GhostBeginCancel",
+            "Assets": [
+                "Structures/WallWindow"
+            ],
+            "Status": 1,
+            "FirstSeen": "2026-10-30 00:03",
+            "LastSeen": "2026-10-31 05:42",
+            "ResolvedAt": ""
+        },
+        {
+            "Key": "R-LEAK:Build_GhostBeginCancel:Structures/Workbench",
+            "Code": "R-LEAK",
+            "Severity": 1,
+            "Title": "반납 안 된 참조: Structures/Workbench (3회 반복에서 +3 — 반복할수록 늘어남)",
+            "Why": "'Build_GhostBeginCancel' 를 끝내고 원래 상태로 돌아왔는데 이 에셋의 참조 카운트가 늘어난 채로 남았습니다. 계속 반복하면 메모리에서 내려가지 않습니다.",
+            "HowToFix": "이 에셋을 로드한 곳(BuildManager.Begin)에서 다 쓴 뒤 AssetLoader.Release 를 호출하는지 확인하세요. 한 번 로드해 계속 쓰는 것이 의도라면 무시해도 됩니다.",
+            "Owner": "프로그래밍",
+            "Source": "테스트: Build_GhostBeginCancel",
+            "Assets": [
+                "Structures/Workbench"
+            ],
+            "Status": 1,
+            "FirstSeen": "2026-10-30 00:03",
+            "LastSeen": "2026-10-31 05:42",
+            "ResolvedAt": ""
+        },
+        {
+            "Key": "R-LEAK:Monster_SpawnAndRemove:VFX/DashTrail",
+            "Code": "R-LEAK",
+            "Severity": 1,
+            "Title": "반납 안 된 참조: VFX/DashTrail (3회 반복에서 +3 — 반복할수록 늘어남)",
+            "Why": "'Monster_SpawnAndRemove' 를 끝내고 원래 상태로 돌아왔는데 이 에셋의 참조 카운트가 늘어난 채로 남았습니다. 계속 반복하면 메모리에서 내려가지 않습니다.",
+            "HowToFix": "이 에셋을 로드한 곳(CueSpawner.spawnInternal)에서 다 쓴 뒤 AssetLoader.Release 를 호출하는지 확인하세요. 한 번 로드해 계속 쓰는 것이 의도라면 무시해도 됩니다.",
+            "Owner": "프로그래밍",
+            "Source": "테스트: Monster_SpawnAndRemove",
+            "Assets": [
+                "VFX/DashTrail"
+            ],
+            "Status": 1,
+            "FirstSeen": "2026-10-30 00:03",
+            "LastSeen": "2026-10-31 05:42",
+            "ResolvedAt": ""
+        },
+        {
+            "Key": "R-LEAK:Ability_CastAllSlots:VFX/Empower",
+            "Code": "R-LEAK",
+            "Severity": 1,
+            "Title": "반납 안 된 참조: VFX/Empower (3회 반복에서 +3 — 반복할수록 늘어남)",
+            "Why": "'Ability_CastAllSlots' 를 끝내고 원래 상태로 돌아왔는데 이 에셋의 참조 카운트가 늘어난 채로 남았습니다. 계속 반복하면 메모리에서 내려가지 않습니다.",
+            "HowToFix": "이 에셋을 로드한 곳(CueSpawner.spawnInternal)에서 다 쓴 뒤 AssetLoader.Release 를 호출하는지 확인하세요. 한 번 로드해 계속 쓰는 것이 의도라면 무시해도 됩니다.",
+            "Owner": "프로그래밍",
+            "Source": "테스트: Ability_CastAllSlots",
+            "Assets": [
+                "VFX/Empower"
+            ],
+            "Status": 1,
+            "FirstSeen": "2026-10-30 00:03",
+            "LastSeen": "2026-10-31 05:42",
+            "ResolvedAt": ""
+        },
+        {
+            "Key": "R-LEAK:Ability_CastAllSlots:VFX/Heal",
+            "Code": "R-LEAK",
+            "Severity": 1,
+            "Title": "반납 안 된 참조: VFX/Heal (3회 반복에서 +3 — 반복할수록 늘어남)",
+            "Why": "'Ability_CastAllSlots' 를 끝내고 원래 상태로 돌아왔는데 이 에셋의 참조 카운트가 늘어난 채로 남았습니다. 계속 반복하면 메모리에서 내려가지 않습니다.",
+            "HowToFix": "이 에셋을 로드한 곳(CueSpawner.spawnInternal)에서 다 쓴 뒤 AssetLoader.Release 를 호출하는지 확인하세요. 한 번 로드해 계속 쓰는 것이 의도라면 무시해도 됩니다.",
+            "Owner": "프로그래밍",
+            "Source": "테스트: Ability_CastAllSlots",
+            "Assets": [
+                "VFX/Heal"
+            ],
+            "Status": 1,
+            "FirstSeen": "2026-10-30 00:03",
+            "LastSeen": "2026-10-31 05:42",
+            "ResolvedAt": ""
+        },
+        {
+            "Key": "R-LEAK:Ability_CastAllSlots:VFX/Skill/BloodNova",
+            "Code": "R-LEAK",
+            "Severity": 1,
+            "Title": "반납 안 된 참조: VFX/Skill/BloodNova (3회 반복에서 +3 — 반복할수록 늘어남)",
+            "Why": "'Ability_CastAllSlots' 를 끝내고 원래 상태로 돌아왔는데 이 에셋의 참조 카운트가 늘어난 채로 남았습니다. 계속 반복하면 메모리에서 내려가지 않습니다.",
+            "HowToFix": "이 에셋을 로드한 곳(CueSpawner.spawnInternal)에서 다 쓴 뒤 AssetLoader.Release 를 호출하는지 확인하세요. 한 번 로드해 계속 쓰는 것이 의도라면 무시해도 됩니다.",
+            "Owner": "프로그래밍",
+            "Source": "테스트: Ability_CastAllSlots",
+            "Assets": [
+                "VFX/Skill/BloodNova"
+            ],
+            "Status": 1,
+            "FirstSeen": "2026-10-30 00:03",
+            "LastSeen": "2026-10-31 05:42",
+            "ResolvedAt": ""
+        },
+        {
+            "Key": "R-LEAK:Ability_CastAllSlots:VFX/Skill/BloodRiteAura",
+            "Code": "R-LEAK",
+            "Severity": 1,
+            "Title": "반납 안 된 참조: VFX/Skill/BloodRiteAura (3회 반복에서 +3 — 반복할수록 늘어남)",
+            "Why": "'Ability_CastAllSlots' 를 끝내고 원래 상태로 돌아왔는데 이 에셋의 참조 카운트가 늘어난 채로 남았습니다. 계속 반복하면 메모리에서 내려가지 않습니다.",
+            "HowToFix": "이 에셋을 로드한 곳(CueSpawner.spawnInternal)에서 다 쓴 뒤 AssetLoader.Release 를 호출하는지 확인하세요. 한 번 로드해 계속 쓰는 것이 의도라면 무시해도 됩니다.",
+            "Owner": "프로그래밍",
+            "Source": "테스트: Ability_CastAllSlots",
+            "Assets": [
+                "VFX/Skill/BloodRiteAura"
+            ],
+            "Status": 1,
+            "FirstSeen": "2026-10-30 00:03",
+            "LastSeen": "2026-10-31 05:42",
+            "ResolvedAt": ""
+        },
+        {
+            "Key": "R-LEAK:Ability_CastAllSlots:VFX/Skill/SwordSlash",
+            "Code": "R-LEAK",
+            "Severity": 1,
+            "Title": "반납 안 된 참조: VFX/Skill/SwordSlash (3회 반복에서 +3 — 반복할수록 늘어남)",
+            "Why": "'Ability_CastAllSlots' 를 끝내고 원래 상태로 돌아왔는데 이 에셋의 참조 카운트가 늘어난 채로 남았습니다. 계속 반복하면 메모리에서 내려가지 않습니다.",
+            "HowToFix": "이 에셋을 로드한 곳(CueSpawner.spawnInternal)에서 다 쓴 뒤 AssetLoader.Release 를 호출하는지 확인하세요. 한 번 로드해 계속 쓰는 것이 의도라면 무시해도 됩니다.",
+            "Owner": "프로그래밍",
+            "Source": "테스트: Ability_CastAllSlots",
+            "Assets": [
+                "VFX/Skill/SwordSlash"
+            ],
+            "Status": 1,
+            "FirstSeen": "2026-10-30 00:03",
+            "LastSeen": "2026-10-31 05:42",
+            "ResolvedAt": ""
+        },
+        {
+            "Key": "R-LEAK:Ability_CastAllSlots:VFX/Skill/VeilBlood",
+            "Code": "R-LEAK",
+            "Severity": 1,
+            "Title": "반납 안 된 참조: VFX/Skill/VeilBlood (3회 반복에서 +3 — 반복할수록 늘어남)",
+            "Why": "'Ability_CastAllSlots' 를 끝내고 원래 상태로 돌아왔는데 이 에셋의 참조 카운트가 늘어난 채로 남았습니다. 계속 반복하면 메모리에서 내려가지 않습니다.",
+            "HowToFix": "이 에셋을 로드한 곳(CueSpawner.spawnInternal)에서 다 쓴 뒤 AssetLoader.Release 를 호출하는지 확인하세요. 한 번 로드해 계속 쓰는 것이 의도라면 무시해도 됩니다.",
+            "Owner": "프로그래밍",
+            "Source": "테스트: Ability_CastAllSlots",
+            "Assets": [
+                "VFX/Skill/VeilBlood"
+            ],
+            "Status": 1,
+            "FirstSeen": "2026-10-30 00:03",
+            "LastSeen": "2026-10-31 05:42",
+            "ResolvedAt": ""
+        },
+        {
+            "Key": "R-LEAK:Ability_CastAllSlots:VFX/Skill/Whirlwind",
+            "Code": "R-LEAK",
+            "Severity": 1,
+            "Title": "반납 안 된 참조: VFX/Skill/Whirlwind (3회 반복에서 +12 — 반복할수록 늘어남)",
+            "Why": "'Ability_CastAllSlots' 를 끝내고 원래 상태로 돌아왔는데 이 에셋의 참조 카운트가 늘어난 채로 남았습니다. 계속 반복하면 메모리에서 내려가지 않습니다.",
+            "HowToFix": "이 에셋을 로드한 곳(CueSpawner.spawnInternal)에서 다 쓴 뒤 AssetLoader.Release 를 호출하는지 확인하세요. 한 번 로드해 계속 쓰는 것이 의도라면 무시해도 됩니다.",
+            "Owner": "프로그래밍",
+            "Source": "테스트: Ability_CastAllSlots",
+            "Assets": [
+                "VFX/Skill/Whirlwind"
+            ],
+            "Status": 1,
+            "FirstSeen": "2026-10-30 00:03",
+            "LastSeen": "2026-10-31 05:42",
+            "ResolvedAt": ""
+        },
+        {
+            "Key": "S-HEAVY:Assets/Game/Content/Characters/BanditThug.prefab",
+            "Code": "S-HEAVY",
+            "Severity": 0,
+            "Title": "무거운 에셋: BanditThug (딸려 오는 원본 147MB)",
+            "Why": "이 에셋을 로드하면 함께 따라오는 텍스처 · 메시가 많아 로딩 시간과 메모리가 큽니다 (원본 파일 크기 기준).",
+            "HowToFix": "텍스처 최대 크기 · 압축, 메시 LOD 를 확인하세요. 꼭 같이 올 필요가 없는 것은 별도 에셋으로 나누세요.",
+            "Owner": "아트",
+            "Source": "정적 검사",
+            "Assets": [
+                "Assets/Game/Content/Characters/BanditThug.prefab"
+            ],
+            "Status": 1,
+            "FirstSeen": "2026-10-30 00:03",
+            "LastSeen": "2026-10-31 05:42",
+            "ResolvedAt": ""
+        },
+        {
+            "Key": "S-HEAVY:Assets/Game/Content/Structures/Banner.prefab",
+            "Code": "S-HEAVY",
+            "Severity": 0,
+            "Title": "무거운 에셋: Banner (딸려 오는 원본 129MB)",
+            "Why": "이 에셋을 로드하면 함께 따라오는 텍스처 · 메시가 많아 로딩 시간과 메모리가 큽니다 (원본 파일 크기 기준).",
+            "HowToFix": "텍스처 최대 크기 · 압축, 메시 LOD 를 확인하세요. 꼭 같이 올 필요가 없는 것은 별도 에셋으로 나누세요.",
+            "Owner": "아트",
+            "Source": "정적 검사",
+            "Assets": [
+                "Assets/Game/Content/Structures/Banner.prefab"
+            ],
+            "Status": 1,
+            "FirstSeen": "2026-10-30 00:03",
+            "LastSeen": "2026-10-31 05:42",
+            "ResolvedAt": ""
+        },
+        {
+            "Key": "S-HEAVY:Assets/Game/Content/Characters/BossGrimgor.prefab",
+            "Code": "S-HEAVY",
+            "Severity": 0,
+            "Title": "무거운 에셋: BossGrimgor (딸려 오는 원본 229MB)",
+            "Why": "이 에셋을 로드하면 함께 따라오는 텍스처 · 메시가 많아 로딩 시간과 메모리가 큽니다 (원본 파일 크기 기준).",
+            "HowToFix": "텍스처 최대 크기 · 압축, 메시 LOD 를 확인하세요. 꼭 같이 올 필요가 없는 것은 별도 에셋으로 나누세요.",
+            "Owner": "아트",
+            "Source": "정적 검사",
+            "Assets": [
+                "Assets/Game/Content/Characters/BossGrimgor.prefab"
+            ],
+            "Status": 1,
+            "FirstSeen": "2026-10-30 00:03",
+            "LastSeen": "2026-10-31 05:42",
+            "ResolvedAt": ""
+        },
+        {
+            "Key": "S-HEAVY:Assets/Game/Content/Nodes/Boulder.prefab",
+            "Code": "S-HEAVY",
+            "Severity": 0,
+            "Title": "무거운 에셋: Boulder (딸려 오는 원본 208MB)",
+            "Why": "이 에셋을 로드하면 함께 따라오는 텍스처 · 메시가 많아 로딩 시간과 메모리가 큽니다 (원본 파일 크기 기준).",
+            "HowToFix": "텍스처 최대 크기 · 압축, 메시 LOD 를 확인하세요. 꼭 같이 올 필요가 없는 것은 별도 에셋으로 나누세요.",
+            "Owner": "아트",
+            "Source": "정적 검사",
+            "Assets": [
+                "Assets/Game/Content/Nodes/Boulder.prefab"
+            ],
+            "Status": 1,
+            "FirstSeen": "2026-10-30 00:03",
+            "LastSeen": "2026-10-31 05:42",
+            "ResolvedAt": ""
+        },
+        {
+            "Key": "S-HEAVY:Assets/Game/Content/Structures/CastleHeart.prefab",
+            "Code": "S-HEAVY",
+            "Severity": 0,
+            "Title": "무거운 에셋: CastleHeart (딸려 오는 원본 129MB)",
+            "Why": "이 에셋을 로드하면 함께 따라오는 텍스처 · 메시가 많아 로딩 시간과 메모리가 큽니다 (원본 파일 크기 기준).",
+            "HowToFix": "텍스처 최대 크기 · 압축, 메시 LOD 를 확인하세요. 꼭 같이 올 필요가 없는 것은 별도 에셋으로 나누세요.",
+            "Owner": "아트",
+            "Source": "정적 검사",
+            "Assets": [
+                "Assets/Game/Content/Structures/CastleHeart.prefab"
+            ],
+            "Status": 1,
+            "FirstSeen": "2026-10-30 00:03",
+            "LastSeen": "2026-10-31 05:42",
+            "ResolvedAt": ""
+        },
+        {
+            "Key": "S-HEAVY:Assets/Game/Content/Nodes/CopperVein.prefab",
+            "Code": "S-HEAVY",
+            "Severity": 0,
+            "Title": "무거운 에셋: CopperVein (딸려 오는 원본 208MB)",
+            "Why": "이 에셋을 로드하면 함께 따라오는 텍스처 · 메시가 많아 로딩 시간과 메모리가 큽니다 (원본 파일 크기 기준).",
+            "HowToFix": "텍스처 최대 크기 · 압축, 메시 LOD 를 확인하세요. 꼭 같이 올 필요가 없는 것은 별도 에셋으로 나누세요.",
+            "Owner": "아트",
+            "Source": "정적 검사",
+            "Assets": [
+                "Assets/Game/Content/Nodes/CopperVein.prefab"
+            ],
+            "Status": 1,
+            "FirstSeen": "2026-10-30 00:03",
+            "LastSeen": "2026-10-31 05:42",
+            "ResolvedAt": ""
+        },
+        {
+            "Key": "S-HEAVY:Assets/Game/Content/Characters/OrcBrute.prefab",
+            "Code": "S-HEAVY",
+            "Severity": 0,
+            "Title": "무거운 에셋: OrcBrute (딸려 오는 원본 228MB)",
+            "Why": "이 에셋을 로드하면 함께 따라오는 텍스처 · 메시가 많아 로딩 시간과 메모리가 큽니다 (원본 파일 크기 기준).",
+            "HowToFix": "텍스처 최대 크기 · 압축, 메시 LOD 를 확인하세요. 꼭 같이 올 필요가 없는 것은 별도 에셋으로 나누세요.",
+            "Owner": "아트",
+            "Source": "정적 검사",
+            "Assets": [
+                "Assets/Game/Content/Characters/OrcBrute.prefab"
+            ],
+            "Status": 1,
+            "FirstSeen": "2026-10-30 00:03",
+            "LastSeen": "2026-10-31 05:42",
+            "ResolvedAt": ""
+        },
+        {
+            "Key": "S-HEAVY:Assets/Game/Content/Nodes/Rock.prefab",
+            "Code": "S-HEAVY",
+            "Severity": 0,
+            "Title": "무거운 에셋: Rock (딸려 오는 원본 208MB)",
+            "Why": "이 에셋을 로드하면 함께 따라오는 텍스처 · 메시가 많아 로딩 시간과 메모리가 큽니다 (원본 파일 크기 기준).",
+            "HowToFix": "텍스처 최대 크기 · 압축, 메시 LOD 를 확인하세요. 꼭 같이 올 필요가 없는 것은 별도 에셋으로 나누세요.",
+            "Owner": "아트",
+            "Source": "정적 검사",
+            "Assets": [
+                "Assets/Game/Content/Nodes/Rock.prefab"
+            ],
+            "Status": 1,
+            "FirstSeen": "2026-10-30 00:03",
+            "LastSeen": "2026-10-31 05:42",
+            "ResolvedAt": ""
+        },
+        {
+            "Key": "R-SYNC:Boot:Characters/Player",
+            "Code": "R-SYNC",
+            "Severity": 1,
+            "Title": "멈칫(동기 로드 대기 18ms): Characters/Player",
+            "Why": "게임이 이 에셋이 로드될 때까지 그 자리에서 기다렸습니다. 화면이 순간 멈춘 것처럼 보입니다.",
+            "HowToFix": "미리 로드(프리로드)하거나 비동기 로드로 바꾸세요.",
+            "Owner": "프로그래밍",
+            "Source": "테스트: Boot",
+            "Assets": [
+                "Characters/Player"
+            ],
+            "Status": 2,
+            "FirstSeen": "2026-10-30 09:50",
+            "LastSeen": "2026-10-30 09:50",
+            "ResolvedAt": "2026-10-31 05:42"
+        },
+        {
+            "Key": "S-HEAVY:Assets/Game/Content/Characters/NewMonster.prefab",
+            "Code": "S-HEAVY",
+            "Severity": 0,
+            "Title": "무거운 에셋: NewMonster (딸려 오는 원본 143MB)",
+            "Why": "이 에셋을 로드하면 함께 따라오는 텍스처 · 메시가 많아 로딩 시간과 메모리가 큽니다 (원본 파일 크기 기준).",
+            "HowToFix": "텍스처 최대 크기 · 압축, 메시 LOD 를 확인하세요. 꼭 같이 올 필요가 없는 것은 별도 에셋으로 나누세요.",
+            "Owner": "아트",
+            "Source": "정적 검사",
+            "Assets": [
+                "Assets/Game/Content/Characters/NewMonster.prefab"
+            ],
+            "Status": 2,
+            "FirstSeen": "2026-10-30 00:03",
+            "LastSeen": "2026-10-30 07:25",
+            "ResolvedAt": "2026-10-30 08:12"
+        }
+    ]
+}

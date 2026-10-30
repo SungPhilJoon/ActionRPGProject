@@ -6,7 +6,7 @@ using UnityEngine.InputSystem;
 /// V Rising 식 쿼터뷰 카메라. 휠 = 줌, 마우스 휠 버튼 드래그 = 회전.
 /// 마우스 커서 아래 지면 좌표(조준점)를 계산해 플레이어 컨트롤러에 제공한다.
 /// </summary>
-public class TopDownCamera : MonoBehaviour
+public class TopDownCamera : BaseBehaviour
 {
     public Camera Camera;
     public Transform Target;
@@ -21,6 +21,22 @@ public class TopDownCamera : MonoBehaviour
     public float YawDegrees
     {
         get { return Yaw; }
+    }
+
+    /// <summary>연출용 시점 지정 (줌 범위 제한 없음). 다음 프레임부터 Target 을 따라가며 적용된다. 원래대로는 ResetView.</summary>
+    public void SetView(float InYaw, float InPitch, float InDistance)
+    {
+        Yaw = InYaw;
+        Pitch = InPitch;
+        Distance = InDistance;
+    }
+
+    /// <summary>ConstTable 기본 시점 (요 · 피치 · 거리)으로 되돌린다.</summary>
+    public void ResetView()
+    {
+        Yaw = Tables.Const(EConst.CameraYaw);
+        Pitch = Tables.Const(EConst.CameraPitch);
+        Distance = Tables.Const(EConst.CameraDistance);
     }
 
     public void Setup(Transform InTarget)
@@ -41,7 +57,19 @@ public class TopDownCamera : MonoBehaviour
             FollowPosition = Target.position;
         }
 
+        setupOcclusion();
         apply(true);
+    }
+
+    /// <summary>
+    /// 카메라 가림 처리 (Framework.CameraOcclusionSystem). 감지·응답 전략을 바꾸려면 여기서 SetDetector / SetResponse 를 호출한다.
+    /// 문서: Documentation/VRising/CameraOcclusion.md
+    /// </summary>
+    private void setupOcclusion()
+    {
+        var occlusion = ComponentUtil.GetOrAdd<CameraOcclusionSystem>(gameObject);
+        occlusion.Settings.Mask = LayerId.CameraOcclusionMask;
+        occlusion.SetTarget(Target);
     }
 
     private void LateUpdate()

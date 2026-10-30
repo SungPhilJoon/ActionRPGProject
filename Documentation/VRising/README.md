@@ -9,14 +9,21 @@
 
 | 문서 | 이 문서가 원본인 내용 |
 |---|---|
-| **README.md** (이 문서) | 실행 방법, 조작, 게임 루프, 데이터 테이블 규칙, 툴, 코딩 규칙 적용 |
+| **README.md** (이 문서) | 실행 방법, 데이터 테이블 규칙, **테스트**, 코딩 규칙 적용 |
+| **[Game.md](Game.md)** | **게임 설명서**: 흐름, 조작, 전투 · 상태이상, 흡혈 · 혈액, 햇빛, 몬스터 · 보스, 채집 · 제작 · 장비, 건축, 상점, 지역, HUD, 치트 |
+| [Tool.md](Tool.md) | 에디터 툴 (GAS Tool, StateTree Tool, MonsterAuthoring 인스펙터, Balance Tool, UI Factory, 의존성 지도) |
+| [UI.md](UI.md) | **UI 프리팹 + Addressables 구조**, 스킨, 새 창 추가 방법 |
+| [Dependency.md](Dependency.md) | **Addressables 의존성 툴** (정적 검사, 런타임 추적, 의존성 테스트 기록, 이슈 규칙) |
+| [DependencyIssues.md](DependencyIssues.md) | 의존성 이슈 현황 (툴이 자동 생성) |
 | [Status.md](Status.md) | 기능별 상태, 규모, **알려진 문제**, 미구현 범위, 다음 단계 |
 | [Architecture.md](Architecture.md) | 어셈블리 · 폴더 구조, 의존 규칙, 새 코드 위치, 디자인 패턴 |
 | [GAS.md](GAS.md) | 언리얼 GAS 대응, 이펙트 · 어빌리티 흐름, 피해 공식, 태그 규칙, 상태이상 |
 | [StateTree.md](StateTree.md) | 언리얼 StateTree 대응, 실행 규칙, 몬스터 트리, 에디터 사용법 |
-| [World.md](World.md) | 지형 규격, 지역, 건축 모듈, 캐릭터 · 애니메이션 매핑 |
-| [URP.md](URP.md) | 조명 · 그림자, **WeatherMaker 하늘 설정**, 포스트프로세싱, 머티리얼 변환, Terrain 렌더 |
+| [World.md](World.md) | 지형 규격, 지역, 건축 모듈, 캐릭터 · 애니메이션 매핑, **나무 · 풀 · 강 · 호수**, 건축 시 식생 제거 |
+| [CameraOcclusion.md](CameraOcclusion.md) | 카메라를 가리는 나무 · 건물 숨기기 (구조, 전략 교체 방법) |
+| [URP.md](URP.md) | 조명 · 그림자, 하늘 · 낮밤, **포스트프로세싱 볼륨 6개 · 대기 패스 · 캐릭터 셰이더**, 머티리얼 변환, Terrain 렌더, **식생 · 물 셰이더** |
 | [Issues.md](Issues.md) | 문제와 해결 (번호로 참조), **성능 관찰 포인트(18)** |
+| [Optimization.md](Optimization.md) | **진행 상태 요약 + 최적화 툴 가이드** (Profiler · Frame Debugger · Render Graph Viewer · Rendering Debugger · Memory Profiler …, 측정 지점, 의심 지점별 확인 방법) |
 | [AssetRequests.md](AssetRequests.md) | 사용 중인 외부 에셋, 부족한 에셋 요청 |
 | [Multiplayer.md](Multiplayer.md) | 4인 협동 확장 설계 (미구현) |
 | [CHANGELOG.md](CHANGELOG.md) | 날짜별 작업 기록 |
@@ -36,35 +43,20 @@
 
 ## 2. 조작
 
-| 키 | 동작 | 키 | 동작 |
-|---|---|---|---|
-| WASD | 이동 | 좌클릭(누르고 있기) | 무기 콤보 |
-| Q / E | 무기 스킬 | Space | Veil of Blood (회피 대시 + 강화) |
-| R / C | 주문 1 / 2 | T | 궁극기 (보스 V Blood 흡혈 시 해금) |
-| F | 흡혈 (체력 25% 이하 적) | G | 상호작용 (상인/작업대/관) |
-| Tab | 인벤토리·장비 | K | 제작 |
-| B | 건축 (X 회전, ESC 취소) | P | 상점 (전부 무료) |
-| ` | 치트 콘솔 | F8 | 밸런스 미터 오버레이 |
-| 휠 / 휠 드래그 | 줌 / 카메라 회전 | ESC | 창 닫기 |
+조작 키 표는 **[Game.md 3절](Game.md#3-조작)** (키 배치는 `InputTable.csv`).
 
-키는 `Assets/Game/Data/CSV/InputTable.csv` 만 고치면 바뀝니다.
+## 3. 게임 내용
 
-## 3. 데모 게임 루프 (V Rising 핵심 요소)
-
-- **낮/밤 + 햇빛**: 8분 주기, 해 질 녘(18:30) 시작. 하늘·해·구름은 WeatherMaker. 낮에 그늘(나무 수관, 건물, 바위, 폐허 벽) 밖에 있으면 햇빛 화상이 점점 강해짐 (HUD 경고).
-- **흡혈/혈액**: 적 체력을 25% 이하로 만들고 F → 혈액 종류(Warrior/Rogue/Scholar/Brute/Creature)와 품질 획득, 품질 단계별 버프.
-- **V Blood 보스**: `Minotaur Warlord` (북동쪽 바위 고리 아레나, Magic Pig 미노타우로스). 흡혈 시 궁극기 *Crimson Storm* 해금.
-- **월드**: 512m 대자연 오픈월드 — 시작 초원, 폐허 마을, 숲, 호수/늪, 고원, 트롤 능선, 보스 아레나 ([World.md](World.md)).
-- **기어 레벨**: 장비 GearLevel 평균. 몬스터 레벨과의 차이로 주고받는 피해가 보정됨.
-- **채집/제작/건축**: 무기로 나무·바위·덤불·구리 광맥을 때려 채집(벌목/채광/채집 모션) → 손 제작 / 작업대·제련소 제작 → 성 심장 주변 3m 그리드에 ASTROFISH 바닥·벽·창벽·문벽·기둥·램프·작업대·관 건축(망치질 모션). 관은 리스폰 지점.
-- **상인/상점**: 시작 지점 옆 상인 또는 P 키. 프로젝트 규칙대로 **모든 상품 가격 0**.
+무엇을 하는 게임인지, 전투 · 흡혈 · 햇빛 · 몬스터 · 건축 등 규칙과 수치는 **[Game.md](Game.md)** 에 정리했습니다.
+한 줄 요약: 해를 피해 다니며 몬스터의 피를 마셔 강해지고, 성을 짓고 장비를 만들어 V Blood 보스(Minotaur Warlord)를 쓰러뜨리는 오프라인 1인 액션 RPG.
 
 ## 4. 폴더 구조
 
 | 위치 | 내용 |
 |---|---|
 | `Assets/Framework/` | 게임을 모르는 재사용 기반 (GAS, StateTree, 매니저, CSV 테이블, UIFactory …) |
-| `Assets/Game/Runtime`, `Editor`, `Integration` | 이 게임의 코드 |
+| `Assets/Game/Runtime`, `Editor`, `Integration`, `Tests` | 이 게임의 코드 / Play 모드 테스트 |
+| `Assets/Game/Data/Monsters` | 몬스터 저작 에셋 (MonsterAuthoring — 인스펙터에서 편집) |
 | `Assets/Game/Data/CSV` → `Data/Tables` | 원본 데이터 19종 → ScriptableObject (런타임은 Tables 만 읽음) |
 | `Assets/Game/Content/` | Addressables 루트. 파일 상대 경로(확장자 제외) = 주소 = AssetTable.Address |
 | `Assets/Game/Art/` | `ThirdParty`(Kenney CC0), `Generated`(코드가 만든 재질·애니메이터·지형 데이터) |
@@ -101,13 +93,34 @@
 
 ## 6. 툴
 
-- **Game > Tools > Balance Tool** — Live(플레이 중 공격자·어빌리티별 누적 피해/DPS, 대상별 받은 피해 총합과 내역, 최근 기록) / Simulator(테이블 값으로 1타 피해·처치 타수·DPS 계산)
-- **F8 밸런스 오버레이** — 같은 데이터를 게임 화면에서
-- **Window > Framework > StateTree Editor (또는 Game > AI > StateTree Editor)** — 몬스터 AI 편집 (트리 뷰 + Details + Play 중 라이브 디버그). [StateTree.md](StateTree.md)
-- **Game > Tools > UI Factory** — UIWindow 스크립트 골격 생성, 편집 모드 미리보기, 프리팹 굽기
-- **치트 콘솔(`)** — `help`, `god`, `nocd`, `heal`, `give <id> [n]`, `giveall`, `equip <id>`, `time <h>`, `timescale`, `freeze`, `nosun`, `killall`, `spawn <id> [n]`, `lowhp`, `speed`, `stat <Attr> <v>`, `level`, `blood <type> <q>`, `unlock`, `tp <x> <z>`, `hurt`, `clearlog`, `spell <id>`(주문 교체 301~306), `status <effectId>`(주변 적에게 상태이상)
+에디터 툴의 상세 설명은 **[Tool.md](Tool.md)** 가 원본입니다.
 
-## 7. 코딩 규칙 적용
+- **GAS Tool** — 어빌리티 · GameplayEffect · Ability Set (캐릭터별 보유 어빌리티)
+- **StateTree Tool** — 몬스터 AI (템플릿, `+ 블록`, 이 트리를 쓰는 몬스터·어빌리티 표시, Play 스폰)
+- **MonsterAuthoring 인스펙터** — 몬스터 능력치 · 외형 · 클립 · AI 트리 지정 · 프리팹 빌드 · 복제
+- **Balance Tool**(F8 오버레이) · **UI Factory**
+- **치트 콘솔(`)** — 명령 목록은 [Game.md 14절](Game.md#14-치트--콘솔)
+
+## 7. 테스트
+
+Unity Test Framework (Window > General > Test Runner → **PlayMode** → Run All). `Assets/Game/Tests/PlayMode`, 17개, 약 55초 (성 짓기 쇼케이스 10초 포함).
+첫 테스트가 World 씬을 로드하고 싱글 플레이를 시작하며, 테스트마다 월드 몬스터를 치우고 밤으로 고정한 뒤 플레이어를 초기화합니다 (`GamePlayTestBase`).
+
+| 묶음 | 테스트 | 확인하는 것 |
+|---|---|---|
+| GAS (`GasAbilityTests`) | 가드 / 부채꼴 피해 / 발동 차단 태그 / 쿨다운 | 종료 시 GE·태그 제거, 이 어빌리티 번호의 피해 이벤트, BlockedByTags, Cooldown |
+| StateTree (`StateTreeTests`) | 기본 트리 공격 / 조건부 어빌리티 | 감지 → Combat → 피해, 체력 50% 초과에선 안 쓰고 40% 에서 가드 사용 |
+| 시나리오 (`PlayScenarioTests`) | **성 짓기** | 빈 평지에 5×5칸(15m) 성을 처음부터 완성: 성 심장 → 바닥 25 → 외벽 20(남쪽 문, 3면 창) → 기둥 20 → 작업대·제련소·관·램프 4 (총 73개). 단계마다 설치 성공 · 개수 · 재료 차감 · 관 리스폰 지점 확인, 잘못된 설치 거부 확인 → **완성된 성을 10초간 카메라로 한 바퀴 돌며 보여줌** (HUD 숨김, 15시 햇빛, 스크린샷 `Temp/CastleShowcase_1·2.png`) |
+| | **몬스터 전투** | 몬스터가 플레이어 공격 → 플레이어 평타로 처치, 처치자 = 플레이어 |
+| | **보스 전투** | 교전 이벤트 → Phase1 → 체력 45% 에서 Phase2 + 격노 버프 → 보스 어빌리티 사용 → 처치 |
+| 의존성 (`DependencyScenarioTests`, Category `Dependency`) | 부팅 / 창 열고 닫기 / 몬스터 스폰 · 제거 / 건축 고스트 / 어빌리티 8칸 | 각 동작을 3번 반복하며 Addressables 로드 · 반납 · 참조 카운트 · 동기 대기를 `DependencyReports/Runs` 에 기록. 로드 실패만 실패 처리, 나머지는 의존성 지도 이슈로 추적 ([Dependency.md](Dependency.md)) |
+| 월드 (`WorldFoliageTests`) | 건축 시 식생 제거 / 카메라 가림 / 물 회피 스폰 | 건축 이벤트 바운드 안 나무 비활성 · 풀 0 · TerrainData 는 런타임 복제본 / 나무 앞에 서면 나무가 ShadowsOnly, 멀어지면 원래 모드 / 채집 노드가 WaterBody 안에 없음 |
+
+플레이어 행동은 입력 대신 게임 API(`BuildManager.PlaceAt`, `Actor.TryActivate`)로, 테스트용 어빌리티·트리는 코드로 만들어 `GraphAbility.Create` · `Actor.GiveAbility` · `MonsterBrain.RunTree` 로 넣습니다.
+Play 프레임은 에디터가 앞에 있어야 진행됩니다.
+World 로드 중 오류 로그가 하나라도 나오면 테스트가 실패한다 (2026-10-30 WeatherMaker 를 제거해 예상 로그 처리도 지움).
+
+## 8. 코딩 규칙 적용
 
 규칙 원문은 [../Project.md](../Project.md). 이 코드에서 지킨 방식:
 
@@ -117,6 +130,6 @@
 
 예외(솔직하게 남기는 부분): Animator 파라미터 이름(`AnimatorParam` 에서 한 번만 해시), Input System 컨트롤 경로(CSV 데이터), 에디터 빌더의 에셋 경로·본 이름 검색, 치트 콘솔 도움말 문자열은 문자열이 남아 있습니다.
 
-## 8. 현재 범위 / 미구현
+## 9. 현재 범위 / 미구현
 
 멀티플레이 미구현(설계만), 세이브 없음, 제작 즉시 완료 등 범위와 알려진 문제는 [Status.md 3~4절](Status.md#3-알려진-문제).

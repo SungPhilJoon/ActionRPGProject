@@ -27,13 +27,14 @@ public class GameTables : ScriptableObject
     public CueTable Cue;
     public InputTable Input;
     public AnimationTable Animation;
+    public QuestTable Quest;
 
     public TableAssetBase[] GetAll()
     {
         return new TableAssetBase[]
         {
             Const, Tag, String, Asset, Character, Ability, Effect, Item, Weapon, Recipe,
-            Structure, ResourceNode, Spawn, Loot, BloodType, Shop, Cue, Input, Animation,
+            Structure, ResourceNode, Spawn, Loot, BloodType, Shop, Cue, Input, Animation, Quest,
         };
     }
 

@@ -19,7 +19,9 @@
 | 하려는 일 | 문서 |
 |---|---|
 | 프로젝트 요구사항 · 개발 규칙 원문 | [Project.md](Project.md) |
-| 실행 · 조작 · 툴 | [VRising/README.md](VRising/README.md) |
+| 실행 방법 · 테스트 | [VRising/README.md](VRising/README.md) |
+| **게임 설명 (규칙 · 콘텐츠 · 조작)** | [VRising/Game.md](VRising/Game.md) |
+| 에디터 툴 (GAS Tool, StateTree Tool 등) | [VRising/Tool.md](VRising/Tool.md) |
 | 지금 무엇이 되고 무엇이 안 되는지 | [VRising/Status.md](VRising/Status.md) |
 | 코드 구조 · 새 코드 위치 · 디자인 패턴 | [VRising/Architecture.md](VRising/Architecture.md) |
 | 전투(GAS) / 몬스터 AI(StateTree) | [VRising/GAS.md](VRising/GAS.md) / [VRising/StateTree.md](VRising/StateTree.md) |

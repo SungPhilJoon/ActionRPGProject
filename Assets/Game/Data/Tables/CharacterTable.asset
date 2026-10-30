@@ -158,3 +158,27 @@ MonoBehaviour:
     Tint: {r: 1, g: 1, b: 1, a: 1}
     Weapon: 0
     StateTree: 0
+  - Index: 7
+    NameId: 1006
+    Prefab: 106
+    Team: 2
+    MaxHealth: 280
+    PhysicalPower: 22
+    SpellPower: 0
+    PhysicalResist: 5
+    SpellResist: 0
+    MoveSpeed: 4.2
+    Level: 8
+    Abilities: f5010000
+    AI: 1
+    AggroRange: 12
+    AttackRange: 2.2
+    BloodType: 1
+    BloodQuality: 25
+    IsVBlood: 0
+    VBloodUnlocks: 
+    Loot: 1
+    Scale: 1
+    Tint: {r: 1, g: 1, b: 1, a: 1}
+    Weapon: 0
+    StateTree: 300

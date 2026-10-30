@@ -1,4 +1,3 @@
-using Framework.Editor;
 using System;
 using System.IO;
 using System.Linq;
@@ -7,27 +6,15 @@ using UnityEditor;
 using UnityEngine;
 
 /// <summary>
-/// UI Factory 툴 (Window/Game/UI Factory).
-///  1) Generate: 템플릿(빈 창 / 목록 창)으로 UIWindow 스크립트 골격을 만든다. Build() 안은 UIFactory 호출로 채워져 있다.
-///  2) Preview: 기존 UIWindow 를 편집 모드 씬에 조립해서 레이아웃을 바로 확인한다 (코드 → 화면 왕복 시간 단축).
-///  3) Bake Prefab: 미리보기 결과를 프리팹으로 저장해 디자이너가 검토/참고할 수 있게 한다.
+/// UI Factory 툴 (Game > Tools > UI Factory). 프리팹 방식(2026-10-29) 기준:
+///  1) 새 창 스크립트: 직렬화 필드 + OnInitialize 골격을 만든다. 레이아웃은 UIPrefabBuilder 에 build 메서드를 추가해 굽는다.
+///  2) 프리팹: 전체 다시 굽기, 창 프리팹 열기(프리팹 모드에서 디자이너가 바로 편집), 스킨 선택.
 /// </summary>
 public class UIFactoryWindow : EditorWindow
 {
-    private enum ETemplate
-    {
-        Empty,
-        List,
-    }
-
     private string WindowName = "MyWindow";
-    private ETemplate Template = ETemplate.Empty;
-    private int TitleTextId = (int)EText.Inventory;
-    private Vector2 WindowSize = new Vector2(800.0f, 560.0f);
-
     private Type[] WindowTypes;
-    private int PreviewIndex;
-    private GameObject PreviewRoot;
+    private Vector2 Scroll;
 
     [MenuItem("Window/Game/UI Factory")]
     [MenuItem("Game/Tools/UI Factory", priority = 31)]
@@ -41,62 +28,65 @@ public class UIFactoryWindow : EditorWindow
         WindowTypes = TypeCache.GetTypesDerivedFrom<UIWindow>().Where(t => t.IsAbstract == false).OrderBy(t => t.Name).ToArray();
     }
 
-    private void OnDisable()
-    {
-        clearPreview();
-    }
-
     private void OnGUI()
     {
-        EditorGUILayout.LabelField("1. Generate Window Script", EditorStyles.boldLabel);
+        EditorGUILayout.LabelField("1. 새 창 스크립트", EditorStyles.boldLabel);
         WindowName = EditorGUILayout.TextField("Class Name", WindowName);
-        Template = (ETemplate)EditorGUILayout.EnumPopup("Template", Template);
-        TitleTextId = EditorGUILayout.IntField("Title Text Id (StringTable)", TitleTextId);
-        if (Template == ETemplate.Empty)
-        {
-            WindowSize = EditorGUILayout.Vector2Field("Size", WindowSize);
-        }
-
         if (GUILayout.Button("Generate Script") == true)
         {
             generate();
         }
 
-        EditorGUILayout.Space(12.0f);
-        EditorGUILayout.LabelField("2. Preview / Bake", EditorStyles.boldLabel);
-        if (WindowTypes == null || WindowTypes.Length == 0)
-        {
-            EditorGUILayout.HelpBox("UIWindow 하위 클래스가 없습니다.", MessageType.Info);
-            return;
-        }
+        EditorGUILayout.HelpBox("스크립트를 만든 뒤: ① UIPrefabBuilder 에 build 메서드 추가 ② EUIAsset + AssetTable.csv 에 행 추가 ③ GameBootstrap.setupUIAsync 에서 ui.Create — UI.md 3절", MessageType.None);
 
-        PreviewIndex = EditorGUILayout.Popup("Window", PreviewIndex, WindowTypes.Select(t => t.Name).ToArray());
+        EditorGUILayout.Space(12.0f);
+        EditorGUILayout.LabelField("2. 프리팹", EditorStyles.boldLabel);
         using (new EditorGUI.DisabledScope(Application.isPlaying == true))
         {
             EditorGUILayout.BeginHorizontal();
-            if (GUILayout.Button("Preview In Scene") == true)
+            if (GUILayout.Button("Rebuild All UI Prefabs", GUILayout.Height(28.0f)) == true)
             {
-                preview(WindowTypes[PreviewIndex]);
+                UIPrefabBuilder.BuildAll();
+                AddressablesSetup.Run();
             }
 
-            if (GUILayout.Button("Clear Preview") == true)
+            if (GUILayout.Button("Select UI Skin", GUILayout.Height(28.0f)) == true)
             {
-                clearPreview();
+                UISkinSetup.Select();
             }
 
             EditorGUILayout.EndHorizontal();
-            if (GUILayout.Button("Bake Preview To Prefab") == true)
-            {
-                bake();
-            }
         }
 
-        EditorGUILayout.HelpBox("미리보기는 편집 모드에서 Tables 가 없으므로 문자열이 #ID 로 표시됩니다. 레이아웃 확인용입니다.", MessageType.None);
+        Scroll = EditorGUILayout.BeginScrollView(Scroll);
+        foreach (var type in WindowTypes)
+        {
+            string path = $"{UIPrefabBuilder.Folder}/Windows/{type.Name}.prefab";
+            var prefab = AssetDatabase.LoadAssetAtPath<GameObject>(path);
+            EditorGUILayout.BeginHorizontal();
+            EditorGUILayout.LabelField(type.Name, prefab != null ? "프리팹 있음" : "프리팹 없음 (Rebuild 필요)");
+            using (new EditorGUI.DisabledScope(prefab == null))
+            {
+                if (GUILayout.Button("Open", GUILayout.Width(60.0f)) == true)
+                {
+                    AssetDatabase.OpenAsset(prefab);
+                }
+
+                if (GUILayout.Button("Ping", GUILayout.Width(50.0f)) == true)
+                {
+                    EditorGUIUtility.PingObject(prefab);
+                }
+            }
+
+            EditorGUILayout.EndHorizontal();
+        }
+
+        EditorGUILayout.EndScrollView();
     }
 
     private void generate()
     {
-        string className = WindowName.EndsWith("Window") == true ? WindowName : WindowName + "Window";
+        string className = WindowName.EndsWith("Window", StringComparison.Ordinal) == true ? WindowName : WindowName + "Window";
         string path = $"{EditorPaths.UIScripts}/{className}.cs";
         if (File.Exists(path) == true)
         {
@@ -104,32 +94,26 @@ public class UIFactoryWindow : EditorWindow
             return;
         }
 
-        string body = Template == ETemplate.List ? listTemplate(className) : emptyTemplate(className);
-        File.WriteAllText(path, body);
+        File.WriteAllText(path, template(className));
         AssetDatabase.ImportAsset(path);
-        Debug.Log($"[UI Factory] generated {path}. Register it in GameBootstrap.setupUI: ui.Create<{className}>(UILayerId.Window);");
+        Debug.Log($"[UI Factory] generated {path}. Add a build method to UIPrefabBuilder and register it (UI.md 3절).");
     }
 
-    private string emptyTemplate(string InClass)
+    private static string template(string InClass)
     {
         return
 $@"using Framework.UI;
 using TMPro;
 using UnityEngine;
 
-/// <summary>UI Factory 로 생성된 창. Build() 에서 UIFactory 로 자식을 조립한다.</summary>
+/// <summary>UI Factory 로 생성된 창. 자식 참조는 프리팹(UI/Windows/{InClass})에 직렬화한다 (UIPrefabBuilder).</summary>
 public class {InClass} : UIWindow
 {{
-    protected override void Build()
+    public TextMeshProUGUI Title;
+
+    /// <summary>Instantiate 직후 한 번. 동적 목록 · 코드 리스너만 준비한다.</summary>
+    protected override void OnInitialize()
     {{
-        var frame = UIFactory.CreateWindowFrame(Rect, ""Frame"");
-        UIFactory.Place(frame, new Vector2(0.5f, 0.5f), Vector2.zero, new Vector2({WindowSize.x:0}.0f, {WindowSize.y:0}.0f));
-
-        var title = UIFactory.CreateText(frame, ""Title"", Tables.Text({TitleTextId}), 30.0f, TextAlignmentOptions.Left);
-        UIFactory.Place(title, new Vector2(0.0f, 1.0f), new Vector2(24.0f, -12.0f), new Vector2(600.0f, 44.0f));
-
-        var close = UIFactory.CreateButton(frame, ""Close"", Tables.Text(EText.Close), 18.0f, Close);
-        UIFactory.Place(close, new Vector2(1.0f, 1.0f), new Vector2(-16.0f, -14.0f), new Vector2(110.0f, 38.0f));
     }}
 
     protected override void OnOpen()
@@ -137,69 +121,5 @@ public class {InClass} : UIWindow
     }}
 }}
 ";
-    }
-
-    private string listTemplate(string InClass)
-    {
-        return
-$@"using UnityEngine;
-
-/// <summary>UI Factory 로 생성된 목록 창. Fill() 에서 AddRow 로 행을 채운다.</summary>
-public class {InClass} : ListWindow
-{{
-    protected override int TitleTextId
-    {{
-        get {{ return {TitleTextId}; }}
-    }}
-
-    protected override void Fill()
-    {{
-        // 예: AddRow(icon, Color.gray, title, detail, Tables.Text(EText.Buy), () => {{ }}, true);
-    }}
-}}
-";
-    }
-
-    private void preview(Type InType)
-    {
-        clearPreview();
-        var canvas = UIFactory.CreateCanvas("[UIFactoryPreview]", 100);
-        PreviewRoot = canvas.gameObject;
-        var rect = UIFactory.CreateRect(canvas.transform, InType.Name);
-        UIFactory.Stretch(rect, 0.0f);
-        var window = (UIWindow)rect.gameObject.AddComponent(InType);
-        try
-        {
-            window.Construct();
-        }
-        catch (Exception e)
-        {
-            Debug.LogWarning($"[UI Factory] preview partially built: {e.Message}");
-        }
-
-        Selection.activeGameObject = rect.gameObject;
-    }
-
-    private void bake()
-    {
-        if (PreviewRoot == null)
-        {
-            preview(WindowTypes[PreviewIndex]);
-        }
-
-        EditorAssetUtil.EnsureFolder(EditorPaths.UIPrefabs);
-        string path = $"{EditorPaths.UIPrefabs}/{WindowTypes[PreviewIndex].Name}.prefab";
-        PrefabUtility.SaveAsPrefabAsset(PreviewRoot, path);
-        Debug.Log("[UI Factory] baked " + path);
-    }
-
-    private void clearPreview()
-    {
-        if (PreviewRoot != null)
-        {
-            DestroyImmediate(PreviewRoot);
-        }
-
-        PreviewRoot = null;
     }
 }

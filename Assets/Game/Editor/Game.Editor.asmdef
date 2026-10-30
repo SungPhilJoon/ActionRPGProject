@@ -15,7 +15,9 @@
         "Unity.TextMeshPro",
         "UnityEngine.UI",
         "Unity.InputSystem",
-        "UniTask"
+        "UniTask",
+        "UnityEditor.TestRunner",
+        "UnityEngine.TestRunner"
     ],
     "includePlatforms": [
         "Editor"

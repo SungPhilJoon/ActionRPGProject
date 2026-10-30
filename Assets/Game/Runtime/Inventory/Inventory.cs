@@ -15,7 +15,7 @@ public struct ItemStack
 }
 
 /// <summary>슬롯 기반 인벤토리. 아이템은 ItemTable 인덱스(int)로만 다룬다.</summary>
-public class Inventory : MonoBehaviour
+public class Inventory : BaseBehaviour
 {
     public ItemStack[] Slots { get; private set; }
 

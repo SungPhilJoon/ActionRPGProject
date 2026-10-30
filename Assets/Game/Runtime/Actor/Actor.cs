@@ -4,26 +4,28 @@ using Framework.Ability;
 using UnityEngine;
 
 /// <summary>
-/// 플레이어/몬스터 공통 액터. GAS(ASC + GameAttributeSet) 를 소유하고
+/// 플레이어/몬스터 공통 액터. ActorBehaviour(ASC 소유) 위에 GameAttributeSet 과 슬롯 어빌리티를 얹고
 /// CharacterTable 행에서 능력치와 어빌리티를 초기화한다.
+/// 사망/보호막 같은 상태는 별도 플래그 없이 ASC 태그(State_Dead, State_Buff_Shield)가 원본이다.
 /// </summary>
-[RequireComponent(typeof(AbilitySystemComponent))]
 [RequireComponent(typeof(ActorMotor))]
-public class Actor : MonoBehaviour
+public class Actor : ActorBehaviour
 {
-    public long ActorId { get; private set; }
     public CharacterRow Row { get; private set; }
     public ETeam Team { get; private set; }
-    public AbilitySystemComponent Asc { get; private set; }
     public GameAttributeSet Attributes { get; private set; }
     public ActorMotor Motor { get; private set; }
     public ActorAnimator Anim { get; private set; }
-    public bool IsDead { get; private set; }
+
+    public bool IsDead
+    {
+        get { return Asc != null && HasTag((int)ETag.State_Dead) == true; }
+    }
 
     /// <summary>지정형 공격(근접 부채꼴, 발사체, 대시)의 대상이 될 수 있는가. Immaterial 이면 통과한다 (V Rising).</summary>
     public bool IsTargetable
     {
-        get { return IsDead == false && (Asc == null || Asc.Tags.HasTag((int)ETag.State_Immaterial) == false); }
+        get { return IsDead == false && (Asc == null || HasTag((int)ETag.State_Immaterial) == false); }
     }
     public float Radius = 0.5f;
 
@@ -49,6 +51,17 @@ public class Actor : MonoBehaviour
         get { return false; }
     }
 
+    /// <summary>ASC 의 소유자가 Actor 일 때만 Actor 를 돌려준다 (이펙트 Source, 게임플레이 이벤트 페이로드 등). GetComponent 탐색 없음.</summary>
+    public static Actor From(AbilitySystemComponent InAsc)
+    {
+        if (InAsc == null)
+        {
+            return null;
+        }
+
+        return InAsc.OwnerActor is Actor actor ? actor : null;
+    }
+
     public float HealthRatio
     {
         get
@@ -61,18 +74,16 @@ public class Actor : MonoBehaviour
     public virtual void Initialize(CharacterRow InRow, long InActorId)
     {
         Row = InRow;
-        ActorId = InActorId;
         Team = InRow.Team;
 
-        Asc = GetComponent<AbilitySystemComponent>();
         Attributes = new GameAttributeSet();
-        Attributes.Actor = this;
-        Asc.InitAttributes(Attributes);
+        InitializeActor(InActorId, Attributes);
         Asc.CooldownScaleProvider = getCooldownScale;
 
         Motor = GetComponent<ActorMotor>();
         Motor.Initialize(this);
         Anim = GetComponent<ActorAnimator>();
+        ComponentUtil.GetOrAdd<CharacterHitFlash>(gameObject).Setup(this);
 
         applyBaseStats(InRow);
         float scale = InRow.Scale > 0.0f ? InRow.Scale : 1.0f;
@@ -87,13 +98,15 @@ public class Actor : MonoBehaviour
         Managers.Get<ActorRegistry>().Add(this);
     }
 
-    protected virtual void OnDestroy()
+    protected override void OnUnityDestroy()
     {
         var registry = Managers.Get<ActorRegistry>();
         if (registry != null)
         {
             registry.Remove(this);
         }
+
+        base.OnUnityDestroy();
     }
 
     protected virtual void Update()
@@ -101,13 +114,6 @@ public class Actor : MonoBehaviour
         if (IsDead == true)
         {
             return;
-        }
-
-        // 보호막은 State_Buff_Shield 태그(지속 이펙트)가 있는 동안만 유지된다.
-        bool shieldExpired = Attributes.GetBase((int)EAttribute.Shield) > 0.0f && Asc.Tags.HasTag((int)ETag.State_Buff_Shield) == false;
-        if (shieldExpired == true)
-        {
-            Attributes.Set(EAttribute.Shield, 0.0f);
         }
 
         float regen = Attributes.Get(EAttribute.HealthRegen);
@@ -129,6 +135,15 @@ public class Actor : MonoBehaviour
         }
     }
 
+    /// <summary>보호막은 State_Buff_Shield 태그(지속 이펙트)가 있는 동안만 유지된다 → 마지막 태그가 빠지는 순간 소멸.</summary>
+    protected override void OnTagChanged(int InTag, bool InAdded)
+    {
+        if (InTag == (int)ETag.State_Buff_Shield && InAdded == false)
+        {
+            Attributes.Set(EAttribute.Shield, 0.0f);
+        }
+    }
+
     // ------------------------------------------------------------------ abilities
 
     /// <summary>AbilityTable 의 Slot 컬럼 위치에 어빌리티를 부여한다 (같은 슬롯의 기존 어빌리티는 제거).</summary>
@@ -140,24 +155,30 @@ public class Actor : MonoBehaviour
             return null;
         }
 
-        var ability = AbilityFactory.Create(row, this);
+        return GiveAbility(AbilityFactory.Create(row, this));
+    }
+
+    /// <summary>이미 만든 어빌리티(예: GraphAbility.Create)를 Row.Slot 위치에 부여한다 (같은 슬롯의 기존 어빌리티는 제거).</summary>
+    public GameAbility GiveAbility(GameAbility InAbility)
+    {
+        var ability = InAbility;
         if (ability == null)
         {
             return null;
         }
 
-        int slot = (int)row.Slot;
+        int slot = (int)ability.Row.Slot;
         if (slot >= 0 && slot < Slots.Length)
         {
             if (Slots[slot] != null)
             {
-                Asc.ClearAbility(Slots[slot]);
+                RemoveAbility(Slots[slot]);
             }
 
             Slots[slot] = ability;
         }
 
-        Asc.GiveAbility(ability);
+        GrantAbility(ability);
         EventBus<AbilitySlotsChangedEvent>.Publish(new AbilitySlotsChangedEvent { Actor = this });
         return ability;
     }
@@ -170,7 +191,7 @@ public class Actor : MonoBehaviour
             return;
         }
 
-        Asc.ClearAbility(Slots[slot]);
+        RemoveAbility(Slots[slot]);
         Slots[slot] = null;
         EventBus<AbilitySlotsChangedEvent>.Publish(new AbilitySlotsChangedEvent { Actor = this });
     }
@@ -263,7 +284,7 @@ public class Actor : MonoBehaviour
             return;
         }
 
-        var spec = new GameplayEffectSpec(EffectLibrary.Get(EffectLibrary.HealEffectId), Asc, 0);
+        var spec = Asc.MakeOutgoingSpec(EffectLibrary.Get(EffectLibrary.HealEffectId), 0);
         spec.SetByCaller((int)ESetByCaller.Heal, InAmount);
         Asc.ApplyGameplayEffectSpecToSelf(spec);
     }
@@ -275,10 +296,10 @@ public class Actor : MonoBehaviour
             return;
         }
 
-        IsDead = true;
+        // 태그를 먼저 붙여 취소/이펙트 제거 콜백 안에서도 IsDead 가 true 가 되게 한다.
+        AddTag((int)ETag.State_Dead);
         Asc.CancelAllAbilities();
         Asc.RemoveAllEffects();
-        Asc.Tags.AddTag((int)ETag.State_Dead);
         Motor.Stop();
         Motor.CancelDash();
         if (Anim != null)
@@ -292,8 +313,7 @@ public class Actor : MonoBehaviour
 
     public virtual void Revive(Vector3 InPosition, float InHealthRatio)
     {
-        IsDead = false;
-        Asc.Tags.RemoveTag((int)ETag.State_Dead);
+        RemoveTag((int)ETag.State_Dead);
         Motor.Teleport(InPosition);
         Attributes.Set(EAttribute.Shield, 0.0f);
         Attributes.Set(EAttribute.Health, Attributes.Get(EAttribute.MaxHealth) * InHealthRatio);
@@ -322,7 +342,7 @@ public class Actor : MonoBehaviour
 
     private float getCooldownScale()
     {
-        if (Asc.Tags.HasTag((int)ETag.Cheat_NoCooldown) == true)
+        if (HasTag((int)ETag.Cheat_NoCooldown) == true)
         {
             return 0.0f;
         }

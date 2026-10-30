@@ -6,7 +6,7 @@ using UnityEngine;
 /// <summary>
 /// 채집 노드 / 건축물 프리팹.
 ///  - 건축물: ASTROFISH Medieval Village HD 모듈 (3m 그리드). 모듈 피벗이 끝점에 있어 바운드 기준으로 가운데 정렬한다.
-///  - 채집 노드: 바위 = TheTalesFactory 포토스캔 바위(URP 변환), 덤불 = TerrainSampleAssets, 나무 = Kenney (사실적인 나무 에셋 없음 → AssetRequests.md)
+///  - 채집 노드: 바위 = TheTalesFactory 포토스캔 바위(URP 변환), 덤불 = TerrainSampleAssets, 나무 = 절차 나무 (TreeFactory, 장식 나무와 공용)
 /// </summary>
 public static partial class ContentBuilder
 {
@@ -19,8 +19,8 @@ public static partial class ContentBuilder
 
     private static void buildResourceNodes()
     {
-        buildTree("Nodes/PineTree", "tree_pineTallA", 4.5f);
-        buildTree("Nodes/OakTree", "tree_oak_dark", 5.0f);
+        buildTree("Nodes/PineTree", ETreeSpecies.Spruce, 0, 0.8f);
+        buildTree("Nodes/OakTree", ETreeSpecies.Broadleaf, 0, 0.85f);
         buildRealRock("Nodes/Rock", TalesRocks + "/MountainRocks02_B.prefab", 3.2f, null);
         buildRealRock("Nodes/Boulder", TalesRocks + "/MountainRocks01_D.prefab", 5.0f, null);
         buildRealRock("Nodes/CopperVein", TalesRocks + "/MountainRocks02_A.prefab", 3.4f, CopperMaterial);
@@ -34,65 +34,39 @@ public static partial class ContentBuilder
     }
 
     /// <summary>
-    /// Kenney 나무는 잎 재질이 URP 조명에서 청록색으로 떠서 사실적인 지형과 어울리지 않는다.
-    /// 잎/줄기 재질을 어두운 초록·갈색 URP 재질로 바꾼 사본 프리팹을 만든다 (지형 Tree 와 채집 나무가 공용).
+    /// 채집 나무: 장식 나무와 같은 절차 나무 프리팹(TreeFactory)을 감싸 채집 노드로 만든다.
+    /// 장식용 컴포넌트(FoliageInstance)와 그늘 콜라이더는 떼고, 노드 루트에 줄기 콜라이더/수관 트리거/그늘을 새로 붙인다.
     /// </summary>
-    public static GameObject GetRecoloredTree(string InModel)
-    {
-        string folder = EditorPaths.Generated + "/World/Trees";
-        EditorAssetUtil.EnsureFolder(folder);
-        string path = $"{folder}/{InModel}.prefab";
-        var leaves = loadOrCreate(folder + "/M_TreeLeaves.mat", Shader.Find("Universal Render Pipeline/Lit"));
-        leaves.SetColor("_BaseColor", new Color(0.16f, 0.27f, 0.11f));
-        leaves.SetFloat("_Smoothness", 0.15f);
-        var bark = loadOrCreate(folder + "/M_TreeBark.mat", Shader.Find("Universal Render Pipeline/Lit"));
-        bark.SetColor("_BaseColor", new Color(0.24f, 0.17f, 0.12f));
-        bark.SetFloat("_Smoothness", 0.1f);
-        EditorUtility.SetDirty(leaves);
-        EditorUtility.SetDirty(bark);
-
-        var model = AssetDatabase.LoadAssetAtPath<GameObject>(nature(InModel));
-        var instance = (GameObject)PrefabUtility.InstantiatePrefab(model);
-        PrefabUtility.UnpackPrefabInstance(instance, PrefabUnpackMode.Completely, InteractionMode.AutomatedAction);
-        foreach (var renderer in instance.GetComponentsInChildren<Renderer>(true))
-        {
-            var materials = renderer.sharedMaterials;
-            for (int i = 0; i < materials.Length; ++i)
-            {
-                bool isLeaf = materials[i] != null && materials[i].name.ToLowerInvariant().Contains("leaf") == true;
-                materials[i] = isLeaf == true ? leaves : bark;
-            }
-
-            renderer.sharedMaterials = materials;
-        }
-
-        var prefab = PrefabUtility.SaveAsPrefabAsset(instance, path);
-        Object.DestroyImmediate(instance);
-        return prefab;
-    }
-
-    private static void buildTree(string InAddress, string InModel, float InScale)
+    private static void buildTree(string InAddress, ETreeSpecies InSpecies, int InVariant, float InScale)
     {
         var root = new GameObject(Path.GetFileName(InAddress));
-        var tree = (GameObject)PrefabUtility.InstantiatePrefab(GetRecoloredTree(InModel));
+        var tree = (GameObject)PrefabUtility.InstantiatePrefab(TreeFactory.GetTree(InSpecies, InVariant));
         PrefabUtility.UnpackPrefabInstance(tree, PrefabUnpackMode.Completely, InteractionMode.AutomatedAction);
         tree.transform.SetParent(root.transform, false);
         tree.transform.localScale = Vector3.one * InScale;
+        Object.DestroyImmediate(tree.GetComponent<FoliageInstance>());
+        Object.DestroyImmediate(tree.GetComponent<Framework.CameraOccluder>());
+        foreach (var shade in tree.GetComponentsInChildren<MeshCollider>(true))
+        {
+            Object.DestroyImmediate(shade.gameObject);
+        }
+
+        root.AddComponent<Framework.CameraOccluder>();
         setLayer(root, LayerId.Interactable);
 
         var trunk = root.AddComponent<CapsuleCollider>();
         trunk.center = new Vector3(0.0f, 1.5f, 0.0f);
         trunk.height = 3.0f;
-        trunk.radius = 0.35f;
+        trunk.radius = 0.4f;
 
-        float height = InScale * 1.4f;
+        var bounds = computeBounds(tree);
         var canopy = new GameObject("Canopy");
         canopy.transform.SetParent(root.transform, false);
-        canopy.transform.localPosition = new Vector3(0.0f, height * 0.6f, 0.0f);
+        canopy.transform.localPosition = new Vector3(0.0f, bounds.size.y * 0.6f, 0.0f);
         canopy.layer = LayerId.SunBlocker;
         var sphere = canopy.AddComponent<SphereCollider>();
         sphere.isTrigger = true;
-        sphere.radius = InScale * 0.42f;
+        sphere.radius = Mathf.Max(bounds.size.x, bounds.size.z) * 0.38f;
 
         addObstacle(root, new Vector3(0.0f, 1.0f, 0.0f), new Vector3(0.8f, 2.0f, 0.8f), true);
         saveShadedPrefab(root, InAddress);

@@ -11,9 +11,10 @@ using UnityEngine.Rendering.Universal;
 /// <summary>
 /// 오픈월드 맵(World.unity) 생성기.
 ///  - Terrain 512×512m, 높이 120m: Perlin 언덕 + TerrainSampleAssets 실측 침식 높이맵으로 가장자리 산맥 + 지역별 지형(고원/능선/호수 분지)
-///  - TerrainSampleAssets Terrain Layer 8종 / 풀·고사리·히스 Detail / TheTalesFactory 포토스캔 산악 바위
+///  - TerrainSampleAssets Terrain Layer 8종 / 풀·고사리·히스 Detail 12종(바람) / TheTalesFactory 포토스캔 산악 바위
+///  - 절차 나무 4종(가문비/활엽수/자작/고사목) + 덤불 GameObject 배치 (.Foliage), 강 + 호수 물 셰이더 (.Water)
 ///  - ASTROFISH 중세 건물로 폐허 마을, 보스 아레나 바위 고리, 트롤 능선
-///  - WeatherMaker 하늘/태양/달/구름 + 게임 낮밤과 브리지 연결
+///  - URP 절차 스카이박스 · 안개 · 반사 프로브 (.Sky) + 낮밤(DayNightManager) + 포스트 프로세싱 볼륨 (.PostFx)
 /// 지역 좌표는 SpawnTable.csv 와 같은 값을 쓴다 (WorldRegions).
 /// 채집 노드/몬스터는 런타임에 SpawnTable 로 생성되므로 여기서는 배치하지 않는다.
 /// </summary>
@@ -60,12 +61,14 @@ public static partial class WorldBuilder
         var zones = collectFlatZones();
 
         var terrain = buildTerrain(zones);
-        // Terrain Tree 는 물리 판정이 없어 그림자만 보이고 햇빛 판정에서 빠졌다 → 나무 메시 모양 그늘 콜라이더를 만든다 (Issues 26).
-        ShadeColliderUtil.BuildTreeShade(terrain, LayerId.SunBlocker, "[TreeShade]");
+        // 나무는 GameObject(절차 나무 프리팹)라 프리팹 안의 SunShade 콜라이더가 그늘 판정을 한다 (Issues 26).
+        var foliage = buildFoliage(terrain, zones);
+        buildWater(terrain);
         Volume day;
         Volume night;
         buildVolumes(out day, out night);
         var camera = buildCamera();
+        buildScreenEffects(camera.gameObject);
         var sun = buildSky(camera.GetComponent<Camera>());
         buildLandmarks(terrain);
 
@@ -76,6 +79,7 @@ public static partial class WorldBuilder
         context.NightVolume = night;
         context.Camera = camera;
         context.Terrain = terrain;
+        context.Foliage = foliage;
         var start = new GameObject("PlayerStart");
         start.transform.position = onGround(terrain, WorldRegions.StartGlade);
         context.PlayerStart = start.transform;
@@ -107,7 +111,11 @@ public static partial class WorldBuilder
         serialized.FindProperty("m_ShadowCascadeCount").intValue = 2;
         serialized.FindProperty("m_SoftShadowsSupported").boolValue = true;
         serialized.FindProperty("m_SupportsHDR").boolValue = true;
+        // 물 셰이더(Game/Water): 깊이(물 깊이·거품) + 불투명 텍스처(굴절)
+        serialized.FindProperty("m_RequireDepthTexture").boolValue = true;
+        serialized.FindProperty("m_RequireOpaqueTexture").boolValue = true;
         serialized.ApplyModifiedProperties();
+        configureRendering(asset);
         EditorUtility.SetDirty(asset);
     }
 
@@ -132,73 +140,7 @@ public static partial class WorldBuilder
         return zones;
     }
 
-    // ------------------------------------------------------------------ volumes / camera
-
-    private static void buildVolumes(out Volume OutDay, out Volume OutNight)
-    {
-        string folder = EditorPaths.Generated + "/World";
-
-        var dayProfile = createProfile(folder + "/VP_Day.asset");
-        dayProfile.Add<Tonemapping>(true).mode.Override(TonemappingMode.ACES);
-        var bloom = dayProfile.Add<Bloom>(true);
-        bloom.threshold.Override(1.1f);
-        bloom.intensity.Override(0.45f);
-        var colorDay = dayProfile.Add<ColorAdjustments>(true);
-        colorDay.postExposure.Override(0.35f);
-        colorDay.contrast.Override(10.0f);
-        colorDay.saturation.Override(6.0f);
-        dayProfile.Add<Vignette>(true).intensity.Override(0.2f);
-        saveProfile(dayProfile);
-
-        var nightProfile = createProfile(folder + "/VP_Night.asset");
-        nightProfile.Add<Tonemapping>(true).mode.Override(TonemappingMode.ACES);
-        var bloomNight = nightProfile.Add<Bloom>(true);
-        bloomNight.threshold.Override(0.8f);
-        bloomNight.intensity.Override(1.2f);
-        bloomNight.tint.Override(new Color(1.0f, 0.55f, 0.6f));
-        var colorNight = nightProfile.Add<ColorAdjustments>(true);
-        // 밤에도 지형이 보이도록 (ACES 가 어두운 영역을 많이 눌러서 노출을 높게, 대비는 낮게).
-        colorNight.postExposure.Override(1.5f);
-        colorNight.contrast.Override(4.0f);
-        colorNight.saturation.Override(-10.0f);
-        colorNight.colorFilter.Override(new Color(0.8f, 0.85f, 1.0f));
-        var vignetteNight = nightProfile.Add<Vignette>(true);
-        vignetteNight.intensity.Override(0.25f);
-        vignetteNight.color.Override(new Color(0.08f, 0.0f, 0.03f));
-        saveProfile(nightProfile);
-
-        OutDay = createVolume("Volume_Day", dayProfile, 1.0f);
-        OutNight = createVolume("Volume_Night", nightProfile, 0.0f);
-    }
-
-    private static VolumeProfile createProfile(string InPath)
-    {
-        AssetDatabase.DeleteAsset(InPath);
-        var profile = ScriptableObject.CreateInstance<VolumeProfile>();
-        AssetDatabase.CreateAsset(profile, InPath);
-        return profile;
-    }
-
-    private static void saveProfile(VolumeProfile InProfile)
-    {
-        foreach (var component in InProfile.components)
-        {
-            component.name = component.GetType().Name;
-            AssetDatabase.AddObjectToAsset(component, InProfile);
-        }
-
-        EditorUtility.SetDirty(InProfile);
-    }
-
-    private static Volume createVolume(string InName, VolumeProfile InProfile, float InWeight)
-    {
-        var go = new GameObject(InName);
-        var volume = go.AddComponent<Volume>();
-        volume.isGlobal = true;
-        volume.sharedProfile = InProfile;
-        volume.weight = InWeight;
-        return volume;
-    }
+    // ------------------------------------------------------------------ camera
 
     private static TopDownCamera buildCamera()
     {
@@ -209,13 +151,15 @@ public static partial class WorldBuilder
         camera.nearClipPlane = 0.5f;
         camera.farClipPlane = 2000.0f;
         camera.allowHDR = true;
-        // WeatherMaker 권장: 하늘/구름 패스가 그려지도록 Solid Color (0,0,0,0).
-        camera.clearFlags = CameraClearFlags.SolidColor;
-        camera.backgroundColor = new Color(0.0f, 0.0f, 0.0f, 0.0f);
+        // URP 절차 스카이박스 (WorldBuilder.Sky). 2026-10-30 WeatherMaker 제거.
+        camera.clearFlags = CameraClearFlags.Skybox;
         go.AddComponent<AudioListener>();
         var data = go.AddComponent<UniversalAdditionalCameraData>();
         data.renderPostProcessing = true;
         data.antialiasing = AntialiasingMode.SubpixelMorphologicalAntiAliasing;
+        data.antialiasingQuality = AntialiasingQuality.High;
+        // 컬러 그레이딩 · 블룸 뒤 밴딩(계단 무늬)을 줄인다.
+        data.dithering = true;
         data.renderShadows = true;
         go.transform.position = new Vector3(WorldRegions.StartGlade.x, 30.0f, WorldRegions.StartGlade.y - 20.0f);
         go.transform.rotation = Quaternion.Euler(50.0f, 45.0f, 0.0f);

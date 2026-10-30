@@ -15,6 +15,7 @@ namespace Framework.Editor
     ///  - 오른쪽: 선택한 상태의 Details (이름, 선택 규칙, Enter Conditions, Tasks, Transitions)
     ///  - Play 중: 디버그 대상 선택 → 활성 상태 강조 + 경과 시간, 블랙보드 값, 트랜지션 로그
     /// 노드 필드는 SerializedProperty 로 그리므로 Undo/Redo 가 동작한다.
+    /// 게임 에디터 코드가 StateTreeEditorExtension 을 구현하면 템플릿 · 블록 · 컨텍스트 패널 · 툴바 버튼이 추가된다 (몬스터 AI 작성 도우미).
     /// </summary>
     public class StateTreeEditorWindow : EditorWindow
     {
@@ -41,6 +42,12 @@ namespace Framework.Editor
         private Type[] EvaluatorTypes;
         private readonly List<StateTreeState> ChildBuffer = new List<StateTreeState>();
         private List<string> ValidationMessages = new List<string>();
+        private StateTreeEditorExtension Extension;
+
+        public StateTreeAsset CurrentAsset
+        {
+            get { return Asset; }
+        }
 
         [MenuItem("Window/Framework/StateTree Editor")]
         public static void Open()
@@ -52,6 +59,17 @@ namespace Framework.Editor
         {
             var window = GetWindow<StateTreeEditorWindow>("StateTree");
             window.setAsset(InAsset);
+        }
+
+        /// <summary>확장/다른 툴이 트리를 열 때.</summary>
+        public void SetAsset(StateTreeAsset InAsset)
+        {
+            if (InAsset != Asset)
+            {
+                setAsset(InAsset);
+            }
+
+            Repaint();
         }
 
         /// <summary>프로젝트 창에서 StateTree 에셋을 더블클릭하면 이 창으로 연다.</summary>
@@ -77,12 +95,24 @@ namespace Framework.Editor
             EvaluatorTypes = collectTypes(typeof(StateTreeEvaluator));
             collectEventEnum();
             Undo.undoRedoPerformed += Repaint;
+
+            var extensionType = collectTypes(typeof(StateTreeEditorExtension)).FirstOrDefault();
+            Extension = extensionType != null ? (StateTreeEditorExtension)Activator.CreateInstance(extensionType) : null;
+            if (Extension != null)
+            {
+                Extension.OnEnable(this);
+            }
         }
 
         private void OnDisable()
         {
             Undo.undoRedoPerformed -= Repaint;
+            if (Extension != null)
+            {
+                Extension.OnDisable(this);
+            }
         }
+
 
         private void OnInspectorUpdate()
         {
@@ -105,6 +135,12 @@ namespace Framework.Editor
         private void OnGUI()
         {
             drawToolbar();
+            drawTreeEditor();
+        }
+
+        /// <summary>트리 뷰 + Details (+ Play 디버그).</summary>
+        private void drawTreeEditor()
+        {
             if (Asset == null)
             {
                 EditorGUILayout.HelpBox("StateTree 에셋을 선택하거나 New 로 만드세요.\n기본 몬스터 트리: Game > AI > Create Default Monster StateTrees", MessageType.Info);
@@ -150,9 +186,9 @@ namespace Framework.Editor
                 setAsset(picked);
             }
 
-            if (GUILayout.Button("New", EditorStyles.toolbarButton, GUILayout.Width(45.0f)) == true)
+            if (GUILayout.Button("New ▾", EditorStyles.toolbarDropDown, GUILayout.Width(55.0f)) == true)
             {
-                createNew();
+                showNewMenu();
             }
 
             using (new EditorGUI.DisabledScope(Asset == null))
@@ -179,6 +215,11 @@ namespace Framework.Editor
             }
 
             GUILayout.FlexibleSpace();
+            if (Extension != null)
+            {
+                Extension.DrawToolbar(this, Asset);
+            }
+
             drawDebugPicker();
             EditorGUILayout.EndHorizontal();
 
@@ -242,6 +283,11 @@ namespace Framework.Editor
             if (string.IsNullOrEmpty(Asset.Description) == false)
             {
                 EditorGUILayout.LabelField(Asset.Description, EditorStyles.wordWrappedMiniLabel);
+            }
+
+            if (Extension != null)
+            {
+                Extension.DrawContext(this, Asset);
             }
 
             EditorGUILayout.Space(4.0f);
@@ -380,6 +426,52 @@ namespace Framework.Editor
 
                 EditorGUILayout.EndHorizontal();
             }
+
+            if (Extension != null && Extension.BlockNames.Count > 0)
+            {
+                if (GUILayout.Button(selected != null ? $"+ 블록 → '{selected.Name}' 아래" : "+ 블록 → 루트") == true)
+                {
+                    showBlockMenu(selected != null ? selected.Id : 0);
+                }
+            }
+        }
+
+        /// <summary>확장이 제공하는 상태 묶음을 InParentId 아래에 넣는다 (Undo 가능).</summary>
+        private void showBlockMenu(int InParentId)
+        {
+            var menu = new GenericMenu();
+            var names = Extension.BlockNames;
+            for (int i = 0; i < names.Count; ++i)
+            {
+                int index = i;
+                menu.AddItem(new GUIContent(names[i]), false, () =>
+                {
+                    Undo.RecordObject(Asset, "Add StateTree Block");
+                    Extension.AddBlock(Asset, InParentId, index);
+                    EditorUtility.SetDirty(Asset);
+                    Serialized.Update();
+                    Repaint();
+                });
+            }
+
+            menu.ShowAsContext();
+        }
+
+        private void showNewMenu()
+        {
+            var menu = new GenericMenu();
+            menu.AddItem(new GUIContent("빈 트리"), false, () => createNew(-1));
+            if (Extension != null)
+            {
+                var names = Extension.TemplateNames;
+                for (int i = 0; i < names.Count; ++i)
+                {
+                    int index = i;
+                    menu.AddItem(new GUIContent("템플릿/" + names[i]), false, () => createNew(index));
+                }
+            }
+
+            menu.ShowAsContext();
         }
 
         // ------------------------------------------------------------------ details
@@ -624,7 +716,7 @@ namespace Framework.Editor
 
         // ------------------------------------------------------------------ structural edits
 
-        private void createNew()
+        private void createNew(int InTemplate)
         {
             string folder = Asset != null ? System.IO.Path.GetDirectoryName(AssetDatabase.GetAssetPath(Asset)).Replace('\\', '/') : "Assets";
             string path = EditorUtility.SaveFilePanelInProject("New StateTree", "ST_New", "asset", "StateTree 저장 위치", folder);
@@ -633,8 +725,13 @@ namespace Framework.Editor
                 return;
             }
 
-            var asset = CreateInstance<StateTreeAsset>();
-            asset.AddState("Root", 0);
+            var asset = InTemplate >= 0 && Extension != null ? Extension.CreateTemplate(InTemplate) : null;
+            if (asset == null)
+            {
+                asset = CreateInstance<StateTreeAsset>();
+                asset.AddState("Root", 0);
+            }
+
             AssetDatabase.CreateAsset(asset, path);
             AssetDatabase.SaveAssets();
             setAsset(asset);

@@ -129,3 +129,49 @@ Tab inventory | K craft | B build | P shop | ` cheats | F8 balance meter | Wheel
 4008,Stone Wall (Door)
 4009,Stone Wall (Window)
 4010,Stone Pillar
+1006,New Monster
+50,Quest
+51,Quest complete:
+52,New quest:
+53,All quests complete!
+54,Nearest
+55,"V BLOOD CLAIMED
+<size=26>The Minotaur Warlord has fallen. Demo complete - thanks for playing!</size>"
+56,Reward:
+57,Tutorial
+58,The Hunt
+59,V Blood
+7001,Awakening
+7101,You wake from a long slumber. Walk around with WASD to stretch your legs.
+7002,Taste of Steel
+7102,Click the Left Mouse button to swing your weapon. Click in rhythm to chain a combo.
+7003,Weapon Arts
+7103,Use your weapon skill. Q and E change with the weapon you wield.
+7004,Veil of Blood
+7104,Dash with Veil of Blood. Attacks pass through you while dashing.
+7005,Blood Magic
+7105,Cast Chaos Volley. Hitting an Ignited enemy again makes it explode.
+7006,The Merchant
+7106,Talk to the Wandering Merchant beside the camp (or press P) and take any item. Everything is free.
+7007,Gatherer
+7107,Strike trees, rocks or bushes with your weapon to gather 10 resources.
+7008,Handiwork
+7108,Open the crafting menu and make anything. Cloth armor only needs Plant Fiber.
+7009,Dressed for the Night
+7109,Open the inventory and equip a chest armor (Cloth Robe or Reinforced Chest).
+7010,A Castle of Your Own
+7110,Open the build menu and place a Castle Heart (20 Lumber, 20 Stone).
+7011,A Place to Rest
+7111,Build a Coffin near your Castle Heart. You will rise there when you die.
+7012,First Hunt
+7112,Medusa Sentinels lurk just north of the camp. Slay 3 of them.
+7013,The Feeding
+7113,Bring an enemy below 25% health, then drink its blood. Blood grants lasting buffs.
+7014,Serpents
+7114,Cobra Snakes shoot from afar in the Ruined Hamlet and the Serpent Marsh. Slay 3.
+7015,Copper Age
+7115,Stronger foes await. Craft copper gear at a Workbench (or take it from the merchant) and reach Gear Level 16.
+7016,Troll Ridge
+7116,Cave Trolls roam Troll Ridge far to the north. Beware their charge. Slay 3.
+7017,V Blood: Minotaur Warlord
+7117,The Minotaur Warlord rules the arena in the north-east. Defeat it - feed on it to claim its V Blood.

@@ -37,6 +37,8 @@ public class AbilityRow : ITableRow
     /// <summary>V Rising 의 "Consume": 맞은 대상이 이 태그를 가지고 있으면 그 상태를 지우고 HitEffects 대신 ConsumeEffects 를 건다.</summary>
     public ETag ConsumeTag = ETag.None;
     public int[] ConsumeEffects;
+    /// <summary>Type=Graph 일 때 실행할 AbilityGraphAsset (AssetTable Index, Kind=Data). 다른 타입은 0.</summary>
+    public int Graph;
 
     /// <summary>InStep 번째 애니메이션 Index (단계 수보다 크면 순환, 없으면 0).</summary>
     public int GetAnim(int InStep)

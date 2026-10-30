@@ -16,6 +16,7 @@ namespace Framework
     /// 2) 비동기 로드는 "요청자(Owner)" 를 함께 받는다. 로드가 끝났을 때 요청자가 이미 파괴됐으면
     ///    결과를 넘기지 않고 즉시 참조를 반납한다. 파괴된 오브젝트에 결과를 꽂는 댕글링 참조를 막기 위함이다.
     /// 3) 로드 직후 바로 써야 하는(같은 프레임에 반드시 존재해야 하는) 경우는 LoadSync 를 쓴다.
+    /// 4) 모든 로드 · 참조 · 해제 · 동기 대기는 AssetTracker 에 보고된다 (의존성 툴 / 의존성 테스트 기록).
     ///    → 자세한 배경은 Documentation/VRising/Issues.md 의 "비동기 로드 레이스" 항목.
     /// </summary>
     public class AssetLoader : IManager
@@ -30,6 +31,7 @@ namespace Framework
 
         void IManager.Initialize()
         {
+            AssetTracker.Reset();
         }
 
         void IManager.UnInitialize()
@@ -68,7 +70,7 @@ namespace Framework
                 return null;
             }
 
-            var entry = acquire<T>(InAddress);
+            var entry = acquire<T>(InAddress, null);
             if (entry == null)
             {
                 return null;
@@ -76,7 +78,10 @@ namespace Framework
 
             if (entry.Handle.IsDone == false)
             {
+                // 동기 대기는 프레임 히치가 되므로 시간을 기록한다 (의존성 툴 · 테스트가 읽음).
+                var watch = System.Diagnostics.Stopwatch.StartNew();
                 entry.Handle.WaitForCompletion();
+                AssetTracker.ReportSyncWait(makeKey<T>(InAddress), (float)watch.Elapsed.TotalMilliseconds);
             }
 
             return getResult<T>(InAddress, entry);
@@ -94,7 +99,7 @@ namespace Framework
             }
 
             bool hasOwner = InOwner != null;
-            var entry = acquire<T>(InAddress);
+            var entry = acquire<T>(InAddress, InOwner);
             if (entry == null)
             {
                 return null;
@@ -138,6 +143,7 @@ namespace Framework
             }
 
             entry.RefCount -= 1;
+            AssetTracker.ReportRelease(key, entry.RefCount);
             if (entry.RefCount > 0)
             {
                 return;
@@ -168,13 +174,14 @@ namespace Framework
             return ((long)HashUtil.Fnv1a(InAddress) << 32) | (uint)HashUtil.Fnv1a(typeof(T).Name);
         }
 
-        private Entry acquire<T>(string InAddress) where T : Object
+        private Entry acquire<T>(string InAddress, Object InOwner) where T : Object
         {
             long key = makeKey<T>(InAddress);
             Entry entry;
             if (Entries.TryGetValue(key, out entry) == true)
             {
                 entry.RefCount += 1;
+                AssetTracker.ReportAddRef(key, InAddress, typeof(T), entry.RefCount, InOwner);
                 return entry;
             }
 
@@ -193,12 +200,15 @@ namespace Framework
             entry.Handle = handle;
             entry.RefCount = 1;
             Entries.Add(key, entry);
+            AssetTracker.ReportLoadStart(key, InAddress, typeof(T), InOwner);
             return entry;
         }
 
         private T getResult<T>(string InAddress, Entry InEntry) where T : Object
         {
-            if (InEntry.Handle.Status != AsyncOperationStatus.Succeeded)
+            bool succeeded = InEntry.Handle.Status == AsyncOperationStatus.Succeeded;
+            AssetTracker.ReportLoaded(makeKey<T>(InAddress), succeeded);
+            if (succeeded == false)
             {
                 Log.Error($"AssetLoader: '{InAddress}' failed. {InEntry.Handle.OperationException}");
                 Release<T>(InAddress);

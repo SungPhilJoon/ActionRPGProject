@@ -33,3 +33,4 @@ Index,Value,#Memo
 32,0.3,ConsumeMinAgeSeconds (consume only statuses applied at least this long ago)
 33,11,BuildAnim (AnimationTable Index)
 34,4,InteractAnim (AnimationTable Index)
+35,1,FirstQuestId (게임 시작 시 첫 퀘스트 QuestTable Index. 0 = 퀘스트 없음)

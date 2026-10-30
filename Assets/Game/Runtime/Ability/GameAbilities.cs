@@ -3,6 +3,9 @@ using Framework;
 using Framework.Ability;
 using UnityEngine;
 
+// 각 구현이 AbilityTable 컬럼을 쓰는 의미와 타이밍은 GAS Tool 의 AbilityGuide(Game/Editor/Tools/GasTool)가
+// 툴 화면에 그대로 보여준다. 여기서 컬럼 의미나 타이밍을 바꾸면 AbilityGuide 도 같이 고친다.
+
 /// <summary>
 /// 근접 콤보 (평타).
 /// 컬럼: CastTime = 타격 시점, MoveLock = 동작 길이, Range/Angle = 부채꼴, Count = 콤보 단계 수, ComboWindow = 다음 단계 입력 유예.
@@ -301,7 +304,7 @@ public class FeedAbility : GameAbility
             return;
         }
 
-        Actor.Asc.Tags.AddTag((int)ETag.State_Feeding);
+        Actor.AddTag((int)ETag.State_Feeding);
         Actor.Motor.Face(Victim.transform.position - Actor.transform.position, true);
         Victim.ApplyEffect(EffectLibrary.FeedStunEffectId, Actor, Row.Index);
         PlayAnim(Row.GetAnim(0));
@@ -342,7 +345,7 @@ public class FeedAbility : GameAbility
 
     protected override void OnEnd(bool InWasCancelled)
     {
-        Actor.Asc.Tags.RemoveTag((int)ETag.State_Feeding);
+        Actor.RemoveTag((int)ETag.State_Feeding);
         if (Victim != null && Victim.IsDead == false)
         {
             Victim.Asc.RemoveEffectsByDefId(EffectLibrary.FeedStunEffectId);

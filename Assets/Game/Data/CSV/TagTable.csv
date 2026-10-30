@@ -41,3 +41,4 @@ State_Debuff_Stun_Frozen,State_Debuff_Stun
 State_Debuff_Static,State_Debuff
 State_Debuff_Condemn,State_Debuff
 State_Debuff_Weaken,State_Debuff
+State_Buff_Guard,State_Buff

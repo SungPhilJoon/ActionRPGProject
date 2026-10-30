@@ -1,0 +1,241 @@
+{
+    "Scenario": "UI_OpenCloseWindows",
+    "Description": "인벤토리 · 제작 · 건축 · 상점 · 치트 · 밸런스 창을 열고 닫기 (아이콘 스프라이트 로드)",
+    "StartedAt": "2026-10-30 00:03:03",
+    "DurationSeconds": 0.9629325866699219,
+    "Repeat": 3,
+    "ExpectsCleanup": true,
+    "LoadEvents": 105,
+    "ReleaseEvents": 0,
+    "SyncWaits": 0,
+    "SyncWaitMilliseconds": 0.0,
+    "LiveBefore": 100,
+    "LiveAfter": 100,
+    "Failures": [],
+    "Assets": [
+        {
+            "Address": "Icons/Banner",
+            "Type": "Sprite",
+            "Loads": 3,
+            "Releases": 0,
+            "RefCountBefore": 1,
+            "RefCountAfter": 4,
+            "LoadMilliseconds": 0.0,
+            "SyncWaitMilliseconds": 0.0,
+            "Failed": false,
+            "Owners": [
+                "UI_OpenCloseWindows"
+            ]
+        },
+        {
+            "Address": "Icons/Barrel",
+            "Type": "Sprite",
+            "Loads": 6,
+            "Releases": 0,
+            "RefCountBefore": 1,
+            "RefCountAfter": 7,
+            "LoadMilliseconds": 0.0,
+            "SyncWaitMilliseconds": 0.0,
+            "Failed": false,
+            "Owners": [
+                "UI_OpenCloseWindows"
+            ]
+        },
+        {
+            "Address": "Icons/CastleHeart",
+            "Type": "Sprite",
+            "Loads": 3,
+            "Releases": 0,
+            "RefCountBefore": 1,
+            "RefCountAfter": 4,
+            "LoadMilliseconds": 0.0,
+            "SyncWaitMilliseconds": 0.0,
+            "Failed": false,
+            "Owners": [
+                "UI_OpenCloseWindows"
+            ]
+        },
+        {
+            "Address": "Icons/Chest",
+            "Type": "Sprite",
+            "Loads": 15,
+            "Releases": 0,
+            "RefCountBefore": 1,
+            "RefCountAfter": 16,
+            "LoadMilliseconds": 0.0,
+            "SyncWaitMilliseconds": 0.0,
+            "Failed": false,
+            "Owners": [
+                "UI_OpenCloseWindows"
+            ]
+        },
+        {
+            "Address": "Icons/Coin",
+            "Type": "Sprite",
+            "Loads": 6,
+            "Releases": 0,
+            "RefCountBefore": 1,
+            "RefCountAfter": 7,
+            "LoadMilliseconds": 0.0,
+            "SyncWaitMilliseconds": 0.0,
+            "Failed": false,
+            "Owners": [
+                "UI_OpenCloseWindows"
+            ]
+        },
+        {
+            "Address": "Icons/CopperOre",
+            "Type": "Sprite",
+            "Loads": 3,
+            "Releases": 0,
+            "RefCountBefore": 1,
+            "RefCountAfter": 4,
+            "LoadMilliseconds": 0.0,
+            "SyncWaitMilliseconds": 0.0,
+            "Failed": false,
+            "Owners": [
+                "UI_OpenCloseWindows"
+            ]
+        },
+        {
+            "Address": "Icons/Floor",
+            "Type": "Sprite",
+            "Loads": 3,
+            "Releases": 0,
+            "RefCountBefore": 1,
+            "RefCountAfter": 4,
+            "LoadMilliseconds": 0.0,
+            "SyncWaitMilliseconds": 0.0,
+            "Failed": false,
+            "Owners": [
+                "UI_OpenCloseWindows"
+            ]
+        },
+        {
+            "Address": "Icons/Lumber",
+            "Type": "Sprite",
+            "Loads": 6,
+            "Releases": 0,
+            "RefCountBefore": 1,
+            "RefCountAfter": 7,
+            "LoadMilliseconds": 0.0,
+            "SyncWaitMilliseconds": 0.0,
+            "Failed": false,
+            "Owners": [
+                "UI_OpenCloseWindows"
+            ]
+        },
+        {
+            "Address": "Icons/PlantFiber",
+            "Type": "Sprite",
+            "Loads": 6,
+            "Releases": 0,
+            "RefCountBefore": 1,
+            "RefCountAfter": 7,
+            "LoadMilliseconds": 0.0,
+            "SyncWaitMilliseconds": 0.0,
+            "Failed": false,
+            "Owners": [
+                "UI_OpenCloseWindows"
+            ]
+        },
+        {
+            "Address": "Icons/Potion",
+            "Type": "Sprite",
+            "Loads": 12,
+            "Releases": 0,
+            "RefCountBefore": 1,
+            "RefCountAfter": 13,
+            "LoadMilliseconds": 0.0,
+            "SyncWaitMilliseconds": 0.0,
+            "Failed": false,
+            "Owners": [
+                "UI_OpenCloseWindows"
+            ]
+        },
+        {
+            "Address": "Icons/Shield",
+            "Type": "Sprite",
+            "Loads": 12,
+            "Releases": 0,
+            "RefCountBefore": 1,
+            "RefCountAfter": 13,
+            "LoadMilliseconds": 0.0,
+            "SyncWaitMilliseconds": 0.0,
+            "Failed": false,
+            "Owners": [
+                "UI_OpenCloseWindows"
+            ]
+        },
+        {
+            "Address": "Icons/Spear",
+            "Type": "Sprite",
+            "Loads": 6,
+            "Releases": 0,
+            "RefCountBefore": 1,
+            "RefCountAfter": 7,
+            "LoadMilliseconds": 0.0,
+            "SyncWaitMilliseconds": 0.0,
+            "Failed": false,
+            "Owners": [
+                "UI_OpenCloseWindows"
+            ]
+        },
+        {
+            "Address": "Icons/Stone",
+            "Type": "Sprite",
+            "Loads": 3,
+            "Releases": 0,
+            "RefCountBefore": 1,
+            "RefCountAfter": 4,
+            "LoadMilliseconds": 0.0,
+            "SyncWaitMilliseconds": 0.0,
+            "Failed": false,
+            "Owners": [
+                "UI_OpenCloseWindows"
+            ]
+        },
+        {
+            "Address": "Icons/Sword",
+            "Type": "Sprite",
+            "Loads": 6,
+            "Releases": 0,
+            "RefCountBefore": 1,
+            "RefCountAfter": 7,
+            "LoadMilliseconds": 0.0,
+            "SyncWaitMilliseconds": 0.0,
+            "Failed": false,
+            "Owners": [
+                "UI_OpenCloseWindows"
+            ]
+        },
+        {
+            "Address": "Icons/Wall",
+            "Type": "Sprite",
+            "Loads": 12,
+            "Releases": 0,
+            "RefCountBefore": 1,
+            "RefCountAfter": 13,
+            "LoadMilliseconds": 0.0,
+            "SyncWaitMilliseconds": 0.0,
+            "Failed": false,
+            "Owners": [
+                "UI_OpenCloseWindows"
+            ]
+        },
+        {
+            "Address": "Icons/Workbench",
+            "Type": "Sprite",
+            "Loads": 3,
+            "Releases": 0,
+            "RefCountBefore": 1,
+            "RefCountAfter": 4,
+            "LoadMilliseconds": 0.0,
+            "SyncWaitMilliseconds": 0.0,
+            "Failed": false,
+            "Owners": [
+                "UI_OpenCloseWindows"
+            ]
+        }
+    ]
+}
