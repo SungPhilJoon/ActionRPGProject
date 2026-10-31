@@ -109,7 +109,8 @@ public static partial class UIPrefabBuilder
     private static void buildClock(HudWindow InHud, RectTransform InRoot)
     {
         var frame = UIFactory.CreateWindowFrame(InRoot, "Clock");
-        UIFactory.Place(frame, new Vector2(1.0f, 1.0f), new Vector2(-20.0f, -20.0f), new Vector2(270.0f, 80.0f));
+        // 오른쪽 위 미니맵(MinimapWindow, 270 x 270) 바로 아래.
+        UIFactory.Place(frame, new Vector2(1.0f, 1.0f), new Vector2(-20.0f, -298.0f), new Vector2(270.0f, 80.0f));
         InHud.ClockLabel = UIFactory.CreateText(frame, "Label", string.Empty, 20.0f, TextAlignmentOptions.Center);
         UIFactory.Place(InHud.ClockLabel, new Vector2(0.5f, 1.0f), new Vector2(0.0f, -10.0f), new Vector2(240.0f, 30.0f));
         InHud.ClockBar = UIFactory.CreateBar(frame, "Progress", new Color(0.95f, 0.75f, 0.35f), UIUtil.BarBackColor);
@@ -117,11 +118,11 @@ public static partial class UIPrefabBuilder
         InHud.ClockBar.Label.text = string.Empty;
     }
 
-    /// <summary>퀘스트 추적기: 시계 아래 오른쪽. 묶음 이름 · 제목([키]) · 설명(+보상) · 진행도(+가장 가까운 대상 거리).</summary>
+    /// <summary>퀘스트 추적기: 미니맵 · 시계 아래 오른쪽. 묶음 이름 · 제목([키]) · 설명(+보상) · 진행도(+가장 가까운 대상 거리).</summary>
     private static void buildQuest(HudWindow InHud, RectTransform InRoot)
     {
         var frame = UIFactory.CreateWindowFrame(InRoot, "Quest");
-        UIFactory.Place(frame, new Vector2(1.0f, 1.0f), new Vector2(-20.0f, -112.0f), new Vector2(400.0f, 190.0f));
+        UIFactory.Place(frame, new Vector2(1.0f, 1.0f), new Vector2(-20.0f, -386.0f), new Vector2(400.0f, 190.0f));
         InHud.QuestRoot = frame;
 
         InHud.QuestChapter = UIFactory.CreateText(frame, "Chapter", string.Empty, 15.0f, TextAlignmentOptions.TopLeft);

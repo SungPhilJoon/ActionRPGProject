@@ -11,7 +11,7 @@ Index,NameId,DescId,Type,Slot,AbilityTags,CastTime,Cooldown,Range,Radius,Angle,S
 302,3302,0,AreaBurst,Spell2,Ability_Spell,1.2,12,0,4,0,0,1,0,75,Spell,80,91,3,23,2,0,0,#B0102A,0,0,90,None,
 401,3401,0,AreaBurst,Ultimate,Ability_Ultimate,0.5,40,12,5,0,0,5,0.4,70,Spell,12|80,,3,12,2,0,0,#D02040,0,0.5,,None,
 701,3701,0,Feed,Feed,Ability_Feed,0,1,2.5,0,0,0,1,0,0,Physical,,,4,9,0,0,0,#400008,0,0,,None,
-501,3501,0,MeleeCombo,Primary,Ability_Monster,0.45,1.2,2.2,0,100,0,1,0,100,Physical,84,,1,1,2,0,0,#555555,0,0.9,,None,
+501,3501,0,MeleeCombo,Primary,Ability_Monster,0.45,1.2,2.2,0,100,0,1,0,100,Physical,84,,15,1,2,0,0,#555555,0,0.9,,None,
 502,3502,0,Projectile,Primary,Ability_Monster,0.5,1.6,14,0.4,0,22,1,0,90,Physical,89,,3,0,2,122,0,#555555,0,0.8,,None,
 503,3503,0,MeleeCombo,Primary,Ability_Monster,0.55,1.5,2.6,0,120,0,1,0,110,Physical,88,,1,1,2,0,0,#555555,0,1.0,,None,
 504,3504,0,Dash,WeaponQ,Ability_Monster,0.45,9,8,1.4,0,0,1,0,120,Physical,11,,8,4,2,0,0,#555555,0,0,,None,

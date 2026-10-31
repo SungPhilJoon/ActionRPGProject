@@ -7,13 +7,15 @@ using UnityEngine.InputSystem;
 /// 게임 코드는 EInputAction(int) 으로만 입력을 조회하고, 키 변경은 CSV 수정으로 끝난다.
 ///  - Binding1/Binding2: 컨트롤 경로 (예: &lt;Keyboard&gt;/q)
 ///  - Composite 가 있으면 Binding1 을 ';' 로 나눠 composite 파트(up;down;left;right)로 쓴다.
+///  - Map: 액션이 속한 입력 맵 (EInputMap). 맵마다 InputActionMap 을 따로 만들어 통째로 켜고 끈다.
+///    UI 창이 열리면 GameBootstrap 이 Combat 맵을 꺼서 어빌리티 · 카메라 줌/회전이 반응하지 않는다. 꺼진 맵의 액션은 눌림 · 값이 모두 0 이다.
 /// </summary>
 public class GameInput : IManager
 {
     private const char PartSeparator = ';';
     private static readonly string[] Vector2Parts = { "up", "down", "left", "right" };
 
-    private InputActionMap Map;
+    private readonly InputActionMap[] Maps = new InputActionMap[(int)EInputMap.Count];
     private readonly InputAction[] Actions = new InputAction[(int)EInputAction.Count];
 
     /// <summary>텍스트 입력 중(치트 콘솔)이면 게임 입력을 막는다.</summary>
@@ -21,28 +23,63 @@ public class GameInput : IManager
 
     void IManager.Initialize()
     {
-        Map = new InputActionMap("Gameplay");
+        for (int i = 0; i < Maps.Length; ++i)
+        {
+            Maps[i] = new InputActionMap(((EInputMap)i).ToString());
+        }
+
         var rows = Tables.Root.Input.All;
         for (int i = 0; i < rows.Count; ++i)
         {
             createAction(rows[i]);
         }
 
-        Map.Enable();
+        for (int i = 0; i < Maps.Length; ++i)
+        {
+            Maps[i].Enable();
+        }
     }
 
     void IManager.UnInitialize()
     {
-        if (Map != null)
+        for (int i = 0; i < Maps.Length; ++i)
         {
-            Map.Disable();
-            Map.Dispose();
-            Map = null;
+            if (Maps[i] != null)
+            {
+                Maps[i].Disable();
+                Maps[i].Dispose();
+                Maps[i] = null;
+            }
         }
     }
 
     void IManager.Update(float InDeltaTime)
     {
+    }
+
+    public bool IsMapEnabled(EInputMap InMap)
+    {
+        var map = Maps[(int)InMap];
+        return map != null && map.enabled == true;
+    }
+
+    /// <summary>InMap 맵을 켜거나 끈다. 이미 그 상태면 아무것도 하지 않는다 (매 프레임 호출해도 된다).</summary>
+    public void SetMapEnabled(EInputMap InMap, bool InEnabled)
+    {
+        var map = Maps[(int)InMap];
+        if (map == null || map.enabled == InEnabled)
+        {
+            return;
+        }
+
+        if (InEnabled == true)
+        {
+            map.Enable();
+        }
+        else
+        {
+            map.Disable();
+        }
     }
 
     public bool Pressed(EInputAction InAction)
@@ -125,7 +162,8 @@ public class GameInput : IManager
         InputActionType type = isVector == true || isAxis == true ? InputActionType.Value : InputActionType.Button;
         string controlType = isVector == true ? "Vector2" : (isAxis == true ? "Axis" : null);
 
-        var action = Map.AddAction(InRow.Index.ToString(), type, null, null, null, null, controlType);
+        var map = Maps[(int)InRow.Map];
+        var action = map.AddAction(InRow.Index.ToString(), type, null, null, null, null, controlType);
         if (string.IsNullOrEmpty(InRow.Composite) == false)
         {
             var parts = InRow.Binding1.Split(PartSeparator);

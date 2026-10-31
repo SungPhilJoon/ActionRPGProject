@@ -130,7 +130,15 @@ public class QuestManager : IManager
     /// <summary>현재 목표가 특정 몬스터를 노릴 때, 가장 가까운 살아 있는 대상까지의 거리 (HUD 안내용).</summary>
     public bool TryGetNearestTarget(Vector3 InFrom, out float OutDistance)
     {
+        Vector3 position;
+        return TryGetNearestTarget(InFrom, out position, out OutDistance);
+    }
+
+    /// <summary>위와 같고 대상 위치도 준다 (지도 퀘스트 표식).</summary>
+    public bool TryGetNearestTarget(Vector3 InFrom, out Vector3 OutPosition, out float OutDistance)
+    {
         OutDistance = 0.0f;
+        OutPosition = Vector3.zero;
         if (Current == null || IsCompleted == true)
         {
             return false;
@@ -162,6 +170,7 @@ public class QuestManager : IManager
             if (distance < best)
             {
                 best = distance;
+                OutPosition = actor.transform.position;
             }
         }
 
@@ -172,6 +181,112 @@ public class QuestManager : IManager
 
         OutDistance = best;
         return true;
+    }
+
+    /// <summary>
+    /// 퀘스트를 진행하러 갈 곳 (미니맵 · 월드맵 가이드, HUD 거리). 위치가 의미 없는 목표(이동 · 어빌리티 · 제작 · 장비 · 기어 · 성 심장)는 false.
+    ///  - 처치 · 흡혈: 가장 가까운 살아 있는 대상 → 없으면(리스폰 대기) 그 몬스터가 나오는 SpawnTable 지점
+    ///  - 상점: 가장 가까운 상인 (MapMarkers) → 없으면 SpawnTable 상인 지점
+    ///  - 채집: 목표 아이템을 떨구는 채집 노드의 SpawnTable 지점 중 가장 가까운 곳
+    ///  - 관 등 성 건축물(성 심장 제외): 성 심장 근처에만 지을 수 있으므로 지어 둔 성
+    /// </summary>
+    public bool TryGetGuidePosition(Vector3 InFrom, out Vector3 OutPosition)
+    {
+        OutPosition = Vector3.zero;
+        if (Current == null || IsCompleted == true)
+        {
+            return false;
+        }
+
+        float distance;
+        switch (Current.Objective)
+        {
+            case EQuestObjective.Kill:
+            case EQuestObjective.Feed:
+                if (TryGetNearestTarget(InFrom, out OutPosition, out distance) == true)
+                {
+                    return true;
+                }
+
+                return findNearestSpawn(InFrom, ESpawnKind.Monster, out OutPosition);
+            case EQuestObjective.Buy:
+                if (findNearestMarker(InFrom, EMapMarker.Merchant, out OutPosition) == true)
+                {
+                    return true;
+                }
+
+                return findNearestSpawn(InFrom, ESpawnKind.Merchant, out OutPosition);
+            case EQuestObjective.Gather:
+                return findNearestSpawn(InFrom, ESpawnKind.Resource, out OutPosition);
+            case EQuestObjective.Build:
+                StructureRow structure;
+                bool needsHeart = Tables.Root.Structure.TryGet(Current.Target, out structure) == true && structure.RequiresHeart == true;
+                return needsHeart == true && findNearestMarker(InFrom, EMapMarker.Castle, out OutPosition) == true;
+            default:
+                return false;
+        }
+    }
+
+    private static bool findNearestMarker(Vector3 InFrom, EMapMarker InKind, out Vector3 OutPosition)
+    {
+        OutPosition = Vector3.zero;
+        float best = float.MaxValue;
+        var entries = MapMarkers.All;
+        for (int i = 0; i < entries.Count; ++i)
+        {
+            if (entries[i].Kind != InKind || entries[i].Target == null)
+            {
+                continue;
+            }
+
+            float distance = Vector3.Distance(InFrom, entries[i].Target.position);
+            if (distance < best)
+            {
+                best = distance;
+                OutPosition = entries[i].Target.position;
+            }
+        }
+
+        return best != float.MaxValue;
+    }
+
+    /// <summary>InKind 지점 중 현재 목표와 맞는 가장 가까운 곳 (몬스터 = 캐릭터, 채집 = 노드가 떨구는 아이템).</summary>
+    private bool findNearestSpawn(Vector3 InFrom, ESpawnKind InKind, out Vector3 OutPosition)
+    {
+        OutPosition = Vector3.zero;
+        float best = float.MaxValue;
+        var rows = Tables.Root.Spawn.All;
+        for (int i = 0; i < rows.Count; ++i)
+        {
+            var row = rows[i];
+            if (row.Kind != InKind || matchesSpawn(row) == false)
+            {
+                continue;
+            }
+
+            float distance = Vector3.Distance(InFrom, row.Position);
+            if (distance < best)
+            {
+                best = distance;
+                OutPosition = row.Position;
+            }
+        }
+
+        return best != float.MaxValue;
+    }
+
+    private bool matchesSpawn(SpawnRow InRow)
+    {
+        switch (InRow.Kind)
+        {
+            case ESpawnKind.Monster:
+                return matchesTarget(InRow.RefId);
+            case ESpawnKind.Resource:
+                ResourceNodeRow node;
+                return Tables.Root.ResourceNode.TryGet(InRow.RefId, out node) == true && matchesTarget(node.DropItem);
+            default:
+                return true;
+        }
     }
 
     // ------------------------------------------------------------------ flow

@@ -343,6 +343,8 @@ public enum EUIAsset
     ItemSlot = 412,
     WorldHealthBar = 413,
     DamageNumber = 414,
+    MinimapWindow = 415,
+    WorldMapWindow = 416,
 }
 
 /// <summary>몬스터 StateTree 블랙보드 키 (MonsterPerceptionEvaluator 가 채운다).</summary>
@@ -394,7 +396,34 @@ public enum EInputAction
     BalanceOverlay = 19,
     RotateStructure = 20,
     Submit = 21,
-    Count = 22,
+    WorldMap = 22,
+    Count = 23,
+}
+
+/// <summary>
+/// 입력 맵 (InputTable.Map). GameInput 이 맵마다 InputActionMap 을 따로 만들고 켜고 끈다.
+///  - System: 창 열기 · 닫기 · 콘솔 · 포인터 — 항상 켜짐
+///  - Movement: 이동 — 텍스트 입력 중에만 막힘
+///  - Combat: 어빌리티 · 상호작용 · 카메라 줌/회전 · 건축 회전 — 입력을 막는 창(BlocksGameInput)이 열려 있으면 꺼짐
+/// </summary>
+public enum EInputMap
+{
+    System = 0,
+    Movement = 1,
+    Combat = 2,
+    Count = 3,
+}
+
+/// <summary>지도 표식 종류 (MapView 의 스프라이트 · 색 · 크기 배열 인덱스).</summary>
+public enum EMapMarker
+{
+    Player = 0,
+    Monster = 1,
+    Boss = 2,
+    Merchant = 3,
+    Castle = 4,
+    Quest = 5,
+    Count = 6,
 }
 
 /// <summary>ConstTable.csv 의 인덱스.</summary>
@@ -438,6 +467,8 @@ public enum EConst
     InteractAnim = 34,
     /// <summary>게임 시작 시 받는 첫 퀘스트 (QuestTable Index). 0 이면 퀘스트 없음.</summary>
     FirstQuestId = 35,
+    /// <summary>미니맵이 보여 주는 반경 (m).</summary>
+    MinimapRadius = 36,
 }
 
 /// <summary>StringTable.csv 의 고정 UI 문자열 인덱스. 데이터 행(아이템 이름 등)은 각 테이블의 NameId 로 참조한다.</summary>
@@ -491,12 +522,16 @@ public enum EText
     QuestComplete = 51,
     QuestNew = 52,
     QuestAllComplete = 53,
-    QuestNearest = 54,
+    QuestDistance = 54,
     QuestVictory = 55,
     QuestReward = 56,
     QuestChapterTutorial = 57,
     QuestChapterHunt = 58,
     QuestChapterBoss = 59,
+    WorldMap = 60,
+    MapHint = 61,
+    /// <summary>타이틀 언어 버튼 ("Language: English" / "언어: 한국어" — 문구 자체가 현재 언어를 보여 준다).</summary>
+    Language = 62,
 }
 
 /// <summary>UI 캔버스 정렬 순서 = 레이어 번호.</summary>

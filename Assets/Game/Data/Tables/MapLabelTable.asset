@@ -1,0 +1,46 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c222d62bdcd2224cbbb3566526f352d, type: 3}
+  m_Name: MapLabelTable
+  m_EditorClassIdentifier: Game.Runtime::MapLabelTable
+  Source: {fileID: 4900000, guid: 95c71faefc6022c419973662f705814e, type: 3}
+  Rows:
+  - Index: 1
+    NameId: 8001
+    Position: {x: 256, y: 96}
+  - Index: 2
+    NameId: 8002
+    Position: {x: 230, y: 165}
+  - Index: 3
+    NameId: 8003
+    Position: {x: 300, y: 215}
+  - Index: 4
+    NameId: 8004
+    Position: {x: 130, y: 230}
+  - Index: 5
+    NameId: 8005
+    Position: {x: 170, y: 262}
+  - Index: 6
+    NameId: 8006
+    Position: {x: 175, y: 305}
+  - Index: 7
+    NameId: 8007
+    Position: {x: 390, y: 220}
+  - Index: 8
+    NameId: 8008
+    Position: {x: 430, y: 350}
+  - Index: 9
+    NameId: 8009
+    Position: {x: 250, y: 385}
+  - Index: 10
+    NameId: 8010
+    Position: {x: 390, y: 430}

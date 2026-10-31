@@ -37,6 +37,7 @@ public enum ECheat
     spell,
     status,
     quest,
+    lang,
 }
 
 public class CheatManager : IManager
@@ -84,6 +85,7 @@ public class CheatManager : IManager
         regist(ECheat.lowhp, lowHp, "lowhp [radius] : set nearby enemies to 20% hp (feed test)");
         regist(ECheat.spell, spell, "spell <abilityId> : equip spell (301 Chaos Volley, 302 Blood Rite, 303 Ice Nova, 304 Ball Lightning, 305 Corrupted Skull, 306 Wraith Spear)");
         regist(ECheat.status, status, "status <effectId> [radius] : apply effect to nearby enemies (80 Leech, 82 Ignite, 84 Chill, 85 Freeze, 86 Static, 88 Condemn, 89 Weaken)");
+        regist(ECheat.lang, language, "lang : switch language (Unity Localization: English <-> Korean)");
         regist(ECheat.quest, quest, "quest [questId] : complete current quest, or jump to questId");
     }
 
@@ -389,6 +391,12 @@ public class CheatManager : IManager
         float value = argFloat(InTokens, 1, 10.0f);
         player().Attributes.Set(EAttribute.Level, value);
         print($"level {value}");
+    }
+
+    private void language(string[] InTokens)
+    {
+        GameLocalization.Next();
+        print("language switched");
     }
 
     private void quest(string[] InTokens)

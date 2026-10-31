@@ -90,6 +90,7 @@ public static partial class WorldBuilder
         bootstrap.TablesReference = new AssetReferenceT<GameTables>(guid);
 
         bakeNavMesh();
+        WorldMapBaker.Bake(terrain);
 
         EditorSceneManager.SaveScene(scene, EditorPaths.WorldScene);
         registerBuildScene();

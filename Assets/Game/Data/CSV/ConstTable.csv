@@ -34,3 +34,4 @@ Index,Value,#Memo
 33,11,BuildAnim (AnimationTable Index)
 34,4,InteractAnim (AnimationTable Index)
 35,1,FirstQuestId (게임 시작 시 첫 퀘스트 QuestTable Index. 0 = 퀘스트 없음)
+36,45,MinimapRadius (미니맵이 보여 주는 반경 m)

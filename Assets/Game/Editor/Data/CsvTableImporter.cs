@@ -49,6 +49,7 @@ public static class CsvTableImporter
 
         buildGameTables(created);
         AssetDatabase.SaveAssets();
+        LocalizationSync.Sync();
         Validate();
         Debug.Log($"[CSV] imported {created.Count} tables");
     }

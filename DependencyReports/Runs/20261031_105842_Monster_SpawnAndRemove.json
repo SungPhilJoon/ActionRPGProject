@@ -1,0 +1,101 @@
+{
+    "Scenario": "Monster_SpawnAndRemove",
+    "Description": "메두사 · 코브라 · 트롤을 스폰 → 처치 → 제거 (캐릭터 프리팹 · 피격 VFX)",
+    "StartedAt": "2026-10-31 10:58:32",
+    "DurationSeconds": 10.519092559814454,
+    "Repeat": 3,
+    "ExpectsCleanup": true,
+    "LoadEvents": 21,
+    "ReleaseEvents": 0,
+    "SyncWaits": 0,
+    "SyncWaitMilliseconds": 0.0,
+    "LiveBefore": 102,
+    "LiveAfter": 102,
+    "Failures": [],
+    "Assets": [
+        {
+            "Address": "AI/ST_MeleeMonster",
+            "Type": "ScriptableObject",
+            "Loads": 6,
+            "Releases": 0,
+            "RefCountBefore": 14,
+            "RefCountAfter": 20,
+            "LoadMilliseconds": 0.0,
+            "SyncWaitMilliseconds": 0.0,
+            "Failed": false,
+            "Owners": [
+                "MonsterBrain.loadTree"
+            ]
+        },
+        {
+            "Address": "AI/ST_RangedMonster",
+            "Type": "ScriptableObject",
+            "Loads": 3,
+            "Releases": 0,
+            "RefCountBefore": 7,
+            "RefCountAfter": 10,
+            "LoadMilliseconds": 0.0,
+            "SyncWaitMilliseconds": 0.0,
+            "Failed": false,
+            "Owners": [
+                "MonsterBrain.loadTree"
+            ]
+        },
+        {
+            "Address": "Characters/BanditArcher",
+            "Type": "GameObject",
+            "Loads": 3,
+            "Releases": 0,
+            "RefCountBefore": 7,
+            "RefCountAfter": 10,
+            "LoadMilliseconds": 0.0,
+            "SyncWaitMilliseconds": 0.0,
+            "Failed": false,
+            "Owners": [
+                "SpawnManager.spawnMonsterAsync"
+            ]
+        },
+        {
+            "Address": "Characters/BanditThug",
+            "Type": "GameObject",
+            "Loads": 3,
+            "Releases": 0,
+            "RefCountBefore": 10,
+            "RefCountAfter": 13,
+            "LoadMilliseconds": 0.0,
+            "SyncWaitMilliseconds": 0.0,
+            "Failed": false,
+            "Owners": [
+                "SpawnManager.spawnMonsterAsync"
+            ]
+        },
+        {
+            "Address": "Characters/OrcBrute",
+            "Type": "GameObject",
+            "Loads": 3,
+            "Releases": 0,
+            "RefCountBefore": 5,
+            "RefCountAfter": 8,
+            "LoadMilliseconds": 0.0,
+            "SyncWaitMilliseconds": 0.0,
+            "Failed": false,
+            "Owners": [
+                "SpawnManager.spawnMonsterAsync"
+            ]
+        },
+        {
+            "Address": "VFX/DashTrail",
+            "Type": "GameObject",
+            "Loads": 3,
+            "Releases": 0,
+            "RefCountBefore": 1,
+            "RefCountAfter": 4,
+            "LoadMilliseconds": 0.0,
+            "SyncWaitMilliseconds": 0.0,
+            "Failed": false,
+            "Owners": [
+                "CueSpawner.spawnInternal"
+            ]
+        }
+    ]
+}

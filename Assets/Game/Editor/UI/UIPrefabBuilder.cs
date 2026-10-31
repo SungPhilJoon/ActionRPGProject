@@ -48,6 +48,9 @@ public static partial class UIPrefabBuilder
             buildList<BuildWindow>(row);
             buildList<ShopWindow>(row);
             buildBalanceOverlay();
+            var markers = buildMapMarkerSprites();
+            buildMinimap(markers);
+            buildWorldMap(markers);
             buildCheatConsole();
             buildTitle();
         }
@@ -327,7 +330,7 @@ public static partial class UIPrefabBuilder
         UIFactory.Place(gameTitle, new Vector2(0.5f, 0.5f), new Vector2(0.0f, 230.0f), new Vector2(1400.0f, 120.0f));
 
         var menu = UIFactory.CreateWindowFrame(back, "Menu");
-        UIFactory.Place(menu, new Vector2(0.5f, 0.5f), new Vector2(0.0f, -40.0f), new Vector2(500.0f, 330.0f));
+        UIFactory.Place(menu, new Vector2(0.5f, 0.5f), new Vector2(0.0f, -70.0f), new Vector2(500.0f, 400.0f));
 
         window.StartButton = button(menu, "Single", EText.SinglePlayer, 28.0f, window.OnStartClicked);
         UIFactory.Place(window.StartButton, new Vector2(0.5f, 1.0f), new Vector2(0.0f, -34.0f), new Vector2(420.0f, 70.0f));
@@ -336,9 +339,12 @@ public static partial class UIPrefabBuilder
         UIFactory.Place(multi, new Vector2(0.5f, 1.0f), new Vector2(0.0f, -124.0f), new Vector2(420.0f, 60.0f));
         var quit = button(menu, "Quit", EText.Quit, 22.0f, window.OnQuitClicked);
         UIFactory.Place(quit, new Vector2(0.5f, 1.0f), new Vector2(0.0f, -204.0f), new Vector2(420.0f, 60.0f));
+        // 언어 전환 (Unity Localization). 문구 "Language: English" / "언어: 한국어" 가 UIText 로 현재 언어를 보여 준다.
+        var language = button(menu, "Language", EText.Language, 20.0f, window.OnLanguageClicked);
+        UIFactory.Place(language, new Vector2(0.5f, 1.0f), new Vector2(0.0f, -284.0f), new Vector2(420.0f, 56.0f));
 
         window.Status = UIFactory.CreateText(back, "Status", string.Empty, 22.0f, TextAlignmentOptions.Center);
-        UIFactory.Place(window.Status, new Vector2(0.5f, 0.5f), new Vector2(0.0f, -250.0f), new Vector2(800.0f, 40.0f));
+        UIFactory.Place(window.Status, new Vector2(0.5f, 0.5f), new Vector2(0.0f, -300.0f), new Vector2(800.0f, 40.0f));
 
         var controls = label(back, "Controls", EText.Controls, 20.0f, TextAlignmentOptions.Center);
         controls.color = new Color(1.0f, 1.0f, 1.0f, 0.7f);

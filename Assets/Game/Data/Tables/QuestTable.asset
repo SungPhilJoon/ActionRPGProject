@@ -21,7 +21,7 @@ MonoBehaviour:
     Objective: 1
     Target: 0
     Count: 25
-    Key: 22
+    Key: 23
     RewardItem: 0
     RewardCount: 0
     Next: 2
@@ -32,7 +32,7 @@ MonoBehaviour:
     Objective: 2
     Target: 0
     Count: 3
-    Key: 22
+    Key: 23
     RewardItem: 0
     RewardCount: 0
     Next: 3
@@ -87,7 +87,7 @@ MonoBehaviour:
     Objective: 4
     Target: 0
     Count: 10
-    Key: 22
+    Key: 23
     RewardItem: 30
     RewardCount: 2
     Next: 8
@@ -142,7 +142,7 @@ MonoBehaviour:
     Objective: 8
     Target: 2
     Count: 3
-    Key: 22
+    Key: 23
     RewardItem: 30
     RewardCount: 2
     Next: 13
@@ -164,7 +164,7 @@ MonoBehaviour:
     Objective: 8
     Target: 3
     Count: 3
-    Key: 22
+    Key: 23
     RewardItem: 6
     RewardCount: 8
     Next: 15
@@ -186,7 +186,7 @@ MonoBehaviour:
     Objective: 8
     Target: 4
     Count: 3
-    Key: 22
+    Key: 23
     RewardItem: 30
     RewardCount: 3
     Next: 17
@@ -197,7 +197,7 @@ MonoBehaviour:
     Objective: 8
     Target: 5
     Count: 1
-    Key: 22
+    Key: 23
     RewardItem: 0
     RewardCount: 0
     Next: 0

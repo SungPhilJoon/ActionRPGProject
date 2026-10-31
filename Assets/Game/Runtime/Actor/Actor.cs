@@ -135,6 +135,16 @@ public class Actor : ActorBehaviour
         }
     }
 
+    /// <summary>루트 모션 행(메두사 Attack1)이 끝나면 다시 끈다 (ActorAnimator.StopRootMotion).</summary>
+    protected override void OnAbilityEnded(GameplayAbility InAbility, bool InWasCancelled)
+    {
+        base.OnAbilityEnded(InAbility, InWasCancelled);
+        if (Anim != null)
+        {
+            Anim.StopRootMotion();
+        }
+    }
+
     /// <summary>보호막은 State_Buff_Shield 태그(지속 이펙트)가 있는 동안만 유지된다 → 마지막 태그가 빠지는 순간 소멸.</summary>
     protected override void OnTagChanged(int InTag, bool InAdded)
     {
@@ -304,6 +314,7 @@ public class Actor : ActorBehaviour
         Motor.CancelDash();
         if (Anim != null)
         {
+            Anim.StopRootMotion();
             Anim.SetDead(true);
         }
 

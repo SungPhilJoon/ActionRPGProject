@@ -26,7 +26,7 @@ MonoBehaviour:
   ButtonTint: {r: 0.72, g: 0.22, b: 0.22, a: 1}
   SlotTint: {r: 0.44, g: 0.31, b: 0.32, a: 1}
   BarBackTint: {r: 0.26, g: 0.17, b: 0.18, a: 1}
-  Font: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  Font: {fileID: 11400000, guid: 511958e352be196439525f8d0630ceec, type: 2}
   TextColor: {r: 0.92, g: 0.88, b: 0.84, a: 1}
   TitleColor: {r: 0.95, g: 0.78, b: 0.55, a: 1}
   AccentColor: {r: 0.85, g: 0.12, b: 0.15, a: 1}

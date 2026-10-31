@@ -49,7 +49,7 @@ V Rising 리버스 데모 `BLOODLINE` 의 현재 상태입니다. **알려진 �
 | Addressables 의존성 툴 | ✅ | 의존성 지도 (정적 검사 · 플레이 전 검사 · 실시간 · 테스트 기록 → 이슈 자동 갱신) ([Dependency.md](Dependency.md)) |
 | 세이브/로드 | ❌ | |
 | 사운드 | ❌ | 에셋 없음 ([AssetRequests.md](AssetRequests.md)) |
-| 한글 UI | ❌ | 한글 TMP 폰트 필요 |
+| 한글 UI | ✅ | Unity Localization (GameText en/ko) + Noto Sans KR 동적 폰트 (2026-10-31) |
 
 ## 3. 알려진 문제
 
@@ -76,4 +76,4 @@ V Rising 리버스 데모 `BLOODLINE` 의 현재 상태입니다. **알려진 �
 
 ## 5. 다음 단계 후보
 
-풀 문제 마무리, 메두사 제자리 재확인, 멀티플레이(NGO), 세이브, VFX/아이콘/한글 폰트 교체, StateTree Linked Subtree, 그래프 어빌리티 분기/입력 대기, 툴의 삭제 기능, 테스트 확장(흡혈·제작·사망/부활).
+풀 문제 마무리, 메두사 제자리 재확인, 멀티플레이(NGO), 세이브, VFX/아이콘 교체, StateTree Linked Subtree, 그래프 어빌리티 분기/입력 대기, 툴의 삭제 기능, 테스트 확장(흡혈·제작·사망/부활).

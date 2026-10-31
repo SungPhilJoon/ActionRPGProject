@@ -25,6 +25,12 @@ public class TitleWindow : UIWindow
         OnStartSinglePlayer?.Invoke();
     }
 
+    /// <summary>언어 버튼 (프리팹 영구 리스너). 다음 언어로 바꾸고, 버튼 문구는 UIText 가 LanguageChangedEvent 로 갱신한다.</summary>
+    public void OnLanguageClicked()
+    {
+        GameLocalization.Next();
+    }
+
     public void OnQuitClicked()
     {
 #if UNITY_EDITOR

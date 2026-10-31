@@ -1,11 +1,11 @@
 Index,Speed,Parameters,ApplyRootMotion,#Memo
-1,1,Trigger;Attack1,1,Attack1 (combo 1)
-2,1,Trigger;Attack2,1,Attack2 (combo 2)
+1,1,Trigger;Attack1,0,Attack1 (combo 1)
+2,1,Trigger;Attack2,0,Attack2 (combo 2)
 3,1,Trigger;Cast,0,Cast
 4,1,Trigger;Interact,0,Interact / Feed
 5,1,Trigger;PickUp,0,PickUp
 6,1,Trigger;Kick,0,Kick
-7,1,Trigger;Attack3,1,Attack3 (combo finisher)
+7,1,Trigger;Attack3,0,Attack3 (combo finisher)
 8,1,Trigger;Special1,0,Special1 (monster dash/leap)
 9,1,Trigger;Dodge,0,Dodge
 10,1,Trigger;Hit,0,Hit
@@ -13,3 +13,4 @@ Index,Speed,Parameters,ApplyRootMotion,#Memo
 12,1,Trigger;Chop,0,Harvest Wood
 13,1,Trigger;Mine,0,Harvest Stone
 14,1,Trigger;Gather,0,Harvest Plant
+15,1,Trigger;Attack1,1,Medusa Attack1 (Club) - 유일한 루트 모션 행

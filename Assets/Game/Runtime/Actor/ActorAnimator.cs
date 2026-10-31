@@ -78,6 +78,20 @@ public class ActorAnimator : BaseBehaviour
         }
     }
 
+    /// <summary>
+    /// 루트 모션은 ApplyRootMotion 행(지금은 메두사 Attack1 하나)을 재생하는 동안만 켠다.
+    /// Play 는 행마다 값을 덮어쓰지만 이동(블렌드 트리)은 Play 를 거치지 않으므로, 어빌리티가 끝나거나 죽을 때 여기서 끈다.
+    /// </summary>
+    public void StopRootMotion()
+    {
+        if (Animator == null)
+        {
+            return;
+        }
+
+        Animator.applyRootMotion = false;
+    }
+
     public void SetDead(bool InDead)
     {
         if (Animator == null)

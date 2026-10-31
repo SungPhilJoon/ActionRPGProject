@@ -130,6 +130,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 34db900414344644295fe479e5c33c3e
+    m_Address: UI/Map/MarkerDiamond
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 367860c1bc2c0a747b661816789b2f22
     m_Address: UI/Windows/TitleWindow
     m_ReadOnly: 0
@@ -147,6 +152,11 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 37c74714f995ee64f9909fdb6af707e2
     m_Address: Nodes/CopperVein
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 39f2d37945e03a4459af18a5efda1872
+    m_Address: UI/Windows/MinimapWindow
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -177,6 +187,11 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 3fa2f600a8a2bea40a915f7e864a7a01
     m_Address: Structures/Wall
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 409e66ec3cae5c2488925efd922ee6ca
+    m_Address: UI/Map/MarkerRing
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -350,6 +365,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 955efa1a4c35cc74c944180dd6d567fc
+    m_Address: UI/Map/MarkerCircle
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 9844310433a9257429fd5fcf3b973f30
     m_Address: Icons/Spear
     m_ReadOnly: 0
@@ -395,6 +415,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: b36e4aa3a247be94f824da2276ae66e2
+    m_Address: UI/Map/MarkerArrow
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: ba3244a09ee451942b638ad22c631843
     m_Address: VFX/Skill/LightningBurst
     m_ReadOnly: 0
@@ -425,6 +450,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: cbc850f2b3cc84341aeaeee69c8d6428
+    m_Address: UI/Map/WorldMap
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: cc64d5c74b0ea7248b2759c1485ceb1a
     m_Address: VFX/Skill/BloodRiteAura
     m_ReadOnly: 0
@@ -432,6 +462,11 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: cff5b0529f096304a800d68d9d180d1b
     m_Address: Structures/WallWindow
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: d92d5d3f3443e0944850ea5f8f8c6910
+    m_Address: UI/Windows/WorldMapWindow
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -477,6 +512,11 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: e310166affab9b749a1aa30f4c42b6bd
     m_Address: VFX/Skill/SwordSlash
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e4b15255c97a6ec4191df9bee820548c
+    m_Address: UI/Map/MarkerSquare
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0

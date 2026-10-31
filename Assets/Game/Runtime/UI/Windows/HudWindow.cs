@@ -72,17 +72,24 @@ public class HudWindow : UIWindow
             Slots[i].Key.text = UIUtil.KeyLabel(SlotKeys[i]);
         }
 
-        Hints.text = $"[{UIUtil.KeyLabel(EInputAction.Inventory)}] {Tables.Text(EText.Inventory)}   [{UIUtil.KeyLabel(EInputAction.Craft)}] {Tables.Text(EText.Crafting)}   " +
-                     $"[{UIUtil.KeyLabel(EInputAction.Build)}] {Tables.Text(EText.Build)}   [{UIUtil.KeyLabel(EInputAction.Shop)}] {Tables.Text(EText.Shop)}   " +
-                     $"[{UIUtil.KeyLabel(EInputAction.Cheat)}] {Tables.Text(EText.CheatTitle)}   [{UIUtil.KeyLabel(EInputAction.BalanceOverlay)}] {Tables.Text(EText.BalanceTitle)}";
+        refreshHints();
         DeathRoot.gameObject.SetActive(false);
         BossRoot.gameObject.SetActive(false);
         VictoryRoot.gameObject.SetActive(false);
         QuestRoot.gameObject.SetActive(false);
     }
 
+    private void refreshHints()
+    {
+        Hints.text = $"[{UIUtil.KeyLabel(EInputAction.Inventory)}] {Tables.Text(EText.Inventory)}   [{UIUtil.KeyLabel(EInputAction.Craft)}] {Tables.Text(EText.Crafting)}   " +
+                     $"[{UIUtil.KeyLabel(EInputAction.Build)}] {Tables.Text(EText.Build)}   [{UIUtil.KeyLabel(EInputAction.Shop)}] {Tables.Text(EText.Shop)}   " +
+                     $"[{UIUtil.KeyLabel(EInputAction.WorldMap)}] {Tables.Text(EText.WorldMap)}   " +
+                     $"[{UIUtil.KeyLabel(EInputAction.Cheat)}] {Tables.Text(EText.CheatTitle)}   [{UIUtil.KeyLabel(EInputAction.BalanceOverlay)}] {Tables.Text(EText.BalanceTitle)}";
+    }
+
     private void OnEnable()
     {
+        EventBus<LanguageChangedEvent>.Subscribe(onLanguageChanged);
         EventBus<AbilitySlotsChangedEvent>.Subscribe(onSlotsChanged);
         EventBus<NotifyEvent>.Subscribe(onNotify);
         EventBus<BossEngagedEvent>.Subscribe(onBoss);
@@ -95,6 +102,7 @@ public class HudWindow : UIWindow
 
     private void OnDisable()
     {
+        EventBus<LanguageChangedEvent>.Unsubscribe(onLanguageChanged);
         EventBus<AbilitySlotsChangedEvent>.Unsubscribe(onSlotsChanged);
         EventBus<NotifyEvent>.Unsubscribe(onNotify);
         EventBus<BossEngagedEvent>.Unsubscribe(onBoss);
@@ -250,7 +258,7 @@ public class HudWindow : UIWindow
         }
     }
 
-    /// <summary>진행도 줄 + (몬스터 목표면) 가장 가까운 대상까지 거리. 거리는 매 프레임 바뀐다.</summary>
+    /// <summary>진행도 줄 + 퀘스트 장소(지도 가이드와 같은 곳)까지 거리. 거리는 매 프레임 바뀐다.</summary>
     private void updateQuest(PlayerCharacter InPlayer)
     {
         if (VictoryRemaining > 0.0f)
@@ -260,14 +268,17 @@ public class HudWindow : UIWindow
         }
 
         var quests = Managers.Get<QuestManager>();
-        float distance;
-        if (quests == null || quests.TryGetNearestTarget(InPlayer.transform.position, out distance) == false)
+        Vector3 guide;
+        if (quests == null || quests.TryGetGuidePosition(InPlayer.transform.position, out guide) == false)
         {
             QuestProgress.text = QuestProgressText;
             return;
         }
 
-        QuestProgress.text = $"{QuestProgressText}   <color=#B0B0B0>{Tables.Text(EText.QuestNearest)} {Mathf.RoundToInt(distance)}m</color>";
+        Vector3 position = InPlayer.transform.position;
+        float distance = Vector2.Distance(new Vector2(position.x, position.z), new Vector2(guide.x, guide.z));
+
+        QuestProgress.text = $"{QuestProgressText}   <color=#B0B0B0>{Tables.Text(EText.QuestDistance)} {Mathf.RoundToInt(distance)}m</color>";
     }
 
     private void refreshQuest(QuestRow InQuest, int InProgress, bool InCompleted, bool InAllCompleted)
@@ -311,6 +322,27 @@ public class HudWindow : UIWindow
         if (InEvent.Actor == PlayerCharacter.Local && InEvent.Actor != null)
         {
             refreshSlotVisuals(PlayerCharacter.Local);
+        }
+    }
+
+    /// <summary>언어가 바뀌면 캐시한 문구(안내 · 퀘스트 · 혈액 · 보스 이름 · 어빌리티 이름)를 다시 채운다. 매 프레임 갱신하는 문구는 그대로 따라온다.</summary>
+    private void onLanguageChanged(LanguageChangedEvent InEvent)
+    {
+        refreshHints();
+        if (Boss != null)
+        {
+            BossName.text = Tables.Text(Boss.Row.NameId);
+        }
+
+        var quests = Managers.Get<QuestManager>();
+        if (quests != null)
+        {
+            refreshQuest(quests.Current, quests.Progress, quests.IsCompleted, quests.IsAllCompleted);
+        }
+
+        if (PlayerCharacter.Local != null)
+        {
+            onPlayerSpawned(new PlayerSpawnedEvent { Player = PlayerCharacter.Local });
         }
     }
 

@@ -99,3 +99,5 @@ Index,Address,Kind
 412,UI/Widgets/ItemSlot,Prefab
 413,UI/Widgets/WorldHealthBar,Prefab
 414,UI/Widgets/DamageNumber,Prefab
+415,UI/Windows/MinimapWindow,Prefab
+416,UI/Windows/WorldMapWindow,Prefab

@@ -55,9 +55,11 @@ StateTree Tool: 템플릿으로 트리 → + 블록(조건부 어빌리티 등) 
 
 - **Balance Tool** — Live(플레이 중 피해/DPS 집계) / Simulator(테이블 값으로 1타 피해 · 처치 타수). 게임 화면에서는 F8.
 - **UI Factory** (2026-10-29 프리팹 방식으로 변경) — 새 창 스크립트 골격(직렬화 필드 + OnInitialize), **Rebuild All UI Prefabs**(빌더 + Addressables 등록), 창 프리팹 열기 · Ping, UI 스킨 선택. UI 구조 · 새 창 추가 순서는 [UI.md](UI.md).
-  - `Game > Setup > 3b. Build UI Prefabs` — `UIPrefabBuilder` 가 `Content/UI` 아래 캔버스 · 창 · 위젯 · 레이어 프리팹 15개를 굽는다 (Run All 에 포함).
+  - `Game > Setup > 3b. Build UI Prefabs` — `UIPrefabBuilder` 가 `Content/UI` 아래 캔버스 · 창 · 위젯 · 레이어 프리팹 17개(+ 지도 표식 스프라이트)를 굽는다 (Run All 에 포함).
   - `Game > UI > Select UI Skin` — `Art/Generated/UI/UISkin.asset` (스프라이트 · 틴트 · 폰트).
 - **의존성 지도 (Dependency Map)** (2026-10-29) — Addressables 정적 검사 · 의존성 테스트 실행 · 이슈 갱신 · 보고서, 탭 5개(한눈에 보기 / 그래프 / 이슈 / 테스트 기록 / 실시간). 기획 · 디자인도 읽을 수 있게 한국어 설명 · 도움말 · 색+기호 표시. Play 전 자동 검사 토글. 원본 문서 [Dependency.md](Dependency.md).
+- **Localization 동기화** (2026-10-31) — `Game > Data > Sync Localization (StringTable → Unity Localization)`: StringTable.csv 의 영어 · 한국어를 Unity Localization GameText 테이블로 옮긴다. CSV 임포트 · StringTable.csv 저장 때 자동 실행. 상세 [UI.md](UI.md#언어-unity-localization-2026-10-31).
+- **월드맵 굽기** (2026-10-31) — `Game > World > Bake World Map`: 월드 씬을 위에서 내려다본 지도 텍스처(`Content/UI/Map/WorldMap.png`)를 다시 굽는다. 월드 빌드 때 자동 실행. 굽고 나면 `3b. Build UI Prefabs`. 상세 [World.md 8절](World.md#8-월드맵-그림).
 - **치트 콘솔(`)** — [Game.md 14절](Game.md#14-치트--콘솔).
 - **식생 재생성 메뉴** (2026-10-29) — 절차 나무 · 텍스처의 모양 코드를 바꾼 뒤 실행하고, 이어서 `Game > Setup > 5. Build World Scene` 으로 월드에 다시 배치한다. 상세 [World.md 7절](World.md#7-식생--물-2026-10-29).
   - `Game > World > Rebuild Tree Prefabs` — 나무 4종 × 변형 12개 + 덤불 4종 프리팹 · 메시 · 머티리얼 (`Art/Generated/World/Foliage`). 메시 에셋은 덮어써서 GUID 유지.

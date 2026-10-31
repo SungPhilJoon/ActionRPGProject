@@ -314,3 +314,9 @@ MonoBehaviour:
   - Index: 414
     Address: UI/Widgets/DamageNumber
     Kind: 0
+  - Index: 415
+    Address: UI/Windows/MinimapWindow
+    Kind: 0
+  - Index: 416
+    Address: UI/Windows/WorldMapWindow
+    Kind: 0

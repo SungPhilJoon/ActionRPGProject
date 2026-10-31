@@ -32,6 +32,8 @@ GameBootstrap.setupUIAsync()
 | `UI/Windows/CraftWindow` · `BuildWindow` · `ShopWindow` | 403~405 | `ListWindow` 공통 레이아웃 + `ListRow` 행 프리팹 |
 | `UI/Windows/BalanceOverlayWindow` · `CheatConsoleWindow` · `TitleWindow` | 406~408 | |
 | `UI/Layers/WorldHealthBarLayer` · `DamageNumberLayer` | 409, 410 | `WorldHealthBar` · `DamageNumber` 프리팹을 풀링 |
+| `UI/Windows/MinimapWindow` | 415 | HUD 레이어, 입력을 막지 않음. `MapView` (반경 = ConstTable `MinimapRadius`, 카메라 방향 회전, 몬스터 표시) |
+| `UI/Windows/WorldMapWindow` | 416 | 입력을 막는 창 (M). `MapView` (월드 전체, 북쪽 위, 지역 이름) |
 | `UI/Widgets/ListRow` · `ItemSlot` · `WorldHealthBar` · `DamageNumber` | 411~414 | 위젯 (창 프리팹이 직접 참조 → Addressables 의존성으로 같이 로드) |
 
 | 코드 | 위치 |
@@ -66,3 +68,27 @@ GameBootstrap.setupUIAsync()
 - 창 프리팹은 Instantiate 직후 활성 상태라 `OnEnable` 이 한 번 돈 뒤 닫힌다 (구독 → 해제). 부작용이 있는 코드는 `OnOpen` 에 둔다.
 - `UIText` 는 `Tables.IsReady` 일 때만 문구를 바꾼다. 테이블 로드 전에 보이는 UI 는 프리팹에 구운 문구가 그대로 보인다.
 - UI 프리팹 로드 · 참조 상태는 의존성 지도(Dependency.md)에서 볼 수 있다.
+
+## 지도 (MapView) · 입력 맵 (2026-10-31)
+
+- `MapView` (`Game/Runtime/UI/Widgets`) — 미니맵 · 월드맵 공용. 계층: `Viewport`(Mask + MapView) → `Content`(회전) → `Map`(RawImage, 구운 지도) / `Markers`(표식 · 이름, 회전 안 함). 표식 종류별 스프라이트 · 색 · 크기는 `EMapMarker` 순서 배열이라 프리팹 인스펙터에서 바꾼다. 표식 · 이름은 비활성 자식 템플릿을 `UIItemList` 로 복제.
+- 표식 출처: 플레이어 = `PlayerCharacter.Local`, 몬스터 · 보스 = `ActorRegistry`, 퀘스트 가이드 = `QuestManager.TryGetGuidePosition` (고리 + `GuideLine` 선, 미니맵 밖이면 `GuideArrow` 로 바뀌어 대상 쪽으로 회전), 상인 · 성 심장 · 관 = `MapMarkers` (오브젝트가 켜질 때 등록).
+- 프리팹 · 표식 스프라이트는 `UIPrefabBuilder.Map`, 지도 그림은 `WorldMapBaker` ([World.md 8절](World.md#8-월드맵-그림)).
+- **입력 맵**: `GameInput` 이 InputTable `Map` 열(System / Movement / Combat)마다 InputActionMap 을 만든다. `GameBootstrap.syncInputMaps` 가 매 프레임 매니저 업데이트 전에 "입력을 막는 창(`BlocksGameInput`)이 열려 있거나 콘솔 입력 중이면 Combat 끔". 그래서 창 위에서 휠을 굴려도 카메라 줌이 되지 않는다. 새 창이 전투 입력을 막지 않게 하려면 `BlocksGameInput` 을 false 로 (HUD · 미니맵 · 밸런스 미터).
+
+## 언어 (Unity Localization, 2026-10-31)
+
+| 단계 | 무엇이 | 어디 |
+|---|---|---|
+| 원본 | `StringTable.csv` — `Index, Text(영어), Korean` | `Game/Data/CSV` |
+| 변환 | CSV 임포트(`Game > Data > Import All CSV`) 마지막에 `LocalizationSync` 가 Unity Localization 으로 옮김. StringTable.csv 를 저장해도 자동. 따로 실행: `Game > Data > Sync Localization` | `Game/Editor/Data/LocalizationSync.cs` |
+| Localization 에셋 | Localization Settings, Locale(English · Korean — 한국어 Fallback = 영어), String Table Collection **GameText**(en/ko, Preload). 키 Id = StringTable Index, 키 이름 = `EText` 이름 또는 `Text{Index}` | `Game/Data/Localization` (Addressables `Localization-*` 그룹은 패키지가 관리) |
+| 런타임 | `GameBootstrap` 이 `GameLocalization.InitializeAsync(GameTables.TextTable)` 을 기다린 뒤 UI 를 만든다. `Tables.Text(id)` → 현재 언어 테이블의 키 Id(int) 조회 → 없으면 CSV 영어 원문 | `Game/Runtime/Data/GameLocalization.cs` |
+| 언어 바꾸기 | `GameLocalization.Next / SetLanguage(SystemLanguage)` → 새 테이블 로드 → `LanguageChangedEvent` → `UIText` · HUD(안내 · 퀘스트 · 혈액 · 보스 · 어빌리티 이름) · 월드맵 안내가 다시 채움. 매 프레임 갱신하는 문구는 그대로 따라옴. 목록 창(제작 · 건축 · 상점)은 열 때 다시 채움 | 타이틀 언어 버튼, 치트 `lang` |
+| 시작 언어 | Startup Selector: PlayerPrefs(마지막 선택) → 없으면 한국어 | `LocalizationSync.configureStartup` |
+| 폰트 | `UISkinSetup` 이 Noto Sans KR(OFL) → TMP **동적** 폰트 에셋(`Art/Generated/UI/NotoSansKR SDF.asset`)을 만들어 UI 스킨 기본 폰트 + TMP 전역 Fallback 으로 등록. 글리프는 실행 중 필요할 때 아틀라스에 추가 (Clear Dynamic Data On Build 켬) | `Art/ThirdParty/Fonts/NotoSansKR` |
+
+- **번역 고치기**: CSV 의 `Korean` 열을 고친다. Localization Tables 창에서 고친 값은 다음 CSV 임포트에 CSV 값으로 덮어써진다 (원본은 CSV 하나).
+- **새 문구**: CSV 에 행 추가(Text + Korean) → 코드에서 쓰면 `EText` 에 같은 번호. 능력치 이름은 `9000 + EAttribute` (`UIUtil.AttributeTextId`).
+- **새 언어**: `LocalizationSync` 에 Locale 과 CSV 열을 추가 (지금은 en/ko 두 개).
+- 동적 폰트 아틀라스는 에디터에서 플레이할 때 글리프가 쌓여 에셋이 바뀔 수 있다 (커밋 전 확인, 빌드 시에는 비워짐).

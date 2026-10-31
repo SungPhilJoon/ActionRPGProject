@@ -1,5 +1,6 @@
 using Framework;
 using UnityEngine;
+using UnityEngine.Localization;
 
 /// <summary>
 /// 모든 데이터 테이블을 묶는 루트 에셋. Addressables 로 이 에셋 하나만 로드하면
@@ -28,13 +29,16 @@ public class GameTables : ScriptableObject
     public InputTable Input;
     public AnimationTable Animation;
     public QuestTable Quest;
+    public MapLabelTable MapLabel;
+    /// <summary>Unity Localization 문자열 테이블 (GameText 컬렉션, GUID 참조). LocalizationSync 가 연결한다.</summary>
+    public LocalizedStringTable TextTable = new LocalizedStringTable();
 
     public TableAssetBase[] GetAll()
     {
         return new TableAssetBase[]
         {
             Const, Tag, String, Asset, Character, Ability, Effect, Item, Weapon, Recipe,
-            Structure, ResourceNode, Spawn, Loot, BloodType, Shop, Cue, Input, Animation, Quest,
+            Structure, ResourceNode, Spawn, Loot, BloodType, Shop, Cue, Input, Animation, Quest, MapLabel,
         };
     }
 
@@ -87,8 +91,15 @@ public static class Tables
         return Mathf.RoundToInt(Const(InConst));
     }
 
+    /// <summary>현재 언어 문자열 (Unity Localization, 키 Id = StringTable Index). 아직 준비 전이거나 번역이 없으면 CSV 영어 원문.</summary>
     public static string Text(int InId)
     {
+        string localized;
+        if (GameLocalization.TryGet(InId, out localized) == true)
+        {
+            return localized;
+        }
+
         StringRow row;
         if (Root == null || Root.String.TryGet(InId, out row) == false)
         {

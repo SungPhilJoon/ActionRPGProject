@@ -121,3 +121,13 @@
 - 채집 노드(ResourceNode)는 지우지 않는다 (게임 오브젝트이며 채집 대상).
 
 카메라 가림 숨김은 [CameraOcclusion.md](CameraOcclusion.md).
+
+## 8. 월드맵 그림
+
+미니맵 · 월드맵(Game.md 13.1)이 쓰는 지도는 런타임 렌더링이 아니라 **에디터에서 한 번 구운 텍스처** `Content/UI/Map/WorldMap.png` (2048², 1px = 0.25m) 입니다.
+
+- 굽기: `Game > World > Bake World Map` (`WorldMapBaker`). `Game > Setup > 5. Build World Scene` 마지막에도 자동으로 굽는다 → 지형 · 나무 · 랜드마크를 바꾸면 월드를 다시 빌드하거나 이 메뉴를 실행하고, 이어서 `3b. Build UI Prefabs` (지도 프리팹이 텍스처를 참조).
+- 방법: 지형 중앙 400m 위 정사영 카메라(북쪽 = 위) 1회 렌더 → 채도 · 밝기 조금 낮추고 가장자리 어둡게.
+  - 굽는 동안만: 안개 끔, LOD 최고 단계, **풀스크린 패스(대기 Atmosphere) 끔** — 켜 두면 낮은 곳(호수)이 안개로 덮인다, **물은 단색 Unlit(양면)으로 교체** — 물 셰이더는 이 카메라에서 그려지지 않는다.
+- 월드 범위(지도 좌표 변환)는 런타임에 `SceneContext.Terrain` 위치 · 크기에서 읽는다 (지형 = 월드).
+- 지역 이름 위치는 `MapLabelTable.csv` (x;z). `WorldRegions` 좌표와 맞춰 두었다.

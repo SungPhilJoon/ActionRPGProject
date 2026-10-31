@@ -392,7 +392,7 @@ MonoBehaviour:
     DamageType: 0
     HitEffects: 54000000
     SelfEffects: 
-    Anims: 01000000
+    Anims: 0f000000
     CastCue: 1
     HitCue: 2
     Projectile: 0

@@ -1,177 +1,205 @@
-Index,Text
-1,BLOODLINE  -  V Rising Demo
-2,Single Player (Offline)
-3,Co-op (up to 4) - Coming soon
-4,Quit
-10,Inventory
-11,Equipment
-12,Crafting
-13,Build
-14,Shop
-15,FREE
-16,Get
-17,Craft
-18,Close
-19,Gear
-20,Blood
-21,Day
-22,Night
-23,IN SUNLIGHT! Find shade
-24,In shadow
-25,Interact
-26,Feed
-27,YOU DIED
-28,Respawning in
-29,Not enough materials
-30,Build a Castle Heart first
-31,V Blood consumed:
-32,New ability unlocked:
-33,Inventory full
-34,Cheat Console
-35,Type 'help' for commands. Toggle with ` key.
-36,Balance Meter
-37,Requires
-38,Owned
-39,Place
-40,Rotate
-41,LMB: place   X: rotate   ESC: cancel
-42,Talk to Merchant
-43,No blood
-44,Quality
+Index,Text,Korean
+1,BLOODLINE  -  V Rising Demo,BLOODLINE  -  V Rising 데모
+2,Single Player (Offline),싱글 플레이 (오프라인)
+3,Co-op (up to 4) - Coming soon,협동 (최대 4인) - 준비 중
+4,Quit,종료
+10,Inventory,인벤토리
+11,Equipment,장비
+12,Crafting,제작
+13,Build,건축
+14,Shop,상점
+15,FREE,무료
+16,Get,받기
+17,Craft,제작
+18,Close,닫기
+19,Gear,기어
+20,Blood,혈액
+21,Day,낮
+22,Night,밤
+23,IN SUNLIGHT! Find shade,햇빛에 노출됨! 그늘로 피하세요
+24,In shadow,그늘 안
+25,Interact,상호작용
+26,Feed,흡혈
+27,YOU DIED,사망했습니다
+28,Respawning in,부활까지
+29,Not enough materials,재료가 부족합니다
+30,Build a Castle Heart first,먼저 성 심장을 지으세요
+31,V Blood consumed:,V 블러드 흡수:
+32,New ability unlocked:,새 능력 해금:
+33,Inventory full,인벤토리가 가득 찼습니다
+34,Cheat Console,치트 콘솔
+35,Type 'help' for commands. Toggle with ` key.,명령어 목록은 'help' 를 입력하세요. ` 키로 열고 닫습니다.
+36,Balance Meter,밸런스 미터
+37,Requires,필요
+38,Owned,보유
+39,Place,설치
+40,Rotate,회전
+41,LMB: place   X: rotate   ESC: cancel,좌클릭: 설치   X: 회전   ESC: 취소
+42,Talk to Merchant,상인과 대화
+43,No blood,혈액 없음
+44,Quality,품질
 45,"WASD move | LMB attack | Q/E weapon skills | Space Veil of Blood | R/C spells | T ultimate | F feed (low HP enemy) | G interact
-Tab inventory | K craft | B build | P shop | ` cheats | F8 balance meter | Wheel zoom | Middle mouse rotate camera"
-46,Loading world...
-47,Damage dealt by ability (total / DPS)
-48,Player damage taken
-49,Recent hits
-1000,Vampire
-1001,Medusa Sentinel
-1002,Cobra Snake
-1003,Cave Troll
-1004,Minotaur Warlord
-1005,Wandering Merchant
-2001,Lumber
-2002,Stone
-2003,Plant Fiber
-2004,Copper Ore
-2005,Blood Essence
-2006,Copper Ingot
-2010,Bone Sword
-2011,Copper Sword
-2012,Bone Spear
-2013,Copper Spear
-2020,Cloth Robe
-2021,Cloth Pants
-2022,Cloth Boots
-2023,Cloth Gloves
-2024,Reinforced Chest
-2025,Reinforced Pants
-2026,Reinforced Boots
-2027,Reinforced Gloves
-2030,Blood Potion
-2031,Sun Resistance Brew
-2101,Basic resource for building.
-2102,Basic resource for building.
-2103,Used for cloth and potions.
-2104,Smelt into Copper Ingots.
-2105,Dropped by the living. Fuels vampire crafts.
-2106,Refined metal.
-2110,A crude blade. Combo slashes.
-2111,A sharp copper blade.
-2112,Long reach. Thrust and charge.
-2113,A sturdy copper spear.
-2120,Light armor.
-2124,Reinforced armor.
-2130,Restores 150 health.
-2131,+50 Sun Resistance for 120 seconds.
-3101,Sword Slash
-3102,Whirlwind
-3103,Shockwave
-3111,Spear Thrust
-3112,Charge
-3113,Sweep
-3121,Punch
-3201,Veil of Blood
-3301,Chaos Volley
-3302,Blood Rite
-3303,Ice Nova
-3304,Ball Lightning
-3305,Corrupted Skull
-3306,Wraith Spear
-3401,Crimson Storm
-3701,Feed
-3501,Club
-3502,Arrow
-3503,Smash
-3504,Charge
-3511,Stone Slam
-3512,Leap
-3513,Rock Throw
-3514,Enrage
-4001,Castle Heart
-4002,Stone Floor
-4003,Stone Wall
-4004,Workbench
-4005,Smelter
-4006,Coffin
-4007,Iron Lamp
-5001,Warrior
-5002,Rogue
-5003,Scholar
-5004,Brute
-5005,Creature
-6001,Pine Tree
-6002,Oak Tree
-6003,Rock
-6004,Boulder
-6005,Copper Vein
-6006,Bush
-4008,Stone Wall (Door)
-4009,Stone Wall (Window)
-4010,Stone Pillar
-1006,New Monster
-50,Quest
-51,Quest complete:
-52,New quest:
-53,All quests complete!
-54,Nearest
+Tab inventory | K craft | B build | P shop | M world map | ` cheats | F8 balance meter | Wheel zoom | Middle mouse rotate camera","WASD 이동 | 좌클릭 공격 | Q/E 무기 스킬 | Space 피의 장막 | R/C 주문 | T 궁극기 | F 흡혈 (체력 낮은 적) | G 상호작용
+Tab 인벤토리 | K 제작 | B 건축 | P 상점 | M 월드맵 | ` 치트 | F8 밸런스 미터 | 휠 줌 | 휠 클릭 카메라 회전"
+46,Loading world...,월드를 불러오는 중...
+47,Damage dealt by ability (total / DPS),어빌리티별 준 피해 (합계 / DPS)
+48,Player damage taken,플레이어가 받은 피해
+49,Recent hits,최근 타격
+1000,Vampire,뱀파이어
+1001,Medusa Sentinel,메두사 파수꾼
+1002,Cobra Snake,코브라
+1003,Cave Troll,동굴 트롤
+1004,Minotaur Warlord,미노타우로스 군주
+1005,Wandering Merchant,떠돌이 상인
+2001,Lumber,목재
+2002,Stone,돌
+2003,Plant Fiber,식물 섬유
+2004,Copper Ore,구리 광석
+2005,Blood Essence,피의 정수
+2006,Copper Ingot,구리 주괴
+2010,Bone Sword,뼈 검
+2011,Copper Sword,구리 검
+2012,Bone Spear,뼈 창
+2013,Copper Spear,구리 창
+2020,Cloth Robe,천 로브
+2021,Cloth Pants,천 바지
+2022,Cloth Boots,천 장화
+2023,Cloth Gloves,천 장갑
+2024,Reinforced Chest,강화 흉갑
+2025,Reinforced Pants,강화 바지
+2026,Reinforced Boots,강화 장화
+2027,Reinforced Gloves,강화 장갑
+2030,Blood Potion,피의 물약
+2031,Sun Resistance Brew,햇빛 저항 물약
+2101,Basic resource for building.,건축에 쓰는 기본 자원.
+2102,Basic resource for building.,건축에 쓰는 기본 자원.
+2103,Used for cloth and potions.,천과 물약을 만드는 데 쓰입니다.
+2104,Smelt into Copper Ingots.,제련하면 구리 주괴가 됩니다.
+2105,Dropped by the living. Fuels vampire crafts.,산 자에게서 얻는다. 뱀파이어 제작의 재료.
+2106,Refined metal.,정제된 금속.
+2110,A crude blade. Combo slashes.,조잡한 칼날. 연속 베기.
+2111,A sharp copper blade.,날카로운 구리 칼날.
+2112,Long reach. Thrust and charge.,긴 사거리. 찌르기와 돌진.
+2113,A sturdy copper spear.,튼튼한 구리 창.
+2120,Light armor.,가벼운 방어구.
+2124,Reinforced armor.,강화된 방어구.
+2130,Restores 150 health.,체력을 150 회복합니다.
+2131,+50 Sun Resistance for 120 seconds.,120초 동안 햇빛 저항 +50.
+3101,Sword Slash,검 베기
+3102,Whirlwind,회오리 베기
+3103,Shockwave,충격파
+3111,Spear Thrust,창 찌르기
+3112,Charge,돌진
+3113,Sweep,휩쓸기
+3121,Punch,주먹
+3201,Veil of Blood,피의 장막
+3301,Chaos Volley,혼돈의 연발
+3302,Blood Rite,피의 의식
+3303,Ice Nova,얼음 파동
+3304,Ball Lightning,구체 번개
+3305,Corrupted Skull,타락한 해골
+3306,Wraith Spear,망령의 창
+3401,Crimson Storm,진홍의 폭풍
+3701,Feed,흡혈
+3501,Club,곤봉
+3502,Arrow,화살
+3503,Smash,강타
+3504,Charge,돌진
+3511,Stone Slam,바위 내려찍기
+3512,Leap,도약
+3513,Rock Throw,바위 던지기
+3514,Enrage,격노
+4001,Castle Heart,성 심장
+4002,Stone Floor,돌 바닥
+4003,Stone Wall,돌 벽
+4004,Workbench,작업대
+4005,Smelter,제련소
+4006,Coffin,관
+4007,Iron Lamp,철 램프
+5001,Warrior,전사
+5002,Rogue,도적
+5003,Scholar,학자
+5004,Brute,야수
+5005,Creature,생물
+6001,Pine Tree,소나무
+6002,Oak Tree,참나무
+6003,Rock,바위
+6004,Boulder,큰 바위
+6005,Copper Vein,구리 광맥
+6006,Bush,덤불
+4008,Stone Wall (Door),돌 벽 (문)
+4009,Stone Wall (Window),돌 벽 (창문)
+4010,Stone Pillar,돌 기둥
+1006,New Monster,새 몬스터
+50,Quest,퀘스트
+51,Quest complete:,퀘스트 완료:
+52,New quest:,새 퀘스트:
+53,All quests complete!,모든 퀘스트 완료!
+54,Distance,거리
 55,"V BLOOD CLAIMED
-<size=26>The Minotaur Warlord has fallen. Demo complete - thanks for playing!</size>"
-56,Reward:
-57,Tutorial
-58,The Hunt
-59,V Blood
-7001,Awakening
-7101,You wake from a long slumber. Walk around with WASD to stretch your legs.
-7002,Taste of Steel
-7102,Click the Left Mouse button to swing your weapon. Click in rhythm to chain a combo.
-7003,Weapon Arts
-7103,Use your weapon skill. Q and E change with the weapon you wield.
-7004,Veil of Blood
-7104,Dash with Veil of Blood. Attacks pass through you while dashing.
-7005,Blood Magic
-7105,Cast Chaos Volley. Hitting an Ignited enemy again makes it explode.
-7006,The Merchant
-7106,Talk to the Wandering Merchant beside the camp (or press P) and take any item. Everything is free.
-7007,Gatherer
-7107,Strike trees, rocks or bushes with your weapon to gather 10 resources.
-7008,Handiwork
-7108,Open the crafting menu and make anything. Cloth armor only needs Plant Fiber.
-7009,Dressed for the Night
-7109,Open the inventory and equip a chest armor (Cloth Robe or Reinforced Chest).
-7010,A Castle of Your Own
-7110,Open the build menu and place a Castle Heart (20 Lumber, 20 Stone).
-7011,A Place to Rest
-7111,Build a Coffin near your Castle Heart. You will rise there when you die.
-7012,First Hunt
-7112,Medusa Sentinels lurk just north of the camp. Slay 3 of them.
-7013,The Feeding
-7113,Bring an enemy below 25% health, then drink its blood. Blood grants lasting buffs.
-7014,Serpents
-7114,Cobra Snakes shoot from afar in the Ruined Hamlet and the Serpent Marsh. Slay 3.
-7015,Copper Age
-7115,Stronger foes await. Craft copper gear at a Workbench (or take it from the merchant) and reach Gear Level 16.
-7016,Troll Ridge
-7116,Cave Trolls roam Troll Ridge far to the north. Beware their charge. Slay 3.
-7017,V Blood: Minotaur Warlord
-7117,The Minotaur Warlord rules the arena in the north-east. Defeat it - feed on it to claim its V Blood.
+<size=26>The Minotaur Warlord has fallen. Demo complete - thanks for playing!</size>","V 블러드 획득
+<size=26>미노타우로스 군주가 쓰러졌습니다. 데모 클리어 - 플레이해 주셔서 감사합니다!</size>"
+56,Reward:,보상:
+57,Tutorial,튜토리얼
+58,The Hunt,사냥
+59,V Blood,V 블러드
+7001,Awakening,각성
+7101,You wake from a long slumber. Walk around with WASD to stretch your legs.,긴 잠에서 깨어났습니다. WASD 로 걸으며 몸을 풀어 보세요.
+7002,Taste of Steel,강철의 맛
+7102,Click the Left Mouse button to swing your weapon. Click in rhythm to chain a combo.,마우스 왼쪽 버튼으로 무기를 휘두르세요. 박자에 맞춰 누르면 콤보가 이어집니다.
+7003,Weapon Arts,무기 기술
+7103,Use your weapon skill. Q and E change with the weapon you wield.,무기 스킬을 쓰세요. Q 와 E 는 들고 있는 무기에 따라 바뀝니다.
+7004,Veil of Blood,피의 장막
+7104,Dash with Veil of Blood. Attacks pass through you while dashing.,피의 장막으로 돌진하세요. 돌진하는 동안 공격이 몸을 통과합니다.
+7005,Blood Magic,피의 마법
+7105,Cast Chaos Volley. Hitting an Ignited enemy again makes it explode.,혼돈의 연발을 시전하세요. 점화된 적을 다시 맞히면 폭발합니다.
+7006,The Merchant,상인
+7106,Talk to the Wandering Merchant beside the camp (or press P) and take any item. Everything is free.,야영지 옆 떠돌이 상인과 대화하고 (또는 P) 아무 물건이나 받으세요. 모두 무료입니다.
+7007,Gatherer,채집가
+7107,Strike trees,"무기로 나무, 바위, 덤불을 쳐서 자원 10개를 모으세요."
+7008,Handiwork,손재주
+7108,Open the crafting menu and make anything. Cloth armor only needs Plant Fiber.,제작 메뉴를 열고 아무거나 만드세요. 천 방어구는 식물 섬유만 있으면 됩니다.
+7009,Dressed for the Night,밤을 위한 차림
+7109,Open the inventory and equip a chest armor (Cloth Robe or Reinforced Chest).,인벤토리를 열고 흉갑 (천 로브 또는 강화 흉갑)을 장착하세요.
+7010,A Castle of Your Own,나만의 성
+7110,Open the build menu and place a Castle Heart (20 Lumber,"건축 메뉴를 열고 성 심장을 설치하세요 (목재 20, 돌 20)."
+7011,A Place to Rest,안식처
+7111,Build a Coffin near your Castle Heart. You will rise there when you die.,성 심장 근처에 관을 지으세요. 죽으면 그곳에서 되살아납니다.
+7012,First Hunt,첫 사냥
+7112,Medusa Sentinels lurk just north of the camp. Slay 3 of them.,야영지 바로 북쪽에 메두사 파수꾼이 숨어 있습니다. 3마리를 처치하세요.
+7013,The Feeding,첫 흡혈
+7113,Bring an enemy below 25% health,적의 체력을 25% 아래로 낮춘 뒤 피를 마시세요. 피는 오래가는 버프를 줍니다.
+7014,Serpents,뱀 사냥
+7114,Cobra Snakes shoot from afar in the Ruined Hamlet and the Serpent Marsh. Slay 3.,폐허 마을과 뱀 늪의 코브라는 멀리서 공격합니다. 3마리를 처치하세요.
+7015,Copper Age,구리 시대
+7115,Stronger foes await. Craft copper gear at a Workbench (or take it from the merchant) and reach Gear Level 16.,더 강한 적이 기다립니다. 작업대에서 구리 장비를 만들고 (상인에게 받아도 됩니다) 기어 레벨 16을 달성하세요.
+7016,Troll Ridge,트롤 능선
+7116,Cave Trolls roam Troll Ridge far to the north. Beware their charge. Slay 3.,동굴 트롤은 북쪽 멀리 트롤 능선을 떠돕니다. 돌진에 주의하세요. 3마리를 처치하세요.
+7017,V Blood: Minotaur Warlord,V 블러드: 미노타우로스 군주
+7117,The Minotaur Warlord rules the arena in the north-east. Defeat it - feed on it to claim its V Blood.,미노타우로스 군주가 북동쪽 투기장을 지배합니다. 쓰러뜨리고 피를 마셔 V 블러드를 차지하세요.
+60,World Map,월드맵
+61,Close,닫기
+8001,Silverlight Glade,은빛 숲 공터
+8002,Meadow,초원
+8003,Ruined Hamlet,폐허 마을
+8004,Dunley Woods,던리 숲
+8005,Lake,호수
+8006,Serpent Marsh,뱀 늪
+8007,Rocky Highlands,바위 고원
+8008,Copper Hollow,구리 골짜기
+8009,Troll Ridge,트롤 능선
+8010,Minotaur Arena,미노타우로스 투기장
+62,Language: English,언어: 한국어
+9001,Max Health,최대 체력
+9002,Physical Power,물리 공격력
+9003,Spell Power,주문 공격력
+9004,Physical Resist,물리 저항
+9005,Spell Resist,주문 저항
+9006,Move Speed,이동 속도
+9007,Attack Speed,공격 속도
+9008,Crit Chance,치명타 확률
+9009,Crit Damage,치명타 피해
+9011,Sun Resist,햇빛 저항
+9015,Life Leech,흡혈률
+9016,Gear Level,기어 레벨
+9019,Resource Yield,채집량

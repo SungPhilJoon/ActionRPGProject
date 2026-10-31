@@ -125,6 +125,11 @@ public struct QuestChangedEvent : IGameEvent
     public bool Completed;
 }
 
+/// <summary>언어가 바뀌고 새 문자열 테이블이 준비됨 (Unity Localization). 문구를 캐시한 UI 는 다시 채운다.</summary>
+public struct LanguageChangedEvent : IGameEvent
+{
+}
+
 /// <summary>마지막 퀘스트(보스)까지 모두 끝남.</summary>
 public struct QuestsCompletedEvent : IGameEvent
 {

@@ -33,6 +33,14 @@ public static class UIUtil
         return Tables.Text(row.NameId);
     }
 
+    /// <summary>능력치 이름 문구 = StringTable 9000 + EAttribute (인벤토리 능력치 목록).</summary>
+    public const int AttributeTextBase = 9000;
+
+    public static int AttributeTextId(EAttribute InAttribute)
+    {
+        return AttributeTextBase + (int)InAttribute;
+    }
+
     public static EText QuestChapterText(EQuestChapter InChapter)
     {
         switch (InChapter)

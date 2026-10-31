@@ -35,14 +35,74 @@ public static class UISkinSetup
         skin.BarBack = orDefault(skin.BarBack, () => bar("barBack", "T_UI_BarBack"));
         skin.BarFill = orDefault(skin.BarFill, () => bar("barRed", "T_UI_BarFill"));
         skin.CloseIcon = orDefault(skin.CloseIcon, () => gray("iconCross_grey", "T_UI_Close", Vector4.zero));
-        if (skin.Font == null)
+        // 한글 UI (Unity Localization): 기본 폰트(LiberationSans)에는 한글이 없어 Noto Sans KR 동적 폰트를 쓴다.
+        var korean = GetOrCreateKoreanFont();
+        if (skin.Font == null || skin.Font == TMPro.TMP_Settings.defaultFontAsset)
         {
-            skin.Font = TMPro.TMP_Settings.defaultFontAsset;
+            skin.Font = korean != null ? korean : TMPro.TMP_Settings.defaultFontAsset;
         }
+
+        registerGlobalFallback(korean);
 
         EditorUtility.SetDirty(skin);
         AssetDatabase.SaveAssets();
         return skin;
+    }
+
+    private const string KoreanFontSource = EditorPaths.Root + "/Art/ThirdParty/Fonts/NotoSansKR/NotoSansKR-VF.ttf";
+    public const string KoreanFontPath = Folder + "/NotoSansKR SDF.asset";
+
+    /// <summary>
+    /// Noto Sans KR → TMP 동적 폰트 에셋 (글리프는 실행 중 필요할 때 아틀라스에 그린다 → 한글 11,172자를 미리 굽지 않음).
+    /// 아틀라스 텍스처 · 머티리얼은 에셋의 하위 오브젝트로 저장한다 (TMP 에디터와 같은 방식).
+    /// </summary>
+    public static TMPro.TMP_FontAsset GetOrCreateKoreanFont()
+    {
+        var existing = AssetDatabase.LoadAssetAtPath<TMPro.TMP_FontAsset>(KoreanFontPath);
+        if (existing != null)
+        {
+            return existing;
+        }
+
+        var source = AssetDatabase.LoadAssetAtPath<Font>(KoreanFontSource);
+        if (source == null)
+        {
+            Debug.LogWarning("[UI] Korean font missing: " + KoreanFontSource);
+            return null;
+        }
+
+        var font = TMPro.TMP_FontAsset.CreateFontAsset(source, 64, 6, UnityEngine.TextCore.LowLevel.GlyphRenderMode.SDFAA, 1024, 1024, TMPro.AtlasPopulationMode.Dynamic, true);
+        font.name = "NotoSansKR SDF";
+        AssetDatabase.CreateAsset(font, KoreanFontPath);
+        font.atlasTextures[0].name = "NotoSansKR SDF Atlas";
+        AssetDatabase.AddObjectToAsset(font.atlasTextures[0], font);
+        font.material.name = "NotoSansKR SDF Material";
+        AssetDatabase.AddObjectToAsset(font.material, font);
+        EditorUtility.SetDirty(font);
+        AssetDatabase.SaveAssets();
+        return font;
+    }
+
+    /// <summary>스킨을 거치지 않는 텍스트(기본 폰트)도 한글이 나오도록 TMP 전역 대체 폰트에 넣는다.</summary>
+    private static void registerGlobalFallback(TMPro.TMP_FontAsset InFont)
+    {
+        if (InFont == null || TMPro.TMP_Settings.instance == null)
+        {
+            return;
+        }
+
+        var fallbacks = TMPro.TMP_Settings.fallbackFontAssets;
+        if (fallbacks == null)
+        {
+            fallbacks = new System.Collections.Generic.List<TMPro.TMP_FontAsset>();
+            TMPro.TMP_Settings.fallbackFontAssets = fallbacks;
+        }
+
+        if (fallbacks.Contains(InFont) == false)
+        {
+            fallbacks.Add(InFont);
+            EditorUtility.SetDirty(TMPro.TMP_Settings.instance);
+        }
     }
 
     [MenuItem("Game/UI/Select UI Skin", priority = 60)]

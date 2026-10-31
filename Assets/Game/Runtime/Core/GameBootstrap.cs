@@ -12,7 +12,7 @@ using UnityEngine.ResourceManagement.AsyncOperations;
 /// <summary>
 /// 게임 진입점. 순서:
 ///  1) 기반 매니저(AssetLoader, Pool) 등록
-///  2) GameTables 비동기 로드 → Tables.Bind → 태그 계층 / Execution / Cue 등록
+///  2) GameTables 비동기 로드 → Tables.Bind → 태그 계층 / Execution / Cue 등록 → Unity Localization 초기화 (GameLocalization)
 ///  3) 게임 매니저 등록 (입력, 액터, 낮밤, 스폰, 건축, 퀘스트, 치트, UI)
 ///  4) UI 프리팹 로드(Addressables) → 타이틀 표시 + 에셋 프리로드 + 월드 스폰 (비동기, 로딩 표시)
 ///  5) "싱글 플레이" → 플레이어 생성 → HUD
@@ -28,6 +28,7 @@ public class GameBootstrap : BaseBehaviour
     private bool InGame;
     private TitleWindow Title;
     private HudWindow Hud;
+    private MinimapWindow Minimap;
     private BalanceOverlayWindow Balance;
 
     private void Start()
@@ -56,6 +57,13 @@ public class GameBootstrap : BaseBehaviour
 
         Tables.Bind(tables);
         setupAbilitySystem();
+        // Unity Localization: 현재 언어 문자열 테이블이 준비된 뒤에 UI 를 만든다 (Tables.Text 가 바로 번역문을 돌려주도록).
+        await GameLocalization.InitializeAsync(tables.TextTable);
+        if (this == null)
+        {
+            return;
+        }
+
 
         Managers.Regist(new GameInput());
         Managers.Regist(new ActorRegistry());
@@ -104,6 +112,7 @@ public class GameBootstrap : BaseBehaviour
         CueSpawner.RegisterAll();
         CombatLog.Clear();
         InteractableRegistry.Clear();
+        MapMarkers.Clear();
     }
 
     /// <summary>
@@ -150,6 +159,8 @@ public class GameBootstrap : BaseBehaviour
         ui.Create<CraftWindow>(UILayerId.Window, await loadUIPrefab(EUIAsset.CraftWindow));
         ui.Create<BuildWindow>(UILayerId.Window, await loadUIPrefab(EUIAsset.BuildWindow));
         ui.Create<ShopWindow>(UILayerId.Window, await loadUIPrefab(EUIAsset.ShopWindow));
+        ui.Create<WorldMapWindow>(UILayerId.Window, await loadUIPrefab(EUIAsset.WorldMapWindow));
+        Minimap = ui.Create<MinimapWindow>(UILayerId.Hud, await loadUIPrefab(EUIAsset.MinimapWindow));
         Balance = ui.Create<BalanceOverlayWindow>(UILayerId.Popup, await loadUIPrefab(EUIAsset.BalanceOverlayWindow));
         ui.Create<CheatConsoleWindow>(UILayerId.System, await loadUIPrefab(EUIAsset.CheatConsoleWindow));
         Title = ui.Create<TitleWindow>(UILayerId.System, await loadUIPrefab(EUIAsset.TitleWindow), true);
@@ -225,6 +236,7 @@ public class GameBootstrap : BaseBehaviour
         camera.Setup(player.transform);
         instance.GetComponent<PlayerController>().Initialize(player, camera);
         Hud.Open();
+        Minimap.Open();
     }
 
     private void Update()
@@ -234,11 +246,24 @@ public class GameBootstrap : BaseBehaviour
             return;
         }
 
+        syncInputMaps();
         Managers.Update(Time.deltaTime);
         if (InGame == true)
         {
             handleHotkeys();
         }
+    }
+
+    /// <summary>
+    /// 입력을 막는 창(BlocksGameInput)이 하나라도 열려 있거나 콘솔에 입력 중이면 Combat 맵(어빌리티 · 상호작용 · 카메라 줌/회전)을 끈다.
+    /// 매니저 업데이트 전에 맞춰, 창이 열린 프레임부터 휠 줌 · 공격이 반응하지 않게 한다. 이동(Movement)은 창이 열려 있어도 된다.
+    /// </summary>
+    private void syncInputMaps()
+    {
+        var input = Managers.Get<GameInput>();
+        var ui = Managers.Get<UIManager>();
+        bool blocked = InGame == false || input.TextInputFocused == true || (ui != null && ui.IsAnyBlockingWindowOpen() == true);
+        input.SetMapEnabled(EInputMap.Combat, blocked == false);
     }
 
     private void handleHotkeys()
@@ -276,6 +301,10 @@ public class GameBootstrap : BaseBehaviour
         {
             ui.Get<ShopWindow>().Toggle();
         }
+        else if (input.Pressed(EInputAction.WorldMap) == true)
+        {
+            ui.Get<WorldMapWindow>().Toggle();
+        }
         else if (input.Pressed(EInputAction.BalanceOverlay) == true)
         {
             Balance.Toggle();
@@ -285,6 +314,7 @@ public class GameBootstrap : BaseBehaviour
     protected override void OnUnityDestroy()
     {
         Managers.Clear();
+        GameLocalization.Shutdown();
         Tables.Bind(null);
         if (TablesHandle.IsValid() == true)
         {

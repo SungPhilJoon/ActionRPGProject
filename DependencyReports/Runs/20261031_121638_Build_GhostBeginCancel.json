@@ -1,0 +1,157 @@
+{
+    "Scenario": "Build_GhostBeginCancel",
+    "Description": "건축 모드 진입(고스트 프리팹 동기 로드) → 취소, 모든 건축물",
+    "StartedAt": "2026-10-31 12:16:38",
+    "DurationSeconds": 0.3855133056640625,
+    "Repeat": 3,
+    "ExpectsCleanup": true,
+    "LoadEvents": 30,
+    "ReleaseEvents": 0,
+    "SyncWaits": 0,
+    "SyncWaitMilliseconds": 0.0,
+    "LiveBefore": 102,
+    "LiveAfter": 102,
+    "Failures": [],
+    "Assets": [
+        {
+            "Address": "Structures/Banner",
+            "Type": "GameObject",
+            "Loads": 3,
+            "Releases": 0,
+            "RefCountBefore": 1,
+            "RefCountAfter": 4,
+            "LoadMilliseconds": 0.0,
+            "SyncWaitMilliseconds": 0.0,
+            "Failed": false,
+            "Owners": [
+                "BuildManager.Begin"
+            ]
+        },
+        {
+            "Address": "Structures/CastleHeart",
+            "Type": "GameObject",
+            "Loads": 3,
+            "Releases": 0,
+            "RefCountBefore": 1,
+            "RefCountAfter": 4,
+            "LoadMilliseconds": 0.0,
+            "SyncWaitMilliseconds": 0.0,
+            "Failed": false,
+            "Owners": [
+                "BuildManager.Begin"
+            ]
+        },
+        {
+            "Address": "Structures/Coffin",
+            "Type": "GameObject",
+            "Loads": 3,
+            "Releases": 0,
+            "RefCountBefore": 1,
+            "RefCountAfter": 4,
+            "LoadMilliseconds": 0.0,
+            "SyncWaitMilliseconds": 0.0,
+            "Failed": false,
+            "Owners": [
+                "BuildManager.Begin"
+            ]
+        },
+        {
+            "Address": "Structures/Floor",
+            "Type": "GameObject",
+            "Loads": 3,
+            "Releases": 0,
+            "RefCountBefore": 1,
+            "RefCountAfter": 4,
+            "LoadMilliseconds": 0.0,
+            "SyncWaitMilliseconds": 0.0,
+            "Failed": false,
+            "Owners": [
+                "BuildManager.Begin"
+            ]
+        },
+        {
+            "Address": "Structures/Pillar",
+            "Type": "GameObject",
+            "Loads": 3,
+            "Releases": 0,
+            "RefCountBefore": 1,
+            "RefCountAfter": 4,
+            "LoadMilliseconds": 0.0,
+            "SyncWaitMilliseconds": 0.0,
+            "Failed": false,
+            "Owners": [
+                "BuildManager.Begin"
+            ]
+        },
+        {
+            "Address": "Structures/Smelter",
+            "Type": "GameObject",
+            "Loads": 3,
+            "Releases": 0,
+            "RefCountBefore": 1,
+            "RefCountAfter": 4,
+            "LoadMilliseconds": 0.0,
+            "SyncWaitMilliseconds": 0.0,
+            "Failed": false,
+            "Owners": [
+                "BuildManager.Begin"
+            ]
+        },
+        {
+            "Address": "Structures/Wall",
+            "Type": "GameObject",
+            "Loads": 3,
+            "Releases": 0,
+            "RefCountBefore": 1,
+            "RefCountAfter": 4,
+            "LoadMilliseconds": 0.0,
+            "SyncWaitMilliseconds": 0.0,
+            "Failed": false,
+            "Owners": [
+                "BuildManager.Begin"
+            ]
+        },
+        {
+            "Address": "Structures/WallDoor",
+            "Type": "GameObject",
+            "Loads": 3,
+            "Releases": 0,
+            "RefCountBefore": 1,
+            "RefCountAfter": 4,
+            "LoadMilliseconds": 0.0,
+            "SyncWaitMilliseconds": 0.0,
+            "Failed": false,
+            "Owners": [
+                "BuildManager.Begin"
+            ]
+        },
+        {
+            "Address": "Structures/WallWindow",
+            "Type": "GameObject",
+            "Loads": 3,
+            "Releases": 0,
+            "RefCountBefore": 1,
+            "RefCountAfter": 4,
+            "LoadMilliseconds": 0.0,
+            "SyncWaitMilliseconds": 0.0,
+            "Failed": false,
+            "Owners": [
+                "BuildManager.Begin"
+            ]
+        },
+        {
+            "Address": "Structures/Workbench",
+            "Type": "GameObject",
+            "Loads": 3,
+            "Releases": 0,
+            "RefCountBefore": 1,
+            "RefCountAfter": 4,
+            "LoadMilliseconds": 0.0,
+            "SyncWaitMilliseconds": 0.0,
+            "Failed": false,
+            "Owners": [
+                "BuildManager.Begin"
+            ]
+        }
+    ]
+}

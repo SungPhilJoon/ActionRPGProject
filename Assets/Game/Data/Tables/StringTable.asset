@@ -16,364 +16,650 @@ MonoBehaviour:
   Rows:
   - Index: 1
     Text: BLOODLINE  -  V Rising Demo
+    Korean: "BLOODLINE  -  V Rising \uB370\uBAA8"
   - Index: 2
     Text: Single Player (Offline)
+    Korean: "\uC2F1\uAE00 \uD50C\uB808\uC774 (\uC624\uD504\uB77C\uC778)"
   - Index: 3
     Text: Co-op (up to 4) - Coming soon
+    Korean: "\uD611\uB3D9 (\uCD5C\uB300 4\uC778) - \uC900\uBE44 \uC911"
   - Index: 4
     Text: Quit
+    Korean: "\uC885\uB8CC"
   - Index: 10
     Text: Inventory
+    Korean: "\uC778\uBCA4\uD1A0\uB9AC"
   - Index: 11
     Text: Equipment
+    Korean: "\uC7A5\uBE44"
   - Index: 12
     Text: Crafting
+    Korean: "\uC81C\uC791"
   - Index: 13
     Text: Build
+    Korean: "\uAC74\uCD95"
   - Index: 14
     Text: Shop
+    Korean: "\uC0C1\uC810"
   - Index: 15
     Text: FREE
+    Korean: "\uBB34\uB8CC"
   - Index: 16
     Text: Get
+    Korean: "\uBC1B\uAE30"
   - Index: 17
     Text: Craft
+    Korean: "\uC81C\uC791"
   - Index: 18
     Text: Close
+    Korean: "\uB2EB\uAE30"
   - Index: 19
     Text: Gear
+    Korean: "\uAE30\uC5B4"
   - Index: 20
     Text: Blood
+    Korean: "\uD608\uC561"
   - Index: 21
     Text: Day
+    Korean: "\uB0AE"
   - Index: 22
     Text: Night
+    Korean: "\uBC24"
   - Index: 23
     Text: IN SUNLIGHT! Find shade
+    Korean: "\uD587\uBE5B\uC5D0 \uB178\uCD9C\uB428! \uADF8\uB298\uB85C \uD53C\uD558\uC138\uC694"
   - Index: 24
     Text: In shadow
+    Korean: "\uADF8\uB298 \uC548"
   - Index: 25
     Text: Interact
+    Korean: "\uC0C1\uD638\uC791\uC6A9"
   - Index: 26
     Text: Feed
+    Korean: "\uD761\uD608"
   - Index: 27
     Text: YOU DIED
+    Korean: "\uC0AC\uB9DD\uD588\uC2B5\uB2C8\uB2E4"
   - Index: 28
     Text: Respawning in
+    Korean: "\uBD80\uD65C\uAE4C\uC9C0"
   - Index: 29
     Text: Not enough materials
+    Korean: "\uC7AC\uB8CC\uAC00 \uBD80\uC871\uD569\uB2C8\uB2E4"
   - Index: 30
     Text: Build a Castle Heart first
+    Korean: "\uBA3C\uC800 \uC131 \uC2EC\uC7A5\uC744 \uC9C0\uC73C\uC138\uC694"
   - Index: 31
     Text: 'V Blood consumed:'
+    Korean: "V \uBE14\uB7EC\uB4DC \uD761\uC218:"
   - Index: 32
     Text: 'New ability unlocked:'
+    Korean: "\uC0C8 \uB2A5\uB825 \uD574\uAE08:"
   - Index: 33
     Text: Inventory full
+    Korean: "\uC778\uBCA4\uD1A0\uB9AC\uAC00 \uAC00\uB4DD \uCC3C\uC2B5\uB2C8\uB2E4"
   - Index: 34
     Text: Cheat Console
+    Korean: "\uCE58\uD2B8 \uCF58\uC194"
   - Index: 35
     Text: Type 'help' for commands. Toggle with ` key.
+    Korean: "\uBA85\uB839\uC5B4 \uBAA9\uB85D\uC740 'help' \uB97C \uC785\uB825\uD558\uC138\uC694.
+      ` \uD0A4\uB85C \uC5F4\uACE0 \uB2EB\uC2B5\uB2C8\uB2E4."
   - Index: 36
     Text: Balance Meter
+    Korean: "\uBC38\uB7F0\uC2A4 \uBBF8\uD130"
   - Index: 37
     Text: Requires
+    Korean: "\uD544\uC694"
   - Index: 38
     Text: Owned
+    Korean: "\uBCF4\uC720"
   - Index: 39
     Text: Place
+    Korean: "\uC124\uCE58"
   - Index: 40
     Text: Rotate
+    Korean: "\uD68C\uC804"
   - Index: 41
     Text: 'LMB: place   X: rotate   ESC: cancel'
+    Korean: "\uC88C\uD074\uB9AD: \uC124\uCE58   X: \uD68C\uC804   ESC: \uCDE8\uC18C"
   - Index: 42
     Text: Talk to Merchant
+    Korean: "\uC0C1\uC778\uACFC \uB300\uD654"
   - Index: 43
     Text: No blood
+    Korean: "\uD608\uC561 \uC5C6\uC74C"
   - Index: 44
     Text: Quality
+    Korean: "\uD488\uC9C8"
   - Index: 45
     Text: 'WASD move | LMB attack | Q/E weapon skills | Space Veil of Blood | R/C
       spells | T ultimate | F feed (low HP enemy) | G interact
 
       Tab inventory
-      | K craft | B build | P shop | ` cheats | F8 balance meter | Wheel zoom | Middle
-      mouse rotate camera'
+      | K craft | B build | P shop | M world map | ` cheats | F8 balance meter |
+      Wheel zoom | Middle mouse rotate camera'
+    Korean: "WASD \uC774\uB3D9 | \uC88C\uD074\uB9AD \uACF5\uACA9 | Q/E \uBB34\uAE30
+      \uC2A4\uD0AC | Space \uD53C\uC758 \uC7A5\uB9C9 | R/C \uC8FC\uBB38 | T \uAD81\uADF9\uAE30
+      | F \uD761\uD608 (\uCCB4\uB825 \uB0AE\uC740 \uC801) | G \uC0C1\uD638\uC791\uC6A9\nTab
+      \uC778\uBCA4\uD1A0\uB9AC | K \uC81C\uC791 | B \uAC74\uCD95 | P \uC0C1\uC810
+      | M \uC6D4\uB4DC\uB9F5 | ` \uCE58\uD2B8 | F8 \uBC38\uB7F0\uC2A4 \uBBF8\uD130
+      | \uD720 \uC90C | \uD720 \uD074\uB9AD \uCE74\uBA54\uB77C \uD68C\uC804"
   - Index: 46
     Text: Loading world...
+    Korean: "\uC6D4\uB4DC\uB97C \uBD88\uB7EC\uC624\uB294 \uC911..."
   - Index: 47
     Text: Damage dealt by ability (total / DPS)
+    Korean: "\uC5B4\uBE4C\uB9AC\uD2F0\uBCC4 \uC900 \uD53C\uD574 (\uD569\uACC4 / DPS)"
   - Index: 48
     Text: Player damage taken
+    Korean: "\uD50C\uB808\uC774\uC5B4\uAC00 \uBC1B\uC740 \uD53C\uD574"
   - Index: 49
     Text: Recent hits
+    Korean: "\uCD5C\uADFC \uD0C0\uACA9"
   - Index: 1000
     Text: Vampire
+    Korean: "\uBC40\uD30C\uC774\uC5B4"
   - Index: 1001
     Text: Medusa Sentinel
+    Korean: "\uBA54\uB450\uC0AC \uD30C\uC218\uAFBC"
   - Index: 1002
     Text: Cobra Snake
+    Korean: "\uCF54\uBE0C\uB77C"
   - Index: 1003
     Text: Cave Troll
+    Korean: "\uB3D9\uAD74 \uD2B8\uB864"
   - Index: 1004
     Text: Minotaur Warlord
+    Korean: "\uBBF8\uB178\uD0C0\uC6B0\uB85C\uC2A4 \uAD70\uC8FC"
   - Index: 1005
     Text: Wandering Merchant
+    Korean: "\uB5A0\uB3CC\uC774 \uC0C1\uC778"
   - Index: 2001
     Text: Lumber
+    Korean: "\uBAA9\uC7AC"
   - Index: 2002
     Text: Stone
+    Korean: "\uB3CC"
   - Index: 2003
     Text: Plant Fiber
+    Korean: "\uC2DD\uBB3C \uC12C\uC720"
   - Index: 2004
     Text: Copper Ore
+    Korean: "\uAD6C\uB9AC \uAD11\uC11D"
   - Index: 2005
     Text: Blood Essence
+    Korean: "\uD53C\uC758 \uC815\uC218"
   - Index: 2006
     Text: Copper Ingot
+    Korean: "\uAD6C\uB9AC \uC8FC\uAD34"
   - Index: 2010
     Text: Bone Sword
+    Korean: "\uBF08 \uAC80"
   - Index: 2011
     Text: Copper Sword
+    Korean: "\uAD6C\uB9AC \uAC80"
   - Index: 2012
     Text: Bone Spear
+    Korean: "\uBF08 \uCC3D"
   - Index: 2013
     Text: Copper Spear
+    Korean: "\uAD6C\uB9AC \uCC3D"
   - Index: 2020
     Text: Cloth Robe
+    Korean: "\uCC9C \uB85C\uBE0C"
   - Index: 2021
     Text: Cloth Pants
+    Korean: "\uCC9C \uBC14\uC9C0"
   - Index: 2022
     Text: Cloth Boots
+    Korean: "\uCC9C \uC7A5\uD654"
   - Index: 2023
     Text: Cloth Gloves
+    Korean: "\uCC9C \uC7A5\uAC11"
   - Index: 2024
     Text: Reinforced Chest
+    Korean: "\uAC15\uD654 \uD749\uAC11"
   - Index: 2025
     Text: Reinforced Pants
+    Korean: "\uAC15\uD654 \uBC14\uC9C0"
   - Index: 2026
     Text: Reinforced Boots
+    Korean: "\uAC15\uD654 \uC7A5\uD654"
   - Index: 2027
     Text: Reinforced Gloves
+    Korean: "\uAC15\uD654 \uC7A5\uAC11"
   - Index: 2030
     Text: Blood Potion
+    Korean: "\uD53C\uC758 \uBB3C\uC57D"
   - Index: 2031
     Text: Sun Resistance Brew
+    Korean: "\uD587\uBE5B \uC800\uD56D \uBB3C\uC57D"
   - Index: 2101
     Text: Basic resource for building.
+    Korean: "\uAC74\uCD95\uC5D0 \uC4F0\uB294 \uAE30\uBCF8 \uC790\uC6D0."
   - Index: 2102
     Text: Basic resource for building.
+    Korean: "\uAC74\uCD95\uC5D0 \uC4F0\uB294 \uAE30\uBCF8 \uC790\uC6D0."
   - Index: 2103
     Text: Used for cloth and potions.
+    Korean: "\uCC9C\uACFC \uBB3C\uC57D\uC744 \uB9CC\uB4DC\uB294 \uB370 \uC4F0\uC785\uB2C8\uB2E4."
   - Index: 2104
     Text: Smelt into Copper Ingots.
+    Korean: "\uC81C\uB828\uD558\uBA74 \uAD6C\uB9AC \uC8FC\uAD34\uAC00 \uB429\uB2C8\uB2E4."
   - Index: 2105
     Text: Dropped by the living. Fuels vampire crafts.
+    Korean: "\uC0B0 \uC790\uC5D0\uAC8C\uC11C \uC5BB\uB294\uB2E4. \uBC40\uD30C\uC774\uC5B4
+      \uC81C\uC791\uC758 \uC7AC\uB8CC."
   - Index: 2106
     Text: Refined metal.
+    Korean: "\uC815\uC81C\uB41C \uAE08\uC18D."
   - Index: 2110
     Text: A crude blade. Combo slashes.
+    Korean: "\uC870\uC7A1\uD55C \uCE7C\uB0A0. \uC5F0\uC18D \uBCA0\uAE30."
   - Index: 2111
     Text: A sharp copper blade.
+    Korean: "\uB0A0\uCE74\uB85C\uC6B4 \uAD6C\uB9AC \uCE7C\uB0A0."
   - Index: 2112
     Text: Long reach. Thrust and charge.
+    Korean: "\uAE34 \uC0AC\uAC70\uB9AC. \uCC0C\uB974\uAE30\uC640 \uB3CC\uC9C4."
   - Index: 2113
     Text: A sturdy copper spear.
+    Korean: "\uD2BC\uD2BC\uD55C \uAD6C\uB9AC \uCC3D."
   - Index: 2120
     Text: Light armor.
+    Korean: "\uAC00\uBCBC\uC6B4 \uBC29\uC5B4\uAD6C."
   - Index: 2124
     Text: Reinforced armor.
+    Korean: "\uAC15\uD654\uB41C \uBC29\uC5B4\uAD6C."
   - Index: 2130
     Text: Restores 150 health.
+    Korean: "\uCCB4\uB825\uC744 150 \uD68C\uBCF5\uD569\uB2C8\uB2E4."
   - Index: 2131
     Text: +50 Sun Resistance for 120 seconds.
+    Korean: "120\uCD08 \uB3D9\uC548 \uD587\uBE5B \uC800\uD56D +50."
   - Index: 3101
     Text: Sword Slash
+    Korean: "\uAC80 \uBCA0\uAE30"
   - Index: 3102
     Text: Whirlwind
+    Korean: "\uD68C\uC624\uB9AC \uBCA0\uAE30"
   - Index: 3103
     Text: Shockwave
+    Korean: "\uCDA9\uACA9\uD30C"
   - Index: 3111
     Text: Spear Thrust
+    Korean: "\uCC3D \uCC0C\uB974\uAE30"
   - Index: 3112
     Text: Charge
+    Korean: "\uB3CC\uC9C4"
   - Index: 3113
     Text: Sweep
+    Korean: "\uD729\uC4F8\uAE30"
   - Index: 3121
     Text: Punch
+    Korean: "\uC8FC\uBA39"
   - Index: 3201
     Text: Veil of Blood
+    Korean: "\uD53C\uC758 \uC7A5\uB9C9"
   - Index: 3301
     Text: Chaos Volley
+    Korean: "\uD63C\uB3C8\uC758 \uC5F0\uBC1C"
   - Index: 3302
     Text: Blood Rite
+    Korean: "\uD53C\uC758 \uC758\uC2DD"
   - Index: 3303
     Text: Ice Nova
+    Korean: "\uC5BC\uC74C \uD30C\uB3D9"
   - Index: 3304
     Text: Ball Lightning
+    Korean: "\uAD6C\uCCB4 \uBC88\uAC1C"
   - Index: 3305
     Text: Corrupted Skull
+    Korean: "\uD0C0\uB77D\uD55C \uD574\uACE8"
   - Index: 3306
     Text: Wraith Spear
+    Korean: "\uB9DD\uB839\uC758 \uCC3D"
   - Index: 3401
     Text: Crimson Storm
+    Korean: "\uC9C4\uD64D\uC758 \uD3ED\uD48D"
   - Index: 3701
     Text: Feed
+    Korean: "\uD761\uD608"
   - Index: 3501
     Text: Club
+    Korean: "\uACE4\uBD09"
   - Index: 3502
     Text: Arrow
+    Korean: "\uD654\uC0B4"
   - Index: 3503
     Text: Smash
+    Korean: "\uAC15\uD0C0"
   - Index: 3504
     Text: Charge
+    Korean: "\uB3CC\uC9C4"
   - Index: 3511
     Text: Stone Slam
+    Korean: "\uBC14\uC704 \uB0B4\uB824\uCC0D\uAE30"
   - Index: 3512
     Text: Leap
+    Korean: "\uB3C4\uC57D"
   - Index: 3513
     Text: Rock Throw
+    Korean: "\uBC14\uC704 \uB358\uC9C0\uAE30"
   - Index: 3514
     Text: Enrage
+    Korean: "\uACA9\uB178"
   - Index: 4001
     Text: Castle Heart
+    Korean: "\uC131 \uC2EC\uC7A5"
   - Index: 4002
     Text: Stone Floor
+    Korean: "\uB3CC \uBC14\uB2E5"
   - Index: 4003
     Text: Stone Wall
+    Korean: "\uB3CC \uBCBD"
   - Index: 4004
     Text: Workbench
+    Korean: "\uC791\uC5C5\uB300"
   - Index: 4005
     Text: Smelter
+    Korean: "\uC81C\uB828\uC18C"
   - Index: 4006
     Text: Coffin
+    Korean: "\uAD00"
   - Index: 4007
     Text: Iron Lamp
+    Korean: "\uCCA0 \uB7A8\uD504"
   - Index: 5001
     Text: Warrior
+    Korean: "\uC804\uC0AC"
   - Index: 5002
     Text: Rogue
+    Korean: "\uB3C4\uC801"
   - Index: 5003
     Text: Scholar
+    Korean: "\uD559\uC790"
   - Index: 5004
     Text: Brute
+    Korean: "\uC57C\uC218"
   - Index: 5005
     Text: Creature
+    Korean: "\uC0DD\uBB3C"
   - Index: 6001
     Text: Pine Tree
+    Korean: "\uC18C\uB098\uBB34"
   - Index: 6002
     Text: Oak Tree
+    Korean: "\uCC38\uB098\uBB34"
   - Index: 6003
     Text: Rock
+    Korean: "\uBC14\uC704"
   - Index: 6004
     Text: Boulder
+    Korean: "\uD070 \uBC14\uC704"
   - Index: 6005
     Text: Copper Vein
+    Korean: "\uAD6C\uB9AC \uAD11\uB9E5"
   - Index: 6006
     Text: Bush
+    Korean: "\uB364\uBD88"
   - Index: 4008
     Text: Stone Wall (Door)
+    Korean: "\uB3CC \uBCBD (\uBB38)"
   - Index: 4009
     Text: Stone Wall (Window)
+    Korean: "\uB3CC \uBCBD (\uCC3D\uBB38)"
   - Index: 4010
     Text: Stone Pillar
+    Korean: "\uB3CC \uAE30\uB465"
   - Index: 1006
     Text: New Monster
+    Korean: "\uC0C8 \uBAAC\uC2A4\uD130"
   - Index: 50
     Text: Quest
+    Korean: "\uD018\uC2A4\uD2B8"
   - Index: 51
     Text: 'Quest complete:'
+    Korean: "\uD018\uC2A4\uD2B8 \uC644\uB8CC:"
   - Index: 52
     Text: 'New quest:'
+    Korean: "\uC0C8 \uD018\uC2A4\uD2B8:"
   - Index: 53
     Text: All quests complete!
+    Korean: "\uBAA8\uB4E0 \uD018\uC2A4\uD2B8 \uC644\uB8CC!"
   - Index: 54
-    Text: Nearest
+    Text: Distance
+    Korean: "\uAC70\uB9AC"
   - Index: 55
     Text: 'V BLOOD CLAIMED
 
       <size=26>The Minotaur Warlord has fallen. Demo
       complete - thanks for playing!</size>'
+    Korean: "V \uBE14\uB7EC\uB4DC \uD68D\uB4DD\n<size=26>\uBBF8\uB178\uD0C0\uC6B0\uB85C\uC2A4
+      \uAD70\uC8FC\uAC00 \uC4F0\uB7EC\uC84C\uC2B5\uB2C8\uB2E4. \uB370\uBAA8 \uD074\uB9AC\uC5B4
+      - \uD50C\uB808\uC774\uD574 \uC8FC\uC154\uC11C \uAC10\uC0AC\uD569\uB2C8\uB2E4!</size>"
   - Index: 56
     Text: 'Reward:'
+    Korean: "\uBCF4\uC0C1:"
   - Index: 57
     Text: Tutorial
+    Korean: "\uD29C\uD1A0\uB9AC\uC5BC"
   - Index: 58
     Text: The Hunt
+    Korean: "\uC0AC\uB0E5"
   - Index: 59
     Text: V Blood
+    Korean: "V \uBE14\uB7EC\uB4DC"
   - Index: 7001
     Text: Awakening
+    Korean: "\uAC01\uC131"
   - Index: 7101
     Text: You wake from a long slumber. Walk around with WASD to stretch your legs.
+    Korean: "\uAE34 \uC7A0\uC5D0\uC11C \uAE68\uC5B4\uB0AC\uC2B5\uB2C8\uB2E4. WASD
+      \uB85C \uAC78\uC73C\uBA70 \uBAB8\uC744 \uD480\uC5B4 \uBCF4\uC138\uC694."
   - Index: 7002
     Text: Taste of Steel
+    Korean: "\uAC15\uCCA0\uC758 \uB9DB"
   - Index: 7102
     Text: Click the Left Mouse button to swing your weapon. Click in rhythm to chain
       a combo.
+    Korean: "\uB9C8\uC6B0\uC2A4 \uC67C\uCABD \uBC84\uD2BC\uC73C\uB85C \uBB34\uAE30\uB97C
+      \uD718\uB450\uB974\uC138\uC694. \uBC15\uC790\uC5D0 \uB9DE\uCDB0 \uB204\uB974\uBA74
+      \uCF64\uBCF4\uAC00 \uC774\uC5B4\uC9D1\uB2C8\uB2E4."
   - Index: 7003
     Text: Weapon Arts
+    Korean: "\uBB34\uAE30 \uAE30\uC220"
   - Index: 7103
     Text: Use your weapon skill. Q and E change with the weapon you wield.
+    Korean: "\uBB34\uAE30 \uC2A4\uD0AC\uC744 \uC4F0\uC138\uC694. Q \uC640 E \uB294
+      \uB4E4\uACE0 \uC788\uB294 \uBB34\uAE30\uC5D0 \uB530\uB77C \uBC14\uB01D\uB2C8\uB2E4."
   - Index: 7004
     Text: Veil of Blood
+    Korean: "\uD53C\uC758 \uC7A5\uB9C9"
   - Index: 7104
     Text: Dash with Veil of Blood. Attacks pass through you while dashing.
+    Korean: "\uD53C\uC758 \uC7A5\uB9C9\uC73C\uB85C \uB3CC\uC9C4\uD558\uC138\uC694.
+      \uB3CC\uC9C4\uD558\uB294 \uB3D9\uC548 \uACF5\uACA9\uC774 \uBAB8\uC744 \uD1B5\uACFC\uD569\uB2C8\uB2E4."
   - Index: 7005
     Text: Blood Magic
+    Korean: "\uD53C\uC758 \uB9C8\uBC95"
   - Index: 7105
     Text: Cast Chaos Volley. Hitting an Ignited enemy again makes it explode.
+    Korean: "\uD63C\uB3C8\uC758 \uC5F0\uBC1C\uC744 \uC2DC\uC804\uD558\uC138\uC694.
+      \uC810\uD654\uB41C \uC801\uC744 \uB2E4\uC2DC \uB9DE\uD788\uBA74 \uD3ED\uBC1C\uD569\uB2C8\uB2E4."
   - Index: 7006
     Text: The Merchant
+    Korean: "\uC0C1\uC778"
   - Index: 7106
     Text: Talk to the Wandering Merchant beside the camp (or press P) and take any
       item. Everything is free.
+    Korean: "\uC57C\uC601\uC9C0 \uC606 \uB5A0\uB3CC\uC774 \uC0C1\uC778\uACFC \uB300\uD654\uD558\uACE0
+      (\uB610\uB294 P) \uC544\uBB34 \uBB3C\uAC74\uC774\uB098 \uBC1B\uC73C\uC138\uC694.
+      \uBAA8\uB450 \uBB34\uB8CC\uC785\uB2C8\uB2E4."
   - Index: 7007
     Text: Gatherer
+    Korean: "\uCC44\uC9D1\uAC00"
   - Index: 7107
     Text: Strike trees
+    Korean: "\uBB34\uAE30\uB85C \uB098\uBB34, \uBC14\uC704, \uB364\uBD88\uC744 \uCCD0\uC11C
+      \uC790\uC6D0 10\uAC1C\uB97C \uBAA8\uC73C\uC138\uC694."
   - Index: 7008
     Text: Handiwork
+    Korean: "\uC190\uC7AC\uC8FC"
   - Index: 7108
     Text: Open the crafting menu and make anything. Cloth armor only needs Plant
       Fiber.
+    Korean: "\uC81C\uC791 \uBA54\uB274\uB97C \uC5F4\uACE0 \uC544\uBB34\uAC70\uB098
+      \uB9CC\uB4DC\uC138\uC694. \uCC9C \uBC29\uC5B4\uAD6C\uB294 \uC2DD\uBB3C \uC12C\uC720\uB9CC
+      \uC788\uC73C\uBA74 \uB429\uB2C8\uB2E4."
   - Index: 7009
     Text: Dressed for the Night
+    Korean: "\uBC24\uC744 \uC704\uD55C \uCC28\uB9BC"
   - Index: 7109
     Text: Open the inventory and equip a chest armor (Cloth Robe or Reinforced Chest).
+    Korean: "\uC778\uBCA4\uD1A0\uB9AC\uB97C \uC5F4\uACE0 \uD749\uAC11 (\uCC9C \uB85C\uBE0C
+      \uB610\uB294 \uAC15\uD654 \uD749\uAC11)\uC744 \uC7A5\uCC29\uD558\uC138\uC694."
   - Index: 7010
     Text: A Castle of Your Own
+    Korean: "\uB098\uB9CC\uC758 \uC131"
   - Index: 7110
     Text: Open the build menu and place a Castle Heart (20 Lumber
+    Korean: "\uAC74\uCD95 \uBA54\uB274\uB97C \uC5F4\uACE0 \uC131 \uC2EC\uC7A5\uC744
+      \uC124\uCE58\uD558\uC138\uC694 (\uBAA9\uC7AC 20, \uB3CC 20)."
   - Index: 7011
     Text: A Place to Rest
+    Korean: "\uC548\uC2DD\uCC98"
   - Index: 7111
     Text: Build a Coffin near your Castle Heart. You will rise there when you die.
+    Korean: "\uC131 \uC2EC\uC7A5 \uADFC\uCC98\uC5D0 \uAD00\uC744 \uC9C0\uC73C\uC138\uC694.
+      \uC8FD\uC73C\uBA74 \uADF8\uACF3\uC5D0\uC11C \uB418\uC0B4\uC544\uB0A9\uB2C8\uB2E4."
   - Index: 7012
     Text: First Hunt
+    Korean: "\uCCAB \uC0AC\uB0E5"
   - Index: 7112
     Text: Medusa Sentinels lurk just north of the camp. Slay 3 of them.
+    Korean: "\uC57C\uC601\uC9C0 \uBC14\uB85C \uBD81\uCABD\uC5D0 \uBA54\uB450\uC0AC
+      \uD30C\uC218\uAFBC\uC774 \uC228\uC5B4 \uC788\uC2B5\uB2C8\uB2E4. 3\uB9C8\uB9AC\uB97C
+      \uCC98\uCE58\uD558\uC138\uC694."
   - Index: 7013
     Text: The Feeding
+    Korean: "\uCCAB \uD761\uD608"
   - Index: 7113
     Text: Bring an enemy below 25% health
+    Korean: "\uC801\uC758 \uCCB4\uB825\uC744 25% \uC544\uB798\uB85C \uB0AE\uCD98
+      \uB4A4 \uD53C\uB97C \uB9C8\uC2DC\uC138\uC694. \uD53C\uB294 \uC624\uB798\uAC00\uB294
+      \uBC84\uD504\uB97C \uC90D\uB2C8\uB2E4."
   - Index: 7014
     Text: Serpents
+    Korean: "\uBC40 \uC0AC\uB0E5"
   - Index: 7114
     Text: Cobra Snakes shoot from afar in the Ruined Hamlet and the Serpent Marsh.
       Slay 3.
+    Korean: "\uD3D0\uD5C8 \uB9C8\uC744\uACFC \uBC40 \uB2AA\uC758 \uCF54\uBE0C\uB77C\uB294
+      \uBA40\uB9AC\uC11C \uACF5\uACA9\uD569\uB2C8\uB2E4. 3\uB9C8\uB9AC\uB97C \uCC98\uCE58\uD558\uC138\uC694."
   - Index: 7015
     Text: Copper Age
+    Korean: "\uAD6C\uB9AC \uC2DC\uB300"
   - Index: 7115
     Text: Stronger foes await. Craft copper gear at a Workbench (or take it from
       the merchant) and reach Gear Level 16.
+    Korean: "\uB354 \uAC15\uD55C \uC801\uC774 \uAE30\uB2E4\uB9BD\uB2C8\uB2E4. \uC791\uC5C5\uB300\uC5D0\uC11C
+      \uAD6C\uB9AC \uC7A5\uBE44\uB97C \uB9CC\uB4E4\uACE0 (\uC0C1\uC778\uC5D0\uAC8C
+      \uBC1B\uC544\uB3C4 \uB429\uB2C8\uB2E4) \uAE30\uC5B4 \uB808\uBCA8 16\uC744 \uB2EC\uC131\uD558\uC138\uC694."
   - Index: 7016
     Text: Troll Ridge
+    Korean: "\uD2B8\uB864 \uB2A5\uC120"
   - Index: 7116
     Text: Cave Trolls roam Troll Ridge far to the north. Beware their charge. Slay
       3.
+    Korean: "\uB3D9\uAD74 \uD2B8\uB864\uC740 \uBD81\uCABD \uBA40\uB9AC \uD2B8\uB864
+      \uB2A5\uC120\uC744 \uB5A0\uB3D5\uB2C8\uB2E4. \uB3CC\uC9C4\uC5D0 \uC8FC\uC758\uD558\uC138\uC694.
+      3\uB9C8\uB9AC\uB97C \uCC98\uCE58\uD558\uC138\uC694."
   - Index: 7017
     Text: 'V Blood: Minotaur Warlord'
+    Korean: "V \uBE14\uB7EC\uB4DC: \uBBF8\uB178\uD0C0\uC6B0\uB85C\uC2A4 \uAD70\uC8FC"
   - Index: 7117
     Text: The Minotaur Warlord rules the arena in the north-east. Defeat it - feed
       on it to claim its V Blood.
+    Korean: "\uBBF8\uB178\uD0C0\uC6B0\uB85C\uC2A4 \uAD70\uC8FC\uAC00 \uBD81\uB3D9\uCABD
+      \uD22C\uAE30\uC7A5\uC744 \uC9C0\uBC30\uD569\uB2C8\uB2E4. \uC4F0\uB7EC\uB728\uB9AC\uACE0
+      \uD53C\uB97C \uB9C8\uC154 V \uBE14\uB7EC\uB4DC\uB97C \uCC28\uC9C0\uD558\uC138\uC694."
+  - Index: 60
+    Text: World Map
+    Korean: "\uC6D4\uB4DC\uB9F5"
+  - Index: 61
+    Text: Close
+    Korean: "\uB2EB\uAE30"
+  - Index: 8001
+    Text: Silverlight Glade
+    Korean: "\uC740\uBE5B \uC232 \uACF5\uD130"
+  - Index: 8002
+    Text: Meadow
+    Korean: "\uCD08\uC6D0"
+  - Index: 8003
+    Text: Ruined Hamlet
+    Korean: "\uD3D0\uD5C8 \uB9C8\uC744"
+  - Index: 8004
+    Text: Dunley Woods
+    Korean: "\uB358\uB9AC \uC232"
+  - Index: 8005
+    Text: Lake
+    Korean: "\uD638\uC218"
+  - Index: 8006
+    Text: Serpent Marsh
+    Korean: "\uBC40 \uB2AA"
+  - Index: 8007
+    Text: Rocky Highlands
+    Korean: "\uBC14\uC704 \uACE0\uC6D0"
+  - Index: 8008
+    Text: Copper Hollow
+    Korean: "\uAD6C\uB9AC \uACE8\uC9DC\uAE30"
+  - Index: 8009
+    Text: Troll Ridge
+    Korean: "\uD2B8\uB864 \uB2A5\uC120"
+  - Index: 8010
+    Text: Minotaur Arena
+    Korean: "\uBBF8\uB178\uD0C0\uC6B0\uB85C\uC2A4 \uD22C\uAE30\uC7A5"
+  - Index: 62
+    Text: 'Language: English'
+    Korean: "\uC5B8\uC5B4: \uD55C\uAD6D\uC5B4"
+  - Index: 9001
+    Text: Max Health
+    Korean: "\uCD5C\uB300 \uCCB4\uB825"
+  - Index: 9002
+    Text: Physical Power
+    Korean: "\uBB3C\uB9AC \uACF5\uACA9\uB825"
+  - Index: 9003
+    Text: Spell Power
+    Korean: "\uC8FC\uBB38 \uACF5\uACA9\uB825"
+  - Index: 9004
+    Text: Physical Resist
+    Korean: "\uBB3C\uB9AC \uC800\uD56D"
+  - Index: 9005
+    Text: Spell Resist
+    Korean: "\uC8FC\uBB38 \uC800\uD56D"
+  - Index: 9006
+    Text: Move Speed
+    Korean: "\uC774\uB3D9 \uC18D\uB3C4"
+  - Index: 9007
+    Text: Attack Speed
+    Korean: "\uACF5\uACA9 \uC18D\uB3C4"
+  - Index: 9008
+    Text: Crit Chance
+    Korean: "\uCE58\uBA85\uD0C0 \uD655\uB960"
+  - Index: 9009
+    Text: Crit Damage
+    Korean: "\uCE58\uBA85\uD0C0 \uD53C\uD574"
+  - Index: 9011
+    Text: Sun Resist
+    Korean: "\uD587\uBE5B \uC800\uD56D"
+  - Index: 9015
+    Text: Life Leech
+    Korean: "\uD761\uD608\uB960"
+  - Index: 9016
+    Text: Gear Level
+    Korean: "\uAE30\uC5B4 \uB808\uBCA8"
+  - Index: 9019
+    Text: Resource Yield
+    Korean: "\uCC44\uC9D1\uB7C9"

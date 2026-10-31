@@ -1,0 +1,828 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b11a58205ec3474ca216360e9fa74a8, type: 3}
+  m_Name: GameText Shared Data
+  m_EditorClassIdentifier: Unity.Localization::UnityEngine.Localization.Tables.SharedTableData
+  m_TableCollectionName: GameText
+  m_TableCollectionNameGuidString: 8951e7b61093a3141a7980d07badf4cf
+  m_Entries:
+  - m_Id: 1
+    m_Key: GameTitle
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2
+    m_Key: SinglePlayer
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3
+    m_Key: MultiplayerSoon
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4
+    m_Key: Quit
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10
+    m_Key: Inventory
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11
+    m_Key: Equipment
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12
+    m_Key: Crafting
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13
+    m_Key: Build
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14
+    m_Key: Shop
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15
+    m_Key: Free
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16
+    m_Key: Buy
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17
+    m_Key: Craft
+    m_Metadata:
+      m_Items: []
+  - m_Id: 18
+    m_Key: Close
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19
+    m_Key: GearLevel
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20
+    m_Key: Blood
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21
+    m_Key: Day
+    m_Metadata:
+      m_Items: []
+  - m_Id: 22
+    m_Key: Night
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23
+    m_Key: InSunlight
+    m_Metadata:
+      m_Items: []
+  - m_Id: 24
+    m_Key: InShadow
+    m_Metadata:
+      m_Items: []
+  - m_Id: 25
+    m_Key: PressToInteract
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26
+    m_Key: PressToFeed
+    m_Metadata:
+      m_Items: []
+  - m_Id: 27
+    m_Key: YouDied
+    m_Metadata:
+      m_Items: []
+  - m_Id: 28
+    m_Key: Respawning
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29
+    m_Key: NotEnoughMaterials
+    m_Metadata:
+      m_Items: []
+  - m_Id: 30
+    m_Key: NeedCastleHeart
+    m_Metadata:
+      m_Items: []
+  - m_Id: 31
+    m_Key: VBloodConsumed
+    m_Metadata:
+      m_Items: []
+  - m_Id: 32
+    m_Key: AbilityUnlocked
+    m_Metadata:
+      m_Items: []
+  - m_Id: 33
+    m_Key: InventoryFull
+    m_Metadata:
+      m_Items: []
+  - m_Id: 34
+    m_Key: CheatTitle
+    m_Metadata:
+      m_Items: []
+  - m_Id: 35
+    m_Key: CheatHint
+    m_Metadata:
+      m_Items: []
+  - m_Id: 36
+    m_Key: BalanceTitle
+    m_Metadata:
+      m_Items: []
+  - m_Id: 37
+    m_Key: Requires
+    m_Metadata:
+      m_Items: []
+  - m_Id: 38
+    m_Key: Owned
+    m_Metadata:
+      m_Items: []
+  - m_Id: 39
+    m_Key: Place
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40
+    m_Key: Rotate
+    m_Metadata:
+      m_Items: []
+  - m_Id: 41
+    m_Key: BuildHint
+    m_Metadata:
+      m_Items: []
+  - m_Id: 42
+    m_Key: Merchant
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43
+    m_Key: BloodTypeNone
+    m_Metadata:
+      m_Items: []
+  - m_Id: 44
+    m_Key: Quality
+    m_Metadata:
+      m_Items: []
+  - m_Id: 45
+    m_Key: Controls
+    m_Metadata:
+      m_Items: []
+  - m_Id: 46
+    m_Key: Loading
+    m_Metadata:
+      m_Items: []
+  - m_Id: 47
+    m_Key: BalanceDealt
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48
+    m_Key: BalanceTaken
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49
+    m_Key: BalanceRecent
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1000
+    m_Key: Text1000
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1001
+    m_Key: Text1001
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1002
+    m_Key: Text1002
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1003
+    m_Key: Text1003
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1004
+    m_Key: Text1004
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1005
+    m_Key: Text1005
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2001
+    m_Key: Text2001
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2002
+    m_Key: Text2002
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2003
+    m_Key: Text2003
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2004
+    m_Key: Text2004
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2005
+    m_Key: Text2005
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2006
+    m_Key: Text2006
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2010
+    m_Key: Text2010
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2011
+    m_Key: Text2011
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2012
+    m_Key: Text2012
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2013
+    m_Key: Text2013
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2020
+    m_Key: Text2020
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2021
+    m_Key: Text2021
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2022
+    m_Key: Text2022
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2023
+    m_Key: Text2023
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2024
+    m_Key: Text2024
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2025
+    m_Key: Text2025
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2026
+    m_Key: Text2026
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2027
+    m_Key: Text2027
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2030
+    m_Key: Text2030
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2031
+    m_Key: Text2031
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2101
+    m_Key: Text2101
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2102
+    m_Key: Text2102
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2103
+    m_Key: Text2103
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2104
+    m_Key: Text2104
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2105
+    m_Key: Text2105
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2106
+    m_Key: Text2106
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2110
+    m_Key: Text2110
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2111
+    m_Key: Text2111
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2112
+    m_Key: Text2112
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2113
+    m_Key: Text2113
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2120
+    m_Key: Text2120
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2124
+    m_Key: Text2124
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2130
+    m_Key: Text2130
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2131
+    m_Key: Text2131
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3101
+    m_Key: Text3101
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3102
+    m_Key: Text3102
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3103
+    m_Key: Text3103
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3111
+    m_Key: Text3111
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3112
+    m_Key: Text3112
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3113
+    m_Key: Text3113
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3121
+    m_Key: Text3121
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3201
+    m_Key: Text3201
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3301
+    m_Key: Text3301
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3302
+    m_Key: Text3302
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3303
+    m_Key: Text3303
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3304
+    m_Key: Text3304
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3305
+    m_Key: Text3305
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3306
+    m_Key: Text3306
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3401
+    m_Key: Text3401
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3701
+    m_Key: Text3701
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3501
+    m_Key: Text3501
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3502
+    m_Key: Text3502
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3503
+    m_Key: Text3503
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3504
+    m_Key: Text3504
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3511
+    m_Key: Text3511
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3512
+    m_Key: Text3512
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3513
+    m_Key: Text3513
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3514
+    m_Key: Text3514
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4001
+    m_Key: Text4001
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4002
+    m_Key: Text4002
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4003
+    m_Key: Text4003
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4004
+    m_Key: Text4004
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4005
+    m_Key: Text4005
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4006
+    m_Key: Text4006
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4007
+    m_Key: Text4007
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5001
+    m_Key: Text5001
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5002
+    m_Key: Text5002
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5003
+    m_Key: Text5003
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5004
+    m_Key: Text5004
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5005
+    m_Key: Text5005
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6001
+    m_Key: Text6001
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6002
+    m_Key: Text6002
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6003
+    m_Key: Text6003
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6004
+    m_Key: Text6004
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6005
+    m_Key: Text6005
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6006
+    m_Key: Text6006
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4008
+    m_Key: Text4008
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4009
+    m_Key: Text4009
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4010
+    m_Key: Text4010
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1006
+    m_Key: Text1006
+    m_Metadata:
+      m_Items: []
+  - m_Id: 50
+    m_Key: Quest
+    m_Metadata:
+      m_Items: []
+  - m_Id: 51
+    m_Key: QuestComplete
+    m_Metadata:
+      m_Items: []
+  - m_Id: 52
+    m_Key: QuestNew
+    m_Metadata:
+      m_Items: []
+  - m_Id: 53
+    m_Key: QuestAllComplete
+    m_Metadata:
+      m_Items: []
+  - m_Id: 54
+    m_Key: QuestDistance
+    m_Metadata:
+      m_Items: []
+  - m_Id: 55
+    m_Key: QuestVictory
+    m_Metadata:
+      m_Items: []
+  - m_Id: 56
+    m_Key: QuestReward
+    m_Metadata:
+      m_Items: []
+  - m_Id: 57
+    m_Key: QuestChapterTutorial
+    m_Metadata:
+      m_Items: []
+  - m_Id: 58
+    m_Key: QuestChapterHunt
+    m_Metadata:
+      m_Items: []
+  - m_Id: 59
+    m_Key: QuestChapterBoss
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7001
+    m_Key: Text7001
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7101
+    m_Key: Text7101
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7002
+    m_Key: Text7002
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7102
+    m_Key: Text7102
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7003
+    m_Key: Text7003
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7103
+    m_Key: Text7103
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7004
+    m_Key: Text7004
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7104
+    m_Key: Text7104
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7005
+    m_Key: Text7005
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7105
+    m_Key: Text7105
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7006
+    m_Key: Text7006
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7106
+    m_Key: Text7106
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7007
+    m_Key: Text7007
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7107
+    m_Key: Text7107
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7008
+    m_Key: Text7008
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7108
+    m_Key: Text7108
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7009
+    m_Key: Text7009
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7109
+    m_Key: Text7109
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7010
+    m_Key: Text7010
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7110
+    m_Key: Text7110
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7011
+    m_Key: Text7011
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7111
+    m_Key: Text7111
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7012
+    m_Key: Text7012
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7112
+    m_Key: Text7112
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7013
+    m_Key: Text7013
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7113
+    m_Key: Text7113
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7014
+    m_Key: Text7014
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7114
+    m_Key: Text7114
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7015
+    m_Key: Text7015
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7115
+    m_Key: Text7115
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7016
+    m_Key: Text7016
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7116
+    m_Key: Text7116
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7017
+    m_Key: Text7017
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7117
+    m_Key: Text7117
+    m_Metadata:
+      m_Items: []
+  - m_Id: 60
+    m_Key: WorldMap
+    m_Metadata:
+      m_Items: []
+  - m_Id: 61
+    m_Key: MapHint
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8001
+    m_Key: Text8001
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8002
+    m_Key: Text8002
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8003
+    m_Key: Text8003
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8004
+    m_Key: Text8004
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8005
+    m_Key: Text8005
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8006
+    m_Key: Text8006
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8007
+    m_Key: Text8007
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8008
+    m_Key: Text8008
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8009
+    m_Key: Text8009
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8010
+    m_Key: Text8010
+    m_Metadata:
+      m_Items: []
+  - m_Id: 62
+    m_Key: Language
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9001
+    m_Key: Text9001
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9002
+    m_Key: Text9002
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9003
+    m_Key: Text9003
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9004
+    m_Key: Text9004
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9005
+    m_Key: Text9005
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9006
+    m_Key: Text9006
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9007
+    m_Key: Text9007
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9008
+    m_Key: Text9008
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9009
+    m_Key: Text9009
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9011
+    m_Key: Text9011
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9015
+    m_Key: Text9015
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9016
+    m_Key: Text9016
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9019
+    m_Key: Text9019
+    m_Metadata:
+      m_Items: []
+  m_Metadata:
+    m_Items: []
+  m_KeyGenerator:
+    rid: 2912542121802334333
+  references:
+    version: 2
+    RefIds:
+    - rid: 2912542121802334333
+      type: {class: DistributedUIDGenerator, ns: UnityEngine.Localization.Tables, asm: Unity.Localization}
+      data:
+        m_CustomEpoch: 1793421124600

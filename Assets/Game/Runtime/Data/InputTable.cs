@@ -9,6 +9,7 @@ public class InputRow : ITableRow
     public string Binding1;
     public string Binding2;
     public string Composite;
+    public EInputMap Map;
 
     public int GetKey()
     {

@@ -5,6 +5,35 @@
 
 ---
 
+## 2026-10-31 · 한국어 (Unity Localization)
+
+사용자 요청: "영어를 한글로 Localization — Unity Localization 기능을 사용해서 번역". 상세 [UI.md 언어 절](UI.md#언어-unity-localization-2026-10-31).
+
+- 패키지 `com.unity.localization` 1.5.13 추가. Game.Runtime / Game.Editor asmdef 참조.
+- `StringTable.csv` 에 `Korean` 열 — 200개 문구 전부 번역 (게임 용어: 흡혈, V 블러드, 성 심장, 피의 장막 …). 새 문구: 언어 버튼(62), 인벤토리 능력치 이름(9000 + EAttribute, 전에는 enum 이름이 그대로 보였음), 조작 안내에 M 월드맵.
+- `LocalizationSync` (에디터): Localization Settings · Locale(en, ko, ko→en Fallback) · String Table Collection **GameText**(키 Id = Index, Preload) 생성/갱신, 시작 언어 = PlayerPrefs → 한국어. CSV 임포트 · StringTable.csv 저장 때 자동. `GameTables.TextTable` 에 GUID 참조.
+- `GameLocalization` (런타임): 부트스트랩이 초기화를 기다린 뒤 UI 생성, `Tables.Text` 가 현재 언어 테이블에서 int 키로 조회 (없으면 CSV 영어). 언어 변경 → `LanguageChangedEvent` → `UIText` · HUD · 월드맵이 다시 채움. 타이틀 언어 버튼, 치트 `lang`.
+- 폰트: 기본 LiberationSans 에 한글이 없어 Noto Sans KR(OFL, `Art/ThirdParty/Fonts`) → TMP 동적 폰트 에셋을 UI 스킨 기본 폰트 + TMP 전역 Fallback 으로. UI 프리팹 다시 구움.
+- 확인: 타이틀 · HUD · 인벤토리 한국어 캡처, 게임 도중 영어로 바꾸면 바로 바뀜. `LocalizationTests` 2개 추가, Play 모드 테스트 25개 전부 통과.
+
+## 2026-10-31 · 퀘스트 가이드 · 루트 모션 정리
+
+사용자 요청: "미니맵과 맵에 어디로 가야 퀘스트를 진행할 수 있는지 가이드 표시", "메두사 Attack1 에 쓰이는 애니메이션 외에는 ApplyRootMotion 을 전부 false".
+
+- **퀘스트 가이드** ([Game.md 2.1](Game.md#21-퀘스트)): `QuestManager.TryGetGuidePosition` — 처치 · 흡혈 = 가장 가까운 대상(없으면 SpawnTable 지역), 상점 = 상인, 채집 = 채집 지역, 성 건축물 = 성 심장. `MapView` 가 금색 고리 + 플레이어→목적지 선을 그리고, 미니맵 밖이면 가장자리 화살표가 목적지를 가리킨다. HUD 추적기 거리도 같은 위치 기준 (몬스터 목표만 → 가이드가 있는 모든 퀘스트, 문구 Nearest → Distance).
+- **루트 모션**: AnimationTable 1 · 2 · 7(Attack1/2/3) 의 ApplyRootMotion 을 0 으로, 메두사 평타(Ability 501 Club)용 행 15(Trigger Attack1, 루트 모션 1)를 새로 만들어 501 의 Anims 를 15 로. 이제 루트 모션이 켜지는 건 행 15 하나. `ActorAnimator.StopRootMotion` — Play 는 행마다 값을 덮어쓰지만 이동 블렌드는 Play 를 거치지 않아 공격 뒤에도 켜진 채 남던 문제 → 어빌리티가 끝나거나 죽으면 끈다 (`Actor.OnAbilityEnded`). 행 15 를 쓰는 어빌리티 501 은 CharacterTable 7(New Monster, 메두사 복제)도 쓰고 있어 그 몬스터도 루트 모션이 켜진다.
+- 테스트: `MapTests.Minimap_ShowsQuestGuide`, `RootMotionTests` 2개. Play 모드 테스트 23개 전부 통과.
+
+## 2026-10-31 · 미니맵 · 월드맵 · 입력 맵 분리
+
+사용자 요청: "맵과 미니맵 — 미니맵은 맵의 일부분을 오른쪽 위에, 맵은 M 키로 월드맵. UI 에 들어가면 카메라 확대/축소 스크롤이 작동하지 않도록 전투 InputMap 을 비활성화". 상세 [Game.md 13.1](Game.md#131-미니맵--월드맵), [UI.md](UI.md#지도-mapview--입력-맵-2026-10-31), [World.md 8절](World.md#8-월드맵-그림).
+
+- **입력 맵**: `InputTable.csv` 에 `Map` 열(System / Movement / Combat) + `WorldMap`(M). `GameInput` 이 맵마다 InputActionMap 을 만들고 `SetMapEnabled` 로 켜고 끈다. `GameBootstrap.syncInputMaps` — 입력을 막는 창이 열려 있거나 콘솔 입력 중이면 Combat(어빌리티 · 상호작용 · 휠 줌 · 카메라 회전 · 건축 회전) 끔. 이동은 창이 열려 있어도 유지(기존 동작).
+- **지도 그림**: `WorldMapBaker` 가 정사영 카메라로 월드를 내려다본 2048² 텍스처를 굽는다 (월드 빌드 마지막 + `Game > World > Bake World Map`). 처음엔 물과 호수가 안 보였음 — 물 셰이더가 이 카메라에서 그려지지 않고, 대기 풀스크린 패스가 낮은 곳을 안개로 덮음 → 굽는 동안 물은 단색 Unlit(양면), 풀스크린 패스는 끔.
+- **MapView** (미니맵 · 월드맵 공용): 미니맵 = 반경 45m(ConstTable 36), 카메라 방향이 위(쿼터뷰 45° 회전과 화면 방향 일치), 주변 몬스터 · 퀘스트 대상(밖이면 가장자리). 월드맵 = 전체 · 북쪽 위 · 지역 이름(`MapLabelTable.csv`, 21번째 테이블). 상인 · 성 심장 · 관은 `MapMarkers` 에 등록. 표식 스프라이트는 프리팹 빌더가 절차 생성.
+- HUD: 오른쪽 위에 미니맵이 들어가 시계 · 퀘스트 추적기를 아래로 내림. `EUIAsset` 415 MinimapWindow, 416 WorldMapWindow.
+- 테스트 `MapTests` 2개 (월드맵 → Combat 꺼짐 · 이동 유지 · 줌 값 0 · 미니맵 숨김 / 미니맵 가운데 = 플레이어, 카메라 앞 = 위, 몬스터 표식). Play 모드 테스트 20개 전부 통과.
+
 ## 2026-10-31 · 퀘스트 시스템 (튜토리얼 → 사냥 → 보스)
 
 사용자 요청: "게임의 목표가 너무 없어 보인다 — 처음엔 기초 기능을 한 번씩 둘러보는 튜토리얼, 그다음 몬스터를 처치해 가는 퀘스트, 마지막엔 보스를 죽이는 것으로 끝나게". 상세 [Game.md 2.1절](Game.md#21-퀘스트).

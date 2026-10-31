@@ -30,11 +30,18 @@ public class Structure : BaseBehaviour, IInteractable
         {
             InteractableRegistry.Add(this);
         }
+
+        // 성 심장 · 관만 지도에 표시한다 (벽 · 바닥까지 그리면 표식이 겹친다).
+        if (InRow.Type == EStructureType.CastleHeart || InRow.Type == EStructureType.Coffin)
+        {
+            MapMarkers.Add(EMapMarker.Castle, transform);
+        }
     }
 
     protected override void OnUnityDestroy()
     {
         InteractableRegistry.Remove(this);
+        MapMarkers.Remove(transform);
         base.OnUnityDestroy();
     }
 

@@ -103,7 +103,7 @@ public class InventoryWindow : UIWindow
         var builder = new StringBuilder();
         for (int i = 0; i < ShownStats.Length; ++i)
         {
-            builder.AppendLine($"{ShownStats[i]}  <color=#F0D080>{player.Attributes.Get(ShownStats[i]):0.#}</color>");
+            builder.AppendLine($"{Tables.Text(UIUtil.AttributeTextId(ShownStats[i]))}  <color=#F0D080>{player.Attributes.Get(ShownStats[i]):0.#}</color>");
         }
 
         Stats.text = builder.ToString();

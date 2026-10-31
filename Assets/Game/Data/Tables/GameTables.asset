@@ -32,3 +32,7 @@ MonoBehaviour:
   Input: {fileID: 11400000, guid: ab968171556b67c499a1d7919433d85c, type: 2}
   Animation: {fileID: 11400000, guid: 8b9078579f3d42e46beff6cc79f2260d, type: 2}
   Quest: {fileID: 11400000, guid: 53797bcde82db8942b5a462fa759c0fb, type: 2}
+  MapLabel: {fileID: 11400000, guid: bfb9a9b415a3bc741846a9462bfa2937, type: 2}
+  TextTable:
+    m_TableReference:
+      m_TableCollectionName: GUID:8951e7b61093a3141a7980d07badf4cf

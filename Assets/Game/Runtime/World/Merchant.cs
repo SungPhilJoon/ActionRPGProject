@@ -18,11 +18,13 @@ public class Merchant : BaseBehaviour, IInteractable
     private void OnEnable()
     {
         InteractableRegistry.Add(this);
+        MapMarkers.Add(EMapMarker.Merchant, transform);
     }
 
     private void OnDisable()
     {
         InteractableRegistry.Remove(this);
+        MapMarkers.Remove(transform);
     }
 
     public bool CanInteract(PlayerCharacter InPlayer)

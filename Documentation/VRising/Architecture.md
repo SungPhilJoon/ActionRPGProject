@@ -58,32 +58,32 @@ Assets/Game/
   Runtime/                          Game.Runtime (전역 네임스페이스)
     Core/        GameBootstrap(진입점), GameEvents(EventBus 페이로드)
     Define/      GameEnums (ETag, EAttribute, EBBKey, EAIEvent, LayerId, UILayerId …)
-    Data/        테이블 20종 행/에셋 클래스 + GameTables(Tables 파사드)
+    Data/        테이블 21종 행/에셋 클래스 + GameTables(Tables 파사드), GameLocalization(Unity Localization 연결 — Tables.Text 가 현재 언어로)
     Ability/     GameAttributeSet, EffectLibrary(+TagUtil), GameExecutions, GameAbility + 구현(근접/투사체/대시/범위/버프/흡혈/도약)
       Graph/     AbilityGraphAsset(에디터로 만드는 어빌리티), AbilitySteps(단계 13종), GraphAbility(실행기) — GAS.md 4.1
     Combat/      CombatUtil(히트 처리), CombatLog, Projectile(ProjectileSystem), CueSpawner, PooledEffect(외부 VFX 풀 래퍼), TimedDespawn
     Actor/       Actor, ActorMotor, ActorAnimator(+AnimatorParam, AnimationTable 재생), ActorRegistry
     Player/      PlayerCharacter, PlayerController, AbilityInputBuffer(공격 중 입력 버퍼), BloodSystem, SunExposure
-    Input/       GameInput (InputTable.csv → Input System)
+    Input/       GameInput (InputTable.csv → Input System, 입력 맵 System / Movement / Combat — UI 창이 열리면 Combat 끔)
     Camera/      TopDownCamera
     Monster/     MonsterCharacter, MonsterBrain(StateTree 호스트)
       StateTree/ 몬스터 노드: Evaluator / Condition / Task
-    World/       DayNightManager, SkyBridge(ISkyController), SpawnManager, ResourceNode, Merchant, Interactable, SceneContext, WaterBody(강/호수 영역)
+    World/       DayNightManager, SkyBridge(ISkyController), SpawnManager, ResourceNode, Merchant, Interactable, SceneContext, WaterBody(강/호수 영역), MapMarkers(지도 고정 표식 목록)
       Foliage/   FoliageInstance(장식 나무/덤불), FoliageRoot(목록 + 격자 색인), FoliageManager(건축 시 나무·풀 제거)
     Building/    BuildManager, Structure
     Quest/       QuestManager (QuestTable 체인 진행, 게임 이벤트 구독 → QuestChangedEvent / QuestsCompletedEvent)
     Inventory/   Inventory, Equipment, LootUtil
     Cheat/       CheatManager
     UI/          UIUtil
-      Windows/   Hud, Inventory, Craft, Build, Shop, Title, CheatConsole, BalanceOverlay, ListWindow(공통 부모) — 레이아웃은 프리팹(Content/UI)
-      Widgets/   UIText(TextId 문구), ListRowView, AbilitySlotView, WorldHealthBarView, ItemSlotView
+      Windows/   Hud, Inventory, Craft, Build, Shop, Title, CheatConsole, BalanceOverlay, Minimap, WorldMap, ListWindow(공통 부모) — 레이아웃은 프리팹(Content/UI)
+      Widgets/   UIText(TextId 문구), ListRowView, AbilitySlotView, WorldHealthBarView, ItemSlotView, MapView(미니맵 · 월드맵)
       Widgets/   ItemSlotView
       WorldSpace/ DamageNumberLayer, WorldHealthBarLayer
   Editor/                           Game.Editor
     Setup/       GameSetupMenu(Run All), ProjectSetup(레이어), EditorPaths
-    Data/        CsvTableImporter (게임 테이블 생성 + GameTables 연결 + 참조 검증)
+    Data/        CsvTableImporter (게임 테이블 생성 + GameTables 연결 + 참조 검증), LocalizationSync (StringTable.csv → Unity Localization GameText en/ko)
     Content/     ContentBuilder(.Characters = 플레이어/몬스터/상인/무기/애니메이터, .Structures = 성 모듈/채집 노드, .Vfx = 절차 VFX, .SkillVfx = 스킬 이펙트 팩), AddressablesSetup
-    World/       WorldBuilder(.Terrain = 높이맵/레이어/풀, .Foliage = 나무·덤불 배치, .Water = 강·호수, .Landmarks = 바위/마을/아레나, .Sky = 절차 스카이박스 · 안개 · 하늘 반사, .PostFx = 포스트 프로세싱 볼륨 · 렌더러 피처)
+    World/       WorldBuilder(.Terrain = 높이맵/레이어/풀, .Foliage = 나무·덤불 배치, .Water = 강·호수, .Landmarks = 바위/마을/아레나, .Sky = 절차 스카이박스 · 안개 · 하늘 반사, .PostFx = 포스트 프로세싱 볼륨 · 렌더러 피처), WorldMapBaker(위에서 본 지도 텍스처 굽기)
       Foliage/   TreeGenerator(절차 나무 골격 → LOD 메시), TreeFactory(프리팹·머티리얼), FoliageTextures + FoliageCanvas(절차 텍스처)
     AI/          MonsterStateTreeDefaults (기본 트리 3종 + Game > Tools > StateTree Tool 메뉴)
       MonsterAIExtension (StateTree Tool 몬스터 AI 도우미)
@@ -93,7 +93,7 @@ Assets/Game/
       DependencyTool/ DependencyMapWindow(의존성 지도), DependencyMapService, GameDependencyUsage — [Dependency.md](Dependency.md)
       GasTool/   GasToolWindow(+Ability/Effect/AbilitySet 탭), AbilityTemplates, GasEditorGUI, AbilityInfo, AbilityGuide(기존 타입 설명) — [Tool.md](Tool.md)
   Tests/PlayMode/                   Game.Tests.PlayMode
-    GamePlayTestBase(World 로드·싱글 시작·정리), GasAbilityTests, StateTreeTests, PlayScenarioTests(몬스터/보스) + PlayScenarioTests.Castle(성 짓기 + 10초 쇼케이스), QuestTests(퀘스트 1→17 전체 체인)
+    GamePlayTestBase(World 로드·싱글 시작·정리), GasAbilityTests, StateTreeTests, PlayScenarioTests(몬스터/보스) + PlayScenarioTests.Castle(성 짓기 + 10초 쇼케이스), QuestTests(퀘스트 1→17 전체 체인), MapTests(입력 맵 · 미니맵 방향 · 표식 · 퀘스트 가이드), RootMotionTests(루트 모션은 메두사 Attack1 만), LocalizationTests(언어 전환 · 한국어 누락 없음)
 ```
 
 ## 4. 새 코드를 어디에 둘지
@@ -176,6 +176,7 @@ MonoBehaviour
 | **Blackboard** | `StateTreeBlackboard` (int 키) | 평가기 출력 → 조건/태스크 입력 (Property Binding 대체) |
 | **Adapter** | `ActorMotor` (CharacterController / NavMeshAgent 를 같은 API 로) | 어빌리티가 이동 방식을 몰라도 됨 |
 | **Data-Driven / Type Object** | CSV → ScriptableObject 테이블, CharacterRow/AbilityRow 가 "종류"를, AnimationRow 가 애니메이션 재생 방식을 정의 | 코드 수정 없이 밸런스·콘텐츠 변경 |
+| **Adapter (Localization)** | `GameLocalization` ← `Tables.Text(int)` | 게임 코드는 지금처럼 int 문구 Id 만 쓰고, 언어 · 테이블 로드 · 언어 변경 이벤트는 Unity Localization 래퍼 한 곳이 맡는다. 키 Id = StringTable Index 라 문자열 키 비교가 없다 |
 | **Facade** | `Tables` 정적 클래스 (`Tables.Const`, `Tables.Text`, `Tables.Address`, `Tables.Animation`) | 테이블 접근 단순화 |
 | **Builder (에디터)** | `WorldBuilder`, `ContentBuilder`, `TreeFactory` | 씬/프리팹을 재현 가능하게 코드로 생성 |
 | **골격 → 메시 (에디터)** | `TreeGenerator.Build` → `ToMesh(골격, LOD)` | 같은 골격을 LOD 별 디테일로 메시화해 LOD 사이 모양이 같다 |

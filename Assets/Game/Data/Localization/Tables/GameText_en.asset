@@ -1,0 +1,841 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: GameText_en
+  m_EditorClassIdentifier: Unity.Localization::UnityEngine.Localization.Tables.StringTable
+  m_LocaleId:
+    m_Code: en
+  m_SharedData: {fileID: 11400000, guid: 8951e7b61093a3141a7980d07badf4cf, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 1
+    m_Localized: BLOODLINE  -  V Rising Demo
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2
+    m_Localized: Single Player (Offline)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3
+    m_Localized: Co-op (up to 4) - Coming soon
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4
+    m_Localized: Quit
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10
+    m_Localized: Inventory
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11
+    m_Localized: Equipment
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12
+    m_Localized: Crafting
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13
+    m_Localized: Build
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14
+    m_Localized: Shop
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15
+    m_Localized: FREE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16
+    m_Localized: Get
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17
+    m_Localized: Craft
+    m_Metadata:
+      m_Items: []
+  - m_Id: 18
+    m_Localized: Close
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19
+    m_Localized: Gear
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20
+    m_Localized: Blood
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21
+    m_Localized: Day
+    m_Metadata:
+      m_Items: []
+  - m_Id: 22
+    m_Localized: Night
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23
+    m_Localized: IN SUNLIGHT! Find shade
+    m_Metadata:
+      m_Items: []
+  - m_Id: 24
+    m_Localized: In shadow
+    m_Metadata:
+      m_Items: []
+  - m_Id: 25
+    m_Localized: Interact
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26
+    m_Localized: Feed
+    m_Metadata:
+      m_Items: []
+  - m_Id: 27
+    m_Localized: YOU DIED
+    m_Metadata:
+      m_Items: []
+  - m_Id: 28
+    m_Localized: Respawning in
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29
+    m_Localized: Not enough materials
+    m_Metadata:
+      m_Items: []
+  - m_Id: 30
+    m_Localized: Build a Castle Heart first
+    m_Metadata:
+      m_Items: []
+  - m_Id: 31
+    m_Localized: 'V Blood consumed:'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 32
+    m_Localized: 'New ability unlocked:'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 33
+    m_Localized: Inventory full
+    m_Metadata:
+      m_Items: []
+  - m_Id: 34
+    m_Localized: Cheat Console
+    m_Metadata:
+      m_Items: []
+  - m_Id: 35
+    m_Localized: Type 'help' for commands. Toggle with ` key.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 36
+    m_Localized: Balance Meter
+    m_Metadata:
+      m_Items: []
+  - m_Id: 37
+    m_Localized: Requires
+    m_Metadata:
+      m_Items: []
+  - m_Id: 38
+    m_Localized: Owned
+    m_Metadata:
+      m_Items: []
+  - m_Id: 39
+    m_Localized: Place
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40
+    m_Localized: Rotate
+    m_Metadata:
+      m_Items: []
+  - m_Id: 41
+    m_Localized: 'LMB: place   X: rotate   ESC: cancel'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 42
+    m_Localized: Talk to Merchant
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43
+    m_Localized: No blood
+    m_Metadata:
+      m_Items: []
+  - m_Id: 44
+    m_Localized: Quality
+    m_Metadata:
+      m_Items: []
+  - m_Id: 45
+    m_Localized: 'WASD move | LMB attack | Q/E weapon skills | Space Veil of Blood
+      | R/C spells | T ultimate | F feed (low HP enemy) | G interact
+
+      Tab inventory
+      | K craft | B build | P shop | M world map | ` cheats | F8 balance meter |
+      Wheel zoom | Middle mouse rotate camera'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 46
+    m_Localized: Loading world...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 47
+    m_Localized: Damage dealt by ability (total / DPS)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48
+    m_Localized: Player damage taken
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49
+    m_Localized: Recent hits
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1000
+    m_Localized: Vampire
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1001
+    m_Localized: Medusa Sentinel
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1002
+    m_Localized: Cobra Snake
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1003
+    m_Localized: Cave Troll
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1004
+    m_Localized: Minotaur Warlord
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1005
+    m_Localized: Wandering Merchant
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2001
+    m_Localized: Lumber
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2002
+    m_Localized: Stone
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2003
+    m_Localized: Plant Fiber
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2004
+    m_Localized: Copper Ore
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2005
+    m_Localized: Blood Essence
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2006
+    m_Localized: Copper Ingot
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2010
+    m_Localized: Bone Sword
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2011
+    m_Localized: Copper Sword
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2012
+    m_Localized: Bone Spear
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2013
+    m_Localized: Copper Spear
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2020
+    m_Localized: Cloth Robe
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2021
+    m_Localized: Cloth Pants
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2022
+    m_Localized: Cloth Boots
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2023
+    m_Localized: Cloth Gloves
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2024
+    m_Localized: Reinforced Chest
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2025
+    m_Localized: Reinforced Pants
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2026
+    m_Localized: Reinforced Boots
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2027
+    m_Localized: Reinforced Gloves
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2030
+    m_Localized: Blood Potion
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2031
+    m_Localized: Sun Resistance Brew
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2101
+    m_Localized: Basic resource for building.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2102
+    m_Localized: Basic resource for building.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2103
+    m_Localized: Used for cloth and potions.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2104
+    m_Localized: Smelt into Copper Ingots.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2105
+    m_Localized: Dropped by the living. Fuels vampire crafts.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2106
+    m_Localized: Refined metal.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2110
+    m_Localized: A crude blade. Combo slashes.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2111
+    m_Localized: A sharp copper blade.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2112
+    m_Localized: Long reach. Thrust and charge.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2113
+    m_Localized: A sturdy copper spear.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2120
+    m_Localized: Light armor.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2124
+    m_Localized: Reinforced armor.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2130
+    m_Localized: Restores 150 health.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2131
+    m_Localized: +50 Sun Resistance for 120 seconds.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3101
+    m_Localized: Sword Slash
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3102
+    m_Localized: Whirlwind
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3103
+    m_Localized: Shockwave
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3111
+    m_Localized: Spear Thrust
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3112
+    m_Localized: Charge
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3113
+    m_Localized: Sweep
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3121
+    m_Localized: Punch
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3201
+    m_Localized: Veil of Blood
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3301
+    m_Localized: Chaos Volley
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3302
+    m_Localized: Blood Rite
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3303
+    m_Localized: Ice Nova
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3304
+    m_Localized: Ball Lightning
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3305
+    m_Localized: Corrupted Skull
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3306
+    m_Localized: Wraith Spear
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3401
+    m_Localized: Crimson Storm
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3701
+    m_Localized: Feed
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3501
+    m_Localized: Club
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3502
+    m_Localized: Arrow
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3503
+    m_Localized: Smash
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3504
+    m_Localized: Charge
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3511
+    m_Localized: Stone Slam
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3512
+    m_Localized: Leap
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3513
+    m_Localized: Rock Throw
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3514
+    m_Localized: Enrage
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4001
+    m_Localized: Castle Heart
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4002
+    m_Localized: Stone Floor
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4003
+    m_Localized: Stone Wall
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4004
+    m_Localized: Workbench
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4005
+    m_Localized: Smelter
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4006
+    m_Localized: Coffin
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4007
+    m_Localized: Iron Lamp
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5001
+    m_Localized: Warrior
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5002
+    m_Localized: Rogue
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5003
+    m_Localized: Scholar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5004
+    m_Localized: Brute
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5005
+    m_Localized: Creature
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6001
+    m_Localized: Pine Tree
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6002
+    m_Localized: Oak Tree
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6003
+    m_Localized: Rock
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6004
+    m_Localized: Boulder
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6005
+    m_Localized: Copper Vein
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6006
+    m_Localized: Bush
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4008
+    m_Localized: Stone Wall (Door)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4009
+    m_Localized: Stone Wall (Window)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4010
+    m_Localized: Stone Pillar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1006
+    m_Localized: New Monster
+    m_Metadata:
+      m_Items: []
+  - m_Id: 50
+    m_Localized: Quest
+    m_Metadata:
+      m_Items: []
+  - m_Id: 51
+    m_Localized: 'Quest complete:'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 52
+    m_Localized: 'New quest:'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 53
+    m_Localized: All quests complete!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 54
+    m_Localized: Distance
+    m_Metadata:
+      m_Items: []
+  - m_Id: 55
+    m_Localized: 'V BLOOD CLAIMED
+
+      <size=26>The Minotaur Warlord has fallen.
+      Demo complete - thanks for playing!</size>'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 56
+    m_Localized: 'Reward:'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 57
+    m_Localized: Tutorial
+    m_Metadata:
+      m_Items: []
+  - m_Id: 58
+    m_Localized: The Hunt
+    m_Metadata:
+      m_Items: []
+  - m_Id: 59
+    m_Localized: V Blood
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7001
+    m_Localized: Awakening
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7101
+    m_Localized: You wake from a long slumber. Walk around with WASD to stretch your
+      legs.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7002
+    m_Localized: Taste of Steel
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7102
+    m_Localized: Click the Left Mouse button to swing your weapon. Click in rhythm
+      to chain a combo.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7003
+    m_Localized: Weapon Arts
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7103
+    m_Localized: Use your weapon skill. Q and E change with the weapon you wield.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7004
+    m_Localized: Veil of Blood
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7104
+    m_Localized: Dash with Veil of Blood. Attacks pass through you while dashing.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7005
+    m_Localized: Blood Magic
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7105
+    m_Localized: Cast Chaos Volley. Hitting an Ignited enemy again makes it explode.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7006
+    m_Localized: The Merchant
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7106
+    m_Localized: Talk to the Wandering Merchant beside the camp (or press P) and
+      take any item. Everything is free.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7007
+    m_Localized: Gatherer
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7107
+    m_Localized: Strike trees
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7008
+    m_Localized: Handiwork
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7108
+    m_Localized: Open the crafting menu and make anything. Cloth armor only needs
+      Plant Fiber.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7009
+    m_Localized: Dressed for the Night
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7109
+    m_Localized: Open the inventory and equip a chest armor (Cloth Robe or Reinforced
+      Chest).
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7010
+    m_Localized: A Castle of Your Own
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7110
+    m_Localized: Open the build menu and place a Castle Heart (20 Lumber
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7011
+    m_Localized: A Place to Rest
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7111
+    m_Localized: Build a Coffin near your Castle Heart. You will rise there when
+      you die.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7012
+    m_Localized: First Hunt
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7112
+    m_Localized: Medusa Sentinels lurk just north of the camp. Slay 3 of them.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7013
+    m_Localized: The Feeding
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7113
+    m_Localized: Bring an enemy below 25% health
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7014
+    m_Localized: Serpents
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7114
+    m_Localized: Cobra Snakes shoot from afar in the Ruined Hamlet and the Serpent
+      Marsh. Slay 3.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7015
+    m_Localized: Copper Age
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7115
+    m_Localized: Stronger foes await. Craft copper gear at a Workbench (or take it
+      from the merchant) and reach Gear Level 16.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7016
+    m_Localized: Troll Ridge
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7116
+    m_Localized: Cave Trolls roam Troll Ridge far to the north. Beware their charge.
+      Slay 3.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7017
+    m_Localized: 'V Blood: Minotaur Warlord'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7117
+    m_Localized: The Minotaur Warlord rules the arena in the north-east. Defeat it
+      - feed on it to claim its V Blood.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 60
+    m_Localized: World Map
+    m_Metadata:
+      m_Items: []
+  - m_Id: 61
+    m_Localized: Close
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8001
+    m_Localized: Silverlight Glade
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8002
+    m_Localized: Meadow
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8003
+    m_Localized: Ruined Hamlet
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8004
+    m_Localized: Dunley Woods
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8005
+    m_Localized: Lake
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8006
+    m_Localized: Serpent Marsh
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8007
+    m_Localized: Rocky Highlands
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8008
+    m_Localized: Copper Hollow
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8009
+    m_Localized: Troll Ridge
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8010
+    m_Localized: Minotaur Arena
+    m_Metadata:
+      m_Items: []
+  - m_Id: 62
+    m_Localized: 'Language: English'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9001
+    m_Localized: Max Health
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9002
+    m_Localized: Physical Power
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9003
+    m_Localized: Spell Power
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9004
+    m_Localized: Physical Resist
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9005
+    m_Localized: Spell Resist
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9006
+    m_Localized: Move Speed
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9007
+    m_Localized: Attack Speed
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9008
+    m_Localized: Crit Chance
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9009
+    m_Localized: Crit Damage
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9011
+    m_Localized: Sun Resist
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9015
+    m_Localized: Life Leech
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9016
+    m_Localized: Gear Level
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9019
+    m_Localized: Resource Yield
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []
