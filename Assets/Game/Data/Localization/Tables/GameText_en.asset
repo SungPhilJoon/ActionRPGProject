@@ -836,6 +836,82 @@ MonoBehaviour:
     m_Localized: Resource Yield
     m_Metadata:
       m_Items: []
+  - m_Id: 63
+    m_Localized: Lv
+    m_Metadata:
+      m_Items: []
+  - m_Id: 64
+    m_Localized: Durability
+    m_Metadata:
+      m_Items: []
+  - m_Id: 65
+    m_Localized: 'Yield:'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 66
+    m_Localized: Depleted - respawns in
+    m_Metadata:
+      m_Items: []
+  - m_Id: 67
+    m_Localized: V Blood
+    m_Metadata:
+      m_Items: []
+  - m_Id: 70
+    m_Localized: Stunned
+    m_Metadata:
+      m_Items: []
+  - m_Id: 71
+    m_Localized: Slowed
+    m_Metadata:
+      m_Items: []
+  - m_Id: 72
+    m_Localized: Ignite
+    m_Metadata:
+      m_Items: []
+  - m_Id: 73
+    m_Localized: Chill
+    m_Metadata:
+      m_Items: []
+  - m_Id: 74
+    m_Localized: Frozen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 75
+    m_Localized: Static
+    m_Metadata:
+      m_Items: []
+  - m_Id: 76
+    m_Localized: Condemn
+    m_Metadata:
+      m_Items: []
+  - m_Id: 77
+    m_Localized: Weaken
+    m_Metadata:
+      m_Items: []
+  - m_Id: 78
+    m_Localized: Leech
+    m_Metadata:
+      m_Items: []
+  - m_Id: 79
+    m_Localized: Bleed
+    m_Metadata:
+      m_Items: []
+  - m_Id: 80
+    m_Localized: Immaterial
+    m_Metadata:
+      m_Items: []
+  - m_Id: 81
+    m_Localized: Guard
+    m_Metadata:
+      m_Items: []
+  - m_Id: 82
+    m_Localized: Empower
+    m_Metadata:
+      m_Items: []
+  - m_Id: 83
+    m_Localized: Haste
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

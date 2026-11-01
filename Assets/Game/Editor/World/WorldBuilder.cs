@@ -89,7 +89,7 @@ public static partial class WorldBuilder
         string guid = AssetDatabase.AssetPathToGUID(EditorPaths.GameTablesAsset);
         bootstrap.TablesReference = new AssetReferenceT<GameTables>(guid);
 
-        bakeNavMesh();
+        bakeNavMesh(terrain);
         WorldMapBaker.Bake(terrain);
 
         EditorSceneManager.SaveScene(scene, EditorPaths.WorldScene);
@@ -136,8 +136,10 @@ public static partial class WorldBuilder
             }
         }
 
-        // 트롤 능선은 높은 고원으로 평탄화한다 (Height 지정).
-        zones.Add(new FlatZone { Center = WorldRegions.TrollRidge, Radius = 32.0f, Height = WorldRegions.BaseHeight + 9.0f });
+        // 트롤 능선은 낮은 고원 (+5m, 길 두 개가 완만하게 올라간다).
+        // 높이를 지정한 구역은 맨 앞에 둔다: sampleHeight 는 가중치가 같으면 앞 구역을 고르는데, 예전에는 같은 자리의 몬스터 스폰 구역(기본 높이)이 앞이라
+        // 반경 28m 에서 고원 높이로 8m 가 뚝 끊기는 절벽 고리가 생겨 능선을 빠져나갈 수 없었다 (Issues 40).
+        zones.Insert(0, new FlatZone { Center = WorldRegions.TrollRidge, Radius = 30.0f, Height = WorldRegions.BaseHeight + 5.0f });
         return zones;
     }
 
@@ -171,9 +173,11 @@ public static partial class WorldBuilder
 
     // ------------------------------------------------------------------ navmesh / build settings
 
-    private static void bakeNavMesh()
+    /// <summary>NavMesh: 지형 · 건물 · 바위 콜라이더 + 영역 상자(길 = Road, 물 · 가장자리 = Not Walkable, WorldBuilder.Roads). 걸을 수 있는 곳 = NavMesh.</summary>
+    private static void bakeNavMesh(Terrain InTerrain)
     {
         var go = new GameObject("[NavMesh]");
+        buildNavAreas(InTerrain, go.transform);
         var surface = go.AddComponent<NavMeshSurface>();
         surface.collectObjects = CollectObjects.All;
         surface.useGeometry = UnityEngine.AI.NavMeshCollectGeometry.PhysicsColliders;

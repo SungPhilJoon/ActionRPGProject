@@ -26,6 +26,8 @@ Index,Address,Kind
 138,VFX/FeedBeam,Prefab
 139,VFX/Empower,Prefab
 140,VFX/Stun,Prefab
+141,VFX/QuestArrow,Prefab
+142,Materials/Highlight,Material
 150,Nodes/PineTree,Prefab
 151,Nodes/OakTree,Prefab
 152,Nodes/Rock,Prefab

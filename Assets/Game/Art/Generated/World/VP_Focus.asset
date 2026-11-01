@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: VP_Focus
   m_EditorClassIdentifier: Unity.RenderPipelines.Core.Runtime::UnityEngine.Rendering.VolumeProfile
   components:
-  - {fileID: 4992287540717143730}
---- !u!114 &4992287540717143730
+  - {fileID: 5430167383739178789}
+--- !u!114 &5430167383739178789
 MonoBehaviour:
   m_ObjectHideFlags: 3
   m_CorrespondingSourceObject: {fileID: 0}

@@ -2,6 +2,7 @@ using Framework.Editor;
 using UnityEditor;
 using UnityEditor.SceneManagement;
 using UnityEngine;
+using UnityEngine.AI;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
 
@@ -13,6 +14,8 @@ using UnityEngine.Rendering.Universal;
 ///  - 풀스크린 패스(대기 안개 Atmosphere 등)는 낮은 곳(호수)을 안개로 덮으므로 굽는 동안 끈다.
 ///  - 물 셰이더(Game/Water)는 깊이 · 불투명 텍스처를 쓰는 반투명이라 이 카메라에서 그려지지 않는다 → 굽는 동안만 단색 Unlit 머티리얼로 바꾼다.
 ///  - 약간 어둡게 · 채도를 낮추고 가장자리를 어둡게 해 표식이 잘 보이게 한다.
+///  - NavMesh 를 겹쳐 그린다: 걸을 수 없는 곳(NavMesh 없음)은 어둡게, 길(Road 영역)은 밝은 흙색, 경계는 선 → 지도만 봐도 다닐 수 있는 곳이 보인다.
+///    그래서 NavMesh 를 구운 뒤에 굽는다 (월드 빌드 순서: NavMesh → 지도).
 /// 지형 · 나무 · 랜드마크가 바뀌면 다시 구워야 한다 (월드 빌드가 자동으로 한다).
 /// </summary>
 public static class WorldMapBaker
@@ -100,6 +103,7 @@ public static class WorldMapBaker
             texture = new Texture2D(Resolution, Resolution, TextureFormat.RGB24, false);
             texture.ReadPixels(new Rect(0, 0, Resolution, Resolution), 0, 0);
             stylize(texture);
+            overlayNavMesh(texture, origin, size);
             texture.Apply();
         }
         finally
@@ -178,6 +182,132 @@ public static class WorldMapBaker
         }
 
         return result.ToArray();
+    }
+
+    private static readonly Color RoadColor = new Color(0.86f, 0.72f, 0.5f);
+    private const float BlockedDarken = 0.4f;
+    private const float RoadTint = 0.5f;
+
+    private const byte MaskBlocked = 0;
+    private const byte MaskWalkable = 1;
+    private const byte MaskRoad = 2;
+
+    /// <summary>NavMesh 삼각형을 지도 픽셀 마스크로 그려 걸을 수 없는 곳 · 길 · 경계를 칠한다. NavMesh 가 없으면 건너뛴다.</summary>
+    private static void overlayNavMesh(Texture2D InTexture, Vector3 InOrigin, Vector3 InSize)
+    {
+        var triangulation = NavMesh.CalculateTriangulation();
+        if (triangulation.indices == null || triangulation.indices.Length == 0)
+        {
+            Debug.LogWarning("[WorldMap] no NavMesh in scene — walkable overlay skipped");
+            return;
+        }
+
+        int width = InTexture.width;
+        int height = InTexture.height;
+        var mask = new byte[width * height];
+        var vertices = triangulation.vertices;
+        var indices = triangulation.indices;
+        for (int t = 0; t < indices.Length / 3; ++t)
+        {
+            byte value = triangulation.areas[t] == NavAreaId.Road ? MaskRoad : MaskWalkable;
+            var a = toPixel(vertices[indices[t * 3]], InOrigin, InSize, width, height);
+            var b = toPixel(vertices[indices[t * 3 + 1]], InOrigin, InSize, width, height);
+            var c = toPixel(vertices[indices[t * 3 + 2]], InOrigin, InSize, width, height);
+            rasterize(mask, width, height, a, b, c, value);
+        }
+
+        var pixels = InTexture.GetPixels();
+        for (int y = 0; y < height; ++y)
+        {
+            for (int x = 0; x < width; ++x)
+            {
+                int index = y * width + x;
+                byte value = mask[index];
+                Color color = pixels[index];
+                if (value == MaskBlocked)
+                {
+                    float gray = color.grayscale;
+                    color = Color.Lerp(color, new Color(gray, gray, gray * 1.1f), 0.5f) * BlockedDarken;
+                }
+                else if (isMaskEdge(mask, width, height, x, y) == true)
+                {
+                    color *= 0.55f;
+                }
+                else if (value == MaskRoad)
+                {
+                    color = Color.Lerp(color, RoadColor, RoadTint);
+                }
+
+                color.a = 1.0f;
+                pixels[index] = color;
+            }
+        }
+
+        InTexture.SetPixels(pixels);
+    }
+
+    private static Vector2 toPixel(Vector3 InWorld, Vector3 InOrigin, Vector3 InSize, int InWidth, int InHeight)
+    {
+        return new Vector2((InWorld.x - InOrigin.x) / InSize.x * InWidth, (InWorld.z - InOrigin.z) / InSize.z * InHeight);
+    }
+
+    /// <summary>걸을 수 있는 픽셀 중 바로 옆이 걸을 수 없는 픽셀 (경계선).</summary>
+    private static bool isMaskEdge(byte[] InMask, int InWidth, int InHeight, int InX, int InY)
+    {
+        for (int dy = -1; dy <= 1; ++dy)
+        {
+            for (int dx = -1; dx <= 1; ++dx)
+            {
+                int nx = Mathf.Clamp(InX + dx, 0, InWidth - 1);
+                int ny = Mathf.Clamp(InY + dy, 0, InHeight - 1);
+                if (InMask[ny * InWidth + nx] == MaskBlocked)
+                {
+                    return true;
+                }
+            }
+        }
+
+        return false;
+    }
+
+    /// <summary>삼각형 안 픽셀에 InValue (길은 걷기 영역보다 우선).</summary>
+    private static void rasterize(byte[] InMask, int InWidth, int InHeight, Vector2 InA, Vector2 InB, Vector2 InC, byte InValue)
+    {
+        int minX = Mathf.Max(0, Mathf.FloorToInt(Mathf.Min(InA.x, Mathf.Min(InB.x, InC.x))));
+        int maxX = Mathf.Min(InWidth - 1, Mathf.CeilToInt(Mathf.Max(InA.x, Mathf.Max(InB.x, InC.x))));
+        int minY = Mathf.Max(0, Mathf.FloorToInt(Mathf.Min(InA.y, Mathf.Min(InB.y, InC.y))));
+        int maxY = Mathf.Min(InHeight - 1, Mathf.CeilToInt(Mathf.Max(InA.y, Mathf.Max(InB.y, InC.y))));
+        float area = cross(InB - InA, InC - InA);
+        if (Mathf.Abs(area) < 0.0001f)
+        {
+            return;
+        }
+
+        for (int y = minY; y <= maxY; ++y)
+        {
+            for (int x = minX; x <= maxX; ++x)
+            {
+                var p = new Vector2(x + 0.5f, y + 0.5f);
+                float w0 = cross(InB - InA, p - InA) / area;
+                float w1 = cross(InC - InB, p - InB) / area;
+                float w2 = cross(InA - InC, p - InC) / area;
+                if (w0 < 0.0f || w1 < 0.0f || w2 < 0.0f)
+                {
+                    continue;
+                }
+
+                int index = y * InWidth + x;
+                if (InMask[index] < InValue)
+                {
+                    InMask[index] = InValue;
+                }
+            }
+        }
+    }
+
+    private static float cross(Vector2 InA, Vector2 InB)
+    {
+        return InA.x * InB.y - InA.y * InB.x;
     }
 
     /// <summary>채도 · 밝기를 살짝 낮추고 가장자리를 어둡게 (지도 위 표식이 묻히지 않게).</summary>

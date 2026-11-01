@@ -8,7 +8,7 @@ using UnityEngine.AI;
 
 /// <summary>
 /// 캐릭터 프리팹 (외부 에셋).
-///  - 플레이어: unity-chan! (Humanoid) + ExplosiveLLC RPG Character(이동/공격) + Crafting(건축/채집) 애니메이션 리타게팅
+///  - 플레이어: Mixamo Ganfaul (Humanoid, 2026-10-31 unity-chan 에서 교체) + ExplosiveLLC RPG Character(이동/공격) + Crafting(건축/채집) 애니메이션 리타게팅
 ///  - 몬스터: Magic Pig Games (Medusa / Cobra Snake / Troll / Minotaur) — 각 모델의 Generic 클립으로 컨트롤러 생성
 ///  - 무기: ExplosiveLLC 2Hand-Sword, Crafting Spear
 /// 에셋 이름(클립명/본명/경로)으로 찾는 부분은 에디터 빌더에만 있고, 런타임은 AnimatorParam 해시만 쓴다.
@@ -16,7 +16,8 @@ using UnityEngine.AI;
 public static partial class ContentBuilder
 {
     private const string External = "Assets/ExternalAssets";
-    private const string UnityChanPrefab = External + "/unity-chan!/Unity-chan! Model/Prefabs/unitychan_dynamic.prefab";
+    /// <summary>플레이어 모델 (Humanoid FBX). 바꾸려면 이 경로만 바꾸고 Build Content — 캡슐 크기 · 무기 소켓은 모델에서 계산한다.</summary>
+    private const string PlayerModel = External + "/Mixamo/Models/Ganfaul/Ganfaul_Model.fbx";
     private const string RpgRoot = External + "/ExplosiveLLC/RPG Character Mecanim Animation Pack FREE";
     private const string RpgAnim = RpgRoot + "/Animations";
     private const string RpgCharacterPrefab = RpgRoot + "/Prefabs/Character/RPG-Character.prefab";
@@ -25,8 +26,8 @@ public static partial class ContentBuilder
     private const string CraftAnim = CraftRoot + "/Animations";
     private const string CraftSpear = CraftRoot + "/Props/Spear.FBX";
 
-    /// <summary>unity-chan 데모 스크립트 중 구 Input 매니저/OnGUI 를 써서 이 프로젝트(Input System 전용)에서 예외를 내는 것.</summary>
-    private static readonly HashSet<string> StripUnityChanComponents = new HashSet<string> { "IdleChanger", "FaceUpdate", "IKCtrlRightHand", "RandomWind" };
+    /// <summary>모델에 딸린 데모 스크립트 중 구 Input 매니저/OnGUI 를 써서 이 프로젝트(Input System 전용)에서 예외를 내는 것 (예전 unity-chan 용, 다른 모델로 바꿔도 안전망으로 둔다).</summary>
+    private static readonly HashSet<string> StripModelComponents = new HashSet<string> { "IdleChanger", "FaceUpdate", "IKCtrlRightHand", "RandomWind" };
 
     private struct AnimSet
     {
@@ -37,10 +38,10 @@ public static partial class ContentBuilder
         public Dictionary<EAnim, AnimationClip> Actions;
     }
 
-    /// <summary>ExplosiveLLC 양손검은 RPG-Character 체격 기준이라 unity-chan 에게는 커 보여서 추가로 줄인다.</summary>
-    private const float WeaponScaleTweak = 0.7f;
+    /// <summary>무기 크기 보정 (체격 비율은 humanScale 로 이미 맞춤). unity-chan 은 0.7 이었다.</summary>
+    private const float WeaponScaleTweak = 0.9f;
 
-    // 무기 소켓 (RPG-Character 의 B_R_Hand 프레임을 unity-chan 오른손에 옮긴 값). buildPlayer 에서 계산.
+    // 무기 소켓 (RPG-Character 의 B_R_Hand 프레임을 플레이어 모델 오른손에 옮긴 값). buildPlayer 에서 계산.
     private static Vector3 SocketPosition;
     private static Quaternion SocketRotation = Quaternion.identity;
     private static float SocketScale = 1.0f;
@@ -125,25 +126,35 @@ public static partial class ContentBuilder
 
     // ------------------------------------------------------------------ player
 
+    /// <summary>플레이어 프리팹만 다시 만든다 (모델 교체 후). 전체는 3. Build Content.</summary>
+    [MenuItem("Game/Setup/3f. Build Player Only", priority = 3)]
+    public static void BuildPlayerOnly()
+    {
+        MaterialUpgradeUtil.ClearCache();
+        buildPlayer();
+        AssetDatabase.SaveAssets();
+    }
+
     private static void buildPlayer()
     {
+        preparePlayerModelImport();
         var root = new GameObject("Player");
-        var model = instantiateExternal(UnityChanPrefab, root.transform);
+        var model = instantiateExternal(PlayerModel, root.transform);
         model.name = "Model";
         foreach (var component in model.GetComponentsInChildren<MonoBehaviour>(true))
         {
-            if (component != null && StripUnityChanComponents.Contains(component.GetType().Name) == true)
+            if (component != null && StripModelComponents.Contains(component.GetType().Name) == true)
             {
                 Object.DestroyImmediate(component);
             }
         }
 
-        MaterialUpgradeUtil.UpgradeRenderers(model, EditorPaths.Generated + "/Materials/UnityChan");
+        MaterialUpgradeUtil.UpgradeRenderers(model, EditorPaths.Generated + "/Materials/Player");
 
         var animator = model.GetComponent<Animator>();
         animator.applyRootMotion = false;
         animator.cullingMode = AnimatorCullingMode.CullUpdateTransforms;
-        animator.runtimeAnimatorController = buildController("UnityChan_Player", playerAnimSet(), 0.35f);
+        animator.runtimeAnimatorController = buildController("Player", playerAnimSet(), 0.35f);
         animator.fireEvents = false;
 
         computeWeaponSocket();
@@ -154,9 +165,11 @@ public static partial class ContentBuilder
         socket.localRotation = SocketRotation;
         socket.localScale = Vector3.one * SocketScale * WeaponScaleTweak;
 
+        // 캡슐은 모델 키에 맞춘다 (바인드 포즈 렌더러 높이).
+        float height = modelHeight(model);
         var controller = root.AddComponent<CharacterController>();
-        controller.center = new Vector3(0.0f, 0.82f, 0.0f);
-        controller.height = 1.6f;
+        controller.height = Mathf.Clamp(height * 0.95f, 1.2f, 2.4f);
+        controller.center = new Vector3(0.0f, controller.height * 0.5f + 0.02f, 0.0f);
         controller.radius = 0.35f;
         controller.slopeLimit = 50.0f;
         controller.stepOffset = 0.4f;
@@ -168,8 +181,52 @@ public static partial class ContentBuilder
         actorAnimator.Animator = animator;
         actorAnimator.WeaponSocket = socket;
         setLayer(root, LayerId.Player);
-        CharacterLook.Apply(root, true);
+        // Ganfaul 은 사실적인 텍스처라 툰 대신 일반(몬스터와 같은) 캐릭터 셰이딩.
+        CharacterLook.Apply(root, false);
         savePrefab(root, "Characters/Player");
+    }
+
+    /// <summary>
+    /// 플레이어 FBX 임포트: Humanoid(자체 아바타) + Optimize Game Objects 끔.
+    /// Mixamo FBX 를 그대로 넣으면 Optimize 가 켜져 있어 뼈 Transform 이 숨겨지고, 무기를 붙일 오른손 본을 찾을 수 없었다.
+    /// </summary>
+    private static void preparePlayerModelImport()
+    {
+        var importer = AssetImporter.GetAtPath(PlayerModel) as ModelImporter;
+        if (importer == null)
+        {
+            Debug.LogWarning("[Content] player model missing: " + PlayerModel);
+            return;
+        }
+
+        bool changed = importer.animationType != ModelImporterAnimationType.Human || importer.optimizeGameObjects == true
+                       || importer.avatarSetup != ModelImporterAvatarSetup.CreateFromThisModel;
+        if (changed == false)
+        {
+            return;
+        }
+
+        importer.animationType = ModelImporterAnimationType.Human;
+        importer.avatarSetup = ModelImporterAvatarSetup.CreateFromThisModel;
+        importer.optimizeGameObjects = false;
+        importer.SaveAndReimport();
+    }
+
+    private static float modelHeight(GameObject InModel)
+    {
+        var renderers = InModel.GetComponentsInChildren<Renderer>();
+        if (renderers.Length == 0)
+        {
+            return 1.7f;
+        }
+
+        var bounds = renderers[0].bounds;
+        foreach (var renderer in renderers)
+        {
+            bounds.Encapsulate(renderer.bounds);
+        }
+
+        return bounds.max.y - InModel.transform.position.y;
     }
 
     private static AnimSet playerAnimSet()
@@ -199,20 +256,20 @@ public static partial class ContentBuilder
     }
 
     /// <summary>
-    /// RPG-Character 와 unity-chan 에 같은 Humanoid 포즈(2Hand-Sword-Idle 0프레임)를 샘플링한 뒤,
-    /// 무기(B_R_Hand 원점에 붙은 2Hand-Sword)의 월드 자세를 unity-chan 오른손 로컬로 옮긴다.
+    /// RPG-Character 와 플레이어 모델에 같은 Humanoid 포즈(2Hand-Sword-Idle 0프레임)를 샘플링한 뒤,
+    /// 무기(B_R_Hand 원점에 붙은 2Hand-Sword)의 월드 자세를 플레이어 모델 오른손 로컬로 옮긴다.
     /// 본 축 방향이 리그마다 달라도 같은 포즈에서의 상대 자세는 같으므로 무기 방향이 맞는다.
     /// </summary>
     private static void computeWeaponSocket()
     {
         // 저장할 프리팹이 아니라 임시 인스턴스에 포즈를 샘플링한다 (손 로컬 기준 결과는 포즈와 무관).
-        var unityChan = Object.Instantiate(AssetDatabase.LoadAssetAtPath<GameObject>(UnityChanPrefab));
-        var unityChanAnimator = unityChan.GetComponent<Animator>();
+        var playerModel = Object.Instantiate(AssetDatabase.LoadAssetAtPath<GameObject>(PlayerModel));
+        var playerAnimator = playerModel.GetComponent<Animator>();
         var rpgPrefab = AssetDatabase.LoadAssetAtPath<GameObject>(RpgCharacterPrefab);
         if (rpgPrefab == null)
         {
             Debug.LogWarning("[Content] RPG-Character prefab missing, weapon socket uses identity");
-            Object.DestroyImmediate(unityChan);
+            Object.DestroyImmediate(playerModel);
             return;
         }
 
@@ -220,7 +277,7 @@ public static partial class ContentBuilder
         var rpgAnimator = rpg.GetComponentInChildren<Animator>();
         var poseClip = clip(RpgAnim + "/2Hand-Sword/RPG-Character@2Hand-Sword-Idle.FBX");
         poseClip.SampleAnimation(rpgAnimator.gameObject, 0.0f);
-        poseClip.SampleAnimation(unityChanAnimator.gameObject, 0.0f);
+        poseClip.SampleAnimation(playerAnimator.gameObject, 0.0f);
 
         Transform sword = null;
         foreach (var t in rpg.GetComponentsInChildren<Transform>(true))
@@ -233,21 +290,21 @@ public static partial class ContentBuilder
         }
 
         var theirHand = rpgAnimator.GetBoneTransform(HumanBodyBones.RightHand);
-        var ourHand = unityChanAnimator.GetBoneTransform(HumanBodyBones.RightHand);
+        var ourHand = playerAnimator.GetBoneTransform(HumanBodyBones.RightHand);
         if (sword == null || theirHand == null || ourHand == null)
         {
             Object.DestroyImmediate(rpg);
-            Object.DestroyImmediate(unityChan);
+            Object.DestroyImmediate(playerModel);
             return;
         }
 
-        float ratio = unityChanAnimator.humanScale / Mathf.Max(0.01f, rpgAnimator.humanScale);
+        float ratio = playerAnimator.humanScale / Mathf.Max(0.01f, rpgAnimator.humanScale);
         Vector3 worldOffset = (sword.position - theirHand.position) * ratio;
         SocketPosition = ourHand.InverseTransformPoint(ourHand.position + worldOffset);
         SocketRotation = Quaternion.Inverse(ourHand.rotation) * sword.rotation;
         SocketScale = sword.lossyScale.x * ratio / Mathf.Max(0.0001f, ourHand.lossyScale.x);
         Object.DestroyImmediate(rpg);
-        Object.DestroyImmediate(unityChan);
+        Object.DestroyImmediate(playerModel);
     }
 
     // ------------------------------------------------------------------ monsters

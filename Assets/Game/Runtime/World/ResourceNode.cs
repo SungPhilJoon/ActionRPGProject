@@ -14,7 +14,8 @@ public class ResourceNode : BaseBehaviour
     public float Health { get; private set; }
     public bool IsDepleted { get; private set; }
 
-    private float RespawnRemaining;
+    /// <summary>고갈 후 다시 생기기까지 남은 시간 (초, 대상 정보창).</summary>
+    public float RespawnRemaining { get; private set; }
     private Renderer[] Renderers;
     private Collider[] Colliders;
     private Vector3 BaseScale;
@@ -28,6 +29,13 @@ public class ResourceNode : BaseBehaviour
         Colliders = GetComponentsInChildren<Collider>(true);
         BaseScale = transform.localScale;
         Nodes.Add(this);
+
+        // 채집 대상은 카메라를 가려도 반투명해지지 않는다 (가림 처리에서 제외, CameraOcclusion.md). 대신 마우스로 가리키면 하이라이트 (TargetSelector).
+        var occluder = GetComponent<CameraOccluder>();
+        if (occluder != null)
+        {
+            occluder.enabled = false;
+        }
     }
 
     protected override void OnUnityDestroy()

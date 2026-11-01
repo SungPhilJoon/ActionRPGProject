@@ -36,6 +36,8 @@ public static partial class WorldBuilder
 
         Erosion = readHeightmap(TerrainSample + "/Textures/Heightmaps/Errosion01_Heightmap.tif", 256);
         prepareRiver(InZones);
+        prepareRoads(InZones);
+        planRuins(InZones);
 
         var heights = new float[HeightRes, HeightRes];
         for (int y = 0; y < HeightRes; ++y)
@@ -115,7 +117,7 @@ public static partial class WorldBuilder
         }
 
         flatWeight *= 1.0f - mountainWeight;
-        return carveRiver(InX, InZ, Mathf.Lerp(height, flatTarget + detail * 0.3f, flatWeight));
+        return applyRoad(InX, InZ, carveRiver(InX, InZ, Mathf.Lerp(height, flatTarget + detail * 0.3f, flatWeight)));
     }
 
     private static float fbm(float InX, float InY, int InOctaves)
@@ -261,6 +263,13 @@ public static partial class WorldBuilder
                 camp = Mathf.Max(camp, campWeight(p, WorldRegions.MinotaurArena, 28.0f));
                 camp = Mathf.Max(camp, campWeight(p, WorldRegions.StartGlade, 14.0f) * 0.6f);
                 weights[LayerSoil] += camp * (0.6f + noise * 0.8f) + Mathf.Clamp01((steep - 14.0f) / 10.0f) * 0.5f;
+
+                // 흙길: 풀 레이어를 지우고 흙으로 → 풀 디테일도 자동으로 빠진다. 폐허 바닥도 흙 · 자갈.
+                float road = roadWeight(p);
+                float ruin = ruinGroundWeight(p);
+                weights[LayerSoil] += road * 6.0f + ruin * (1.5f + noise);
+                weights[LayerGrass] *= 1.0f - Mathf.Max(road, ruin * 0.7f);
+                weights[LayerMoss] *= 1.0f - road;
 
                 weights[LayerRock] = Mathf.Clamp01((steep - 26.0f) / 10.0f) * 3.0f;
                 weights[LayerSnow] = Mathf.Clamp01((height - 78.0f) / 12.0f) * (1.0f - Mathf.Clamp01((steep - 40.0f) / 10.0f)) * 3.0f;

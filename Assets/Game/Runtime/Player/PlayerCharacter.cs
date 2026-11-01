@@ -44,6 +44,7 @@ public class PlayerCharacter : Actor
         Inventory = GetComponent<Inventory>();
         Equipment = GetComponent<Equipment>();
 
+        Motor.ConfineToNavMesh = true;
         Inventory.Initialize(Tables.ConstInt(EConst.InventorySize));
         Equipment.Initialize(this);
         Blood.Initialize(this);

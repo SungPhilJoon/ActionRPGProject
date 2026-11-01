@@ -16,7 +16,8 @@ public static partial class UIPrefabBuilder
 
         hud.SunLabel = UIFactory.CreateText(root, "Sun", string.Empty, 30.0f, TextAlignmentOptions.Center);
         hud.SunLabel.color = new Color(1.0f, 0.75f, 0.3f);
-        UIFactory.Place(hud.SunLabel, new Vector2(0.5f, 1.0f), new Vector2(0.0f, -150.0f), new Vector2(700.0f, 50.0f));
+        // 보스 바(-30) · 대상 정보창(-118) 아래.
+        UIFactory.Place(hud.SunLabel, new Vector2(0.5f, 1.0f), new Vector2(0.0f, -200.0f), new Vector2(700.0f, 50.0f));
 
         hud.Toast = UIFactory.CreateText(root, "Toast", string.Empty, 30.0f, TextAlignmentOptions.Center);
         UIFactory.Place(hud.Toast, new Vector2(0.5f, 0.5f), new Vector2(0.0f, 220.0f), new Vector2(1100.0f, 60.0f));
@@ -29,6 +30,7 @@ public static partial class UIPrefabBuilder
         buildAbilityBar(hud, root);
         buildClock(hud, root);
         buildBoss(hud, root);
+        buildTarget(hud, root);
         buildQuest(hud, root);
 
         hud.DeathRoot = UIFactory.CreatePanel(root, "Death", new Color(0.25f, 0.0f, 0.0f, 0.45f));
@@ -139,6 +141,30 @@ public static partial class UIPrefabBuilder
 
         InHud.QuestProgress = UIFactory.CreateText(frame, "Progress", string.Empty, 17.0f, TextAlignmentOptions.BottomLeft);
         UIFactory.Place(InHud.QuestProgress, new Vector2(0.0f, 0.0f), new Vector2(16.0f, 12.0f), new Vector2(368.0f, 26.0f));
+        frame.gameObject.SetActive(false);
+    }
+
+    /// <summary>대상 정보창 (중상단, 보스 바 아래): 이름 · 레벨/내구도 · 체력 바 · 혈액 · 상태이상 / 획득물.</summary>
+    private static void buildTarget(HudWindow InHud, RectTransform InRoot)
+    {
+        var frame = UIFactory.CreateWindowFrame(InRoot, "Target");
+        UIFactory.Place(frame, new Vector2(0.5f, 1.0f), new Vector2(0.0f, -118.0f), new Vector2(480.0f, 96.0f));
+        InHud.TargetRoot = frame;
+
+        InHud.TargetName = UIFactory.CreateText(frame, "Name", string.Empty, 21.0f, TextAlignmentOptions.Left);
+        InHud.TargetName.fontStyle = FontStyles.Bold;
+        UIFactory.Place(InHud.TargetName, new Vector2(0.0f, 1.0f), new Vector2(16.0f, -10.0f), new Vector2(330.0f, 28.0f));
+
+        InHud.TargetLevel = UIFactory.CreateText(frame, "Level", string.Empty, 17.0f, TextAlignmentOptions.Right);
+        InHud.TargetLevel.color = UIUtil.GoldColor;
+        UIFactory.Place(InHud.TargetLevel, new Vector2(1.0f, 1.0f), new Vector2(-16.0f, -12.0f), new Vector2(130.0f, 26.0f));
+
+        InHud.TargetBar = UIFactory.CreateBar(frame, "Health", UIUtil.HealthColor, UIUtil.BarBackColor);
+        UIFactory.Place(InHud.TargetBar, new Vector2(0.5f, 1.0f), new Vector2(0.0f, -42.0f), new Vector2(448.0f, 20.0f));
+
+        InHud.TargetDetail = UIFactory.CreateText(frame, "Detail", string.Empty, 15.0f, TextAlignmentOptions.Left);
+        InHud.TargetDetail.textWrappingMode = TextWrappingModes.NoWrap;
+        UIFactory.Place(InHud.TargetDetail, new Vector2(0.0f, 0.0f), new Vector2(16.0f, 8.0f), new Vector2(448.0f, 24.0f));
         frame.gameObject.SetActive(false);
     }
 

@@ -469,6 +469,14 @@ public enum EConst
     FirstQuestId = 35,
     /// <summary>미니맵이 보여 주는 반경 (m).</summary>
     MinimapRadius = 36,
+    /// <summary>길이 아닌 곳(NavMesh Walkable 영역)의 경로 비용. Road 는 1 → 경로 탐색(퀘스트 안내 · 몬스터)이 길을 우선한다.</summary>
+    OffRoadCost = 37,
+    /// <summary>캐릭터 퀘스트 화살표 프리팹 (AssetTable Index).</summary>
+    QuestArrowAsset = 38,
+    /// <summary>대상 하이라이트 머티리얼 (Game/Highlight 셰이더, AssetTable Index).</summary>
+    HighlightMaterialAsset = 39,
+    /// <summary>선택한 대상이 이보다 멀어지면 선택을 푼다 (m).</summary>
+    TargetMaxDistance = 40,
 }
 
 /// <summary>StringTable.csv 의 고정 UI 문자열 인덱스. 데이터 행(아이템 이름 등)은 각 테이블의 NameId 로 참조한다.</summary>
@@ -532,6 +540,25 @@ public enum EText
     MapHint = 61,
     /// <summary>타이틀 언어 버튼 ("Language: English" / "언어: 한국어" — 문구 자체가 현재 언어를 보여 준다).</summary>
     Language = 62,
+    TargetLevel = 63,
+    TargetDurability = 64,
+    TargetYield = 65,
+    TargetDepleted = 66,
+    TargetVBlood = 67,
+    StatusStun = 70,
+    StatusSlow = 71,
+    StatusIgnite = 72,
+    StatusChill = 73,
+    StatusFreeze = 74,
+    StatusStatic = 75,
+    StatusCondemn = 76,
+    StatusWeaken = 77,
+    StatusLeech = 78,
+    StatusBleed = 79,
+    StatusImmaterial = 80,
+    StatusGuard = 81,
+    StatusEmpower = 82,
+    StatusHaste = 83,
 }
 
 /// <summary>UI 캔버스 정렬 순서 = 레이어 번호.</summary>
@@ -542,6 +569,20 @@ public static class UILayerId
     public const int Window = 20;
     public const int Popup = 30;
     public const int System = 40;
+}
+
+/// <summary>
+/// NavMesh 영역 번호 (ProjectSettings/NavMeshAreas 와 일치, 에디터 셋업이 이름 · 비용을 맞춘다).
+/// 걸을 수 있는 곳 = NavMesh 가 있는 곳 (플레이어도 NavMesh 밖으로 못 나간다 — ActorMotor.ConfineToNavMesh).
+/// </summary>
+public static class NavAreaId
+{
+    public const int Walkable = 0;
+    public const int NotWalkable = 1;
+    /// <summary>월드 빌더가 깐 흙길. 비용 1 이라 경로가 길을 따라간다.</summary>
+    public const int Road = 3;
+
+    public const int RoadMask = 1 << Road;
 }
 
 /// <summary>Physics 레이어 번호 (ProjectSettings/TagManager 와 일치해야 한다. 에디터 셋업이 맞춰 준다).</summary>

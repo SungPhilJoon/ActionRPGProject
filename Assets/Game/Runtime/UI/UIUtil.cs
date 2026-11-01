@@ -33,6 +33,39 @@ public static class UIUtil
         return Tables.Text(row.NameId);
     }
 
+    /// <summary>대상 정보창에 보여 줄 상태이상 태그와 문구 (같은 순서).</summary>
+    private static readonly ETag[] StatusTags =
+    {
+        ETag.State_Debuff_Stun_Frozen, ETag.State_Debuff_Stun, ETag.State_Debuff_Slow, ETag.State_Debuff_Ignite, ETag.State_Debuff_Chill,
+        ETag.State_Debuff_Static, ETag.State_Debuff_Condemn, ETag.State_Debuff_Weaken, ETag.State_Debuff_Leech, ETag.State_Debuff_Bleed,
+        ETag.State_Immaterial, ETag.State_Buff_Guard, ETag.State_Buff_Empower, ETag.State_Buff_Haste,
+    };
+
+    private static readonly EText[] StatusTexts =
+    {
+        EText.StatusFreeze, EText.StatusStun, EText.StatusSlow, EText.StatusIgnite, EText.StatusChill,
+        EText.StatusStatic, EText.StatusCondemn, EText.StatusWeaken, EText.StatusLeech, EText.StatusBleed,
+        EText.StatusImmaterial, EText.StatusGuard, EText.StatusEmpower, EText.StatusHaste,
+    };
+
+    /// <summary>InActor 에 걸린 상태이상 이름을 " · " 로 이어 붙인다 (빙결이면 기절은 생략 — 빙결이 기절의 자식 태그).</summary>
+    public static void AppendStatuses(Actor InActor, System.Text.StringBuilder OutText)
+    {
+        bool frozen = false;
+        for (int i = 0; i < StatusTags.Length; ++i)
+        {
+            var tag = StatusTags[i];
+            if (InActor.HasTag((int)tag) == false || (tag == ETag.State_Debuff_Stun && frozen == true))
+            {
+                continue;
+            }
+
+            frozen |= tag == ETag.State_Debuff_Stun_Frozen;
+            OutText.Append(OutText.Length > 0 ? "  · " : string.Empty);
+            OutText.Append("<color=#F2CC66>").Append(Tables.Text(StatusTexts[i])).Append("</color>");
+        }
+    }
+
     /// <summary>능력치 이름 문구 = StringTable 9000 + EAttribute (인벤토리 능력치 목록).</summary>
     public const int AttributeTextBase = 9000;
 

@@ -1,5 +1,5 @@
 {
-    "UpdatedAt": "2026-10-31 13:35",
+    "UpdatedAt": "2026-10-31 20:11",
     "Issues": [
         {
             "Key": "R-LEAK:Monster_SpawnAndRemove:AI/ST_MeleeMonster",
@@ -15,7 +15,7 @@
             ],
             "Status": 1,
             "FirstSeen": "2026-10-30 00:03",
-            "LastSeen": "2026-10-31 13:35",
+            "LastSeen": "2026-10-31 20:11",
             "ResolvedAt": ""
         },
         {
@@ -32,7 +32,7 @@
             ],
             "Status": 1,
             "FirstSeen": "2026-10-30 00:03",
-            "LastSeen": "2026-10-31 13:35",
+            "LastSeen": "2026-10-31 20:11",
             "ResolvedAt": ""
         },
         {
@@ -49,7 +49,7 @@
             ],
             "Status": 1,
             "FirstSeen": "2026-10-30 00:03",
-            "LastSeen": "2026-10-31 13:35",
+            "LastSeen": "2026-10-31 20:11",
             "ResolvedAt": ""
         },
         {
@@ -66,7 +66,7 @@
             ],
             "Status": 1,
             "FirstSeen": "2026-10-30 00:03",
-            "LastSeen": "2026-10-31 13:35",
+            "LastSeen": "2026-10-31 20:11",
             "ResolvedAt": ""
         },
         {
@@ -83,7 +83,7 @@
             ],
             "Status": 1,
             "FirstSeen": "2026-10-30 00:03",
-            "LastSeen": "2026-10-31 13:35",
+            "LastSeen": "2026-10-31 20:11",
             "ResolvedAt": ""
         },
         {
@@ -100,7 +100,7 @@
             ],
             "Status": 1,
             "FirstSeen": "2026-10-30 00:03",
-            "LastSeen": "2026-10-31 13:35",
+            "LastSeen": "2026-10-31 20:11",
             "ResolvedAt": ""
         },
         {
@@ -117,7 +117,7 @@
             ],
             "Status": 1,
             "FirstSeen": "2026-10-30 00:03",
-            "LastSeen": "2026-10-31 13:35",
+            "LastSeen": "2026-10-31 20:11",
             "ResolvedAt": ""
         },
         {
@@ -134,7 +134,7 @@
             ],
             "Status": 1,
             "FirstSeen": "2026-10-30 00:03",
-            "LastSeen": "2026-10-31 13:35",
+            "LastSeen": "2026-10-31 20:11",
             "ResolvedAt": ""
         },
         {
@@ -151,7 +151,7 @@
             ],
             "Status": 1,
             "FirstSeen": "2026-10-30 00:03",
-            "LastSeen": "2026-10-31 13:35",
+            "LastSeen": "2026-10-31 20:11",
             "ResolvedAt": ""
         },
         {
@@ -168,7 +168,7 @@
             ],
             "Status": 1,
             "FirstSeen": "2026-10-30 00:03",
-            "LastSeen": "2026-10-31 13:35",
+            "LastSeen": "2026-10-31 20:11",
             "ResolvedAt": ""
         },
         {
@@ -185,7 +185,7 @@
             ],
             "Status": 1,
             "FirstSeen": "2026-10-30 00:03",
-            "LastSeen": "2026-10-31 13:35",
+            "LastSeen": "2026-10-31 20:11",
             "ResolvedAt": ""
         },
         {
@@ -202,14 +202,14 @@
             ],
             "Status": 1,
             "FirstSeen": "2026-10-30 00:03",
-            "LastSeen": "2026-10-31 13:35",
+            "LastSeen": "2026-10-31 20:11",
             "ResolvedAt": ""
         },
         {
             "Key": "R-LEAK:UI_OpenCloseWindows:Icons/Lumber",
             "Code": "R-LEAK",
             "Severity": 1,
-            "Title": "반납 안 된 참조: Icons/Lumber (3회 반복에서 +3 — 반복할수록 늘어남)",
+            "Title": "반납 안 된 참조: Icons/Lumber (3회 반복에서 +6 — 반복할수록 늘어남)",
             "Why": "'UI_OpenCloseWindows' 를 끝내고 원래 상태로 돌아왔는데 이 에셋의 참조 카운트가 늘어난 채로 남았습니다. 계속 반복하면 메모리에서 내려가지 않습니다.",
             "HowToFix": "이 에셋을 로드한 곳(UIUtil.LoadSprite)에서 다 쓴 뒤 AssetLoader.Release 를 호출하는지 확인하세요. 한 번 로드해 계속 쓰는 것이 의도라면 무시해도 됩니다.",
             "Owner": "프로그래밍",
@@ -219,7 +219,7 @@
             ],
             "Status": 1,
             "FirstSeen": "2026-10-30 00:03",
-            "LastSeen": "2026-10-31 13:35",
+            "LastSeen": "2026-10-31 20:11",
             "ResolvedAt": ""
         },
         {
@@ -236,7 +236,7 @@
             ],
             "Status": 1,
             "FirstSeen": "2026-10-30 00:03",
-            "LastSeen": "2026-10-31 13:35",
+            "LastSeen": "2026-10-31 20:11",
             "ResolvedAt": ""
         },
         {
@@ -253,7 +253,7 @@
             ],
             "Status": 1,
             "FirstSeen": "2026-10-30 00:03",
-            "LastSeen": "2026-10-31 13:35",
+            "LastSeen": "2026-10-31 20:11",
             "ResolvedAt": ""
         },
         {
@@ -270,7 +270,7 @@
             ],
             "Status": 1,
             "FirstSeen": "2026-10-30 00:03",
-            "LastSeen": "2026-10-31 13:35",
+            "LastSeen": "2026-10-31 20:11",
             "ResolvedAt": ""
         },
         {
@@ -287,7 +287,7 @@
             ],
             "Status": 1,
             "FirstSeen": "2026-10-30 00:03",
-            "LastSeen": "2026-10-31 13:35",
+            "LastSeen": "2026-10-31 20:11",
             "ResolvedAt": ""
         },
         {
@@ -304,7 +304,7 @@
             ],
             "Status": 1,
             "FirstSeen": "2026-10-30 00:03",
-            "LastSeen": "2026-10-31 13:35",
+            "LastSeen": "2026-10-31 20:11",
             "ResolvedAt": ""
         },
         {
@@ -321,7 +321,7 @@
             ],
             "Status": 1,
             "FirstSeen": "2026-10-30 00:03",
-            "LastSeen": "2026-10-31 13:35",
+            "LastSeen": "2026-10-31 20:11",
             "ResolvedAt": ""
         },
         {
@@ -338,7 +338,7 @@
             ],
             "Status": 1,
             "FirstSeen": "2026-10-30 00:03",
-            "LastSeen": "2026-10-31 13:35",
+            "LastSeen": "2026-10-31 20:11",
             "ResolvedAt": ""
         },
         {
@@ -355,7 +355,7 @@
             ],
             "Status": 1,
             "FirstSeen": "2026-10-30 00:03",
-            "LastSeen": "2026-10-31 13:35",
+            "LastSeen": "2026-10-31 20:11",
             "ResolvedAt": ""
         },
         {
@@ -372,7 +372,7 @@
             ],
             "Status": 1,
             "FirstSeen": "2026-10-30 00:03",
-            "LastSeen": "2026-10-31 13:35",
+            "LastSeen": "2026-10-31 20:11",
             "ResolvedAt": ""
         },
         {
@@ -389,7 +389,7 @@
             ],
             "Status": 1,
             "FirstSeen": "2026-10-30 00:03",
-            "LastSeen": "2026-10-31 13:35",
+            "LastSeen": "2026-10-31 20:11",
             "ResolvedAt": ""
         },
         {
@@ -406,7 +406,7 @@
             ],
             "Status": 1,
             "FirstSeen": "2026-10-30 00:03",
-            "LastSeen": "2026-10-31 13:35",
+            "LastSeen": "2026-10-31 20:11",
             "ResolvedAt": ""
         },
         {
@@ -423,7 +423,7 @@
             ],
             "Status": 1,
             "FirstSeen": "2026-10-30 00:03",
-            "LastSeen": "2026-10-31 13:35",
+            "LastSeen": "2026-10-31 20:11",
             "ResolvedAt": ""
         },
         {
@@ -440,7 +440,7 @@
             ],
             "Status": 1,
             "FirstSeen": "2026-10-30 00:03",
-            "LastSeen": "2026-10-31 13:35",
+            "LastSeen": "2026-10-31 20:11",
             "ResolvedAt": ""
         },
         {
@@ -457,7 +457,7 @@
             ],
             "Status": 1,
             "FirstSeen": "2026-10-30 00:03",
-            "LastSeen": "2026-10-31 13:35",
+            "LastSeen": "2026-10-31 20:11",
             "ResolvedAt": ""
         },
         {
@@ -474,7 +474,7 @@
             ],
             "Status": 1,
             "FirstSeen": "2026-10-30 00:03",
-            "LastSeen": "2026-10-31 13:35",
+            "LastSeen": "2026-10-31 20:11",
             "ResolvedAt": ""
         },
         {
@@ -491,7 +491,7 @@
             ],
             "Status": 1,
             "FirstSeen": "2026-10-30 00:03",
-            "LastSeen": "2026-10-31 13:35",
+            "LastSeen": "2026-10-31 20:11",
             "ResolvedAt": ""
         },
         {
@@ -508,7 +508,7 @@
             ],
             "Status": 1,
             "FirstSeen": "2026-10-30 00:03",
-            "LastSeen": "2026-10-31 13:35",
+            "LastSeen": "2026-10-31 20:11",
             "ResolvedAt": ""
         },
         {
@@ -525,7 +525,7 @@
             ],
             "Status": 1,
             "FirstSeen": "2026-10-30 00:03",
-            "LastSeen": "2026-10-31 13:35",
+            "LastSeen": "2026-10-31 20:11",
             "ResolvedAt": ""
         },
         {
@@ -542,7 +542,7 @@
             ],
             "Status": 1,
             "FirstSeen": "2026-10-30 00:03",
-            "LastSeen": "2026-10-31 13:35",
+            "LastSeen": "2026-10-31 20:11",
             "ResolvedAt": ""
         },
         {
@@ -559,7 +559,7 @@
             ],
             "Status": 1,
             "FirstSeen": "2026-10-30 00:03",
-            "LastSeen": "2026-10-31 13:35",
+            "LastSeen": "2026-10-31 20:11",
             "ResolvedAt": ""
         },
         {
@@ -576,7 +576,7 @@
             ],
             "Status": 1,
             "FirstSeen": "2026-10-30 00:03",
-            "LastSeen": "2026-10-31 13:35",
+            "LastSeen": "2026-10-31 20:11",
             "ResolvedAt": ""
         },
         {
@@ -593,7 +593,7 @@
             ],
             "Status": 1,
             "FirstSeen": "2026-10-30 00:03",
-            "LastSeen": "2026-10-31 13:35",
+            "LastSeen": "2026-10-31 20:11",
             "ResolvedAt": ""
         },
         {
@@ -610,7 +610,7 @@
             ],
             "Status": 1,
             "FirstSeen": "2026-10-30 00:03",
-            "LastSeen": "2026-10-31 13:35",
+            "LastSeen": "2026-10-31 20:11",
             "ResolvedAt": ""
         },
         {
@@ -627,7 +627,7 @@
             ],
             "Status": 1,
             "FirstSeen": "2026-10-30 00:03",
-            "LastSeen": "2026-10-31 13:35",
+            "LastSeen": "2026-10-31 20:11",
             "ResolvedAt": ""
         },
         {
@@ -644,7 +644,7 @@
             ],
             "Status": 1,
             "FirstSeen": "2026-10-30 00:03",
-            "LastSeen": "2026-10-31 13:35",
+            "LastSeen": "2026-10-31 20:11",
             "ResolvedAt": ""
         },
         {
@@ -661,7 +661,7 @@
             ],
             "Status": 1,
             "FirstSeen": "2026-10-30 00:03",
-            "LastSeen": "2026-10-31 13:35",
+            "LastSeen": "2026-10-31 20:11",
             "ResolvedAt": ""
         },
         {
@@ -678,7 +678,7 @@
             ],
             "Status": 1,
             "FirstSeen": "2026-10-30 00:03",
-            "LastSeen": "2026-10-31 13:35",
+            "LastSeen": "2026-10-31 20:11",
             "ResolvedAt": ""
         },
         {
@@ -695,7 +695,7 @@
             ],
             "Status": 1,
             "FirstSeen": "2026-10-30 00:03",
-            "LastSeen": "2026-10-31 13:35",
+            "LastSeen": "2026-10-31 20:11",
             "ResolvedAt": ""
         },
         {
@@ -712,7 +712,7 @@
             ],
             "Status": 1,
             "FirstSeen": "2026-10-30 00:03",
-            "LastSeen": "2026-10-31 13:35",
+            "LastSeen": "2026-10-31 20:11",
             "ResolvedAt": ""
         },
         {
@@ -729,7 +729,7 @@
             ],
             "Status": 1,
             "FirstSeen": "2026-10-30 00:03",
-            "LastSeen": "2026-10-31 13:35",
+            "LastSeen": "2026-10-31 20:11",
             "ResolvedAt": ""
         },
         {
@@ -746,7 +746,7 @@
             ],
             "Status": 1,
             "FirstSeen": "2026-10-30 00:03",
-            "LastSeen": "2026-10-31 13:35",
+            "LastSeen": "2026-10-31 20:11",
             "ResolvedAt": ""
         },
         {
@@ -763,7 +763,7 @@
             ],
             "Status": 1,
             "FirstSeen": "2026-10-30 00:03",
-            "LastSeen": "2026-10-31 13:35",
+            "LastSeen": "2026-10-31 20:11",
             "ResolvedAt": ""
         },
         {
@@ -780,7 +780,7 @@
             ],
             "Status": 1,
             "FirstSeen": "2026-10-30 00:03",
-            "LastSeen": "2026-10-31 13:35",
+            "LastSeen": "2026-10-31 20:11",
             "ResolvedAt": ""
         },
         {
@@ -797,7 +797,7 @@
             ],
             "Status": 1,
             "FirstSeen": "2026-10-30 00:03",
-            "LastSeen": "2026-10-31 13:35",
+            "LastSeen": "2026-10-31 20:11",
             "ResolvedAt": ""
         },
         {
@@ -814,7 +814,7 @@
             ],
             "Status": 1,
             "FirstSeen": "2026-10-30 00:03",
-            "LastSeen": "2026-10-31 13:35",
+            "LastSeen": "2026-10-31 20:11",
             "ResolvedAt": ""
         },
         {
@@ -832,9 +832,9 @@
                 "Assets/Game/Data/Localization/Tables/GameText_ko.asset",
                 "Assets/Game/Data/Localization/Tables/GameText_en.asset"
             ],
-            "Status": 0,
+            "Status": 1,
             "FirstSeen": "2026-10-31 13:35",
-            "LastSeen": "2026-10-31 13:35",
+            "LastSeen": "2026-10-31 20:11",
             "ResolvedAt": ""
         },
         {

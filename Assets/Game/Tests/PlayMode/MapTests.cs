@@ -85,7 +85,8 @@ public class MapTests : GamePlayTestBase
         Merchant merchant = Object.FindAnyObjectByType<Merchant>();
         Assert.Less(Vector3.Distance(guide, merchant.transform.position), 0.1f, "가이드 = 상인 위치");
         yield return null;
-        Assert.IsTrue(view.GuideLine.gameObject.activeSelf, "미니맵 가이드 선");
+        yield return null;
+        Assert.Greater(view.GuideSegmentCount, 0, "미니맵 경로 선");
 
         Assert.IsTrue(quests.Begin(7), "채집 퀘스트");
         Assert.IsTrue(quests.TryGetGuidePosition(Player.transform.position, out guide), "채집 퀘스트 가이드 (채집 지점)");
@@ -95,13 +96,15 @@ public class MapTests : GamePlayTestBase
         Assert.IsTrue(quests.TryGetGuidePosition(Player.transform.position, out guide), "보스 퀘스트 가이드 (리스폰 대기 중이면 아레나)");
         Assert.Greater(Vector3.Distance(guide, Player.transform.position), Tables.Const(EConst.MinimapRadius), "보스는 미니맵 반경 밖");
         yield return null;
-        Assert.IsTrue(view.GuideLine.gameObject.activeSelf, "밖이어도 가장자리까지 선");
+        yield return null;
+        Assert.Greater(view.GuideSegmentCount, 0, "밖이어도 경로 선");
         Assert.IsTrue(hasMarkerWithSprite(view, view.GuideArrow), "가장자리 화살표 표식");
 
         Assert.IsTrue(quests.Begin(1), "이동 퀘스트");
         Assert.IsFalse(quests.TryGetGuidePosition(Player.transform.position, out guide), "이동 퀘스트는 장소 없음");
         yield return null;
-        Assert.IsFalse(view.GuideLine.gameObject.activeSelf, "가이드 선 숨김");
+        yield return null;
+        Assert.AreEqual(0, view.GuideSegmentCount, "경로 선 숨김");
     }
 
     private static bool hasMarkerWithSprite(MapView InView, Sprite InSprite)
@@ -109,7 +112,7 @@ public class MapTests : GamePlayTestBase
         foreach (Transform child in InView.MarkerRoot)
         {
             var image = child.GetComponent<UnityEngine.UI.Image>();
-            if (child.gameObject.activeSelf == true && image != null && image != InView.GuideLine && image.sprite == InSprite && image.color == InView.MarkerColors[(int)EMapMarker.Quest])
+            if (child.gameObject.activeSelf == true && image != null && image.sprite == InSprite && image.color == InView.MarkerColors[(int)EMapMarker.Quest])
             {
                 return true;
             }

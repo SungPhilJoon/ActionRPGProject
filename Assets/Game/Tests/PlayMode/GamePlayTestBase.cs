@@ -13,7 +13,7 @@ using UnityEngine.TestTools;
 /// <summary>
 /// Play 모드 시나리오 테스트 공통 기반.
 ///  - 첫 테스트에서 World 씬을 로드하고 싱글 플레이를 시작한다 (이후 테스트는 같은 세션을 재사용).
-///  - 테스트마다: 월드 몬스터 정리(간섭 방지), 밤 고정(햇빛 피해 방지), 플레이어 부활·체력 회복·위치 초기화.
+///  - 테스트마다: Time.timeScale = 1 (에디터 · 치트 · 다른 도구가 바꾼 값이 남지 않게, 시간 기반 대기가 실제 시간과 같도록), 월드 몬스터 정리(간섭 방지), 밤 고정(햇빛 피해 방지), 플레이어 부활·체력 회복·위치 초기화.
 ///  - 테스트가 스폰한 몬스터는 TearDown 에서 제거한다.
 /// WaitFor 는 매 프레임 InTick(기본: 플레이어 체력 유지)을 실행하며 조건을 기다리고, 시간이 넘으면 실패한다.
 /// </summary>
@@ -28,9 +28,13 @@ public abstract class GamePlayTestBase
     protected static Vector3 StartPosition { get; private set; }
     private static bool Started;
 
+    /// <summary>테스트 중 게임 속도. 항상 1 (실제 시간과 같은 속도).</summary>
+    protected const float TestTimeScale = 1.0f;
+
     [UnitySetUp]
     public IEnumerator SetUpGame()
     {
+        Time.timeScale = TestTimeScale;
         if (Started == false || PlayerCharacter.Local == null)
         {
             yield return loadWorld();
@@ -60,6 +64,7 @@ public abstract class GamePlayTestBase
     [UnityTearDown]
     public IEnumerator TearDownGame()
     {
+        Time.timeScale = TestTimeScale;
         foreach (var monster in Spawned)
         {
             if (monster != null)
@@ -81,6 +86,7 @@ public abstract class GamePlayTestBase
 
     private static IEnumerator loadWorld()
     {
+        Time.timeScale = TestTimeScale;
 #if UNITY_EDITOR
         UnityEditor.SceneManagement.EditorSceneManager.LoadSceneInPlayMode(WorldScenePath, new LoadSceneParameters(LoadSceneMode.Single));
 #else

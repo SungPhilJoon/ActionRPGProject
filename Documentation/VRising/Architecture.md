@@ -36,7 +36,8 @@ Assets/Framework/
     Core/        Log, Managers(IManager)
       Behaviours/ Behaviour → BaseBehaviour → ActorBehaviour / UIBehaviour (모든 MonoBehaviour 의 공통 부모, 5.1 참고)
     Util/        HashUtil, MathUtil, ComponentUtil, BoundsUtil, TerrainUtil (런타임 TerrainData 복제 · Detail 지우기)
-    Camera/Occlusion/ CameraOcclusionSystem + 감지/응답 전략 + CameraOccluder ([CameraOcclusion.md](CameraOcclusion.md))
+    Camera/Occlusion/ CameraOcclusionSystem + 감지/응답 전략(가림 정도 광선 · 알파 페이드) + CameraOccluder ([CameraOcclusion.md](CameraOcclusion.md))
+    Rendering/   RendererHighlight (대상 메시를 하이라이트 머티리얼로 한 번 더 그리는 겹 렌더러 — [Targeting.md](Targeting.md))
     Event/       EventBus<T>
     Pool/        GameObjectPool
     Asset/       AssetLoader (Addressables 래퍼, (주소,타입) 캐시, 소유자 검사)
@@ -63,7 +64,7 @@ Assets/Game/
       Graph/     AbilityGraphAsset(에디터로 만드는 어빌리티), AbilitySteps(단계 13종), GraphAbility(실행기) — GAS.md 4.1
     Combat/      CombatUtil(히트 처리), CombatLog, Projectile(ProjectileSystem), CueSpawner, PooledEffect(외부 VFX 풀 래퍼), TimedDespawn
     Actor/       Actor, ActorMotor, ActorAnimator(+AnimatorParam, AnimationTable 재생), ActorRegistry
-    Player/      PlayerCharacter, PlayerController, AbilityInputBuffer(공격 중 입력 버퍼), BloodSystem, SunExposure
+    Player/      PlayerCharacter, PlayerController, AbilityInputBuffer(공격 중 입력 버퍼), BloodSystem, SunExposure, TargetSelector(마우스 호버 · 대상 지정)
     Input/       GameInput (InputTable.csv → Input System, 입력 맵 System / Movement / Combat — UI 창이 열리면 Combat 끔)
     Camera/      TopDownCamera
     Monster/     MonsterCharacter, MonsterBrain(StateTree 호스트)
@@ -71,7 +72,7 @@ Assets/Game/
     World/       DayNightManager, SkyBridge(ISkyController), SpawnManager, ResourceNode, Merchant, Interactable, SceneContext, WaterBody(강/호수 영역), MapMarkers(지도 고정 표식 목록)
       Foliage/   FoliageInstance(장식 나무/덤불), FoliageRoot(목록 + 격자 색인), FoliageManager(건축 시 나무·풀 제거)
     Building/    BuildManager, Structure
-    Quest/       QuestManager (QuestTable 체인 진행, 게임 이벤트 구독 → QuestChangedEvent / QuestsCompletedEvent)
+    Quest/       QuestManager (QuestTable 체인 진행, 게임 이벤트 구독 → QuestChangedEvent / QuestsCompletedEvent), QuestNavigator (퀘스트 장소까지 NavMesh 경로 · 길 우선 비용), QuestGuideArrow (캐릭터 화살표)
     Inventory/   Inventory, Equipment, LootUtil
     Cheat/       CheatManager
     UI/          UIUtil
@@ -83,7 +84,7 @@ Assets/Game/
     Setup/       GameSetupMenu(Run All), ProjectSetup(레이어), EditorPaths
     Data/        CsvTableImporter (게임 테이블 생성 + GameTables 연결 + 참조 검증), LocalizationSync (StringTable.csv → Unity Localization GameText en/ko)
     Content/     ContentBuilder(.Characters = 플레이어/몬스터/상인/무기/애니메이터, .Structures = 성 모듈/채집 노드, .Vfx = 절차 VFX, .SkillVfx = 스킬 이펙트 팩), AddressablesSetup
-    World/       WorldBuilder(.Terrain = 높이맵/레이어/풀, .Foliage = 나무·덤불 배치, .Water = 강·호수, .Landmarks = 바위/마을/아레나, .Sky = 절차 스카이박스 · 안개 · 하늘 반사, .PostFx = 포스트 프로세싱 볼륨 · 렌더러 피처), WorldMapBaker(위에서 본 지도 텍스처 굽기)
+    World/       WorldBuilder(.Terrain = 높이맵/레이어/풀, .Foliage = 나무·덤불 배치, .Water = 강·호수, .Landmarks = 바위/마을/아레나, .Roads = 흙길 9개 · NavMesh 영역 상자, .Ruins = 폐허 무리 · 길가 이정표, .Sky = 절차 스카이박스 · 안개 · 하늘 반사, .PostFx = 포스트 프로세싱 볼륨 · 렌더러 피처), WorldMapBaker(위에서 본 지도 텍스처 굽기)
       Foliage/   TreeGenerator(절차 나무 골격 → LOD 메시), TreeFactory(프리팹·머티리얼), FoliageTextures + FoliageCanvas(절차 텍스처)
     AI/          MonsterStateTreeDefaults (기본 트리 3종 + Game > Tools > StateTree Tool 메뉴)
       MonsterAIExtension (StateTree Tool 몬스터 AI 도우미)
@@ -93,7 +94,7 @@ Assets/Game/
       DependencyTool/ DependencyMapWindow(의존성 지도), DependencyMapService, GameDependencyUsage — [Dependency.md](Dependency.md)
       GasTool/   GasToolWindow(+Ability/Effect/AbilitySet 탭), AbilityTemplates, GasEditorGUI, AbilityInfo, AbilityGuide(기존 타입 설명) — [Tool.md](Tool.md)
   Tests/PlayMode/                   Game.Tests.PlayMode
-    GamePlayTestBase(World 로드·싱글 시작·정리), GasAbilityTests, StateTreeTests, PlayScenarioTests(몬스터/보스) + PlayScenarioTests.Castle(성 짓기 + 10초 쇼케이스), QuestTests(퀘스트 1→17 전체 체인), MapTests(입력 맵 · 미니맵 방향 · 표식 · 퀘스트 가이드), RootMotionTests(루트 모션은 메두사 Attack1 만), LocalizationTests(언어 전환 · 한국어 누락 없음)
+    GamePlayTestBase(World 로드·싱글 시작·정리), GasAbilityTests, StateTreeTests, PlayScenarioTests(몬스터/보스) + PlayScenarioTests.Castle(성 짓기 + 10초 쇼케이스), QuestTests(퀘스트 1→17 전체 체인), MapTests(입력 맵 · 미니맵 방향 · 표식 · 퀘스트 가이드), RootMotionTests(루트 모션은 메두사 Attack1 만), LocalizationTests(언어 전환 · 한국어 누락 없음), NavigationTests(모든 지역 연결 · 길 우선 경로 · 호수 진입 불가 · 퀘스트 화살표), TargetingTests(지정 · 하이라이트 색 · 정보창)
 ```
 
 ## 4. 새 코드를 어디에 둘지

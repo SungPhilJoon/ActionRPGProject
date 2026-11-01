@@ -1,3 +1,4 @@
+using System.Text;
 using Framework;
 using Framework.UI;
 using TMPro;
@@ -26,6 +27,13 @@ public class HudWindow : UIWindow
     public TextMeshProUGUI ClockLabel;
     public UIBar ClockBar;
     public TextMeshProUGUI SunLabel;
+
+    [Header("Target (중상단, 지정한 대상 상태)")]
+    public RectTransform TargetRoot;
+    public TextMeshProUGUI TargetName;
+    public TextMeshProUGUI TargetLevel;
+    public UIBar TargetBar;
+    public TextMeshProUGUI TargetDetail;
 
     [Header("Boss")]
     public RectTransform BossRoot;
@@ -56,6 +64,7 @@ public class HudWindow : UIWindow
     private float ToastRemaining;
     private float VictoryRemaining;
     private string QuestProgressText = string.Empty;
+    private readonly StringBuilder TargetText = new StringBuilder();
     private Actor Boss;
     private IInteractable Interactable;
 
@@ -77,6 +86,7 @@ public class HudWindow : UIWindow
         BossRoot.gameObject.SetActive(false);
         VictoryRoot.gameObject.SetActive(false);
         QuestRoot.gameObject.SetActive(false);
+        TargetRoot.gameObject.SetActive(false);
     }
 
     private void refreshHints()
@@ -152,6 +162,7 @@ public class HudWindow : UIWindow
         updateSlots(player);
         updateClock(player);
         updateBoss();
+        updateTarget(player);
         updateQuest(player);
 
         if (ToastRemaining > 0.0f)
@@ -248,6 +259,77 @@ public class HudWindow : UIWindow
         }
     }
 
+    /// <summary>지정한 대상(TargetSelector.Selected) 상태: 몬스터 = 이름 · 레벨 · 체력 · 혈액 · 상태이상, 채집 노드 = 이름 · 내구도 · 획득물 · 재생 시간.</summary>
+    private void updateTarget(PlayerCharacter InPlayer)
+    {
+        var selector = Managers.Get<TargetSelector>();
+        var target = selector != null ? selector.Selected : null;
+        bool show = target != null;
+        if (TargetRoot.gameObject.activeSelf != show)
+        {
+            TargetRoot.gameObject.SetActive(show);
+        }
+
+        if (show == false)
+        {
+            return;
+        }
+
+        var monster = target as MonsterCharacter;
+        if (monster != null)
+        {
+            showMonster(InPlayer, monster);
+            return;
+        }
+
+        var node = target as ResourceNode;
+        if (node != null)
+        {
+            showNode(node);
+        }
+    }
+
+    private void showMonster(PlayerCharacter InPlayer, MonsterCharacter InMonster)
+    {
+        var row = InMonster.Row;
+        TargetName.text = Tables.Text(row.NameId);
+        TargetName.color = row.IsVBlood == true ? new Color(1.0f, 0.35f, 0.35f) : Color.white;
+        bool stronger = row.Level > InPlayer.Attributes.Get(EAttribute.Level) + 0.5f;
+        TargetLevel.text = $"{Tables.Text(EText.TargetLevel)} {row.Level:0}";
+        TargetLevel.color = stronger == true ? new Color(1.0f, 0.4f, 0.35f) : UIUtil.GoldColor;
+        TargetBar.SetValue(InMonster.Attributes.Get(EAttribute.Health), InMonster.Attributes.Get(EAttribute.MaxHealth));
+        TargetBar.SetFillColor(UIUtil.HealthColor);
+
+        TargetText.Clear();
+        BloodTypeRow blood;
+        if (row.BloodType != EBloodType.None && Tables.Root.BloodType.TryGet((int)row.BloodType, out blood) == true)
+        {
+            TargetText.Append($"<color=#{ColorUtility.ToHtmlStringRGB(blood.Color)}>{Tables.Text(blood.NameId)}</color> {row.BloodQuality:0}%");
+        }
+
+        if (row.IsVBlood == true)
+        {
+            TargetText.Append($"  <color=#FF5555>{Tables.Text(EText.TargetVBlood)}</color>");
+        }
+
+        UIUtil.AppendStatuses(InMonster, TargetText);
+        TargetDetail.text = TargetText.ToString();
+    }
+
+    private void showNode(ResourceNode InNode)
+    {
+        var row = InNode.Row;
+        TargetName.text = Tables.Text(row.NameId);
+        TargetName.color = Color.white;
+        TargetLevel.text = Tables.Text(EText.TargetDurability);
+        TargetLevel.color = new Color(0.6f, 0.9f, 1.0f);
+        TargetBar.SetValue(InNode.IsDepleted == true ? 0.0f : InNode.Health, row.Health);
+        TargetBar.SetFillColor(TargetSelector.NodeColor * 0.8f);
+        TargetDetail.text = InNode.IsDepleted == true
+            ? $"{Tables.Text(EText.TargetDepleted)} {Mathf.CeilToInt(InNode.RespawnRemaining)}s"
+            : $"{Tables.Text(EText.TargetYield)} {UIUtil.ItemName(row.DropItem)} {row.DropMin}~{row.DropMax}";
+    }
+
     private void updateBoss()
     {
         bool show = Boss != null && Boss.IsDead == false;
@@ -258,7 +340,7 @@ public class HudWindow : UIWindow
         }
     }
 
-    /// <summary>진행도 줄 + 퀘스트 장소(지도 가이드와 같은 곳)까지 거리. 거리는 매 프레임 바뀐다.</summary>
+    /// <summary>진행도 줄 + 퀘스트 장소까지 걸어갈 거리 (지도 경로와 같은 값). 거리는 매 프레임 바뀐다.</summary>
     private void updateQuest(PlayerCharacter InPlayer)
     {
         if (VictoryRemaining > 0.0f)
@@ -267,16 +349,15 @@ public class HudWindow : UIWindow
             VictoryRoot.gameObject.SetActive(VictoryRemaining > 0.0f);
         }
 
-        var quests = Managers.Get<QuestManager>();
-        Vector3 guide;
-        if (quests == null || quests.TryGetGuidePosition(InPlayer.transform.position, out guide) == false)
+        // 남은 거리 = 길 안내 경로 길이 (QuestNavigator, 직선이 아니라 걸어갈 길).
+        var navigator = Managers.Get<QuestNavigator>();
+        if (navigator == null || navigator.HasGuide == false)
         {
             QuestProgress.text = QuestProgressText;
             return;
         }
 
-        Vector3 position = InPlayer.transform.position;
-        float distance = Vector2.Distance(new Vector2(position.x, position.z), new Vector2(guide.x, guide.z));
+        float distance = navigator.Distance;
 
         QuestProgress.text = $"{QuestProgressText}   <color=#B0B0B0>{Tables.Text(EText.QuestDistance)} {Mathf.RoundToInt(distance)}m</color>";
     }

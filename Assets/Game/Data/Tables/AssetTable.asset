@@ -95,6 +95,12 @@ MonoBehaviour:
   - Index: 140
     Address: VFX/Stun
     Kind: 0
+  - Index: 141
+    Address: VFX/QuestArrow
+    Kind: 0
+  - Index: 142
+    Address: Materials/Highlight
+    Kind: 2
   - Index: 150
     Address: Nodes/PineTree
     Kind: 0

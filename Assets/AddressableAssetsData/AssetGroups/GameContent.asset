@@ -295,6 +295,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 677ff2494644a5f41b95a85e1280548b
+    m_Address: Materials/Highlight
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 6c4ad11a4f7795a4ab0b9b9cbddc4756
     m_Address: Icons/CopperOre
     m_ReadOnly: 0
@@ -437,6 +442,11 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: c5ecbb3cf369a394e80cc7fde7ead9a7
     m_Address: Nodes/Boulder
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c6751b17acad18b429e6d68763f1426d
+    m_Address: VFX/QuestArrow
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0

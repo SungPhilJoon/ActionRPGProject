@@ -17,6 +17,8 @@ public class ActorMotor : BaseBehaviour
     private const int AvoidancePriorityRange = 40;
     /// <summary>이 거리보다 가까운 경로 모서리는 바라보기 기준으로 쓰지 않는다 (도착 직전 방향 튐 방지).</summary>
     private const float SteeringMinDistance = 0.3f;
+    /// <summary>NavMesh 가두기: 발 위치에서 이 거리 안에 NavMesh 가 없으면(스폰 · 텔레포트 직후 등) 가두지 않는다.</summary>
+    private const float NavMeshProbe = 1.5f;
 
     private Actor Owner;
     private CharacterController Controller;
@@ -31,6 +33,12 @@ public class ActorMotor : BaseBehaviour
     private bool HasTargetRotation;
 
     public float CurrentSpeed { get; private set; }
+
+    /// <summary>
+    /// CharacterController 이동을 NavMesh 안으로 제한한다 (플레이어). 걸을 수 있는 곳 = NavMesh — 물 · 맵 가장자리 산 · 급경사는
+    /// 월드 빌더가 NavMesh 에서 뺀다. 경계에 닿으면 경계를 따라 미끄러진다. 대시도 같은 규칙.
+    /// </summary>
+    public bool ConfineToNavMesh;
 
     public bool IsDashing
     {
@@ -240,9 +248,48 @@ public class ActorMotor : BaseBehaviour
 
         VerticalVelocity += Gravity * InDeltaTime;
         velocity.y = VerticalVelocity;
-        Controller.Move(velocity * InDeltaTime);
+        Vector3 step = velocity * InDeltaTime;
+        if (ConfineToNavMesh == true)
+        {
+            step = confineToNavMesh(step);
+        }
+
+        Controller.Move(step);
 
         CurrentSpeed = MathUtil.Flat(velocity).magnitude;
+    }
+
+    /// <summary>수평 이동이 NavMesh 경계를 넘으면 경계를 따라 미끄러지는 성분만 남긴다 (그것도 막히면 경계까지만).</summary>
+    private Vector3 confineToNavMesh(Vector3 InStep)
+    {
+        var flat = new Vector3(InStep.x, 0.0f, InStep.z);
+        if (flat.sqrMagnitude < 0.000001f)
+        {
+            return InStep;
+        }
+
+        NavMeshHit start;
+        if (NavMesh.SamplePosition(transform.position, out start, NavMeshProbe, NavMesh.AllAreas) == false)
+        {
+            return InStep;
+        }
+
+        NavMeshHit edge;
+        if (NavMesh.Raycast(start.position, start.position + flat, out edge, NavMesh.AllAreas) == false)
+        {
+            return InStep;
+        }
+
+        var normal = MathUtil.Flat(edge.normal);
+        var slide = flat - normal * Vector3.Dot(flat, normal);
+        var allowed = MathUtil.Flat(edge.position - start.position);
+        NavMeshHit slideEdge;
+        if (slide.sqrMagnitude > 0.000001f && NavMesh.Raycast(start.position, start.position + slide, out slideEdge, NavMesh.AllAreas) == false)
+        {
+            allowed = slide;
+        }
+
+        return new Vector3(allowed.x, InStep.y, allowed.z);
     }
 
     private void updateAgent(float InDeltaTime, float InMoveSpeed)

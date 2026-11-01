@@ -130,6 +130,12 @@ public struct LanguageChangedEvent : IGameEvent
 {
 }
 
+/// <summary>대상 지정이 바뀜 (TargetSelector). Target 은 MonsterCharacter 또는 ResourceNode, 해제면 null.</summary>
+public struct TargetSelectedEvent : IGameEvent
+{
+    public BaseBehaviour Target;
+}
+
 /// <summary>마지막 퀘스트(보스)까지 모두 끝남.</summary>
 public struct QuestsCompletedEvent : IGameEvent
 {

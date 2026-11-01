@@ -26,7 +26,7 @@ V Rising 리버스 데모 `BLOODLINE` 의 현재 상태입니다. **알려진 �
 | 애니메이션 재생 | ✅ | AnimationTable Index 로 재생 (Speed·파라미터·루트모션이 데이터) |
 | 입력 버퍼 / 콤보 | ✅ | 공격 중 입력을 순서대로 처리, 늦으면 콤보 초기화 (Issues 30) |
 | V Rising 상태이상 | ✅ | Leech·Ignite·Chill/Freeze·Static·Condemn·Weaken, Consume, Immaterial |
-| 플레이어 캐릭터 | ✅ | unity-chan! + ExplosiveLLC RPG 애니메이션 (Idle/이동/공격 3타/회피/피격/사망) |
+| 플레이어 캐릭터 | ✅ | Mixamo **Ganfaul** (2026-10-31, 전 unity-chan!) + ExplosiveLLC RPG 애니메이션 (Idle/이동/공격 3타/회피/피격/사망) |
 | 건축·채집 애니메이션 | ✅ | Crafting Pack: 건축(망치), 벌목, 채광, 채집 |
 | 몬스터 | ✅ | Magic Pig: 메두사, 코브라, 트롤, 미노타우로스(보스) / StateTree AI 근접·원거리·보스(2페이즈) ([StateTree.md](StateTree.md)) |
 | 몬스터 체력바 | ✅ | 레벨 배지 포함 |

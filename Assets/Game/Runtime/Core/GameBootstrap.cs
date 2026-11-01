@@ -72,6 +72,8 @@ public class GameBootstrap : BaseBehaviour
         Managers.Regist(new BuildManager());
         Managers.Regist(new FoliageManager());
         Managers.Regist(new QuestManager());
+        Managers.Regist(new QuestNavigator());
+        Managers.Regist(new TargetSelector());
         Managers.Regist(new CheatManager());
         await setupUIAsync();
         if (this == null || Title == null)

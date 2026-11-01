@@ -118,4 +118,4 @@ MonoBehaviour:
     - Type: 0
       Name: Attack1
       Value: 0
-    ApplyRootMotion: 1
+    ApplyRootMotion: 0

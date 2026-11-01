@@ -5,6 +5,35 @@
 
 ---
 
+## 2026-10-31 · 플레이어 모델 Ganfaul · 테스트 timeScale 1
+
+사용자 요청: "Player 의 Model 을 Ganfaul_Model 로", "Unity Test Framework 의 Timescale 은 1".
+
+- 플레이어 모델 unity-chan → Mixamo **Ganfaul** (`ContentBuilder.PlayerModel`). Mixamo FBX 는 Optimize Game Objects 가 켜져 있어 오른손 본이 없었다 → 빌더가 Humanoid + Optimize 끔으로 임포트 설정을 맞춘다. 캡슐 높이를 모델 키에서 계산(2.03m), 툰 대신 일반 캐릭터 셰이딩, 무기 크기 보정 0.9. 새 메뉴 `Game > Setup > 3f. Build Player Only`. Play 화면에서 검을 든 대기 모습 확인.
+- 테스트: `GamePlayTestBase` 가 월드 로드 · 테스트 시작 · 종료 때 `Time.timeScale = 1` 로 고정 (ProjectSettings TimeManager 는 원래 1 — 에디터 · 도구가 바꾼 값이 테스트에 남지 않게).
+
+## 2026-10-31 · 가림 페이드 · 대상 하이라이트 · 대상 정보창
+
+사용자 요청: "가리는 건물은 사라지지 말고 가린 정도에 따라 알파 Fade In/Out", "채집 · 공격 대상은 페이드하지 말고 마우스 Hover 하이라이트 Shader", "클릭하면 다른 색으로 지정 + 대상 상태를 중상단에". 상세 [CameraOcclusion.md](CameraOcclusion.md), [Targeting.md](Targeting.md).
+
+- **가림 정도 페이드** (Framework): `CoverageOcclusionDetector` — 캐릭터 몸 12점 광선, 막힌 비율 = 가림 정도. `FadeOcclusionResponse` — 알파 = lerp(1, 0.25, 가림 정도)를 부드럽게 따라가고 벗어나면 페이드 인 후 복구. URP Lit 은 반투명 사본 + `_BaseColor` 알파, Game/Foliage 는 새 `_OcclusionFade`(알파 블렌드, 페이드 중 깊이 패스 생략). 감지 · 응답 인터페이스를 광선 번호 · 가림 정도 기반으로 바꿈 (예전 SphereCast · 숨김 전략은 남김). 꺼진 `CameraOccluder` 는 무시 → 채집 노드 제외.
+  - 처음엔 응답이 null 이라 아무것도 안 됨 — 컴포넌트 필드 초기화에서 `Shader.PropertyToID` 가 금지 → 지연 초기화. 반투명 사본 ZWrite 를 켜면 대기 안개가 화면을 하늘색으로 덮음 → 끔. 둘 다 Play 캡처로 확인.
+- **하이라이트 셰이더** `Game/Highlight` (외곽선 + 프레넬 림, 맥동, 컷아웃 지원) + `RendererHighlight`(겹 렌더러) + `TargetSelector`(호버 금색 / 지정 몬스터 빨강 · 노드 하늘색, 죽음 · 60m 이탈 시 해제).
+- **대상 정보창** (HUD 중상단): 몬스터 이름 · Lv · 체력 · 혈액 · 상태이상 / 채집 노드 내구도 · 획득물 · 재생 시간. StringTable 63~83 (한/영).
+- 테스트: `WorldFoliageTests.CameraOcclusion_FadesTreeByCoverage` · `ResourceNodes_ExcludedFromOcclusion`, `TargetingTests` 2개.
+
+## 2026-10-31 · 월드 리디자인 (길 · 폐허) · 걸을 수 있는 곳 · 퀘스트 길 안내
+
+사용자 요청: "걸어다닐 수 있는 길과 없는 길을 설정하고 지도에 표시", "걸어다니는 길로 퀘스트 알림 + 캐릭터 퀘스트 화살표", "트롤 능선에서 나갈 길이 없다 — 나무보다 폐허를 더 많이". 상세 [World.md 2.1 · 8절](World.md#21-길--폐허--걸을-수-있는-곳-2026-10-31-리디자인).
+
+- **흙길 9개** (`WorldBuilder.Roads`): 지역을 잇고, 길 높이 프로필(이동 평균 + 경사 14%)로 지형을 다듬어 고원도 완만하게 오른다. 흙 레이어 · 풀 없음.
+- **폐허 34곳 + 길가 이정표 21곳** (`WorldBuilder.Ruins`, ASTROFISH 석조 부품 · 묻힌 건물). 나무 밀도 크게 낮춤 (2,228그루), 길 · 폐허 둘레 비움. 폐허 마을에 무너진 성벽, 트롤 능선에 아치 · 성벽.
+- **트롤 능선 갇힘 해결** ([Issues 40](Issues.md#40-트롤-능선에-들어가면-나갈-길이-없음--평탄화-구역-순서로-생긴-절벽-고리)): 평탄화 구역 순서 때문에 생긴 8m 절벽 고리 → 높이 지정 구역 우선, 고원 +5m, 바위 고리 길 쪽 생략.
+- **걸을 수 있는 곳 = NavMesh**: NavMesh 영역 Road(3, 비용 1) 추가, 호수 · 강 · 가장자리 50m 는 Not Walkable 상자. 플레이어도 `ActorMotor.ConfineToNavMesh` 로 NavMesh 밖에 못 나감 (경계 미끄러짐). 강은 이제 건널 수 없다.
+- **지도**: 월드맵 굽기가 NavMesh 를 겹쳐 그림 — 걸을 수 없는 곳 어둡게, 길 밝은 흙색, 경계선.
+- **퀘스트 길 안내**: `QuestNavigator` — 퀘스트 장소까지 NavMesh 경로(길 우선 비용 ConstTable 37)를 미니맵 · 월드맵에 꺾은선으로, HUD 거리 = 경로 길이, 캐릭터 발밑 금색 화살표(`QuestGuideArrow`, VFX/QuestArrow, AssetTable 141)가 다음 꼭짓점을 가리킴. 스폰 좌표(y = 0)는 지형 높이로 맞춰 찾는다 (고원 위 목적지를 못 찾던 문제).
+- 테스트 `NavigationTests` 4개 (모든 지역 → 시작 연결 · 경로 70% 이상 길 · 호수 진입 불가 · 화살표). MapTests 를 꺾은선 기준으로.
+
 ## 2026-10-31 · 한국어 (Unity Localization)
 
 사용자 요청: "영어를 한글로 Localization — Unity Localization 기능을 사용해서 번역". 상세 [UI.md 언어 절](UI.md#언어-unity-localization-2026-10-31).

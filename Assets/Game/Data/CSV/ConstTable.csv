@@ -35,3 +35,7 @@ Index,Value,#Memo
 34,4,InteractAnim (AnimationTable Index)
 35,1,FirstQuestId (게임 시작 시 첫 퀘스트 QuestTable Index. 0 = 퀘스트 없음)
 36,45,MinimapRadius (미니맵이 보여 주는 반경 m)
+37,3,OffRoadCost (길이 아닌 NavMesh 의 경로 비용. 길(Road)=1 → 퀘스트 안내 경로가 길을 따라감)
+38,141,QuestArrowAsset (캐릭터 퀘스트 화살표 프리팹 AssetTable Index)
+39,142,HighlightMaterialAsset (대상 하이라이트 머티리얼 AssetTable Index)
+40,60,TargetMaxDistance (선택한 대상이 이보다 멀어지면 선택 해제 m)

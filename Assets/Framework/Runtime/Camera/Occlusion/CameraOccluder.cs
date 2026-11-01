@@ -8,6 +8,7 @@ namespace Framework
     /// CameraOcclusionSystem 이 응답 전략(ICameraOcclusionResponse)으로 자식 렌더러를 처리한다.
     ///  - 렌더러와 원래 그림자 모드는 처음 사용할 때 한 번 모아 둔다 (응답 전략이 복구에 쓴다).
     ///  - 붙이지 않은 오브젝트는 가려도 처리하지 않는다 (지형, 캐릭터 등은 대상이 아님 — 명시적 opt-in).
+    ///  - enabled = false 면 가려도 처리하지 않는다 (채집 노드처럼 상호작용 대상).
     /// 문서: Documentation/VRising/CameraOcclusion.md
     /// </summary>
     [DisallowMultipleComponent]
@@ -15,6 +16,7 @@ namespace Framework
     {
         private Renderer[] Renderers;
         private ShadowCastingMode[] OriginalShadowModes;
+        private Material[][] OriginalMaterials;
 
         /// <summary>현재 가림 처리 중인지 (CameraOcclusionSystem 이 설정).</summary>
         public bool IsOccluded { get; private set; }
@@ -40,6 +42,13 @@ namespace Framework
             return OriginalShadowModes[InIndex];
         }
 
+        /// <summary>처음 모은 시점의 sharedMaterials (페이드 응답이 사본으로 바꿨다가 되돌릴 때 쓴다).</summary>
+        public Material[] GetOriginalMaterials(int InIndex)
+        {
+            ensureCache();
+            return OriginalMaterials[InIndex];
+        }
+
         /// <summary>자식 구성이 바뀌었을 때(런타임에 렌더러 추가 등) 다시 모은다. 가림 처리 중이 아닐 때만 호출한다.</summary>
         public void RefreshRenderers()
         {
@@ -61,9 +70,11 @@ namespace Framework
 
             Renderers = GetComponentsInChildren<Renderer>(true);
             OriginalShadowModes = new ShadowCastingMode[Renderers.Length];
+            OriginalMaterials = new Material[Renderers.Length][];
             for (int i = 0; i < Renderers.Length; ++i)
             {
                 OriginalShadowModes[i] = Renderers[i].shadowCastingMode;
+                OriginalMaterials[i] = Renderers[i].sharedMaterials;
             }
         }
     }

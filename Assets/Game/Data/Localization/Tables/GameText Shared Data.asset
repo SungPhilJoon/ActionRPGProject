@@ -815,6 +815,82 @@ MonoBehaviour:
     m_Key: Text9019
     m_Metadata:
       m_Items: []
+  - m_Id: 63
+    m_Key: TargetLevel
+    m_Metadata:
+      m_Items: []
+  - m_Id: 64
+    m_Key: TargetDurability
+    m_Metadata:
+      m_Items: []
+  - m_Id: 65
+    m_Key: TargetYield
+    m_Metadata:
+      m_Items: []
+  - m_Id: 66
+    m_Key: TargetDepleted
+    m_Metadata:
+      m_Items: []
+  - m_Id: 67
+    m_Key: TargetVBlood
+    m_Metadata:
+      m_Items: []
+  - m_Id: 70
+    m_Key: StatusStun
+    m_Metadata:
+      m_Items: []
+  - m_Id: 71
+    m_Key: StatusSlow
+    m_Metadata:
+      m_Items: []
+  - m_Id: 72
+    m_Key: StatusIgnite
+    m_Metadata:
+      m_Items: []
+  - m_Id: 73
+    m_Key: StatusChill
+    m_Metadata:
+      m_Items: []
+  - m_Id: 74
+    m_Key: StatusFreeze
+    m_Metadata:
+      m_Items: []
+  - m_Id: 75
+    m_Key: StatusStatic
+    m_Metadata:
+      m_Items: []
+  - m_Id: 76
+    m_Key: StatusCondemn
+    m_Metadata:
+      m_Items: []
+  - m_Id: 77
+    m_Key: StatusWeaken
+    m_Metadata:
+      m_Items: []
+  - m_Id: 78
+    m_Key: StatusLeech
+    m_Metadata:
+      m_Items: []
+  - m_Id: 79
+    m_Key: StatusBleed
+    m_Metadata:
+      m_Items: []
+  - m_Id: 80
+    m_Key: StatusImmaterial
+    m_Metadata:
+      m_Items: []
+  - m_Id: 81
+    m_Key: StatusGuard
+    m_Metadata:
+      m_Items: []
+  - m_Id: 82
+    m_Key: StatusEmpower
+    m_Metadata:
+      m_Items: []
+  - m_Id: 83
+    m_Key: StatusHaste
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

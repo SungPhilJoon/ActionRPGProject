@@ -37,30 +37,62 @@ public class WorldFoliageTests : GamePlayTestBase
         Assert.AreEqual(0, countDetails(terrain, bounds), "건축물 아래 풀(Detail)은 지워져야 함");
     }
 
+    /// <summary>
+    /// 카메라 가림 = 가림 정도만큼 알파 페이드 (CameraOcclusion.md): 나무 뒤에 서면 나무가 반투명해지고(그려지기는 계속, 그림자 유지),
+    /// 벗어나면 다시 불투명해진 뒤 원래 상태(프로퍼티 블록 없음)로 복구된다. 채집 노드는 가림 처리에서 빠진다.
+    /// </summary>
     [UnityTest]
-    public IEnumerator CameraOcclusion_HidesTreeBetweenCameraAndPlayer()
+    public IEnumerator CameraOcclusion_FadesTreeByCoverage()
     {
         var camera = SceneContext.Current.Camera;
         var occlusion = camera.GetComponent<CameraOcclusionSystem>();
         Assert.IsNotNull(occlusion, "카메라에 CameraOcclusionSystem 이 붙어야 함 (TopDownCamera.Setup)");
+        var fade = occlusion.CurrentResponse as FadeOcclusionResponse;
+        Assert.IsNotNull(fade, "기본 응답 = 알파 페이드");
 
         var tree = findTree(StartPosition, 200.0f);
         Assert.IsNotNull(tree, "장식 나무가 없습니다");
         var occluder = tree.GetComponent<CameraOccluder>();
         Assert.IsNotNull(occluder, "나무 프리팹에 CameraOccluder 가 있어야 함");
+        var renderer = occluder.GetRenderer(0);
+        var shadowMode = renderer.shadowCastingMode;
 
         // 카메라는 플레이어 뒤쪽 위에 있으므로, 나무 앞(카메라 전방)으로 6m 에 서면 나무가 시야를 가린다.
         Vector3 forward = Vector3.ProjectOnPlane(camera.transform.forward, Vector3.up).normalized;
         Player.Motor.Teleport(CombatUtil.SnapToGround(tree.transform.position + forward * 6.0f));
         yield return WaitFor(() => occluder.IsOccluded == true, 3.0f, "나무 가림 감지");
-        Assert.AreEqual(ShadowCastingMode.ShadowsOnly, occluder.GetRenderer(0).shadowCastingMode, "가린 나무는 그림자만 남아야 함");
+        Assert.Greater(occlusion.GetCoverage(occluder), 0.0f, "가림 정도 > 0");
+        yield return WaitFor(() => fade.GetAlpha(occluder) < 0.9f, 3.0f, "가린 만큼 반투명해짐");
+        Assert.IsFalse(renderer.forceRenderingOff, "페이드는 숨기지 않고 반투명하게 그린다");
+        Assert.AreEqual(shadowMode, renderer.shadowCastingMode, "그림자는 그대로");
+        var block = new MaterialPropertyBlock();
+        renderer.GetPropertyBlock(block, 0);
+        Assert.Less(block.GetFloat("_OcclusionFade"), 1.0f, "나무 셰이더에 페이드 값 전달");
 
-        // 나무 뒤(카메라 쪽 반대편이 아닌, 카메라 뒤)로 멀리 가면 다시 보인다.
+        // 멀리 가면 다시 불투명 → 원래 상태로.
         Player.Motor.Teleport(CombatUtil.SnapToGround(tree.transform.position - forward * 40.0f));
-        yield return WaitFor(() => occluder.IsOccluded == false, 3.0f, "가림 해제");
-        Assert.AreEqual(occluder.GetOriginalShadowMode(0), occluder.GetRenderer(0).shadowCastingMode, "가림이 끝나면 원래 그림자 모드로 복구");
-        Assert.IsFalse(occluder.GetRenderer(0).forceRenderingOff, "가림이 끝나면 다시 그려져야 함");
+        yield return WaitFor(() => occluder.IsOccluded == false && fade.GetAlpha(occluder) >= 1.0f && occlusion.GetCoverage(occluder) <= 0.0f, 4.0f, "페이드 인 후 복구");
+        yield return null;
+        renderer.GetPropertyBlock(block, 0);
+        Assert.IsTrue(block.isEmpty, "복구되면 프로퍼티 블록 없음");
         Player.Motor.Teleport(StartPosition);
+    }
+
+    [Test]
+    public void ResourceNodes_ExcludedFromOcclusion()
+    {
+        int checkedNodes = 0;
+        foreach (var node in Object.FindObjectsByType<ResourceNode>(FindObjectsSortMode.None))
+        {
+            var occluder = node.GetComponent<CameraOccluder>();
+            if (occluder != null)
+            {
+                Assert.IsFalse(occluder.enabled, $"채집 노드 {node.name} 는 페이드되면 안 됨");
+                checkedNodes += 1;
+            }
+        }
+
+        Assert.Greater(checkedNodes, 0, "CameraOccluder 가 붙은 채집 노드(나무)가 있어야 함");
     }
 
     [UnityTest]

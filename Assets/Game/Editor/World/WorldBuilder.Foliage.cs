@@ -7,6 +7,7 @@ using UnityEngine;
 /// Terrain Tree 대신 GameObject 로 두는 이유: 나무마다 카메라 가림 숨김(CameraOccluder)과 건축 시 제거(FoliageInstance)가 필요하다.
 /// 분포 (레퍼런스 Documentation/images/WorldMap): 노이즈 숲 덩어리 + Dunley Woods + 산자락 침엽수림, 초원엔 드문드문 활엽수,
 /// 물가엔 자작나무, 습지·동쪽 건조지대엔 고사목. 스폰/캠프 평탄화 구역과 물 위는 비운다.
+/// 2026-10-31 리디자인: 숲 밀도를 크게 낮추고(폐허가 주인공) 길 · 폐허 둘레는 비운다. 가장자리 산자락 숲(걸을 수 없는 띠)은 유지.
 /// </summary>
 public static partial class WorldBuilder
 {
@@ -56,7 +57,7 @@ public static partial class WorldBuilder
                 float dryEast = Mathf.Clamp01((x - 310.0f) / 80.0f);
                 float alpine = Mathf.Clamp01((height - 30.0f) / 25.0f);
 
-                float density = Mathf.Max(Mathf.Max(forest * 0.75f, woods * 0.8f), Mathf.Max(mountain * 0.6f, wet * 0.3f)) + 0.04f;
+                float density = Mathf.Max(Mathf.Max(forest * 0.3f, woods * 0.45f), Mathf.Max(mountain * 0.6f, wet * 0.18f)) + 0.012f;
                 if (roll > density)
                 {
                     continue;
@@ -136,6 +137,11 @@ public static partial class WorldBuilder
         }
 
         if (isWater(InPoint, InClearance) == true)
+        {
+            return false;
+        }
+
+        if (clearOfRoads(InPoint, InClearance + 1.5f) == false || clearOfRuins(InPoint, InClearance) == false)
         {
             return false;
         }

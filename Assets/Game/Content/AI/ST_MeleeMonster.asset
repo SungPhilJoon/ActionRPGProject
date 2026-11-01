@@ -236,6 +236,7 @@ MonoBehaviour:
         Enabled: 1
         StopMultiplier: 0.8
         RepathInterval: 0.25
+        ApproachRatio: 0.6
     - rid: 2912541715739443307
       type: {class: FaceTargetTask, ns: , asm: Game.Runtime}
       data:

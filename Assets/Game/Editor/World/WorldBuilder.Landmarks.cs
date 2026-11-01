@@ -29,6 +29,7 @@ public static partial class WorldBuilder
         buildTrollRidge(InTerrain);
         buildMinotaurArena(InTerrain);
         buildStartGlade(InTerrain);
+        buildRuins(InTerrain);
     }
 
     // ------------------------------------------------------------------ mountains
@@ -62,6 +63,11 @@ public static partial class WorldBuilder
 
             string name = BigRocks[LandmarkRandom.Next(BigRocks.Length)];
             float scale = 1.0f + (float)LandmarkRandom.NextDouble() * 1.4f;
+            if (clearOfRoads(p, 10.0f) == false)
+            {
+                continue;
+            }
+
             place(InTerrain, root, $"{Tales}/{name}.prefab", p, (float)LandmarkRandom.NextDouble() * 360.0f, scale, 1.5f, true);
         }
 
@@ -71,6 +77,11 @@ public static partial class WorldBuilder
         {
             var p = WorldRegions.Highlands + randomInCircle(70.0f);
             string name = SmallRocks[LandmarkRandom.Next(SmallRocks.Length)];
+            if (clearOfRoads(p, 8.0f) == false)
+            {
+                continue;
+            }
+
             place(InTerrain, highland, $"{Tales}/{name}.prefab", p, (float)LandmarkRandom.NextDouble() * 360.0f, 0.8f + (float)LandmarkRandom.NextDouble() * 0.8f, 0.6f, true);
         }
     }
@@ -90,10 +101,26 @@ public static partial class WorldBuilder
         placeFacing(InTerrain, root, AstroBuildings + "/Medieval_Building_StoneLookoutTower.prefab", c + new Vector2(0.0f, -30.0f), c);
 
         string assets = Astro + "/_Assets";
+        // 마을을 두른 무너진 성벽 조각 (폐허 마을다운 실루엣)
+        for (int i = 0; i < 6; ++i)
+        {
+            float angle = i * 60.0f + 5.0f;
+            var offset = (Vector2)(Quaternion.Euler(0.0f, 0.0f, angle) * Vector2.up) * 40.0f;
+            if (clearOfRoads(c + offset, 5.0f) == true)
+            {
+                place(InTerrain, root, Masonry + "Medieval_Masonary_CellarWall.prefab", c + offset, -angle, 1.3f, i % 2 == 0 ? 0.2f : 0.8f, true);
+            }
+        }
+
         for (int i = 0; i < 8; ++i)
         {
             float angle = i * 45.0f + 20.0f;
             var offset = (Vector2)(Quaternion.Euler(0.0f, 0.0f, angle) * Vector2.up) * 34.0f;
+            if (clearOfRoads(c + offset, 3.0f) == false)
+            {
+                continue;
+            }
+
             string fence = i % 3 == 0 ? "/Fences/Prfbs/Medieval_Fences_Broken.prefab" : "/Fences/Prfbs/Medieval_Fences_Fixed.prefab";
             place(InTerrain, root, assets + fence, c + offset, -angle + 90.0f, 1.0f, 0.0f, true);
         }
@@ -113,13 +140,24 @@ public static partial class WorldBuilder
     {
         var root = group("TrollRidge");
         var c = WorldRegions.TrollRidge;
+        // 바위 고리: 길이 지나가는 쪽은 비워 둔다 (예전에는 고리가 닫혀 고원에서 나갈 수 없었다).
         for (int i = 0; i < 10; ++i)
         {
             float angle = i * 36.0f;
             var offset = (Vector2)(Quaternion.Euler(0.0f, 0.0f, angle) * Vector2.up) * (30.0f + (float)LandmarkRandom.NextDouble() * 6.0f);
             string name = SmallRocks[LandmarkRandom.Next(SmallRocks.Length)];
-            place(InTerrain, root, $"{Tales}/{name}.prefab", c + offset, (float)LandmarkRandom.NextDouble() * 360.0f, 1.0f + (float)LandmarkRandom.NextDouble() * 0.6f, 0.8f, true);
+            float scale = 0.7f + (float)LandmarkRandom.NextDouble() * 0.4f;
+            if (clearOfRoads(c + offset, 9.0f) == false)
+            {
+                continue;
+            }
+
+            place(InTerrain, root, $"{Tales}/{name}.prefab", c + offset, (float)LandmarkRandom.NextDouble() * 360.0f, scale, 0.8f, true);
         }
+
+        // 능선 위 무너진 망루 · 성벽 (트롤 소굴)
+        place(InTerrain, root, Masonry + "Medieval_Masonary_CellarWall.prefab", c + new Vector2(12.0f, -12.0f), 40.0f, 1.3f, 0.2f, true);
+        place(InTerrain, root, Masonry + "Medieval_Masonary_WallDoorArch.prefab", c + new Vector2(-14.0f, -4.0f), 100.0f, 1.3f, 0.1f, true);
 
         place(InTerrain, root, AstroBuildings + "/Medieval_Shelter_Small.prefab", c + new Vector2(-8.0f, 10.0f), 160.0f, 1.0f, 0.0f, true);
         torch(InTerrain, root, c + new Vector2(4.0f, 2.0f));
@@ -136,6 +174,12 @@ public static partial class WorldBuilder
         {
             float angle = i * 40.0f;
             var offset = (Vector2)(Quaternion.Euler(0.0f, 0.0f, angle) * Vector2.up) * 24.0f;
+            // 입구(길 두 개)는 비운다.
+            if (clearOfRoads(c + offset, 8.0f) == false)
+            {
+                continue;
+            }
+
             place(InTerrain, root, $"{Tales}/MountainRocks01_A.prefab", c + offset, -angle, 0.9f, 1.0f, true);
         }
 

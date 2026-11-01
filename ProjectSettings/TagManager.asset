@@ -15,13 +15,13 @@ TagManager:
   - UI
   - 
   - 
-  - TempCast
-  - Walkable
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Player
+  - Monster
+  - Ground
+  - Interactable
+  - Structure
+  - SunBlocker
+  - Projectile
   - 
   - 
   - 

@@ -3,6 +3,8 @@
 //  - 정점 색 규약 (WorldBuilder 절차 나무): R = 흔들림 가중치(줄기 0 → 가지 끝 1), G = 잎 떨림, B = AO(1 = 밝음)
 //  - 정점 색이 없는 외부 풀 메시는 _UseHeightWeight = 1 로 오브젝트 높이를 가중치로 쓴다
 //  - ForwardLit / ShadowCaster / DepthOnly / DepthNormals 모두 같은 바람 변형을 적용해 그림자·깊이가 어긋나지 않는다
+//  - 카메라 가림 페이드: _OcclusionFade (1 = 불투명, MaterialPropertyBlock 으로 렌더러별 — Framework.FadeOcclusionResponse).
+//    ForwardLit 은 알파 블렌드(1 이면 불투명과 같음), 페이드 중에는 깊이 패스(DepthOnly/DepthNormals)를 그리지 않아 SSAO 가 남지 않는다. 그림자는 그대로.
 Shader "Game/Foliage"
 {
     Properties
@@ -28,6 +30,7 @@ Shader "Game/Foliage"
         [Toggle] _FlipBackNormals("Flip Back Face Normals", Float) = 1
 
         [HideInInspector] _Cull("__cull", Float) = 0.0
+        [HideInInspector] _OcclusionFade("Occlusion Fade", Range(0.0, 1.0)) = 1.0
     }
 
     SubShader
@@ -56,6 +59,7 @@ Shader "Game/Foliage"
             half _UseVertexAO;
             half _FlipBackNormals;
             half _Cull;
+            half _OcclusionFade;
         CBUFFER_END
 
         TEXTURE2D(_BaseMap);
@@ -97,6 +101,13 @@ Shader "Game/Foliage"
             clip(alpha - _Cutoff);
             return alpha;
         }
+
+        // 깊이 패스: 카메라 가림 페이드 중이면 그리지 않는다.
+        half FoliageDepthAlpha(float2 InUV)
+        {
+            clip(_OcclusionFade - 0.99);
+            return FoliageAlpha(InUV);
+        }
         ENDHLSL
 
         Pass
@@ -105,6 +116,7 @@ Shader "Game/Foliage"
             Tags { "LightMode" = "UniversalForward" }
             Cull [_Cull]
             ZWrite On
+            Blend SrcAlpha OneMinusSrcAlpha
 
             HLSLPROGRAM
             #pragma target 3.5
@@ -211,7 +223,7 @@ Shader "Game/Foliage"
                 color.rgb += surface.albedo * _TranslucencyColor.rgb * mainLight.color * (mainLight.shadowAttenuation * mainLight.distanceAttenuation * backLit * _Translucency * occlusion);
 
                 color.rgb = MixFog(color.rgb, input.fogFactor);
-                color.a = 1.0;
+                color.a = _OcclusionFade;
                 return color;
             }
             ENDHLSL
@@ -325,7 +337,7 @@ Shader "Game/Foliage"
             half frag(Varyings input) : SV_Target
             {
                 UNITY_SETUP_INSTANCE_ID(input);
-                FoliageAlpha(input.uv);
+                FoliageDepthAlpha(input.uv);
                 return input.positionCS.z;
             }
             ENDHLSL
@@ -377,7 +389,7 @@ Shader "Game/Foliage"
             half4 frag(Varyings input, FRONT_FACE_TYPE face : FRONT_FACE_SEMANTIC) : SV_Target
             {
                 UNITY_SETUP_INSTANCE_ID(input);
-                FoliageAlpha(input.uv);
+                FoliageDepthAlpha(input.uv);
                 half3 normalWS = input.normalWS * lerp(1.0, IS_FRONT_VFACE(face, 1.0, -1.0), _FlipBackNormals);
                 return half4(NormalizeNormalPerPixel(normalWS), 0.0);
             }

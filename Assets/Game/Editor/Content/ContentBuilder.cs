@@ -24,6 +24,8 @@ public static partial class ContentBuilder
         buildMaterials();
         buildIcons();
         buildVfx();
+        buildQuestArrow();
+        buildHighlightMaterial();
         buildProjectiles();
         buildSkillVfx();
         buildWeapons();

@@ -663,3 +663,60 @@ MonoBehaviour:
   - Index: 9019
     Text: Resource Yield
     Korean: "\uCC44\uC9D1\uB7C9"
+  - Index: 63
+    Text: Lv
+    Korean: Lv
+  - Index: 64
+    Text: Durability
+    Korean: "\uB0B4\uAD6C\uB3C4"
+  - Index: 65
+    Text: 'Yield:'
+    Korean: "\uD68D\uB4DD:"
+  - Index: 66
+    Text: Depleted - respawns in
+    Korean: "\uACE0\uAC08\uB428 - \uC7AC\uC0DD\uAE4C\uC9C0"
+  - Index: 67
+    Text: V Blood
+    Korean: "V \uBE14\uB7EC\uB4DC"
+  - Index: 70
+    Text: Stunned
+    Korean: "\uAE30\uC808"
+  - Index: 71
+    Text: Slowed
+    Korean: "\uB454\uD654"
+  - Index: 72
+    Text: Ignite
+    Korean: "\uC810\uD654"
+  - Index: 73
+    Text: Chill
+    Korean: "\uB0C9\uAE30"
+  - Index: 74
+    Text: Frozen
+    Korean: "\uBE59\uACB0"
+  - Index: 75
+    Text: Static
+    Korean: "\uC815\uC804\uAE30"
+  - Index: 76
+    Text: Condemn
+    Korean: "\uB2E8\uC8C4"
+  - Index: 77
+    Text: Weaken
+    Korean: "\uC57D\uD654"
+  - Index: 78
+    Text: Leech
+    Korean: "\uC0DD\uBA85\uB825 \uD761\uC218"
+  - Index: 79
+    Text: Bleed
+    Korean: "\uCD9C\uD608"
+  - Index: 80
+    Text: Immaterial
+    Korean: "\uBE44\uBB3C\uC9C8"
+  - Index: 81
+    Text: Guard
+    Korean: "\uBC29\uC5B4"
+  - Index: 82
+    Text: Empower
+    Korean: "\uAC15\uD654"
+  - Index: 83
+    Text: Haste
+    Korean: "\uAC00\uC18D"

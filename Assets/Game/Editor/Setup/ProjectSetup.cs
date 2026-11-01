@@ -28,6 +28,19 @@ public static class ProjectSetup
         Physics.IgnoreLayerCollision(LayerId.Projectile, LayerId.Player, true);
         Physics.IgnoreLayerCollision(LayerId.Projectile, LayerId.Monster, true);
         Physics.queriesHitTriggers = false;
+        ConfigureNavMeshAreas();
         Debug.Log("[Setup] layers and physics configured");
+    }
+
+    /// <summary>NavMesh 영역 이름 · 기본 비용 (NavAreaId). 길 우선 비용은 런타임 QuestNavigator 가 ConstTable.OffRoadCost 로 다시 맞춘다.</summary>
+    public static void ConfigureNavMeshAreas()
+    {
+        var settings = new SerializedObject(AssetDatabase.LoadAllAssetsAtPath("ProjectSettings/NavMeshAreas.asset")[0]);
+        var areas = settings.FindProperty("areas");
+        var road = areas.GetArrayElementAtIndex(NavAreaId.Road);
+        road.FindPropertyRelative("name").stringValue = "Road";
+        road.FindPropertyRelative("cost").floatValue = 1.0f;
+        areas.GetArrayElementAtIndex(NavAreaId.Walkable).FindPropertyRelative("cost").floatValue = 3.0f;
+        settings.ApplyModifiedProperties();
     }
 }

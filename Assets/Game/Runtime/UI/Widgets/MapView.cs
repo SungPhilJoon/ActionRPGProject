@@ -34,7 +34,7 @@ public class MapView : Framework.UIBehaviour
     public bool ClampQuestToEdge;
 
     [Header("Quest Guide")]
-    /// <summary>플레이어 → 퀘스트 장소를 잇는 선 (Image, MarkerRoot 자식). 없으면 선을 그리지 않는다.</summary>
+    /// <summary>퀘스트 경로 구간 복제 원본 (비활성 Image, MarkerRoot 자식). 구간마다 하나씩 복제해 꺾은선을 그린다.</summary>
     public Image GuideLine;
     public float GuideLineWidth = 3.0f;
     /// <summary>가장자리에 붙은 퀘스트 표식에 쓰는 화살표 (위를 가리키는 스프라이트).</summary>
@@ -50,6 +50,7 @@ public class MapView : Framework.UIBehaviour
 
     private UIItemList<Image> Markers;
     private UIItemList<TextMeshProUGUI> Labels;
+    private UIItemList<Image> GuideSegments;
     private Vector2 WorldOrigin;
     private Vector2 WorldSize;
     private bool HasWorld;
@@ -61,6 +62,7 @@ public class MapView : Framework.UIBehaviour
     {
         base.OnUnityAwake();
         Markers = new UIItemList<Image>(MarkerTemplate, MarkerRoot);
+        GuideSegments = new UIItemList<Image>(GuideLine, MarkerRoot);
         if (LabelTemplate != null)
         {
             Labels = new UIItemList<TextMeshProUGUI>(LabelTemplate, MarkerRoot);
@@ -160,21 +162,28 @@ public class MapView : Framework.UIBehaviour
         }
     }
 
-    /// <summary>퀘스트 가이드: 갈 곳 표식 + 플레이어에서 그곳까지 선. 미니맵 밖이면 가장자리 화살표.</summary>
+    /// <summary>
+    /// 퀘스트 길 안내: QuestNavigator 의 NavMesh 경로(길 우선)를 꺾은선으로 + 목적지 금색 고리.
+    /// 미니맵 밖이면 목적지 표식이 가장자리 화살표로 바뀌어 목적지 쪽을 가리킨다.
+    /// </summary>
     private void addQuest(PlayerCharacter InPlayer)
     {
-        var quests = Managers.Get<QuestManager>();
-        Vector3 position = Vector3.zero;
-        bool guided = InPlayer != null && quests != null && quests.TryGetGuidePosition(InPlayer.transform.position, out position) == true;
-        if (guided == false)
+        GuideSegments.Clear();
+        var navigator = Managers.Get<QuestNavigator>();
+        if (InPlayer == null || navigator == null || navigator.HasGuide == false)
         {
-            setGuideLine(false, Vector2.zero, Vector2.zero);
             return;
         }
 
+        var corners = navigator.Corners;
+        for (int i = 1; i < corners.Count; ++i)
+        {
+            addSegment(WorldToMap(corners[i - 1]), WorldToMap(corners[i]));
+        }
+
         Vector2 from = WorldToMap(InPlayer.transform.position);
-        Vector2 to = WorldToMap(position);
-        var marker = place(EMapMarker.Quest, position, ClampQuestToEdge);
+        Vector2 to = WorldToMap(navigator.Target);
+        var marker = place(EMapMarker.Quest, navigator.Target, ClampQuestToEdge);
         bool clamped = marker != null && (marker.rectTransform.anchoredPosition - to).sqrMagnitude > 1.0f;
         if (clamped == true && GuideArrow != null)
         {
@@ -182,34 +191,22 @@ public class MapView : Framework.UIBehaviour
             marker.sprite = GuideArrow;
             marker.rectTransform.localRotation = Quaternion.Euler(0.0f, 0.0f, Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg - 90.0f);
         }
-
-        setGuideLine(true, from, marker != null ? marker.rectTransform.anchoredPosition : to);
     }
 
-    private void setGuideLine(bool InShow, Vector2 InFrom, Vector2 InTo)
+    /// <summary>경로 한 구간 (GuideLine 템플릿 복제). 표식 · 이름보다 아래에 그린다.</summary>
+    private void addSegment(Vector2 InFrom, Vector2 InTo)
     {
-        if (GuideLine == null)
-        {
-            return;
-        }
-
         Vector2 delta = InTo - InFrom;
-        bool show = InShow == true && delta.sqrMagnitude > 4.0f;
-        if (GuideLine.gameObject.activeSelf != show)
-        {
-            GuideLine.gameObject.SetActive(show);
-        }
-
-        if (show == false)
+        if (delta.sqrMagnitude < 1.0f)
         {
             return;
         }
 
-        var rect = GuideLine.rectTransform;
+        var rect = GuideSegments.Add().rectTransform;
         rect.anchoredPosition = (InFrom + InTo) * 0.5f;
-        rect.sizeDelta = new Vector2(delta.magnitude, GuideLineWidth);
+        // 꺾이는 곳이 끊겨 보이지 않게 선 두께만큼 늘린다.
+        rect.sizeDelta = new Vector2(delta.magnitude + GuideLineWidth, GuideLineWidth);
         rect.localRotation = Quaternion.Euler(0.0f, 0.0f, Mathf.Atan2(delta.y, delta.x) * Mathf.Rad2Deg);
-        // 표식 · 이름보다 아래.
         rect.SetAsFirstSibling();
     }
 
@@ -239,6 +236,12 @@ public class MapView : Framework.UIBehaviour
         marker.rectTransform.anchoredPosition = local;
         marker.rectTransform.localRotation = Quaternion.identity;
         return marker;
+    }
+
+    /// <summary>지금 그려진 경로 구간 수 (테스트 · 디버그).</summary>
+    public int GuideSegmentCount
+    {
+        get { return GuideSegments != null ? GuideSegments.Count : 0; }
     }
 
     private void refreshLabels()

@@ -203,3 +203,22 @@ Tab 인벤토리 | K 제작 | B 건축 | P 상점 | M 월드맵 | ` 치트 | F8 
 9015,Life Leech,흡혈률
 9016,Gear Level,기어 레벨
 9019,Resource Yield,채집량
+63,Lv,Lv
+64,Durability,내구도
+65,Yield:,획득:
+66,Depleted - respawns in,고갈됨 - 재생까지
+67,V Blood,V 블러드
+70,Stunned,기절
+71,Slowed,둔화
+72,Ignite,점화
+73,Chill,냉기
+74,Frozen,빙결
+75,Static,정전기
+76,Condemn,단죄
+77,Weaken,약화
+78,Leech,생명력 흡수
+79,Bleed,출혈
+80,Immaterial,비물질
+81,Guard,방어
+82,Empower,강화
+83,Haste,가속
