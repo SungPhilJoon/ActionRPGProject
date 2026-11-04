@@ -112,17 +112,9 @@ public class ResourceNode : BaseBehaviour
             return 0.5f;
         }
 
-        switch (Row.Harvest)
-        {
-            case EHarvestType.Wood:
-                return InWeapon.HarvestWood;
-            case EHarvestType.Stone:
-                return InWeapon.HarvestStone;
-            case EHarvestType.Plant:
-                return InWeapon.HarvestPlant;
-        }
-
-        return 0.0f;
+        // 종류별 무기 효율은 HarvestKind 하위 클래스가 안다 (HarvestKinds.cs). 종류가 없으면(None) 채집 불가.
+        var kind = HarvestKind.Of(Row.Harvest);
+        return kind != null ? kind.GetMultiplier(InWeapon) : 0.0f;
     }
 
     private void setDepleted(bool InDepleted)

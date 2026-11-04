@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21b5e7aa50d77ed4987ea91c8ca115a0, type: 3}
+  m_Name: UISkin 1
+  m_EditorClassIdentifier: Framework.Runtime::Framework.UI.UISkin
+  Panel: {fileID: 0}
+  PanelInset: {fileID: 0}
+  Button: {fileID: 0}
+  ButtonPressed: {fileID: 0}
+  Slot: {fileID: 0}
+  BarBack: {fileID: 0}
+  BarFill: {fileID: 0}
+  Divider: {fileID: 0}
+  CloseIcon: {fileID: 0}
+  PanelTint: {r: 0.62, g: 0.36, b: 0.34, a: 0.97}
+  InsetTint: {r: 0.36, g: 0.24, b: 0.25, a: 0.95}
+  ButtonTint: {r: 0.72, g: 0.22, b: 0.22, a: 1}
+  SlotTint: {r: 0.44, g: 0.31, b: 0.32, a: 1}
+  BarBackTint: {r: 0.26, g: 0.17, b: 0.18, a: 1}
+  Font: {fileID: 0}
+  TextColor: {r: 0.92, g: 0.88, b: 0.84, a: 1}
+  TitleColor: {r: 0.95, g: 0.78, b: 0.55, a: 1}
+  AccentColor: {r: 0.85, g: 0.12, b: 0.15, a: 1}

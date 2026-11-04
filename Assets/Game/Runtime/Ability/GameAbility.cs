@@ -144,40 +144,15 @@ public abstract class GameAbility : GameplayAbility
     }
 }
 
-/// <summary>EAbilityType → 구현 클래스 (Factory 패턴).</summary>
+/// <summary>
+/// EAbilityType → 구현 클래스 (Factory 패턴). 2026-11-01: switch 대신 각 어빌리티 클래스의 [Kind(EAbilityType.X)] 를 KindRegistry 가 찾는다
+/// → 새 어빌리티 타입은 클래스에 [Kind] 만 달면 되고 이 팩토리는 고치지 않는다.
+/// </summary>
 public static class AbilityFactory
 {
     public static GameAbility Create(AbilityRow InRow, Actor InActor)
     {
-        GameAbility ability = null;
-        switch (InRow.Type)
-        {
-            case EAbilityType.MeleeCombo:
-                ability = new MeleeComboAbility();
-                break;
-            case EAbilityType.Projectile:
-                ability = new ProjectileAbility();
-                break;
-            case EAbilityType.Dash:
-                ability = new DashAbility();
-                break;
-            case EAbilityType.AreaBurst:
-                ability = new AreaBurstAbility();
-                break;
-            case EAbilityType.SelfBuff:
-                ability = new SelfBuffAbility();
-                break;
-            case EAbilityType.Feed:
-                ability = new FeedAbility();
-                break;
-            case EAbilityType.Leap:
-                ability = new LeapAbility();
-                break;
-            case EAbilityType.Graph:
-                ability = new GraphAbility();
-                break;
-        }
-
+        var ability = KindRegistry<GameAbility>.Create((int)InRow.Type);
         if (ability == null)
         {
             Log.Error($"AbilityFactory: unsupported type {InRow.Type} ({InRow.Index})");

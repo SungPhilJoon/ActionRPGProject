@@ -20,19 +20,23 @@ public class Structure : BaseBehaviour, IInteractable
         get { return Row != null ? Row.NameId : 0; }
     }
 
+    /// <summary>종류별 규칙 (StructureKinds.cs).</summary>
+    public StructureKind Kind { get; private set; }
+
     public void Initialize(StructureRow InRow)
     {
         Row = InRow;
+        Kind = StructureKind.Of(InRow.Type);
         ComponentUtil.SetLayerRecursive(gameObject, LayerId.Structure);
         // 벽/기둥이 카메라와 캐릭터 사이를 가리면 숨긴다 (CameraOcclusionSystem).
         ComponentUtil.GetOrAdd<CameraOccluder>(gameObject);
-        if (isInteractable() == true)
+        if (Kind.IsInteractable == true)
         {
             InteractableRegistry.Add(this);
         }
 
         // 성 심장 · 관만 지도에 표시한다 (벽 · 바닥까지 그리면 표식이 겹친다).
-        if (InRow.Type == EStructureType.CastleHeart || InRow.Type == EStructureType.Coffin)
+        if (Kind.ShowsOnMap == true)
         {
             MapMarkers.Add(EMapMarker.Castle, transform);
         }
@@ -47,30 +51,11 @@ public class Structure : BaseBehaviour, IInteractable
 
     public bool CanInteract(PlayerCharacter InPlayer)
     {
-        return Row != null && isInteractable() == true;
+        return Row != null && Kind.IsInteractable == true;
     }
 
     public void Interact(PlayerCharacter InPlayer)
     {
-        switch (Row.Type)
-        {
-            case EStructureType.Station:
-                var craft = Managers.Get<UIManager>().Get<CraftWindow>();
-                if (craft != null)
-                {
-                    craft.OpenFor(Row.Station);
-                }
-
-                break;
-            case EStructureType.Coffin:
-                InPlayer.RespawnPoint = transform.position + transform.forward * 1.5f;
-                EventBus<NotifyEvent>.Publish(new NotifyEvent { TextId = Row.NameId, Color = new Color(0.7f, 0.2f, 0.25f) });
-                break;
-        }
-    }
-
-    private bool isInteractable()
-    {
-        return Row.Type == EStructureType.Station || Row.Type == EStructureType.Coffin;
+        Kind.Interact(this, InPlayer);
     }
 }

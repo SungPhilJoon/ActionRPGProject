@@ -1,7 +1,19 @@
 # GAS (Gameplay Ability System) 적용 내역
 
-언리얼 GAS 의 개념을 Unity C# 으로 옮겨 `Assets/Framework/Runtime/Ability` 에 두었고, 게임 쪽 구현은 `Assets/Game/Runtime/Ability` 에 있습니다.
+언리얼 GAS 의 개념을 Unity C# 으로 옮겨 `Packages/com.philjoon.framework/Runtime/Ability` 에 두었고, 게임 쪽 구현은 `Assets/Game/Runtime/Ability` 에 있습니다.
 Framework 쪽은 게임 데이터를 전혀 모르므로 다른 프로젝트에 그대로 가져갈 수 있습니다.
+
+## 0. 한눈에 보기: 무엇이 어디에 있나
+
+| 개념 | 담는 것 | 이 프로젝트 | 예 |
+|---|---|---|---|
+| **Ability** | 스킬 1개 = "무엇을 · 언제" + 스킬 고유 수치 | AbilityTable 행 1개 (+ Type=Graph 면 AbilityGraphAsset 1개) → 액터마다 `GameAbility` 인스턴스 1개 | 강타: 계수 100%, 쿨다운 1.2초, 사거리 2.6m |
+| **GameplayEffect** | 속성을 "어떻게" 바꾸나 (즉시/지속/주기, 모디파이어, 태그, 큐) | EffectTable 행 → `GameplayEffectDef` (Flyweight 공유) → 적용 시 `GameplayEffectSpec` | 분노: 7초 동안 PhysicalPower +50% |
+| **AttributeSet** | 캐릭터의 능력치 (Base / Current) | CharacterTable 행 → `GameAttributeSet` | Health, PhysicalPower, MoveSpeed |
+
+스킬 고유 수치(피해 계수 · 쿨다운 · 사거리)는 AttributeSet 에 두지 않는다 — 언리얼도 같다 (스킬 수치는 GE 의 ScalableFloat / SetByCaller, AttributeSet 은 캐릭터 상태).
+Ability 가 계수를 `SetByCaller(Coefficient)` 로 피해 GE 스펙에 싣고, `DamageExecution` 이 시전자 AttributeSet 의 공격력(스냅샷)과 곱한다.
+그래서 버프 GE 가 공격력만 올려도 같은 스킬 피해가 함께 오른다 — `GasShowcaseTests` 가 이 흐름을 화면에 보여 준다 ([README.md 7절](README.md#7-테스트)).
 
 ## 1. 대응표
 

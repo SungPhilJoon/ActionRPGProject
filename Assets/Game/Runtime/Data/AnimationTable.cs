@@ -15,28 +15,20 @@ public struct AnimationParameter
     public float Value;
 
     [NonSerialized] public int Hash;
+    /// <summary>Type 에 해당하는 파라미터 연산 (Initialize 에서 찾는다, AnimationParameterOps.cs).</summary>
+    [NonSerialized] public AnimationParameterOp Op;
 
     public void Initialize()
     {
         Hash = Animator.StringToHash(Name);
+        Op = KindRegistry<AnimationParameterOp>.Get((int)Type);
     }
 
     public void Apply(Animator InAnimator)
     {
-        switch (Type)
+        if (Op != null)
         {
-            case EAnimParamType.Trigger:
-                InAnimator.SetTrigger(Hash);
-                break;
-            case EAnimParamType.Bool:
-                InAnimator.SetBool(Hash, Value != 0.0f);
-                break;
-            case EAnimParamType.Float:
-                InAnimator.SetFloat(Hash, Value);
-                break;
-            case EAnimParamType.Int:
-                InAnimator.SetInteger(Hash, Mathf.RoundToInt(Value));
-                break;
+            Op.Apply(InAnimator, Hash, Value);
         }
     }
 }

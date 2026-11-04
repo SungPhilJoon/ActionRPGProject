@@ -5,6 +5,44 @@
 
 ---
 
+## 2026-11-04 · StaticBehaviour / DynamicBehaviour
+
+사용자 요청: "StaticBehaviour 는 절대 움직이지 않는 물체 → URP Static Batching, DynamicBehaviour 는 사라지거나 생성될 수 있는 물체 → SRP Batcher".
+
+- Framework `StaticBehaviour`(정적 플래그 자동, 런타임 생성분 `StaticBatching` 일괄 Combine, 이동 경고) · `DynamicBehaviour`(정적 플래그 해제, renderer.enabled Show/Hide, `SharedMaterialVariants` 틴트, IPoolable, SRP Batcher 검증).
+- Framework.Editor `StaticBehaviourFlagsHook`: 씬 · 프리팹 저장 때 플래그 재적용 + 메뉴. `Log.Warning(msg, context)` 오버로드.
+- 테스트 `StaticDynamicBehaviourTests` 5개 통과. 상세 [Architecture.md 5.2](Architecture.md#52-staticbehaviour--dynamicbehaviour-2026-11-04).
+- 패키지 0.2.0 으로 올려 Custom_Unity_Framework 에 푸시 (태그 v0.2.0).
+
+## 2026-11-04 · Framework 를 UPM 패키지로 분리
+
+사용자 요청: "Framework 코드를 다른 프로젝트에서 사용할 수 있도록 패키지화하고 Git 에 따로 업로드".
+
+- `Assets/Framework` → `Packages/com.philjoon.framework` (내장 패키지, .meta 유지 → GUID · 참조 · SerializeReference 그대로). package.json · README · CHANGELOG 추가.
+- 별도 저장소 `../unity-framework` (GitHub SungPhilJoon/Custom_Unity_Framework): subtree split 이력 + 0.1.0 커밋, 태그 v0.1.0.
+- 동기화 스크립트 `Tools/FrameworkPackage/sync.sh`. 상세 [Architecture.md 2.1](Architecture.md#21-패키지--별도-저장소-2026-11-04).
+- 검증: 컴파일 · `BossEnrageTests` 2개 (ST_Boss 트리 에셋의 SerializeReference 노드 포함) 통과.
+
+## 2026-11-03 · GAS 시연 테스트 (OBS 녹화용)
+
+사용자 요청: "스킬 하나 = Ability, 효과 = Effect, 속성 값 = AttributeSet 인지 확인", "몬스터 만드는 과정을 Unity Test Framework 로 보여 줄 수 있게 (OBS 촬영)".
+
+- 구조 확인: 이미 언리얼과 같은 분담 (스킬 1개 = AbilityTable 행 + GameAbility/그래프 에셋, 효과 = EffectTable → GameplayEffectDef, 캐릭터 능력치 = GameAttributeSet). 스킬 고유 수치(계수 · 쿨다운 · 사거리)는 AttributeSet 이 아니라 Ability 행/그래프 → SetByCaller 로 GE 에 실림 — 언리얼 관례와 같아서 바꾸지 않음 ([GAS.md 0절](GAS.md#0-한눈에-보기-무엇이-어디에-있나)).
+- `GasShowcaseTests` ([Explicit]) + `ShowcaseCaption`(IMGUI 자막 · 실시간 속성 패널, 테스트 어셈블리 전용).
+- `BossEnrageTests` (11-04): 사용자가 GAS Tool 로 만든 보스 격노 #603 을 직접 발동 · 보스 AI 두 경로로 검증.
+- `EffectLibrary.Register / Unregister`: 코드에서 만든 GameplayEffectDef 등록 (테스트 · 시연용).
+
+## 2026-11-01 · enum 분기 → 다형성, UI 레이어, 토스트, 인벤토리 드래그 앤 드롭
+
+사용자 요청: "인벤토리 드래그 앤 드롭", "아이템 획득 노티를 ToastMessage 로 명확하게", "UIBehaviour 가 들어갈 Layer 를 virtual method 로", "enum 분기 대신 상속 · 다형성", "변경 전 코드는 다른 브랜치로, 차이를 보여줄 수 있게 (포트폴리오)". 상세 · 비교법 [Refactor_Polymorphism.md](Refactor_Polymorphism.md).
+
+- 변경 전 기준점 커밋 4a714905 → 브랜치 `backup/before-ui-polymorphism`.
+- `KindRegistry<TBase>` + `[Kind]`: runtime 의 enum switch 21곳(Game 13 · Framework 8)을 하위 클래스 virtual 메서드로 (어빌리티 생성, 퀘스트 목표 10종, 스폰, 건축물, 채집, 프리로드, 애니메이션 파라미터, 속성 규칙, 아이템 사용, GAS 모디파이어 · 크기 계산, StateTree 비교 · 트랜지션, 의존성 기록).
+- UI: Framework `UILayer` 계층(World/Hud/Window/Popup/Toast/System, 입력 차단 · ESC 정책), `UIBehaviour.GetLayer()` virtual → `UIManager.Create/Spawn` 이 레이어 캔버스 자식으로. 게임 `UILayerId` 삭제.
+- 토스트: `ToastWindow` + `ItemToast`/`TextToast`(같은 아이템 합치기), HUD 가운데 알림 삭제, 전리품도 `ItemObtainedEvent`. StringTable 90~95, AssetTable 417.
+- 드래그 앤 드롭: `ItemSlotBinding`(인벤토리 칸 / 장비 부위) 더블 디스패치, `Inventory.Move/Put`, `Equipment.UnequipTo`, 장착 시 벗은 장비는 끌어온 칸으로.
+- 테스트 `UIAndPolymorphismTests` 4개.
+
 ## 2026-10-31 · 플레이어 모델 Ganfaul · 테스트 timeScale 1
 
 사용자 요청: "Player 의 Model 을 Ganfaul_Model 로", "Unity Test Framework 의 Timescale 은 1".

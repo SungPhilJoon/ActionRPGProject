@@ -345,6 +345,7 @@ public enum EUIAsset
     DamageNumber = 414,
     MinimapWindow = 415,
     WorldMapWindow = 416,
+    ToastWindow = 417,
 }
 
 /// <summary>몬스터 StateTree 블랙보드 키 (MonsterPerceptionEvaluator 가 채운다).</summary>
@@ -559,16 +560,13 @@ public enum EText
     StatusGuard = 81,
     StatusEmpower = 82,
     StatusHaste = 83,
-}
-
-/// <summary>UI 캔버스 정렬 순서 = 레이어 번호.</summary>
-public static class UILayerId
-{
-    public const int World = 0;
-    public const int Hud = 10;
-    public const int Window = 20;
-    public const int Popup = 30;
-    public const int System = 40;
+    /// <summary>토스트: 아이템을 얻은 경로 (ItemToast, EItemSource 순서).</summary>
+    ToastAcquired = 90,
+    ToastHarvest = 91,
+    ToastCraft = 92,
+    ToastShop = 93,
+    ToastLoot = 94,
+    ToastReward = 95,
 }
 
 /// <summary>

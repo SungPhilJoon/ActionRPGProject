@@ -20,9 +20,9 @@ public class BalanceOverlayWindow : UIWindow
     private float Timer;
     private readonly List<KeyValuePair<long, float>> Sorted = new List<KeyValuePair<long, float>>();
 
-    public override bool BlocksGameInput
+    public override UILayer GetLayer()
     {
-        get { return false; }
+        return UILayer.Popup;
     }
 
     private void Update()

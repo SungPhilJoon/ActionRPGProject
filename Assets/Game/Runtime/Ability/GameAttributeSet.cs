@@ -29,28 +29,31 @@ public class GameAttributeSet : AttributeSet
         SetBase((int)InAttribute, InValue);
     }
 
+    /// <summary>속성별 값 규칙 (없으면 제한 없음). 규칙 종류는 AttributeRules.cs.</summary>
+    private static readonly AttributeRule[] Rules = createRules();
+
+    private static AttributeRule[] createRules()
+    {
+        var rules = new AttributeRule[(int)EAttribute.Count];
+        var resist = new RangeRule(-100.0f, 90.0f);
+        var nonNegative = new MinimumRule(0.0f);
+        rules[(int)EAttribute.Health] = new ClampToAttributeRule(EAttribute.MaxHealth);
+        rules[(int)EAttribute.BloodPool] = new ClampToAttributeRule(EAttribute.MaxBloodPool);
+        rules[(int)EAttribute.Shield] = nonNegative;
+        rules[(int)EAttribute.MaxHealth] = nonNegative;
+        rules[(int)EAttribute.MoveSpeed] = new MinimumRule(0.5f);
+        rules[(int)EAttribute.PhysicalResist] = resist;
+        rules[(int)EAttribute.SpellResist] = resist;
+        rules[(int)EAttribute.SunResist] = resist;
+        return rules;
+    }
+
     protected override void PreAttributeChange(int InAttribute, ref float InOutNewValue)
     {
-        switch ((EAttribute)InAttribute)
+        var rule = InAttribute >= 0 && InAttribute < Rules.Length ? Rules[InAttribute] : null;
+        if (rule != null)
         {
-            case EAttribute.Health:
-                InOutNewValue = Mathf.Clamp(InOutNewValue, 0.0f, GetCurrent((int)EAttribute.MaxHealth));
-                break;
-            case EAttribute.BloodPool:
-                InOutNewValue = Mathf.Clamp(InOutNewValue, 0.0f, GetCurrent((int)EAttribute.MaxBloodPool));
-                break;
-            case EAttribute.Shield:
-            case EAttribute.MaxHealth:
-                InOutNewValue = Mathf.Max(0.0f, InOutNewValue);
-                break;
-            case EAttribute.MoveSpeed:
-                InOutNewValue = Mathf.Max(0.5f, InOutNewValue);
-                break;
-            case EAttribute.PhysicalResist:
-            case EAttribute.SpellResist:
-            case EAttribute.SunResist:
-                InOutNewValue = Mathf.Clamp(InOutNewValue, -100.0f, 90.0f);
-                break;
+            InOutNewValue = rule.Apply(this, InOutNewValue);
         }
     }
 

@@ -12,29 +12,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca7083da52a1e0f4a817a35a828a46ba, type: 3}
   m_Name: NewMonster
   m_EditorClassIdentifier: Game.Editor::MonsterAuthoring
-  CharacterId: 7
+  CharacterId: 8
   Address: Characters/NewMonster
-  Model: {fileID: 1147675175948022, guid: ab5143a39115941939829b7c6505072f, type: 3}
-  ModelScale: 1
-  Radius: 0.5
+  Model: {fileID: 1088499713875132, guid: 546ac9ae3a0bb42ab8358565f28b4d2f, type: 3}
+  ModelScale: 0.55
+  Radius: 0.9
   AgentHeight: 2
-  MotionNode: Root
-  Idle: {fileID: 7400000, guid: 6ede9903ef4494a97955479a1fc89e4e, type: 3}
-  Walk: {fileID: 7400018, guid: 6ede9903ef4494a97955479a1fc89e4e, type: 3}
-  Dead: {fileID: 7400010, guid: 6ede9903ef4494a97955479a1fc89e4e, type: 3}
+  MotionNode: base_snake
+  Idle: {fileID: 7400020, guid: 3416ab0f3d8ca4e48aec75bc83531080, type: 3}
+  Walk: {fileID: 7400012, guid: 3416ab0f3d8ca4e48aec75bc83531080, type: 3}
+  Dead: {fileID: 7400030, guid: 3416ab0f3d8ca4e48aec75bc83531080, type: 3}
   WalkThreshold: 0.5
   Actions:
   - Anim: 1
-    Clip: {fileID: 7400012, guid: 6ede9903ef4494a97955479a1fc89e4e, type: 3}
+    Clip: {fileID: 7400000, guid: 3416ab0f3d8ca4e48aec75bc83531080, type: 3}
   - Anim: 2
-    Clip: {fileID: 7400014, guid: 6ede9903ef4494a97955479a1fc89e4e, type: 3}
+    Clip: {fileID: 7400002, guid: 3416ab0f3d8ca4e48aec75bc83531080, type: 3}
   - Anim: 7
-    Clip: {fileID: 7400016, guid: 6ede9903ef4494a97955479a1fc89e4e, type: 3}
+    Clip: {fileID: 7400004, guid: 3416ab0f3d8ca4e48aec75bc83531080, type: 3}
   - Anim: 3
-    Clip: {fileID: 7400004, guid: 6ede9903ef4494a97955479a1fc89e4e, type: 3}
+    Clip: {fileID: 7400006, guid: 3416ab0f3d8ca4e48aec75bc83531080, type: 3}
   - Anim: 8
-    Clip: {fileID: 7400016, guid: 6ede9903ef4494a97955479a1fc89e4e, type: 3}
+    Clip: {fileID: 7400008, guid: 3416ab0f3d8ca4e48aec75bc83531080, type: 3}
   - Anim: 9
-    Clip: {fileID: 7400008, guid: 6ede9903ef4494a97955479a1fc89e4e, type: 3}
+    Clip: {fileID: 7400028, guid: 3416ab0f3d8ca4e48aec75bc83531080, type: 3}
   - Anim: 10
-    Clip: {fileID: 7400006, guid: 6ede9903ef4494a97955479a1fc89e4e, type: 3}
+    Clip: {fileID: 7400026, guid: 3416ab0f3d8ca4e48aec75bc83531080, type: 3}

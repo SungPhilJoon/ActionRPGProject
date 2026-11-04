@@ -1,0 +1,82 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c86ae02c3d3ef6f4c93c6b7032934e5f, type: 3}
+  m_Name: GA_NewRanged
+  m_EditorClassIdentifier: Game.Runtime::AbilityGraphAsset
+  Description: "\uD68C\uC804 \u2192 \uC2DC\uC804 \uBAA8\uC158 \u2192 0.5\uCD08 \uB4A4
+    \uBC1C\uC0AC \u2192 \uACBD\uC9C1"
+  CancelAbilitiesWithTag: 
+  BlockAbilitiesWithTag: 150000001600000017000000190000001b000000
+  ActivationOwnedTags: 0d000000
+  ActivationRequiredTags: 
+  ActivationBlockedTags: 
+  BloodCost: 0
+  Steps:
+  - rid: 7158115440082813031
+  - rid: 7158115440082813032
+  - rid: 7158115440082813033
+  - rid: 7158115440082813034
+  - rid: 7158115440082813035
+  - rid: 7158115440082813040
+  - rid: 7158115440082813039
+  references:
+    version: 2
+    RefIds:
+    - rid: 7158115440082813031
+      type: {class: FaceAimStep, ns: , asm: Game.Runtime}
+      data: 
+    - rid: 7158115440082813032
+      type: {class: LockMovementStep, ns: , asm: Game.Runtime}
+      data:
+        Seconds: 0.3
+    - rid: 7158115440082813033
+      type: {class: PlayAnimationStep, ns: , asm: Game.Runtime}
+      data:
+        AnimationId: 3
+    - rid: 7158115440082813034
+      type: {class: WaitStep, ns: , asm: Game.Runtime}
+      data:
+        Seconds: 0.5
+        ScaleWithAttackSpeed: 1
+    - rid: 7158115440082813035
+      type: {class: ProjectileStep, ns: , asm: Game.Runtime}
+      data:
+        Damage: 90
+        DamageType: 0
+        HitEffects: 
+        CastCue: 0
+        HitCue: 2
+        Projectile: 122
+        Count: 1
+        Spread: 0
+        Speed: 20
+        Range: 14
+        Radius: 0.4
+    - rid: 7158115440082813039
+      type: {class: ProjectileStep, ns: , asm: Game.Runtime}
+      data:
+        Damage: 110
+        DamageType: 0
+        HitEffects: 0b000000
+        CastCue: 15
+        HitCue: 2
+        Projectile: 124
+        Count: 1
+        Spread: 0
+        Speed: 30
+        Range: 30
+        Radius: 0.4
+    - rid: 7158115440082813040
+      type: {class: WaitStep, ns: , asm: Game.Runtime}
+      data:
+        Seconds: 0.5
+        ScaleWithAttackSpeed: 1

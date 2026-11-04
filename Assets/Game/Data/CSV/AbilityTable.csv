@@ -23,3 +23,7 @@ Index,NameId,DescId,Type,Slot,AbilityTags,CastTime,Cooldown,Range,Radius,Angle,S
 304,3304,0,Projectile,Spell1,Ability_Spell,0.3,8,12,1.4,0,9,1,0,55,Spell,86,,3,0,26,125,0,#B48CFF,0,0.3,,State_Debuff_Static,87
 305,3305,0,Projectile,Spell2,Ability_Spell,0.3,7,14,0.7,0,16,1,0,60,Spell,88,,3,0,34,126,0,#5AA05A,0,0.3,,None,
 306,3306,0,Projectile,Spell2,Ability_Spell,0.25,7,16,0.5,0,26,1,0,50,Spell,89,,3,0,35,127,0,#78D2C8,0,0.25,,None,
+600,3600,0,Graph,Primary,Ability_Monster,,1.5,2.6,,,,,,,Physical,,,,,,,,#7A5A9A,,,,None,,418
+601,3601,0,Graph,Primary,Ability_Monster,,3,14,,,,,,,Physical,,,,,,,,#7A5A9A,,,,None,,419
+602,3602,0,Graph,Primary,Ability_Monster,,1.5,2.6,,,,,,,Physical,,,,,,,,#7A5A9A,,,,None,,420
+603,3603,0,Graph,Spell1,Ability_Monster,,20,30,,,,,,,Physical,,,,,,,,#7A5A9A,,,,None,,421

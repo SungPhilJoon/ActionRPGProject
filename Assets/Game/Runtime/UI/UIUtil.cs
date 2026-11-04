@@ -74,17 +74,13 @@ public static class UIUtil
         return AttributeTextBase + (int)InAttribute;
     }
 
+    /// <summary>퀘스트 묶음 이름 문구 (EQuestChapter 순서). 동작이 없는 단순 대응이라 클래스 대신 표로 둔다.</summary>
+    private static readonly EText[] QuestChapterTexts = { EText.QuestChapterTutorial, EText.QuestChapterHunt, EText.QuestChapterBoss };
+
     public static EText QuestChapterText(EQuestChapter InChapter)
     {
-        switch (InChapter)
-        {
-            case EQuestChapter.Hunt:
-                return EText.QuestChapterHunt;
-            case EQuestChapter.Boss:
-                return EText.QuestChapterBoss;
-            default:
-                return EText.QuestChapterTutorial;
-        }
+        int index = (int)InChapter;
+        return index >= 0 && index < QuestChapterTexts.Length ? QuestChapterTexts[index] : EText.QuestChapterTutorial;
     }
 
     /// <summary>"&lt;Keyboard&gt;/q" → "Q". 화면 표시용으로만 쓴다.</summary>

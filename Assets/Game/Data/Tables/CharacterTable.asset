@@ -73,7 +73,7 @@ MonoBehaviour:
     SpellResist: 5
     MoveSpeed: 4.4
     Level: 10
-    Abilities: f6010000
+    Abilities: 59020000
     AI: 2
     AggroRange: 15
     AttackRange: 12
@@ -182,3 +182,123 @@ MonoBehaviour:
     Tint: {r: 1, g: 1, b: 1, a: 1}
     Weapon: 0
     StateTree: 300
+  - Index: 8
+    NameId: 1007
+    Prefab: 107
+    Team: 2
+    MaxHealth: 220
+    PhysicalPower: 20
+    SpellPower: 0
+    PhysicalResist: 0
+    SpellResist: 5
+    MoveSpeed: 4.4
+    Level: 10
+    Abilities: 59020000
+    AI: 2
+    AggroRange: 15
+    AttackRange: 12
+    BloodType: 2
+    BloodQuality: 30
+    IsVBlood: 0
+    VBloodUnlocks: 
+    Loot: 2
+    Scale: 1
+    Tint: {r: 1, g: 1, b: 1, a: 1}
+    Weapon: 0
+    StateTree: 301
+  - Index: 9
+    NameId: 1008
+    Prefab: 108
+    Team: 2
+    MaxHealth: 520
+    PhysicalPower: 30
+    SpellPower: 0
+    PhysicalResist: 10
+    SpellResist: 5
+    MoveSpeed: 4
+    Level: 14
+    Abilities: f7010000f8010000
+    AI: 1
+    AggroRange: 12
+    AttackRange: 3
+    BloodType: 4
+    BloodQuality: 40
+    IsVBlood: 0
+    VBloodUnlocks: 
+    Loot: 3
+    Scale: 1
+    Tint: {r: 1, g: 1, b: 1, a: 1}
+    Weapon: 0
+    StateTree: 300
+  - Index: 10
+    NameId: 1009
+    Prefab: 109
+    Team: 2
+    MaxHealth: 520
+    PhysicalPower: 30
+    SpellPower: 0
+    PhysicalResist: 10
+    SpellResist: 5
+    MoveSpeed: 4
+    Level: 14
+    Abilities: f7010000f8010000
+    AI: 1
+    AggroRange: 12
+    AttackRange: 3
+    BloodType: 4
+    BloodQuality: 40
+    IsVBlood: 0
+    VBloodUnlocks: 
+    Loot: 3
+    Scale: 1
+    Tint: {r: 1, g: 1, b: 1, a: 1}
+    Weapon: 0
+    StateTree: 300
+  - Index: 11
+    NameId: 1010
+    Prefab: 112
+    Team: 2
+    MaxHealth: 3200
+    PhysicalPower: 34
+    SpellPower: 0
+    PhysicalResist: 15
+    SpellResist: 10
+    MoveSpeed: 4.6
+    Level: 16
+    Abilities: ff010000000200000102000002020000
+    AI: 3
+    AggroRange: 16
+    AttackRange: 3.6
+    BloodType: 4
+    BloodQuality: 70
+    IsVBlood: 1
+    VBloodUnlocks: 91010000
+    Loot: 4
+    Scale: 1.5
+    Tint: {r: 1, g: 0.6901961, b: 0.6901961, a: 1}
+    Weapon: 0
+    StateTree: 302
+  - Index: 12
+    NameId: 1011
+    Prefab: 113
+    Team: 2
+    MaxHealth: 3200
+    PhysicalPower: 34
+    SpellPower: 0
+    PhysicalResist: 15
+    SpellResist: 10
+    MoveSpeed: 4.6
+    Level: 16
+    Abilities: ff010000000200000102000002020000
+    AI: 3
+    AggroRange: 16
+    AttackRange: 3.6
+    BloodType: 4
+    BloodQuality: 70
+    IsVBlood: 1
+    VBloodUnlocks: 91010000
+    Loot: 4
+    Scale: 1.5
+    Tint: {r: 1, g: 0.6901961, b: 0.6901961, a: 1}
+    Weapon: 0
+    StateTree: 302

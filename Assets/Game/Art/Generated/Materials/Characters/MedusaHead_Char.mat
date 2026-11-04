@@ -48,11 +48,12 @@ Material:
     - _BumpScale: 1
     - _Cull: 2
     - _Cutoff: 0.546
+    - _FillLight: 0.45
     - _Metallic: 1
     - _OcclusionStrength: 1
     - _OutlineWidth: 0
-    - _RimPower: 3.2
-    - _RimStrength: 0.6
+    - _RimPower: 3
+    - _RimStrength: 0.8
     - _Smoothness: 1
     - _Toon: 0
     - _ToonSoftness: 0.06
@@ -62,7 +63,7 @@ Material:
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _HitFlash: {r: 1, g: 1, b: 1, a: 0}
     - _OutlineColor: {r: 0.06, g: 0.03, b: 0.04, a: 1}
-    - _RimColor: {r: 0.9, g: 0.72, b: 0.68, a: 1}
+    - _RimColor: {r: 0.95, g: 0.75, b: 0.68, a: 1}
     - _ToonShadowColor: {r: 0.62, g: 0.52, b: 0.62, a: 1}
   m_BuildTextureStacks: []
   m_AllowLocking: 1

@@ -8,6 +8,11 @@ using UnityEngine;
 /// </summary>
 public class DamageNumberLayer : UIBehaviour
 {
+    public override Framework.UI.UILayer GetLayer()
+    {
+        return Framework.UI.UILayer.World;
+    }
+
     private class Entry
     {
         public TextMeshProUGUI Text;

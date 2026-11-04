@@ -13,9 +13,9 @@ public class MinimapWindow : UIWindow
 
     private WorldMapWindow WorldMap;
 
-    public override bool BlocksGameInput
+    public override UILayer GetLayer()
     {
-        get { return false; }
+        return UILayer.Hud;
     }
 
     protected override void OnInitialize()

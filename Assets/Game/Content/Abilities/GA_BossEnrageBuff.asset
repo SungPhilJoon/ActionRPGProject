@@ -1,0 +1,54 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c86ae02c3d3ef6f4c93c6b7032934e5f, type: 3}
+  m_Name: GA_BossEnrageBuff
+  m_EditorClassIdentifier: Game.Runtime::AbilityGraphAsset
+  Description: "\uD3EC\uD6A8 \uBAA8\uC158 \u2192 0.5\uCD08 \uB4A4 \uACF5\uACA9\uB825
+    \uAC15\uD654 GE (#23)"
+  CancelAbilitiesWithTag: 
+  BlockAbilitiesWithTag: 
+  ActivationOwnedTags: 0c000000
+  ActivationRequiredTags: 
+  ActivationBlockedTags: 
+  BloodCost: 0
+  Steps:
+  - rid: 7158115440082813071
+  - rid: 7158115440082813072
+  - rid: 7158115440082813073
+  - rid: 7158115440082813074
+  - rid: 7158115440082813075
+  references:
+    version: 2
+    RefIds:
+    - rid: 7158115440082813071
+      type: {class: LockMovementStep, ns: , asm: Game.Runtime}
+      data:
+        Seconds: 0.8
+    - rid: 7158115440082813072
+      type: {class: PlayAnimationStep, ns: , asm: Game.Runtime}
+      data:
+        AnimationId: 3
+    - rid: 7158115440082813073
+      type: {class: WaitStep, ns: , asm: Game.Runtime}
+      data:
+        Seconds: 0.5
+        ScaleWithAttackSpeed: 1
+    - rid: 7158115440082813074
+      type: {class: ApplyEffectToSelfStep, ns: , asm: Game.Runtime}
+      data:
+        EffectId: 101
+        RemoveOnEnd: 0
+    - rid: 7158115440082813075
+      type: {class: WaitStep, ns: , asm: Game.Runtime}
+      data:
+        Seconds: 0.3
+        ScaleWithAttackSpeed: 1

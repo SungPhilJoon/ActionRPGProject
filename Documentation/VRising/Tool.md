@@ -20,6 +20,8 @@ MonsterAuthoring 인스펙터: 능력치 · 외형 · 클립 · AI 트리 지정
 StateTree Tool: 템플릿으로 트리 → + 블록(조건부 어빌리티 등) → Play 에서 "이 트리로 스폰" + 라이브 디버그
 ```
 
+시연 녹화: 이 흐름을 툴 데이터와 같은 내용으로 자막과 함께 보여 주는 `GasShowcaseTests` (Test Runner → PlayMode → GasShowcaseTests 선택 → Run Selected) — [README.md 7절](README.md#7-테스트).
+
 ## 1. GAS Tool
 
 - **Ability 탭** — 새 Ability = `AbilityGraphAsset`(`Content/Abilities`, 태그 규칙 · BloodPool 비용 · 실행 단계) + AbilityTable 행(`Type=Graph`, 이름 · 슬롯 · 쿨다운 · AI 사용 거리).

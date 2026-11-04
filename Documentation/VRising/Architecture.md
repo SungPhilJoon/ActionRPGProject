@@ -7,8 +7,8 @@
 
 | 구분 | 위치 | 어셈블리 | 규칙 |
 |---|---|---|---|
-| **Framework** | `Assets/Framework/Runtime` | `Framework.Runtime` | 게임 타입(ETag, Actor, Tables …)을 **절대 참조하지 않는다**. 다른 프로젝트에 폴더째 복사해서 쓸 수 있어야 한다 |
-| | `Assets/Framework/Editor` | `Framework.Editor` | 에디터 전용. `Framework.Runtime` 만 참조 |
+| **Framework** | `Packages/com.philjoon.framework/Runtime` | `Framework.Runtime` | 게임 타입(ETag, Actor, Tables …)을 **절대 참조하지 않는다**. UPM 패키지로 다른 프로젝트에서 git URL 로 설치한다 (2.1) |
+| | `Packages/com.philjoon.framework/Editor` | `Framework.Editor` | 에디터 전용. `Framework.Runtime` 만 참조 |
 | **Game** | `Assets/Game/Runtime` | `Game.Runtime` | 이 게임의 플레이 코드. `Framework.Runtime` 참조 |
 | | `Assets/Game/Editor` | `Game.Editor` | 이 게임 전용 에디터 툴. `Game.Runtime`, `Framework.Runtime`, `Framework.Editor` 참조 |
 | | `Assets/Game/Tests/PlayMode` | `Game.Tests.PlayMode` | Play 모드 테스트 (Unity Test Framework). `Game.Runtime`, `Framework.Runtime` 참조, UNITY_INCLUDE_TESTS 일 때만 컴파일 |
@@ -31,13 +31,14 @@ Assembly-CSharp (asmdef 없는 외부 에셋 + Game/Integration) ──▶ Game.
 ## 2. Framework
 
 ```
-Assets/Framework/
+Packages/com.philjoon.framework/     package.json · README.md · CHANGELOG.md
   Runtime/                          Framework.Runtime (namespace Framework.*)
     Core/        Log, Managers(IManager)
-      Behaviours/ Behaviour → BaseBehaviour → ActorBehaviour / UIBehaviour (모든 MonoBehaviour 의 공통 부모, 5.1 참고)
+      Behaviours/ Behaviour → BaseBehaviour → ActorBehaviour / UIBehaviour / StaticBehaviour / DynamicBehaviour (모든 MonoBehaviour 의 공통 부모, 5.1 참고)
     Util/        HashUtil, MathUtil, ComponentUtil, BoundsUtil, TerrainUtil (런타임 TerrainData 복제 · Detail 지우기)
     Camera/Occlusion/ CameraOcclusionSystem + 감지/응답 전략(가림 정도 광선 · 알파 페이드) + CameraOccluder ([CameraOcclusion.md](CameraOcclusion.md))
-    Rendering/   RendererHighlight (대상 메시를 하이라이트 머티리얼로 한 번 더 그리는 겹 렌더러 — [Targeting.md](Targeting.md))
+    Rendering/   RendererHighlight (대상 메시를 하이라이트 머티리얼로 한 번 더 그리는 겹 렌더러 — [Targeting.md](Targeting.md)),
+                 StaticBatching (런타임 정적 배칭) · SharedMaterialVariants (SRP Batcher 용 공유 머티리얼 변형) · StaticEditorFlagsUtil (5.2)
     Event/       EventBus<T>
     Pool/        GameObjectPool
     Asset/       AssetLoader (Addressables 래퍼, (주소,타입) 캐시, 소유자 검사)
@@ -51,6 +52,28 @@ Assets/Framework/
     Data/        TableImportUtility (CSV → TableAsset), TableImportPostprocessor (CSV 저장 시 Source 로 연결된 테이블 자동 재변환), CsvEditUtility · CsvRow (툴이 CSV 한 행을 작업 사본으로 읽고 쓰기)
     Util/        EditorAssetUtil.EnsureFolder, MaterialUpgradeUtil (Built-in/Standard → URP Lit 복사본), ShadeColliderUtil (그림자 메시 → 그늘 판정 콜라이더)
 ```
+
+
+### 2.1 패키지 · 별도 저장소 (2026-11-04)
+
+Framework 는 UPM 패키지 `com.philjoon.framework` 다. 이 프로젝트에서는 `Packages/` 아래 **내장(embedded) 패키지**로 두고 여기서 고친다.
+2026-11-04 에 `Assets/Framework` 에서 옮겼다 (.meta 를 그대로 옮겨 GUID · 프리팹 · `[SerializeReference]` 참조 유지, 어셈블리 이름도 그대로).
+
+| 항목 | 값 |
+|---|---|
+| 패키지 저장소 | https://github.com/SungPhilJoon/Custom_Unity_Framework (로컬: 이 프로젝트 옆 `../unity-framework`) |
+| 이력 | `git subtree split --prefix=Assets/Framework` 로 옮기기 전 커밋 이력을 가져온 뒤 0.1.0 커밋 |
+| 다른 프로젝트 설치 | OpenUPM scoped registry(`com.cysharp.unitask`) 추가 → Package Manager `Add package from git URL` → `https://github.com/SungPhilJoon/Custom_Unity_Framework.git#v0.2.0` (패키지 README) |
+| 의존성 | UniTask 2.5.11, Addressables 2.10.3, uGUI 2.0 (TextMeshPro 포함) |
+
+Framework 를 고친 뒤 패키지 저장소에 반영:
+
+```
+bash Tools/FrameworkPackage/sync.sh -m "메시지"                      # 복사 + 커밋
+bash Tools/FrameworkPackage/sync.sh -m "메시지" --tag v0.2.0 --push  # 버전을 올릴 때 (package.json version · 패키지 CHANGELOG 먼저)
+```
+
+스크립트는 패키지 저장소 파일을 원본과 똑같이 맞춘다 (원본에서 지운 파일도 지운다). 이 게임 저장소의 커밋과는 별개다.
 
 ## 3. Game
 
@@ -129,6 +152,8 @@ MonoBehaviour
        │  └ Actor (Game)           GameAttributeSet, 슬롯 어빌리티, 사망/부활 → PlayerCharacter, MonsterCharacter
        ├ Framework.UIBehaviour     [RequireComponent(RectTransform)] Rect 캐시, IsVisible / SetVisible
        │  └ UIWindow, UIBar, ItemSlotView, DamageNumberLayer, WorldHealthBarLayer
+       ├ Framework.StaticBehaviour 절대 움직이지 않는 물체 → 정적 배칭 (5.2)
+       ├ Framework.DynamicBehaviour 제자리에 있지만 사라지거나 생기는 물체 → SRP Batcher, Show/Hide · SetTint · IPoolable (5.2)
        └ 그 외 모든 Framework/Game 컴포넌트 (ASC, ActorMotor, ActorAnimator, MonsterBrain, GameBootstrap …)
 ```
 
@@ -149,6 +174,26 @@ MonoBehaviour
   - 훅: `OnTagChanged / OnEffectAdded / OnEffectRemoved / OnEffectExecuted / OnAbilityActivated / OnAbilityEnded / OnGameplayEvent`.
     같은 GameObject 의 다른 컴포넌트(MonsterBrain 등)는 지금처럼 ASC 이벤트를 직접 구독한다.
 - 액터 초기화 순서: `Actor.Initialize(row, id)` → `InitializeActor(id, GameAttributeSet)` (ASC 바인딩) → 능력치 → 어빌리티 부여(`GrantAbility`) → `ActorRegistry.Add`. 파괴 시 `OnUnityDestroy` 에서 레지스트리 제거.
+
+### 5.2 StaticBehaviour / DynamicBehaviour (2026-11-04)
+
+렌더링 배칭 방식을 물체의 "움직임 성격" 으로 고르는 Behaviour. 게임 물체에는 아직 붙이지 않았다 (적용 · 측정은 사용자가 결정).
+
+| | StaticBehaviour | DynamicBehaviour |
+|---|---|---|
+| 대상 | 절대 움직이지 않고 사라지지도 않는 물체 (건물, 지형 장식) | 제자리에 있지만 사라지거나 생기는 물체 (채집 노드, 건축으로 치워지는 나무, 부서지는 소품) |
+| 배칭 | **정적 배칭** — 같은 머티리얼 메시를 월드 공간에서 합침 | **SRP Batcher** — 같은 셰이더 배리언트끼리 GPU 상수 버퍼를 유지한 채 연속으로 그림 |
+| 에디터 플래그 | Batching Static (+ Occluder/Occludee, Contribute GI 옵션) 켬 | Batching Static · Occluder Static 끔 (Occludee 유지) |
+| 런타임 생성 | `StaticBatching` 에 등록 → 그 프레임 LateUpdate 에 `StaticBatchingUtility.Combine` 한 번 (대량 생성 중엔 `AutoFlush = false` → 끝나고 `Flush()`) | 그대로 생성/풀링 (`IPoolable`: OnSpawn = Show, OnDespawn = Hide) |
+| 끄고 켜기 | — (배칭 뒤 움직이면 에디터 · 개발 빌드에서 경고) | `Show / Hide` = `renderer.enabled` (+ 콜라이더), GameObject 는 켜 둠 |
+| 색 바꾸기 | — | `SetTint(color)` = `SharedMaterialVariants` 공유 머티리얼 변형 (MaterialPropertyBlock 은 SRP Batcher 를 깨므로 쓰지 않음) |
+| 검증 (에디터 · 개발 빌드) | 배칭 뒤 이동 감지 (프레임당 32개씩 순회) | SRP Batcher 꺼짐 · MaterialPropertyBlock · 정적 배치 포함 경고 |
+
+- 범위: 노드에서 위로 올라가며 처음 만나는 Static/Dynamic Behaviour 가 주인 (`BehaviourScope`). 정적 건물 아래 동적 문짝처럼 섞어 둘 수 있다.
+- 플래그 적용 시점: 인스펙터에서 붙일 때(Reset/OnValidate → delayCall), 씬 · 프리팹 저장 직전(`StaticBehaviourFlagsHook`), 메뉴 `Window > Framework > Rendering > Apply Static Flags (Open Scenes)`. 스크립트 `AddComponent` 는 Reset 이 불리지 않으므로 저장 · 메뉴가 잡는다.
+- 런타임 정적 배칭은 메시 Read/Write 가 켜져 있어야 한다 (빌드에서 불가 메시는 경고 후 제외). 씬에 놓인 정적 물체는 빌드 · Play 진입 때 Unity 가 이미 합치므로 건너뛴다 (`isPartOfStaticBatch`).
+- 정적 배칭은 메시 메모리를 늘린다 (합친 사본). 같은 메시가 매우 많다면 GPU 인스턴싱 / BatchRendererGroup 이 더 맞을 수 있다 — 측정 후 판단.
+- 테스트: `StaticDynamicBehaviourTests` 5개 (SRP Batcher 켜짐, 런타임 생성 정적 배칭, 정적 아래 동적 자식 제외, Show/Hide, 공유 틴트).
 - `Framework.Behaviour` / `Framework.UIBehaviour` 는 `UnityEngine.Behaviour` / `UnityEngine.EventSystems.UIBehaviour` 와 이름이 같다. `using UnityEngine.EventSystems;` 와 함께 쓰는 파일에서는 `Framework.UIBehaviour` 로 한정한다.
 - 도입 전 코드는 git 브랜치 `backup/before-behaviour-flow` 에 남아 있다 (프로젝트 안에 옛 코드를 두지 않음).
 
@@ -178,6 +223,9 @@ MonoBehaviour
 | **Adapter** | `ActorMotor` (CharacterController / NavMeshAgent 를 같은 API 로) | 어빌리티가 이동 방식을 몰라도 됨 |
 | **Data-Driven / Type Object** | CSV → ScriptableObject 테이블, CharacterRow/AbilityRow 가 "종류"를, AnimationRow 가 애니메이션 재생 방식을 정의 | 코드 수정 없이 밸런스·콘텐츠 변경 |
 | **Adapter (Localization)** | `GameLocalization` ← `Tables.Text(int)` | 게임 코드는 지금처럼 int 문구 Id 만 쓰고, 언어 · 테이블 로드 · 언어 변경 이벤트는 Unity Localization 래퍼 한 곳이 맡는다. 키 Id = StringTable Index 라 문자열 키 비교가 없다 |
+| **Strategy / Factory 레지스트리 (enum → 클래스)** | `KindRegistry<TBase>` + `[Kind(enum)]` — QuestObjective, SpawnHandler, StructureKind, HarvestKind, AssetPreloader, AnimationParameterOp, ItemUse, ModifierOperation, MagnitudeCalculation, CompareOperation, TransitionTrigger/Target, AssetEventAccumulator, 어빌리티 | enum 은 데이터 키로만, 동작은 하위 클래스. 새 종류 = 클래스 하나 (switch 수정 없음). 비교: [Refactor_Polymorphism.md](Refactor_Polymorphism.md) |
+| **Template Method (UI 레이어)** | `UIBehaviour.GetLayer()` virtual + `UILayer` 하위 클래스 정책 | UI 가 자기 레이어를 알고, 매니저는 묻기만 한다 |
+| **Double Dispatch** | `ItemSlotBinding.DropOnto → ReceiveFrom{Inventory/Equipment}` | 드롭 결과가 (끌어온 칸 × 놓은 칸) 조합으로 정해지는 것을 if 없이 |
 | **Facade** | `Tables` 정적 클래스 (`Tables.Const`, `Tables.Text`, `Tables.Address`, `Tables.Animation`) | 테이블 접근 단순화 |
 | **Builder (에디터)** | `WorldBuilder`, `ContentBuilder`, `TreeFactory` | 씬/프리팹을 재현 가능하게 코드로 생성 |
 | **골격 → 메시 (에디터)** | `TreeGenerator.Build` → `ToMesh(골격, LOD)` | 같은 골격을 LOD 별 디테일로 메시화해 LOD 사이 모양이 같다 |

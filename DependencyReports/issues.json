@@ -1,5 +1,5 @@
 {
-    "UpdatedAt": "2026-10-31 20:11",
+    "UpdatedAt": "2026-11-01 13:19",
     "Issues": [
         {
             "Key": "R-LEAK:Monster_SpawnAndRemove:AI/ST_MeleeMonster",
@@ -15,7 +15,7 @@
             ],
             "Status": 1,
             "FirstSeen": "2026-10-30 00:03",
-            "LastSeen": "2026-10-31 20:11",
+            "LastSeen": "2026-11-01 13:19",
             "ResolvedAt": ""
         },
         {
@@ -32,7 +32,7 @@
             ],
             "Status": 1,
             "FirstSeen": "2026-10-30 00:03",
-            "LastSeen": "2026-10-31 20:11",
+            "LastSeen": "2026-11-01 13:19",
             "ResolvedAt": ""
         },
         {
@@ -41,7 +41,7 @@
             "Severity": 1,
             "Title": "반납 안 된 참조: Characters/BanditArcher (3회 반복에서 +3 — 반복할수록 늘어남)",
             "Why": "'Monster_SpawnAndRemove' 를 끝내고 원래 상태로 돌아왔는데 이 에셋의 참조 카운트가 늘어난 채로 남았습니다. 계속 반복하면 메모리에서 내려가지 않습니다.",
-            "HowToFix": "이 에셋을 로드한 곳(SpawnManager.spawnMonsterAsync)에서 다 쓴 뒤 AssetLoader.Release 를 호출하는지 확인하세요. 한 번 로드해 계속 쓰는 것이 의도라면 무시해도 됩니다.",
+            "HowToFix": "이 에셋을 로드한 곳(SpawnManager.SpawnMonsterAsync)에서 다 쓴 뒤 AssetLoader.Release 를 호출하는지 확인하세요. 한 번 로드해 계속 쓰는 것이 의도라면 무시해도 됩니다.",
             "Owner": "프로그래밍",
             "Source": "테스트: Monster_SpawnAndRemove",
             "Assets": [
@@ -49,7 +49,7 @@
             ],
             "Status": 1,
             "FirstSeen": "2026-10-30 00:03",
-            "LastSeen": "2026-10-31 20:11",
+            "LastSeen": "2026-11-01 13:19",
             "ResolvedAt": ""
         },
         {
@@ -58,7 +58,7 @@
             "Severity": 1,
             "Title": "반납 안 된 참조: Characters/BanditThug (3회 반복에서 +3 — 반복할수록 늘어남)",
             "Why": "'Monster_SpawnAndRemove' 를 끝내고 원래 상태로 돌아왔는데 이 에셋의 참조 카운트가 늘어난 채로 남았습니다. 계속 반복하면 메모리에서 내려가지 않습니다.",
-            "HowToFix": "이 에셋을 로드한 곳(SpawnManager.spawnMonsterAsync)에서 다 쓴 뒤 AssetLoader.Release 를 호출하는지 확인하세요. 한 번 로드해 계속 쓰는 것이 의도라면 무시해도 됩니다.",
+            "HowToFix": "이 에셋을 로드한 곳(SpawnManager.SpawnMonsterAsync)에서 다 쓴 뒤 AssetLoader.Release 를 호출하는지 확인하세요. 한 번 로드해 계속 쓰는 것이 의도라면 무시해도 됩니다.",
             "Owner": "프로그래밍",
             "Source": "테스트: Monster_SpawnAndRemove",
             "Assets": [
@@ -66,7 +66,7 @@
             ],
             "Status": 1,
             "FirstSeen": "2026-10-30 00:03",
-            "LastSeen": "2026-10-31 20:11",
+            "LastSeen": "2026-11-01 13:19",
             "ResolvedAt": ""
         },
         {
@@ -75,7 +75,7 @@
             "Severity": 1,
             "Title": "반납 안 된 참조: Characters/OrcBrute (3회 반복에서 +3 — 반복할수록 늘어남)",
             "Why": "'Monster_SpawnAndRemove' 를 끝내고 원래 상태로 돌아왔는데 이 에셋의 참조 카운트가 늘어난 채로 남았습니다. 계속 반복하면 메모리에서 내려가지 않습니다.",
-            "HowToFix": "이 에셋을 로드한 곳(SpawnManager.spawnMonsterAsync)에서 다 쓴 뒤 AssetLoader.Release 를 호출하는지 확인하세요. 한 번 로드해 계속 쓰는 것이 의도라면 무시해도 됩니다.",
+            "HowToFix": "이 에셋을 로드한 곳(SpawnManager.SpawnMonsterAsync)에서 다 쓴 뒤 AssetLoader.Release 를 호출하는지 확인하세요. 한 번 로드해 계속 쓰는 것이 의도라면 무시해도 됩니다.",
             "Owner": "프로그래밍",
             "Source": "테스트: Monster_SpawnAndRemove",
             "Assets": [
@@ -83,7 +83,7 @@
             ],
             "Status": 1,
             "FirstSeen": "2026-10-30 00:03",
-            "LastSeen": "2026-10-31 20:11",
+            "LastSeen": "2026-11-01 13:19",
             "ResolvedAt": ""
         },
         {
@@ -100,7 +100,7 @@
             ],
             "Status": 1,
             "FirstSeen": "2026-10-30 00:03",
-            "LastSeen": "2026-10-31 20:11",
+            "LastSeen": "2026-11-01 13:19",
             "ResolvedAt": ""
         },
         {
@@ -117,7 +117,7 @@
             ],
             "Status": 1,
             "FirstSeen": "2026-10-30 00:03",
-            "LastSeen": "2026-10-31 20:11",
+            "LastSeen": "2026-11-01 13:19",
             "ResolvedAt": ""
         },
         {
@@ -134,7 +134,7 @@
             ],
             "Status": 1,
             "FirstSeen": "2026-10-30 00:03",
-            "LastSeen": "2026-10-31 20:11",
+            "LastSeen": "2026-11-01 13:19",
             "ResolvedAt": ""
         },
         {
@@ -151,14 +151,14 @@
             ],
             "Status": 1,
             "FirstSeen": "2026-10-30 00:03",
-            "LastSeen": "2026-10-31 20:11",
+            "LastSeen": "2026-11-01 13:19",
             "ResolvedAt": ""
         },
         {
             "Key": "R-LEAK:UI_OpenCloseWindows:Icons/Coin",
             "Code": "R-LEAK",
             "Severity": 1,
-            "Title": "반납 안 된 참조: Icons/Coin (3회 반복에서 +6 — 반복할수록 늘어남)",
+            "Title": "반납 안 된 참조: Icons/Coin (3회 반복에서 +3 — 반복할수록 늘어남)",
             "Why": "'UI_OpenCloseWindows' 를 끝내고 원래 상태로 돌아왔는데 이 에셋의 참조 카운트가 늘어난 채로 남았습니다. 계속 반복하면 메모리에서 내려가지 않습니다.",
             "HowToFix": "이 에셋을 로드한 곳(UIUtil.LoadSprite)에서 다 쓴 뒤 AssetLoader.Release 를 호출하는지 확인하세요. 한 번 로드해 계속 쓰는 것이 의도라면 무시해도 됩니다.",
             "Owner": "프로그래밍",
@@ -168,7 +168,24 @@
             ],
             "Status": 1,
             "FirstSeen": "2026-10-30 00:03",
-            "LastSeen": "2026-10-31 20:11",
+            "LastSeen": "2026-11-01 13:19",
+            "ResolvedAt": ""
+        },
+        {
+            "Key": "R-LEAK:Monster_SpawnAndRemove:Icons/CopperOre",
+            "Code": "R-LEAK",
+            "Severity": 1,
+            "Title": "반납 안 된 참조: Icons/CopperOre (3회 반복에서 +1 — 반복할수록 늘어남)",
+            "Why": "'Monster_SpawnAndRemove' 를 끝내고 원래 상태로 돌아왔는데 이 에셋의 참조 카운트가 늘어난 채로 남았습니다. 계속 반복하면 메모리에서 내려가지 않습니다.",
+            "HowToFix": "이 에셋을 로드한 곳(UIUtil.LoadSprite)에서 다 쓴 뒤 AssetLoader.Release 를 호출하는지 확인하세요. 한 번 로드해 계속 쓰는 것이 의도라면 무시해도 됩니다.",
+            "Owner": "프로그래밍",
+            "Source": "테스트: Monster_SpawnAndRemove",
+            "Assets": [
+                "Icons/CopperOre"
+            ],
+            "Status": 0,
+            "FirstSeen": "2026-11-01 13:19",
+            "LastSeen": "2026-11-01 13:19",
             "ResolvedAt": ""
         },
         {
@@ -185,7 +202,7 @@
             ],
             "Status": 1,
             "FirstSeen": "2026-10-30 00:03",
-            "LastSeen": "2026-10-31 20:11",
+            "LastSeen": "2026-11-01 13:19",
             "ResolvedAt": ""
         },
         {
@@ -202,7 +219,24 @@
             ],
             "Status": 1,
             "FirstSeen": "2026-10-30 00:03",
-            "LastSeen": "2026-10-31 20:11",
+            "LastSeen": "2026-11-01 13:19",
+            "ResolvedAt": ""
+        },
+        {
+            "Key": "R-LEAK:Monster_SpawnAndRemove:Icons/Lumber",
+            "Code": "R-LEAK",
+            "Severity": 1,
+            "Title": "반납 안 된 참조: Icons/Lumber (3회 반복에서 +2 — 반복할수록 늘어남)",
+            "Why": "'Monster_SpawnAndRemove' 를 끝내고 원래 상태로 돌아왔는데 이 에셋의 참조 카운트가 늘어난 채로 남았습니다. 계속 반복하면 메모리에서 내려가지 않습니다.",
+            "HowToFix": "이 에셋을 로드한 곳(UIUtil.LoadSprite)에서 다 쓴 뒤 AssetLoader.Release 를 호출하는지 확인하세요. 한 번 로드해 계속 쓰는 것이 의도라면 무시해도 됩니다.",
+            "Owner": "프로그래밍",
+            "Source": "테스트: Monster_SpawnAndRemove",
+            "Assets": [
+                "Icons/Lumber"
+            ],
+            "Status": 0,
+            "FirstSeen": "2026-11-01 13:19",
+            "LastSeen": "2026-11-01 13:19",
             "ResolvedAt": ""
         },
         {
@@ -219,7 +253,24 @@
             ],
             "Status": 1,
             "FirstSeen": "2026-10-30 00:03",
-            "LastSeen": "2026-10-31 20:11",
+            "LastSeen": "2026-11-01 13:19",
+            "ResolvedAt": ""
+        },
+        {
+            "Key": "R-LEAK:Monster_SpawnAndRemove:Icons/PlantFiber",
+            "Code": "R-LEAK",
+            "Severity": 1,
+            "Title": "반납 안 된 참조: Icons/PlantFiber (3회 반복에서 +4 — 반복할수록 늘어남)",
+            "Why": "'Monster_SpawnAndRemove' 를 끝내고 원래 상태로 돌아왔는데 이 에셋의 참조 카운트가 늘어난 채로 남았습니다. 계속 반복하면 메모리에서 내려가지 않습니다.",
+            "HowToFix": "이 에셋을 로드한 곳(UIUtil.LoadSprite)에서 다 쓴 뒤 AssetLoader.Release 를 호출하는지 확인하세요. 한 번 로드해 계속 쓰는 것이 의도라면 무시해도 됩니다.",
+            "Owner": "프로그래밍",
+            "Source": "테스트: Monster_SpawnAndRemove",
+            "Assets": [
+                "Icons/PlantFiber"
+            ],
+            "Status": 0,
+            "FirstSeen": "2026-11-01 13:19",
+            "LastSeen": "2026-11-01 13:19",
             "ResolvedAt": ""
         },
         {
@@ -236,7 +287,7 @@
             ],
             "Status": 1,
             "FirstSeen": "2026-10-30 00:03",
-            "LastSeen": "2026-10-31 20:11",
+            "LastSeen": "2026-11-01 13:19",
             "ResolvedAt": ""
         },
         {
@@ -253,7 +304,24 @@
             ],
             "Status": 1,
             "FirstSeen": "2026-10-30 00:03",
-            "LastSeen": "2026-10-31 20:11",
+            "LastSeen": "2026-11-01 13:19",
+            "ResolvedAt": ""
+        },
+        {
+            "Key": "R-LEAK:Monster_SpawnAndRemove:Icons/Potion",
+            "Code": "R-LEAK",
+            "Severity": 1,
+            "Title": "반납 안 된 참조: Icons/Potion (3회 반복에서 +8 — 반복할수록 늘어남)",
+            "Why": "'Monster_SpawnAndRemove' 를 끝내고 원래 상태로 돌아왔는데 이 에셋의 참조 카운트가 늘어난 채로 남았습니다. 계속 반복하면 메모리에서 내려가지 않습니다.",
+            "HowToFix": "이 에셋을 로드한 곳(UIUtil.LoadSprite)에서 다 쓴 뒤 AssetLoader.Release 를 호출하는지 확인하세요. 한 번 로드해 계속 쓰는 것이 의도라면 무시해도 됩니다.",
+            "Owner": "프로그래밍",
+            "Source": "테스트: Monster_SpawnAndRemove",
+            "Assets": [
+                "Icons/Potion"
+            ],
+            "Status": 0,
+            "FirstSeen": "2026-11-01 13:19",
+            "LastSeen": "2026-11-01 13:19",
             "ResolvedAt": ""
         },
         {
@@ -270,7 +338,7 @@
             ],
             "Status": 1,
             "FirstSeen": "2026-10-30 00:03",
-            "LastSeen": "2026-10-31 20:11",
+            "LastSeen": "2026-11-01 13:19",
             "ResolvedAt": ""
         },
         {
@@ -287,7 +355,7 @@
             ],
             "Status": 1,
             "FirstSeen": "2026-10-30 00:03",
-            "LastSeen": "2026-10-31 20:11",
+            "LastSeen": "2026-11-01 13:19",
             "ResolvedAt": ""
         },
         {
@@ -304,7 +372,7 @@
             ],
             "Status": 1,
             "FirstSeen": "2026-10-30 00:03",
-            "LastSeen": "2026-10-31 20:11",
+            "LastSeen": "2026-11-01 13:19",
             "ResolvedAt": ""
         },
         {
@@ -321,7 +389,7 @@
             ],
             "Status": 1,
             "FirstSeen": "2026-10-30 00:03",
-            "LastSeen": "2026-10-31 20:11",
+            "LastSeen": "2026-11-01 13:19",
             "ResolvedAt": ""
         },
         {
@@ -338,7 +406,7 @@
             ],
             "Status": 1,
             "FirstSeen": "2026-10-30 00:03",
-            "LastSeen": "2026-10-31 20:11",
+            "LastSeen": "2026-11-01 13:19",
             "ResolvedAt": ""
         },
         {
@@ -355,7 +423,7 @@
             ],
             "Status": 1,
             "FirstSeen": "2026-10-30 00:03",
-            "LastSeen": "2026-10-31 20:11",
+            "LastSeen": "2026-11-01 13:19",
             "ResolvedAt": ""
         },
         {
@@ -372,7 +440,7 @@
             ],
             "Status": 1,
             "FirstSeen": "2026-10-30 00:03",
-            "LastSeen": "2026-10-31 20:11",
+            "LastSeen": "2026-11-01 13:19",
             "ResolvedAt": ""
         },
         {
@@ -389,7 +457,7 @@
             ],
             "Status": 1,
             "FirstSeen": "2026-10-30 00:03",
-            "LastSeen": "2026-10-31 20:11",
+            "LastSeen": "2026-11-01 13:19",
             "ResolvedAt": ""
         },
         {
@@ -406,7 +474,7 @@
             ],
             "Status": 1,
             "FirstSeen": "2026-10-30 00:03",
-            "LastSeen": "2026-10-31 20:11",
+            "LastSeen": "2026-11-01 13:19",
             "ResolvedAt": ""
         },
         {
@@ -423,7 +491,7 @@
             ],
             "Status": 1,
             "FirstSeen": "2026-10-30 00:03",
-            "LastSeen": "2026-10-31 20:11",
+            "LastSeen": "2026-11-01 13:19",
             "ResolvedAt": ""
         },
         {
@@ -440,7 +508,7 @@
             ],
             "Status": 1,
             "FirstSeen": "2026-10-30 00:03",
-            "LastSeen": "2026-10-31 20:11",
+            "LastSeen": "2026-11-01 13:19",
             "ResolvedAt": ""
         },
         {
@@ -457,7 +525,7 @@
             ],
             "Status": 1,
             "FirstSeen": "2026-10-30 00:03",
-            "LastSeen": "2026-10-31 20:11",
+            "LastSeen": "2026-11-01 13:19",
             "ResolvedAt": ""
         },
         {
@@ -474,7 +542,7 @@
             ],
             "Status": 1,
             "FirstSeen": "2026-10-30 00:03",
-            "LastSeen": "2026-10-31 20:11",
+            "LastSeen": "2026-11-01 13:19",
             "ResolvedAt": ""
         },
         {
@@ -491,7 +559,7 @@
             ],
             "Status": 1,
             "FirstSeen": "2026-10-30 00:03",
-            "LastSeen": "2026-10-31 20:11",
+            "LastSeen": "2026-11-01 13:19",
             "ResolvedAt": ""
         },
         {
@@ -508,7 +576,7 @@
             ],
             "Status": 1,
             "FirstSeen": "2026-10-30 00:03",
-            "LastSeen": "2026-10-31 20:11",
+            "LastSeen": "2026-11-01 13:19",
             "ResolvedAt": ""
         },
         {
@@ -525,7 +593,7 @@
             ],
             "Status": 1,
             "FirstSeen": "2026-10-30 00:03",
-            "LastSeen": "2026-10-31 20:11",
+            "LastSeen": "2026-11-01 13:19",
             "ResolvedAt": ""
         },
         {
@@ -542,7 +610,7 @@
             ],
             "Status": 1,
             "FirstSeen": "2026-10-30 00:03",
-            "LastSeen": "2026-10-31 20:11",
+            "LastSeen": "2026-11-01 13:19",
             "ResolvedAt": ""
         },
         {
@@ -559,7 +627,7 @@
             ],
             "Status": 1,
             "FirstSeen": "2026-10-30 00:03",
-            "LastSeen": "2026-10-31 20:11",
+            "LastSeen": "2026-11-01 13:19",
             "ResolvedAt": ""
         },
         {
@@ -576,7 +644,7 @@
             ],
             "Status": 1,
             "FirstSeen": "2026-10-30 00:03",
-            "LastSeen": "2026-10-31 20:11",
+            "LastSeen": "2026-11-01 13:19",
             "ResolvedAt": ""
         },
         {
@@ -593,7 +661,7 @@
             ],
             "Status": 1,
             "FirstSeen": "2026-10-30 00:03",
-            "LastSeen": "2026-10-31 20:11",
+            "LastSeen": "2026-11-01 13:19",
             "ResolvedAt": ""
         },
         {
@@ -610,7 +678,7 @@
             ],
             "Status": 1,
             "FirstSeen": "2026-10-30 00:03",
-            "LastSeen": "2026-10-31 20:11",
+            "LastSeen": "2026-11-01 13:19",
             "ResolvedAt": ""
         },
         {
@@ -627,7 +695,7 @@
             ],
             "Status": 1,
             "FirstSeen": "2026-10-30 00:03",
-            "LastSeen": "2026-10-31 20:11",
+            "LastSeen": "2026-11-01 13:19",
             "ResolvedAt": ""
         },
         {
@@ -644,7 +712,7 @@
             ],
             "Status": 1,
             "FirstSeen": "2026-10-30 00:03",
-            "LastSeen": "2026-10-31 20:11",
+            "LastSeen": "2026-11-01 13:19",
             "ResolvedAt": ""
         },
         {
@@ -661,7 +729,7 @@
             ],
             "Status": 1,
             "FirstSeen": "2026-10-30 00:03",
-            "LastSeen": "2026-10-31 20:11",
+            "LastSeen": "2026-11-01 13:19",
             "ResolvedAt": ""
         },
         {
@@ -678,7 +746,7 @@
             ],
             "Status": 1,
             "FirstSeen": "2026-10-30 00:03",
-            "LastSeen": "2026-10-31 20:11",
+            "LastSeen": "2026-11-01 13:19",
             "ResolvedAt": ""
         },
         {
@@ -695,7 +763,7 @@
             ],
             "Status": 1,
             "FirstSeen": "2026-10-30 00:03",
-            "LastSeen": "2026-10-31 20:11",
+            "LastSeen": "2026-11-01 13:19",
             "ResolvedAt": ""
         },
         {
@@ -712,7 +780,7 @@
             ],
             "Status": 1,
             "FirstSeen": "2026-10-30 00:03",
-            "LastSeen": "2026-10-31 20:11",
+            "LastSeen": "2026-11-01 13:19",
             "ResolvedAt": ""
         },
         {
@@ -729,7 +797,7 @@
             ],
             "Status": 1,
             "FirstSeen": "2026-10-30 00:03",
-            "LastSeen": "2026-10-31 20:11",
+            "LastSeen": "2026-11-01 13:19",
             "ResolvedAt": ""
         },
         {
@@ -746,7 +814,7 @@
             ],
             "Status": 1,
             "FirstSeen": "2026-10-30 00:03",
-            "LastSeen": "2026-10-31 20:11",
+            "LastSeen": "2026-11-01 13:19",
             "ResolvedAt": ""
         },
         {
@@ -763,7 +831,7 @@
             ],
             "Status": 1,
             "FirstSeen": "2026-10-30 00:03",
-            "LastSeen": "2026-10-31 20:11",
+            "LastSeen": "2026-11-01 13:19",
             "ResolvedAt": ""
         },
         {
@@ -780,7 +848,7 @@
             ],
             "Status": 1,
             "FirstSeen": "2026-10-30 00:03",
-            "LastSeen": "2026-10-31 20:11",
+            "LastSeen": "2026-11-01 13:19",
             "ResolvedAt": ""
         },
         {
@@ -797,7 +865,7 @@
             ],
             "Status": 1,
             "FirstSeen": "2026-10-30 00:03",
-            "LastSeen": "2026-10-31 20:11",
+            "LastSeen": "2026-11-01 13:19",
             "ResolvedAt": ""
         },
         {
@@ -814,7 +882,7 @@
             ],
             "Status": 1,
             "FirstSeen": "2026-10-30 00:03",
-            "LastSeen": "2026-10-31 20:11",
+            "LastSeen": "2026-11-01 13:19",
             "ResolvedAt": ""
         },
         {
@@ -834,7 +902,7 @@
             ],
             "Status": 1,
             "FirstSeen": "2026-10-31 13:35",
-            "LastSeen": "2026-10-31 20:11",
+            "LastSeen": "2026-11-01 13:19",
             "ResolvedAt": ""
         },
         {

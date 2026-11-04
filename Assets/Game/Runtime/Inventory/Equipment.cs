@@ -40,7 +40,8 @@ public class Equipment : BaseBehaviour
         Inventory.TakeSlot(InInventorySlot);
         int previous = Equipped[(int)row.EquipSlot];
         Equip(stack.ItemId);
-        if (previous != 0)
+        // 벗은 장비는 방금 비운 칸으로 (드래그 앤 드롭에서 두 아이템이 자리를 바꾼 것처럼 보이게).
+        if (previous != 0 && Inventory.Put(InInventorySlot, previous, 1) == false)
         {
             Inventory.Add(previous, 1);
         }
@@ -91,7 +92,36 @@ public class Equipment : BaseBehaviour
             return;
         }
 
-        unequipInternal(slot);
+        removeEquipped(InSlot);
+    }
+
+    /// <summary>
+    /// 드래그 앤 드롭: InSlot 장비를 인벤토리 InInventorySlot 칸으로 벗는다. 그 칸이 비었으면 그대로, 같은 부위 장비가 있으면 서로 바꾼다.
+    /// </summary>
+    public bool UnequipTo(EEquipSlot InSlot, int InInventorySlot)
+    {
+        int itemId = Equipped[(int)InSlot];
+        if (itemId == 0)
+        {
+            return false;
+        }
+
+        var target = Inventory.Slots[InInventorySlot];
+        if (target.IsEmpty == true)
+        {
+            Inventory.Put(InInventorySlot, itemId, 1);
+            removeEquipped(InSlot);
+            return true;
+        }
+
+        ItemRow row;
+        bool sameSlot = Tables.Root.Item.TryGet(target.ItemId, out row) == true && row.EquipSlot == InSlot;
+        return sameSlot == true && EquipFromInventory(InInventorySlot) == true;
+    }
+
+    private void removeEquipped(EEquipSlot InSlot)
+    {
+        unequipInternal((int)InSlot);
         if (InSlot == EEquipSlot.Weapon)
         {
             applyWeapon(Tables.ConstInt(EConst.UnarmedWeaponId));

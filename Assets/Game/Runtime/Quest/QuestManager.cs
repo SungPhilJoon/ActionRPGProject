@@ -4,24 +4,20 @@ using UnityEngine;
 /// <summary>
 /// 퀘스트 진행 (QuestTable 의 한 줄짜리 체인: 튜토리얼 → 사냥 → 보스).
 ///  - 첫 플레이어가 스폰되면 EConst.FirstQuestId 부터 시작한다.
-///  - 게임 이벤트(EventBus)를 구독해 현재 퀘스트의 목표만 센다. 이동 거리 · 기어 레벨처럼 연속 값은 Update 에서 본다.
-///  - 장비 · 기어 레벨 목표는 "지금 상태" 를 보므로 시작할 때 이미 만족하면 바로 완료된다.
+///  - 게임 이벤트(EventBus)를 구독해 지금 목표 객체(QuestObjective)의 가상 메서드로 넘긴다 — 무엇을 셀지는 목표 클래스가 안다 (QuestObjectives.cs).
+///    2026-11-01: 예전에는 EQuestObjective 를 switch / if 로 나눠 여기서 직접 셌다.
 ///  - 완료 → 보상 지급 → NextDelay 뒤 다음 퀘스트. Next 가 0 이면 QuestsCompletedEvent.
 /// 게임플레이 코드는 이 매니저를 모른다 (이벤트만 발행). UI 는 QuestChangedEvent 를 받는다.
 /// </summary>
 public class QuestManager : IManager
 {
     private const float NextDelay = 2.5f;
-    /// <summary>한 프레임에 이보다 많이 움직이면 순간 이동(리스폰 · tp)으로 보고 이동 거리에 넣지 않는다.</summary>
-    private const float TeleportThreshold = 3.0f;
 
-    private Vector3 LastPosition;
-    private bool HasLastPosition;
-    /// <summary>이동 목표 누적 거리. 진행도는 정수 m 지만 프레임당 이동은 1m 미만이라 따로 둔다.</summary>
-    private float MoveAccumulated;
     private float NextRemaining;
 
     public QuestRow Current { get; private set; }
+    /// <summary>지금 퀘스트의 목표 객체 (Current 의 Objective 종류).</summary>
+    public QuestObjective Objective { get; private set; }
     public int Progress { get; private set; }
     public bool IsCompleted { get; private set; }
     public bool IsAllCompleted { get; private set; }
@@ -29,6 +25,12 @@ public class QuestManager : IManager
     public int Goal
     {
         get { return Current != null ? Mathf.Max(1, Current.Count) : 0; }
+    }
+
+    /// <summary>진행 중(완료 전)인 목표. 없으면 null.</summary>
+    private QuestObjective active
+    {
+        get { return Current != null && IsCompleted == false ? Objective : null; }
     }
 
     void IManager.Initialize()
@@ -52,6 +54,7 @@ public class QuestManager : IManager
         EventBus<ActorDiedEvent>.Unsubscribe(onActorDied);
         EventBus<PlayerFedEvent>.Unsubscribe(onFed);
         Current = null;
+        Objective = null;
     }
 
     void IManager.Update(float InDeltaTime)
@@ -73,19 +76,9 @@ public class QuestManager : IManager
         }
 
         var player = PlayerCharacter.Local;
-        if (player == null)
+        if (player != null && Objective != null)
         {
-            return;
-        }
-
-        switch (Current.Objective)
-        {
-            case EQuestObjective.Move:
-                trackMove(player);
-                break;
-            case EQuestObjective.GearLevel:
-                checkState(player);
-                break;
+            Objective.Tick(player, InDeltaTime);
         }
     }
 
@@ -98,19 +91,26 @@ public class QuestManager : IManager
             return false;
         }
 
+        var objective = KindRegistry<QuestObjective>.Create((int)row.Objective);
+        if (objective == null)
+        {
+            Log.Error($"QuestManager: quest {row.Index} objective {row.Objective} has no QuestObjective class");
+            return false;
+        }
+
+        objective.Bind(this, row);
         Current = row;
+        Objective = objective;
         Progress = 0;
         IsCompleted = false;
         IsAllCompleted = false;
-        HasLastPosition = false;
-        MoveAccumulated = 0.0f;
         EventBus<NotifyEvent>.Publish(new NotifyEvent { TextId = (int)EText.QuestNew, Arg = Tables.Text(row.TitleId), Color = UIUtil.GoldColor });
         publishChanged();
 
         var player = PlayerCharacter.Local;
         if (player != null)
         {
-            checkState(player);
+            Objective.OnBegin(player);
         }
 
         return true;
@@ -124,7 +124,7 @@ public class QuestManager : IManager
             return;
         }
 
-        addProgress(Goal);
+        AddProgress(Goal);
     }
 
     /// <summary>현재 목표가 특정 몬스터를 노릴 때, 가장 가까운 살아 있는 대상까지의 거리 (HUD 안내용).</summary>
@@ -134,180 +134,25 @@ public class QuestManager : IManager
         return TryGetNearestTarget(InFrom, out position, out OutDistance);
     }
 
-    /// <summary>위와 같고 대상 위치도 준다 (지도 퀘스트 표식).</summary>
+    /// <summary>위와 같고 대상 위치도 준다.</summary>
     public bool TryGetNearestTarget(Vector3 InFrom, out Vector3 OutPosition, out float OutDistance)
     {
-        OutDistance = 0.0f;
         OutPosition = Vector3.zero;
-        if (Current == null || IsCompleted == true)
-        {
-            return false;
-        }
-
-        bool targetsMonster = Current.Objective == EQuestObjective.Kill || Current.Objective == EQuestObjective.Feed;
-        if (targetsMonster == false)
-        {
-            return false;
-        }
-
-        var registry = Managers.Get<ActorRegistry>();
-        if (registry == null)
-        {
-            return false;
-        }
-
-        float best = float.MaxValue;
-        var actors = registry.All;
-        for (int i = 0; i < actors.Count; ++i)
-        {
-            var actor = actors[i];
-            if (actor == null || actor.IsDead == true || isTargetCharacter(actor) == false)
-            {
-                continue;
-            }
-
-            float distance = Vector3.Distance(InFrom, actor.transform.position);
-            if (distance < best)
-            {
-                best = distance;
-                OutPosition = actor.transform.position;
-            }
-        }
-
-        if (best == float.MaxValue)
-        {
-            return false;
-        }
-
-        OutDistance = best;
-        return true;
+        OutDistance = 0.0f;
+        var objective = active as MonsterObjective;
+        return objective != null && QuestGuide.FindNearestActor(InFrom, objective.IsTargetCharacter, out OutPosition, out OutDistance) == true;
     }
 
-    /// <summary>
-    /// 퀘스트를 진행하러 갈 곳 (미니맵 · 월드맵 가이드, HUD 거리). 위치가 의미 없는 목표(이동 · 어빌리티 · 제작 · 장비 · 기어 · 성 심장)는 false.
-    ///  - 처치 · 흡혈: 가장 가까운 살아 있는 대상 → 없으면(리스폰 대기) 그 몬스터가 나오는 SpawnTable 지점
-    ///  - 상점: 가장 가까운 상인 (MapMarkers) → 없으면 SpawnTable 상인 지점
-    ///  - 채집: 목표 아이템을 떨구는 채집 노드의 SpawnTable 지점 중 가장 가까운 곳
-    ///  - 관 등 성 건축물(성 심장 제외): 성 심장 근처에만 지을 수 있으므로 지어 둔 성
-    /// </summary>
+    /// <summary>퀘스트를 진행하러 갈 곳 (미니맵 · 월드맵 길 안내, HUD 거리). 어디인지는 목표 클래스가 정한다 — 장소가 없으면 false.</summary>
     public bool TryGetGuidePosition(Vector3 InFrom, out Vector3 OutPosition)
     {
         OutPosition = Vector3.zero;
-        if (Current == null || IsCompleted == true)
-        {
-            return false;
-        }
-
-        float distance;
-        switch (Current.Objective)
-        {
-            case EQuestObjective.Kill:
-            case EQuestObjective.Feed:
-                if (TryGetNearestTarget(InFrom, out OutPosition, out distance) == true)
-                {
-                    return true;
-                }
-
-                return findNearestSpawn(InFrom, ESpawnKind.Monster, out OutPosition);
-            case EQuestObjective.Buy:
-                if (findNearestMarker(InFrom, EMapMarker.Merchant, out OutPosition) == true)
-                {
-                    return true;
-                }
-
-                return findNearestSpawn(InFrom, ESpawnKind.Merchant, out OutPosition);
-            case EQuestObjective.Gather:
-                return findNearestSpawn(InFrom, ESpawnKind.Resource, out OutPosition);
-            case EQuestObjective.Build:
-                StructureRow structure;
-                bool needsHeart = Tables.Root.Structure.TryGet(Current.Target, out structure) == true && structure.RequiresHeart == true;
-                return needsHeart == true && findNearestMarker(InFrom, EMapMarker.Castle, out OutPosition) == true;
-            default:
-                return false;
-        }
+        var objective = active;
+        return objective != null && objective.TryGetGuidePosition(InFrom, out OutPosition) == true;
     }
 
-    private static bool findNearestMarker(Vector3 InFrom, EMapMarker InKind, out Vector3 OutPosition)
-    {
-        OutPosition = Vector3.zero;
-        float best = float.MaxValue;
-        var entries = MapMarkers.All;
-        for (int i = 0; i < entries.Count; ++i)
-        {
-            if (entries[i].Kind != InKind || entries[i].Target == null)
-            {
-                continue;
-            }
-
-            float distance = Vector3.Distance(InFrom, entries[i].Target.position);
-            if (distance < best)
-            {
-                best = distance;
-                OutPosition = entries[i].Target.position;
-            }
-        }
-
-        return best != float.MaxValue;
-    }
-
-    /// <summary>InKind 지점 중 현재 목표와 맞는 가장 가까운 곳 (몬스터 = 캐릭터, 채집 = 노드가 떨구는 아이템).</summary>
-    private bool findNearestSpawn(Vector3 InFrom, ESpawnKind InKind, out Vector3 OutPosition)
-    {
-        OutPosition = Vector3.zero;
-        float best = float.MaxValue;
-        var rows = Tables.Root.Spawn.All;
-        for (int i = 0; i < rows.Count; ++i)
-        {
-            var row = rows[i];
-            if (row.Kind != InKind || matchesSpawn(row) == false)
-            {
-                continue;
-            }
-
-            float distance = Vector3.Distance(InFrom, row.Position);
-            if (distance < best)
-            {
-                best = distance;
-                OutPosition = row.Position;
-            }
-        }
-
-        return best != float.MaxValue;
-    }
-
-    private bool matchesSpawn(SpawnRow InRow)
-    {
-        switch (InRow.Kind)
-        {
-            case ESpawnKind.Monster:
-                return matchesTarget(InRow.RefId);
-            case ESpawnKind.Resource:
-                ResourceNodeRow node;
-                return Tables.Root.ResourceNode.TryGet(InRow.RefId, out node) == true && matchesTarget(node.DropItem);
-            default:
-                return true;
-        }
-    }
-
-    // ------------------------------------------------------------------ flow
-
-    private void startNext()
-    {
-        int next = Current.Next;
-        if (next != 0 && Begin(next) == true)
-        {
-            return;
-        }
-
-        Current = null;
-        IsCompleted = false;
-        IsAllCompleted = true;
-        publishChanged();
-        EventBus<NotifyEvent>.Publish(new NotifyEvent { TextId = (int)EText.QuestAllComplete, Color = new Color(1.0f, 0.25f, 0.3f) });
-        EventBus<QuestsCompletedEvent>.Publish(new QuestsCompletedEvent());
-    }
-
-    private void addProgress(int InAmount)
+    /// <summary>진행도를 올린다 (목표 클래스가 부른다).</summary>
+    internal void AddProgress(int InAmount)
     {
         if (Current == null || IsCompleted == true || InAmount <= 0)
         {
@@ -324,8 +169,14 @@ public class QuestManager : IManager
         publishChanged();
     }
 
-    private void setProgress(int InValue)
+    /// <summary>진행도를 지금 상태로 맞춘다 (상태형 · 누적형 목표).</summary>
+    internal void SetProgress(int InValue)
     {
+        if (Current == null || IsCompleted == true)
+        {
+            return;
+        }
+
         int value = Mathf.Clamp(InValue, 0, Goal);
         if (value == Progress)
         {
@@ -340,6 +191,25 @@ public class QuestManager : IManager
         }
 
         publishChanged();
+    }
+
+    // ------------------------------------------------------------------ flow
+
+    private void startNext()
+    {
+        int next = Current.Next;
+        if (next != 0 && Begin(next) == true)
+        {
+            return;
+        }
+
+        Current = null;
+        Objective = null;
+        IsCompleted = false;
+        IsAllCompleted = true;
+        publishChanged();
+        EventBus<NotifyEvent>.Publish(new NotifyEvent { TextId = (int)EText.QuestAllComplete, Color = new Color(1.0f, 0.25f, 0.3f) });
+        EventBus<QuestsCompletedEvent>.Publish(new QuestsCompletedEvent());
     }
 
     private void complete()
@@ -368,71 +238,7 @@ public class QuestManager : IManager
         EventBus<QuestChangedEvent>.Publish(new QuestChangedEvent { Quest = Current, Progress = Progress, Completed = IsCompleted });
     }
 
-    private bool isActive(EQuestObjective InObjective)
-    {
-        return Current != null && IsCompleted == false && Current.Objective == InObjective;
-    }
-
-    /// <summary>Target 0 = 아무거나.</summary>
-    private bool matchesTarget(int InValue)
-    {
-        return Current.Target == 0 || Current.Target == InValue;
-    }
-
-    private bool isTargetCharacter(Actor InActor)
-    {
-        if (InActor.IsPlayer == true || InActor.Team == ETeam.Neutral)
-        {
-            return false;
-        }
-
-        return matchesTarget(InActor.CharacterId);
-    }
-
-    // ------------------------------------------------------------------ objectives
-
-    private void trackMove(PlayerCharacter InPlayer)
-    {
-        Vector3 position = InPlayer.transform.position;
-        if (HasLastPosition == false || InPlayer.IsDead == true)
-        {
-            LastPosition = position;
-            HasLastPosition = true;
-            return;
-        }
-
-        Vector3 delta = position - LastPosition;
-        delta.y = 0.0f;
-        LastPosition = position;
-        float distance = delta.magnitude;
-        if (distance > TeleportThreshold)
-        {
-            return;
-        }
-
-        MoveAccumulated += distance;
-        setProgress(Mathf.FloorToInt(MoveAccumulated));
-    }
-
-    /// <summary>상태형 목표 (장비 · 기어 레벨): 지금 상태로 진행도를 정한다.</summary>
-    private void checkState(PlayerCharacter InPlayer)
-    {
-        if (Current == null || IsCompleted == true)
-        {
-            return;
-        }
-
-        switch (Current.Objective)
-        {
-            case EQuestObjective.Equip:
-                bool equipped = InPlayer.Equipment.GetEquipped((EEquipSlot)Current.Target) != 0;
-                setProgress(equipped == true ? Goal : 0);
-                break;
-            case EQuestObjective.GearLevel:
-                setProgress(Mathf.FloorToInt(InPlayer.Attributes.Get(EAttribute.Level) + 0.01f));
-                break;
-        }
-    }
+    // ------------------------------------------------------------------ events → 지금 목표
 
     private void onPlayerSpawned(PlayerSpawnedEvent InEvent)
     {
@@ -446,71 +252,35 @@ public class QuestManager : IManager
 
     private void onAbilityUsed(PlayerAbilityUsedEvent InEvent)
     {
-        if (isActive(EQuestObjective.UseAbility) == true && Current.Target == (int)InEvent.Slot)
-        {
-            addProgress(1);
-        }
+        active?.OnAbilityUsed(InEvent);
     }
 
     private void onItemObtained(ItemObtainedEvent InEvent)
     {
-        if (Current == null || IsCompleted == true || InEvent.Count <= 0 || matchesTarget(InEvent.ItemId) == false)
-        {
-            return;
-        }
-
-        if (Current.Objective == EQuestObjective.Gather && InEvent.Source == EItemSource.Harvest)
-        {
-            addProgress(InEvent.Count);
-        }
-        else if (Current.Objective == EQuestObjective.Craft && InEvent.Source == EItemSource.Craft)
-        {
-            addProgress(1);
-        }
-        else if (Current.Objective == EQuestObjective.Buy && InEvent.Source == EItemSource.Shop)
-        {
-            addProgress(1);
-        }
+        active?.OnItemObtained(InEvent);
     }
 
     private void onEquipmentChanged(EquipmentChangedEvent InEvent)
     {
         var player = PlayerCharacter.Local;
-        if (player == null || InEvent.Equipment != player.Equipment)
+        if (player != null && InEvent.Equipment == player.Equipment)
         {
-            return;
+            active?.OnEquipmentChanged(player);
         }
-
-        // 기어 레벨은 장비가 바뀔 때 다시 계산되므로 여기서도 본다 (Update 폴링은 치트 level 대비).
-        checkState(player);
     }
 
     private void onStructurePlaced(StructurePlacedEvent InEvent)
     {
-        if (isActive(EQuestObjective.Build) == true && InEvent.Structure != null && matchesTarget(InEvent.Structure.Row.Index) == true)
-        {
-            addProgress(1);
-        }
+        active?.OnStructurePlaced(InEvent);
     }
 
     private void onActorDied(ActorDiedEvent InEvent)
     {
-        if (isActive(EQuestObjective.Kill) == false || InEvent.Victim == null || InEvent.Killer == null)
-        {
-            return;
-        }
-
-        if (InEvent.Killer.IsPlayer == true && isTargetCharacter(InEvent.Victim) == true)
-        {
-            addProgress(1);
-        }
+        active?.OnActorDied(InEvent);
     }
 
     private void onFed(PlayerFedEvent InEvent)
     {
-        if (isActive(EQuestObjective.Feed) == true && matchesTarget(InEvent.CharacterId) == true)
-        {
-            addProgress(1);
-        }
+        active?.OnFed(InEvent);
     }
 }

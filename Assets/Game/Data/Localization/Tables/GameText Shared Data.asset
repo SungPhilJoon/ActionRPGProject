@@ -891,6 +891,66 @@ MonoBehaviour:
     m_Key: StatusHaste
     m_Metadata:
       m_Items: []
+  - m_Id: 90
+    m_Key: ToastAcquired
+    m_Metadata:
+      m_Items: []
+  - m_Id: 91
+    m_Key: ToastHarvest
+    m_Metadata:
+      m_Items: []
+  - m_Id: 92
+    m_Key: ToastCraft
+    m_Metadata:
+      m_Items: []
+  - m_Id: 93
+    m_Key: ToastShop
+    m_Metadata:
+      m_Items: []
+  - m_Id: 94
+    m_Key: ToastLoot
+    m_Metadata:
+      m_Items: []
+  - m_Id: 95
+    m_Key: ToastReward
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3600
+    m_Key: Text3600
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1007
+    m_Key: Text1007
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3601
+    m_Key: Text3601
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3602
+    m_Key: Text3602
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1008
+    m_Key: Text1008
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1009
+    m_Key: Text1009
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1010
+    m_Key: Text1010
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1011
+    m_Key: Text1011
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3603
+    m_Key: Text3603
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

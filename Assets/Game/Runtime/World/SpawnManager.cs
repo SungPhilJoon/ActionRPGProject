@@ -54,7 +54,7 @@ public class SpawnManager : IManager
             }
 
             Respawns.RemoveAt(i);
-            spawnMonsterAsync(pending.Row.RefId, randomPoint(pending.Row), pending.Row).Forget();
+            SpawnMonsterAsync(pending.Row.RefId, randomPoint(pending.Row), pending.Row).Forget();
         }
     }
 
@@ -63,7 +63,8 @@ public class SpawnManager : IManager
         var rows = Tables.Root.Spawn.All;
         for (int i = 0; i < rows.Count; ++i)
         {
-            if (rows[i].Kind == ESpawnKind.PlayerStart)
+            var handler = KindRegistry<SpawnHandler>.Get((int)rows[i].Kind);
+            if (handler != null && handler.IsPlayerStart == true)
             {
                 return CombatUtil.SnapToGround(rows[i].Position);
             }
@@ -83,18 +84,11 @@ public class SpawnManager : IManager
             var random = new System.Random(row.Index);
             for (int n = 0; n < Mathf.Max(1, row.Count); ++n)
             {
-                Vector3 position = randomPoint(row, random);
-                switch (row.Kind)
+                // 무엇을 어떻게 놓을지는 SpawnKind 별 SpawnHandler 가 안다 (SpawnHandlers.cs).
+                var handler = KindRegistry<SpawnHandler>.Get((int)row.Kind);
+                if (handler != null)
                 {
-                    case ESpawnKind.Monster:
-                        tasks.Add(spawnMonsterAsync(row.RefId, position, row));
-                        break;
-                    case ESpawnKind.Resource:
-                        tasks.Add(spawnResourceAsync(row.RefId, position, (float)random.NextDouble() * 360.0f));
-                        break;
-                    case ESpawnKind.Merchant:
-                        tasks.Add(spawnMerchantAsync(row.RefId, position));
-                        break;
+                    tasks.Add(handler.Spawn(this, row, randomPoint(row, random), random));
                 }
             }
         }
@@ -105,10 +99,10 @@ public class SpawnManager : IManager
     /// <summary>치트/디버그용 즉시 스폰.</summary>
     public void SpawnMonster(int InCharacterId, Vector3 InPosition)
     {
-        spawnMonsterAsync(InCharacterId, InPosition, null).Forget();
+        SpawnMonsterAsync(InCharacterId, InPosition, null).Forget();
     }
 
-    private async UniTask spawnMonsterAsync(int InCharacterId, Vector3 InPosition, SpawnRow InRow)
+    internal async UniTask SpawnMonsterAsync(int InCharacterId, Vector3 InPosition, SpawnRow InRow)
     {
         CharacterRow character;
         if (Tables.Root.Character.TryGet(InCharacterId, out character) == false)
@@ -139,7 +133,7 @@ public class SpawnManager : IManager
         }
     }
 
-    private async UniTask spawnResourceAsync(int InNodeId, Vector3 InPosition, float InYaw)
+    internal async UniTask SpawnResourceAsync(int InNodeId, Vector3 InPosition, float InYaw)
     {
         ResourceNodeRow node;
         if (Tables.Root.ResourceNode.TryGet(InNodeId, out node) == false)
@@ -158,7 +152,7 @@ public class SpawnManager : IManager
         ComponentUtil.GetOrAdd<ResourceNode>(instance).Initialize(node);
     }
 
-    private async UniTask spawnMerchantAsync(int InCharacterId, Vector3 InPosition)
+    internal async UniTask SpawnMerchantAsync(int InCharacterId, Vector3 InPosition)
     {
         CharacterRow character;
         if (Tables.Root.Character.TryGet(InCharacterId, out character) == false)

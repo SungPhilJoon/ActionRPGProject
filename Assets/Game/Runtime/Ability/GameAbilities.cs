@@ -11,6 +11,7 @@ using UnityEngine;
 /// 컬럼: CastTime = 타격 시점, MoveLock = 동작 길이, Range/Angle = 부채꼴, Count = 콤보 단계 수, ComboWindow = 다음 단계 입력 유예.
 /// 마지막 단계는 피해 ×1.5.
 /// </summary>
+[Kind(EAbilityType.MeleeCombo)]
 public class MeleeComboAbility : GameAbility
 {
     private const float FinisherScale = 1.5f;
@@ -82,6 +83,7 @@ public class MeleeComboAbility : GameAbility
 /// <summary>
 /// 발사체. 컬럼: CastTime = 발사 시점, Count = 발사 수, Spread = 부채꼴 각도, Speed/Range = 속도/사거리, Radius = 판정 반지름, Projectile = AssetTable 인덱스.
 /// </summary>
+[Kind(EAbilityType.Projectile)]
 public class ProjectileAbility : GameAbility
 {
     protected override void OnActivate(AbilityActivationInfo InInfo)
@@ -122,6 +124,7 @@ public class ProjectileAbility : GameAbility
 /// 대시 (Veil of Blood 등). 컬럼: Range = 거리, CastTime = 이동 시간, Radius = 경로 피해 반지름(Damage > 0 일 때),
 /// SelfEffects = 대시 직후 부여 (강화/무적 등).
 /// </summary>
+[Kind(EAbilityType.Dash)]
 public class DashAbility : GameAbility
 {
     private readonly HashSet<Actor> AlreadyHit = new HashSet<Actor>();
@@ -176,6 +179,7 @@ public class DashAbility : GameAbility
 /// 범위 폭발 / 지속 범위. 컬럼: Range > 0 이면 조준 지점(최대 Range), 0 이면 자신 중심.
 /// CastTime = 첫 타격, Count = 타격 횟수, Spread = 타격 간격(초), Radius = 반지름, MoveLock = 시전 중 이동 잠금.
 /// </summary>
+[Kind(EAbilityType.AreaBurst)]
 public class AreaBurstAbility : GameAbility
 {
     private Vector3 Center;
@@ -223,6 +227,7 @@ public class AreaBurstAbility : GameAbility
 }
 
 /// <summary>자기 강화 (보호막/가속 등). CastTime 뒤 SelfEffects 부여.</summary>
+[Kind(EAbilityType.SelfBuff)]
 public class SelfBuffAbility : GameAbility
 {
     protected override void OnActivate(AbilityActivationInfo InInfo)
@@ -247,6 +252,7 @@ public class SelfBuffAbility : GameAbility
 /// <summary>
 /// 도약 강타 (보스). 조준 지점으로 CastTime 동안 뛰어올라 착지 시 Radius 범위 피해.
 /// </summary>
+[Kind(EAbilityType.Leap)]
 public class LeapAbility : GameAbility
 {
     protected override void OnActivate(AbilityActivationInfo InInfo)
@@ -275,6 +281,7 @@ public class LeapAbility : GameAbility
 /// 흡혈 (V Rising 의 Feed). 체력이 FeedHealthRatio 이하인 적에게 FeedDuration 동안 채널링 →
 /// 대상 처치 + 혈액 획득. V Blood 보유자라면 어빌리티 해금.
 /// </summary>
+[Kind(EAbilityType.Feed)]
 public class FeedAbility : GameAbility
 {
     private Actor Victim;

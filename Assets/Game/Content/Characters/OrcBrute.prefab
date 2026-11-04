@@ -1154,8 +1154,8 @@ GameObject:
   - component: {fileID: 5269055281354092142}
   - component: {fileID: 1251090952346607060}
   - component: {fileID: 463882940277106541}
-  - component: {fileID: 7465756059916479758}
   - component: {fileID: 5594614158289954553}
+  - component: {fileID: 7465756059916479758}
   - component: {fileID: 4761271808839112938}
   - component: {fileID: 3555996454061072019}
   m_Layer: 9
@@ -1215,18 +1215,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08ff7f7260f2f06409d7314eeca27629, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Game.Runtime::MonsterBrain
---- !u!114 &7465756059916479758
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2225506878872791433}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 23b6990989197a748a235be6c64436ce, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Framework.Runtime::Framework.Ability.AbilitySystemComponent
 --- !u!114 &5594614158289954553
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1239,6 +1227,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d2fcbf37bae593468d1423d5da88165, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Game.Runtime::ActorMotor
+  ConfineToNavMesh: 0
+--- !u!114 &7465756059916479758
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2225506878872791433}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23b6990989197a748a235be6c64436ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Framework.Runtime::Framework.Ability.AbilitySystemComponent
 --- !u!114 &4761271808839112938
 MonoBehaviour:
   m_ObjectHideFlags: 0

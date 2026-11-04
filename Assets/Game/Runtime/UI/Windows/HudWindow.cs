@@ -5,7 +5,7 @@ using TMPro;
 using UnityEngine;
 
 /// <summary>
-/// 인게임 HUD: 체력/보호막, 혈액, 어빌리티 바(쿨다운), 낮밤 시계, 햇빛 경고, 보스 체력, 퀘스트 추적기, 상호작용 프롬프트, 토스트, 사망 · 클리어 오버레이.
+/// 인게임 HUD: 체력/보호막, 혈액, 어빌리티 바(쿨다운), 낮밤 시계, 햇빛 경고, 보스 체력, 퀘스트 추적기, 상호작용 프롬프트, 사망 · 클리어 오버레이. 알림은 ToastWindow.
 /// 데이터는 EventBus 구독 + 매 프레임 폴링(쿨다운처럼 연속 값)으로 갱신한다. 레이아웃은 프리팹 UI/Windows/HudWindow.
 /// </summary>
 public class HudWindow : UIWindow
@@ -42,7 +42,6 @@ public class HudWindow : UIWindow
 
     [Header("Messages")]
     public TextMeshProUGUI Prompt;
-    public TextMeshProUGUI Toast;
     public TextMeshProUGUI Hints;
     public RectTransform DeathRoot;
     public TextMeshProUGUI DeathText;
@@ -61,16 +60,15 @@ public class HudWindow : UIWindow
 
     private const float VictorySeconds = 10.0f;
 
-    private float ToastRemaining;
     private float VictoryRemaining;
     private string QuestProgressText = string.Empty;
     private readonly StringBuilder TargetText = new StringBuilder();
     private Actor Boss;
     private IInteractable Interactable;
 
-    public override bool BlocksGameInput
+    public override UILayer GetLayer()
     {
-        get { return false; }
+        return UILayer.Hud;
     }
 
     /// <summary>키 배치는 InputTable.csv 라 실행 중에 정해진다 → 키 라벨과 안내 문구만 여기서 채운다.</summary>
@@ -101,7 +99,6 @@ public class HudWindow : UIWindow
     {
         EventBus<LanguageChangedEvent>.Subscribe(onLanguageChanged);
         EventBus<AbilitySlotsChangedEvent>.Subscribe(onSlotsChanged);
-        EventBus<NotifyEvent>.Subscribe(onNotify);
         EventBus<BossEngagedEvent>.Subscribe(onBoss);
         EventBus<InteractTargetChangedEvent>.Subscribe(onInteractTarget);
         EventBus<BloodChangedEvent>.Subscribe(onBlood);
@@ -114,7 +111,6 @@ public class HudWindow : UIWindow
     {
         EventBus<LanguageChangedEvent>.Unsubscribe(onLanguageChanged);
         EventBus<AbilitySlotsChangedEvent>.Unsubscribe(onSlotsChanged);
-        EventBus<NotifyEvent>.Unsubscribe(onNotify);
         EventBus<BossEngagedEvent>.Unsubscribe(onBoss);
         EventBus<InteractTargetChangedEvent>.Unsubscribe(onInteractTarget);
         EventBus<BloodChangedEvent>.Unsubscribe(onBlood);
@@ -165,13 +161,6 @@ public class HudWindow : UIWindow
         updateTarget(player);
         updateQuest(player);
 
-        if (ToastRemaining > 0.0f)
-        {
-            ToastRemaining -= Time.deltaTime;
-            var color = Toast.color;
-            color.a = Mathf.Clamp01(ToastRemaining);
-            Toast.color = color;
-        }
 
         DeathRoot.gameObject.SetActive(player.IsDead);
         if (player.IsDead == true)
@@ -433,13 +422,6 @@ public class HudWindow : UIWindow
         onBlood(new BloodChangedEvent { BloodType = InEvent.Player.Blood.BloodType, Quality = InEvent.Player.Blood.Quality });
     }
 
-    private void onNotify(NotifyEvent InEvent)
-    {
-        string text = Tables.Text(InEvent.TextId);
-        Toast.text = string.IsNullOrEmpty(InEvent.Arg) == true ? text : $"{text} {InEvent.Arg}";
-        Toast.color = InEvent.Color.a > 0.0f ? InEvent.Color : Color.white;
-        ToastRemaining = 3.0f;
-    }
 
     private void onBoss(BossEngagedEvent InEvent)
     {

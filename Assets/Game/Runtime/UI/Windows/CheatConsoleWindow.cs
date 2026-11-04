@@ -7,6 +7,11 @@ using UnityEngine;
 /// <summary>치트 콘솔 (` 키). 입력 중에는 게임 입력을 막는다.</summary>
 public class CheatConsoleWindow : UIWindow
 {
+    public override UILayer GetLayer()
+    {
+        return UILayer.System;
+    }
+
     private const int VisibleLines = 18;
 
     public TMP_InputField Input;

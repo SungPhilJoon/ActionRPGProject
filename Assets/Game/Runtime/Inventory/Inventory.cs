@@ -152,6 +152,62 @@ public class Inventory : BaseBehaviour
         return true;
     }
 
+    /// <summary>
+    /// 드래그 앤 드롭: InFrom 칸을 InTo 칸으로. 같은 아이템이면 최대 스택까지 합치고(남으면 원래 칸에), 다르면 두 칸을 바꾼다.
+    /// </summary>
+    public bool Move(int InFrom, int InTo)
+    {
+        if (InFrom == InTo || isValid(InFrom) == false || isValid(InTo) == false || Slots[InFrom].IsEmpty == true)
+        {
+            return false;
+        }
+
+        var from = Slots[InFrom];
+        var to = Slots[InTo];
+        ItemRow row;
+        if (to.ItemId == from.ItemId && Tables.Root.Item.TryGet(from.ItemId, out row) == true)
+        {
+            int moved = Mathf.Min(from.Count, Mathf.Max(1, row.MaxStack) - to.Count);
+            if (moved <= 0)
+            {
+                return false;
+            }
+
+            Slots[InTo].Count += moved;
+            Slots[InFrom].Count -= moved;
+            if (Slots[InFrom].Count <= 0)
+            {
+                Slots[InFrom] = new ItemStack();
+            }
+        }
+        else
+        {
+            Slots[InFrom] = to;
+            Slots[InTo] = from;
+        }
+
+        notifyChanged();
+        return true;
+    }
+
+    /// <summary>InSlot 칸에 아이템을 놓는다 (비어 있을 때만 — 장비를 원하는 칸으로 벗기 등).</summary>
+    public bool Put(int InSlot, int InItemId, int InCount)
+    {
+        if (isValid(InSlot) == false || Slots[InSlot].IsEmpty == false || InCount <= 0)
+        {
+            return false;
+        }
+
+        Slots[InSlot] = new ItemStack { ItemId = InItemId, Count = InCount };
+        notifyChanged();
+        return true;
+    }
+
+    private bool isValid(int InSlot)
+    {
+        return InSlot >= 0 && InSlot < Slots.Length;
+    }
+
     public void TakeSlot(int InSlot)
     {
         Slots[InSlot] = new ItemStack();

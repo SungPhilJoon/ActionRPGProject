@@ -7,6 +7,7 @@ using UnityEngine;
 /// Content/{Address}.prefab 과 AnimatorController 를 굽는다. 런타임은 이 에셋을 모른다 (프리팹만 로드).
 /// 능력치·어빌리티는 CharacterTable.csv 가 원본이므로 여기에 두지 않고 CharacterId 로만 연결한다.
 /// </summary>
+[CreateAssetMenu(menuName = "Game/Monster Authoring", fileName = "New Monster Authoring")]
 public class MonsterAuthoring : ScriptableObject
 {
     [Serializable]

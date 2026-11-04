@@ -7,7 +7,7 @@
 | | BLOODLINE (현재) | 이전 프로젝트 (유지만) |
 |---|---|---|
 | 내용 | V Rising 리버스 데모, 오프라인 1인 (4인 협동 설계) | Netcode 4인 협동 덱/던전 액션 RPG 프레임워크 |
-| 코드 | `Assets/Framework`, `Assets/Game` | `Assets/Scripts`, `Assets/Editor`, `Packages/com.actionrpg.foundation` |
+| 코드 | `Packages/com.philjoon.framework`(Framework 패키지), `Assets/Game` | `Assets/Scripts`, `Assets/Editor`, `Packages/com.actionrpg.foundation` |
 | 시작 씬 | `Assets/Game/Scenes/World.unity` | `Assets/Scenes/MainMenu.unity` |
 | 메뉴 | `Game > …` | `ActionRPG > …` |
 | 문서 | **[VRising/README.md](VRising/README.md)** | [Legacy/README.md](Legacy/README.md) |

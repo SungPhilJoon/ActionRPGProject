@@ -178,9 +178,9 @@ MonoBehaviour:
     m_Localized: 'WASD move | LMB attack | Q/E weapon skills | Space Veil of Blood
       | R/C spells | T ultimate | F feed (low HP enemy) | G interact
 
-      Tab inventory
-      | K craft | B build | P shop | M world map | ` cheats | F8 balance meter |
-      Wheel zoom | Middle mouse rotate camera'
+      Tab
+      inventory | K craft | B build | P shop | M world map | ` cheats | F8 balance
+      meter | Wheel zoom | Middle mouse rotate camera'
     m_Metadata:
       m_Items: []
   - m_Id: 46
@@ -910,6 +910,66 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 83
     m_Localized: Haste
+    m_Metadata:
+      m_Items: []
+  - m_Id: 90
+    m_Localized: Acquired
+    m_Metadata:
+      m_Items: []
+  - m_Id: 91
+    m_Localized: Gathered
+    m_Metadata:
+      m_Items: []
+  - m_Id: 92
+    m_Localized: Crafted
+    m_Metadata:
+      m_Items: []
+  - m_Id: 93
+    m_Localized: Received
+    m_Metadata:
+      m_Items: []
+  - m_Id: 94
+    m_Localized: Loot
+    m_Metadata:
+      m_Items: []
+  - m_Id: 95
+    m_Localized: Reward
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3600
+    m_Localized: "\uADFC\uC811 \uACF5\uACA9"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1007
+    m_Localized: New Monster
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3601
+    m_Localized: "\uC0C8\uB85C\uC6B4 \uC6D0\uAC70\uB9AC \uACF5\uACA9"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3602
+    m_Localized: "\uC0C8\uB85C\uC6B4 \uADFC\uC811 \uACF5\uACA9"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1008
+    m_Localized: New Monster
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1009
+    m_Localized: Minotaurs
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1010
+    m_Localized: New Monster
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1011
+    m_Localized: MinotaursKing
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3603
+    m_Localized: NewEnrage
     m_Metadata:
       m_Items: []
   references:

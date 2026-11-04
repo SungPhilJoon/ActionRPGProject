@@ -24,7 +24,7 @@ public class BuildWindow : ListWindow
             var row = rows[i];
             bool canAfford = player.Inventory.Has(row.Costs, row.CostCounts);
             bool needsHeart = row.RequiresHeart == true && build.HasHeart == false;
-            bool heartDone = row.Type == EStructureType.CastleHeart && build.HasHeart == true;
+            bool heartDone = StructureKind.Of(row.Type).IsCastleHeart == true && build.HasHeart == true;
 
             string detail = $"{Tables.Text(EText.Requires)}: {UIUtil.CostText(player.Inventory, row.Costs, row.CostCounts)}";
             if (needsHeart == true)

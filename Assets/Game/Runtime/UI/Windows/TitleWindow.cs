@@ -9,6 +9,11 @@ using UnityEngine.UI;
 /// </summary>
 public class TitleWindow : UIWindow
 {
+    public override UILayer GetLayer()
+    {
+        return UILayer.System;
+    }
+
     public Action OnStartSinglePlayer;
 
     public TextMeshProUGUI Status;

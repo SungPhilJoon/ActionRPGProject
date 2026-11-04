@@ -25,6 +25,26 @@ public static class EffectLibrary
         Cache.Clear();
     }
 
+    /// <summary>
+    /// 코드에서 만든 정의를 등록한다 (GAS Tool 이 EffectTable 행을 추가한 것과 같은 결과 — 테스트 · 시연용).
+    /// 같은 Id 가 있으면 덮어쓴다. 테이블을 다시 읽으면(Clear) 사라진다.
+    /// </summary>
+    public static void Register(GameplayEffectDef InDef)
+    {
+        if (InDef == null || InDef.Id == 0)
+        {
+            return;
+        }
+
+        Cache[InDef.Id] = InDef;
+    }
+
+    /// <summary>Register 로 넣은 정의를 뺀다 (테이블 행이면 다음 Get 에서 다시 만든다).</summary>
+    public static void Unregister(int InEffectId)
+    {
+        Cache.Remove(InEffectId);
+    }
+
     public static GameplayEffectDef Get(int InEffectId)
     {
         if (InEffectId == 0)

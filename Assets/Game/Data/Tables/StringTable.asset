@@ -141,7 +141,7 @@ MonoBehaviour:
       Wheel zoom | Middle mouse rotate camera'
     Korean: "WASD \uC774\uB3D9 | \uC88C\uD074\uB9AD \uACF5\uACA9 | Q/E \uBB34\uAE30
       \uC2A4\uD0AC | Space \uD53C\uC758 \uC7A5\uB9C9 | R/C \uC8FC\uBB38 | T \uAD81\uADF9\uAE30
-      | F \uD761\uD608 (\uCCB4\uB825 \uB0AE\uC740 \uC801) | G \uC0C1\uD638\uC791\uC6A9\nTab
+      | F \uD761\uD608 (\uCCB4\uB825 \uB0AE\uC740 \uC801) | G \uC0C1\uD638\uC791\uC6A9\r\nTab
       \uC778\uBCA4\uD1A0\uB9AC | K \uC81C\uC791 | B \uAC74\uCD95 | P \uC0C1\uC810
       | M \uC6D4\uB4DC\uB9F5 | ` \uCE58\uD2B8 | F8 \uBC38\uB7F0\uC2A4 \uBBF8\uD130
       | \uD720 \uC90C | \uD720 \uD074\uB9AD \uCE74\uBA54\uB77C \uD68C\uC804"
@@ -436,7 +436,7 @@ MonoBehaviour:
 
       <size=26>The Minotaur Warlord has fallen. Demo
       complete - thanks for playing!</size>'
-    Korean: "V \uBE14\uB7EC\uB4DC \uD68D\uB4DD\n<size=26>\uBBF8\uB178\uD0C0\uC6B0\uB85C\uC2A4
+    Korean: "V \uBE14\uB7EC\uB4DC \uD68D\uB4DD\r\n<size=26>\uBBF8\uB178\uD0C0\uC6B0\uB85C\uC2A4
       \uAD70\uC8FC\uAC00 \uC4F0\uB7EC\uC84C\uC2B5\uB2C8\uB2E4. \uB370\uBAA8 \uD074\uB9AC\uC5B4
       - \uD50C\uB808\uC774\uD574 \uC8FC\uC154\uC11C \uAC10\uC0AC\uD569\uB2C8\uB2E4!</size>"
   - Index: 56
@@ -720,3 +720,48 @@ MonoBehaviour:
   - Index: 83
     Text: Haste
     Korean: "\uAC00\uC18D"
+  - Index: 90
+    Text: Acquired
+    Korean: "\uD68D\uB4DD"
+  - Index: 91
+    Text: Gathered
+    Korean: "\uCC44\uC9D1"
+  - Index: 92
+    Text: Crafted
+    Korean: "\uC81C\uC791"
+  - Index: 93
+    Text: Received
+    Korean: "\uBC1B\uC74C"
+  - Index: 94
+    Text: Loot
+    Korean: "\uC804\uB9AC\uD488"
+  - Index: 95
+    Text: Reward
+    Korean: "\uBCF4\uC0C1"
+  - Index: 3600
+    Text: "\uADFC\uC811 \uACF5\uACA9"
+    Korean: 
+  - Index: 1007
+    Text: New Monster
+    Korean: 
+  - Index: 3601
+    Text: "\uC0C8\uB85C\uC6B4 \uC6D0\uAC70\uB9AC \uACF5\uACA9"
+    Korean: 
+  - Index: 3602
+    Text: "\uC0C8\uB85C\uC6B4 \uADFC\uC811 \uACF5\uACA9"
+    Korean: 
+  - Index: 1008
+    Text: New Monster
+    Korean: 
+  - Index: 1009
+    Text: Minotaurs
+    Korean: 
+  - Index: 1010
+    Text: New Monster
+    Korean: 
+  - Index: 1011
+    Text: MinotaursKing
+    Korean: 
+  - Index: 3603
+    Text: NewEnrage
+    Korean: 

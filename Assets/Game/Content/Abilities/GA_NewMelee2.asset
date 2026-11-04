@@ -1,0 +1,69 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c86ae02c3d3ef6f4c93c6b7032934e5f, type: 3}
+  m_Name: GA_NewMelee2
+  m_EditorClassIdentifier: Game.Runtime::AbilityGraphAsset
+  Description: "\uD68C\uC804 \u2192 \uC774\uB3D9 \uC7A0\uAE08 \u2192 \uACF5\uACA9
+    \uBAA8\uC158 \u2192 0.45\uCD08 \uB4A4 \uBD80\uCC44\uAF34 \uD0C0\uACA9 \u2192
+    \uB3D9\uC791 \uB9C8\uBB34\uB9AC"
+  CancelAbilitiesWithTag: 
+  BlockAbilitiesWithTag: 150000001600000017000000190000001b000000
+  ActivationOwnedTags: 0d000000
+  ActivationRequiredTags: 
+  ActivationBlockedTags: 
+  BloodCost: 0
+  Steps:
+  - rid: 7158115440082813046
+  - rid: 7158115440082813047
+  - rid: 7158115440082813048
+  - rid: 7158115440082813049
+  - rid: 7158115440082813050
+  - rid: 7158115440082813051
+  - rid: 7158115440082813054
+  references:
+    version: 2
+    RefIds:
+    - rid: 7158115440082813046
+      type: {class: FaceAimStep, ns: , asm: Game.Runtime}
+      data: 
+    - rid: 7158115440082813047
+      type: {class: LockMovementStep, ns: , asm: Game.Runtime}
+      data:
+        Seconds: 0.9
+    - rid: 7158115440082813048
+      type: {class: PlayAnimationStep, ns: , asm: Game.Runtime}
+      data:
+        AnimationId: 1
+    - rid: 7158115440082813049
+      type: {class: WaitStep, ns: , asm: Game.Runtime}
+      data:
+        Seconds: 0.45
+        ScaleWithAttackSpeed: 1
+    - rid: 7158115440082813050
+      type: {class: MeleeHitStep, ns: , asm: Game.Runtime}
+      data:
+        Damage: 110
+        DamageType: 0
+        HitEffects: 
+        CastCue: 1
+        HitCue: 2
+        Range: 2.6
+        Angle: 120
+    - rid: 7158115440082813051
+      type: {class: WaitStep, ns: , asm: Game.Runtime}
+      data:
+        Seconds: 0.45
+        ScaleWithAttackSpeed: 1
+    - rid: 7158115440082813054
+      type: {class: PlayAnimationStep, ns: , asm: Game.Runtime}
+      data:
+        AnimationId: 1

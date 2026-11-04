@@ -76,6 +76,12 @@ GameBootstrap.setupUIAsync()
 - 프리팹 · 표식 스프라이트는 `UIPrefabBuilder.Map`, 지도 그림은 `WorldMapBaker` ([World.md 8절](World.md#8-월드맵-그림)).
 - **입력 맵**: `GameInput` 이 InputTable `Map` 열(System / Movement / Combat)마다 InputActionMap 을 만든다. `GameBootstrap.syncInputMaps` 가 매 프레임 매니저 업데이트 전에 "입력을 막는 창(`BlocksGameInput`)이 열려 있거나 콘솔 입력 중이면 Combat 끔". 그래서 창 위에서 휠을 굴려도 카메라 줌이 되지 않는다. 새 창이 전투 입력을 막지 않게 하려면 `BlocksGameInput` 을 false 로 (HUD · 미니맵 · 밸런스 미터).
 
+## 레이어 · 토스트 · 드래그 앤 드롭 (2026-11-01)
+
+- **레이어**: `Framework/Runtime/UI/UILayer.cs` — World(0) · Hud(10) · Window(20, 입력 차단 · ESC 닫힘) · Popup(30) · Toast(35) · System(40, 입력 차단). 각 UI 는 `UIBehaviour.GetLayer()` 를 override 해서 레이어를 고르고 `UIManager.Create<T>(prefab)` / `Spawn<T>(prefab)` 이 그 레이어 캔버스 자식으로 만든다. `UIWindow.BlocksGameInput` 기본값 = 레이어 정책. 새 창: 기본은 Window 레이어, 다르면 GetLayer override.
+- **토스트**: `ToastWindow`(Toast 레이어, 항상 열림) — `ItemObtainedEvent` → `ItemToast`, `NotifyEvent` → `TextToast`. 같은 알림은 `TryMerge` 로 합치고 시간을 다시 센다. 프리팹 `UI/Windows/ToastWindow` (AssetTable 417, `UIPrefabBuilder.buildToastWindow`).
+- **드래그 앤 드롭**: `ItemSlotView` 가 드래그 이벤트를 `IItemSlotDragHost`(InventoryWindow)로, 규칙은 `ItemSlotBinding` (인벤토리 칸 / 장비 부위) 더블 디스패치. 끌리는 아이콘 = `InventoryWindow.DragIcon`.
+
 ## 언어 (Unity Localization, 2026-10-31)
 
 | 단계 | 무엇이 | 어디 |

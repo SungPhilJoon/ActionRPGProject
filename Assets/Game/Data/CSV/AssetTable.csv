@@ -103,3 +103,13 @@ Index,Address,Kind
 414,UI/Widgets/DamageNumber,Prefab
 415,UI/Windows/MinimapWindow,Prefab
 416,UI/Windows/WorldMapWindow,Prefab
+417,UI/Windows/ToastWindow,Prefab
+418,Abilities/GA_Melee,Data
+107,Characters/NewMonster,Prefab
+419,Abilities/GA_NewRanged,Data
+420,Abilities/GA_NewMelee2,Data
+108,Characters/NewMonster,Prefab
+109,Characters/Minotaur,Prefab
+112,Characters/NewMonster,Prefab
+113,Characters/MinotaursKing,Prefab
+421,Abilities/GA_BossEnrageBuff,Data

@@ -158,11 +158,17 @@ public class BuildManager : IManager
         get { return Hearts.Count > 0; }
     }
 
+    /// <summary>성 심장 설치 (CastleHeartKind.OnPlaced).</summary>
+    internal void RegisterHeart(Structure InHeart)
+    {
+        Hearts.Add(InHeart);
+    }
+
     private void place(PlayerCharacter InPlayer, Vector3 InPoint)
     {
         if (IsValid == false)
         {
-            int message = Current.Type == EStructureType.CastleHeart || HasHeart == true ? (int)EText.Place : (int)EText.NeedCastleHeart;
+            int message = StructureKind.Of(Current.Type).IsCastleHeart == true || HasHeart == true ? (int)EText.Place : (int)EText.NeedCastleHeart;
             EventBus<NotifyEvent>.Publish(new NotifyEvent { TextId = message, Color = Color.red });
             return;
         }
@@ -187,16 +193,11 @@ public class BuildManager : IManager
             InPlayer.Anim.Play(Tables.ConstInt(EConst.BuildAnim));
         }
 
-        if (Current.Type == EStructureType.CastleHeart)
+        // 설치 직후 처리(성 심장 등록 · 관 리스폰 지점)는 종류별 StructureKind 가 한다.
+        if (structure.Kind.OnPlaced(this, InPlayer, structure) == true)
         {
-            Hearts.Add(structure);
             Cancel();
             return;
-        }
-
-        if (Current.Type == EStructureType.Coffin)
-        {
-            InPlayer.RespawnPoint = InPoint + instance.transform.forward * 1.5f;
         }
 
         // 같은 건축물을 연속 설치할 수 있게 재료가 남아 있으면 모드를 유지한다.
@@ -231,7 +232,7 @@ public class BuildManager : IManager
             return false;
         }
 
-        if (Current.Type == EStructureType.CastleHeart)
+        if (StructureKind.Of(Current.Type).IsCastleHeart == true)
         {
             return HasHeart == false;
         }
@@ -267,24 +268,8 @@ public class BuildManager : IManager
         float edgeZ = Mathf.Round((InPoint.z - half) / grid) * grid + half;
 
         bool alongX = Mathf.Abs(Mathf.DeltaAngle(Rotation, 90.0f)) > 45.0f && Mathf.Abs(Mathf.DeltaAngle(Rotation, 270.0f)) > 45.0f;
-        switch (Current.Type)
-        {
-            case EStructureType.Wall:
-                InPoint.x = alongX == true ? cellX : edgeX;
-                InPoint.z = alongX == true ? edgeZ : cellZ;
-                break;
-            case EStructureType.Decoration:
-                bool isPillar = Current.Footprint.x <= 1.0f && Current.Footprint.y <= 1.0f;
-                InPoint.x = isPillar == true ? edgeX : cellX;
-                InPoint.z = isPillar == true ? edgeZ : cellZ;
-                break;
-            default:
-                InPoint.x = cellX;
-                InPoint.z = cellZ;
-                break;
-        }
-
-        return CombatUtil.SnapToGround(InPoint);
+        var snapInfo = new StructureSnap { CellX = cellX, CellZ = cellZ, EdgeX = edgeX, EdgeZ = edgeZ, AlongX = alongX };
+        return CombatUtil.SnapToGround(StructureKind.Of(Current.Type).Snap(InPoint, snapInfo, Current));
     }
 
     private void tintGhost(Color InColor)

@@ -54,64 +54,6 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300004, guid: 5117415101b4ca34eb06f6c4ccdd33b1, type: 3}
---- !u!1 &2497866092615596803
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2226577143567966491}
-  - component: {fileID: 619729186214431258}
-  m_Layer: 12
-  m_Name: Medieval_Chimney_Small
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &2226577143567966491
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2497866092615596803}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.0000010728836, y: 0.027955055, z: 0}
-  m_LocalScale: {x: 1.1494387, y: 1.1494387, z: 1.1494387}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 3642790081936183194}
-  - {fileID: 2871925233499756598}
-  - {fileID: 277759609293251614}
-  m_Father: {fileID: 6446312428894672382}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!205 &619729186214431258
-LODGroup:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2497866092615596803}
-  serializedVersion: 2
-  m_LocalReferencePoint: {x: 0.0029916763, y: 1.1192392, z: 0.001033783}
-  m_Size: 2.2619731
-  m_FadeMode: 0
-  m_AnimateCrossFading: 0
-  m_LastLODIsBillboard: 0
-  m_LODs:
-  - screenRelativeHeight: 0.3555796
-    fadeTransitionWidth: 0
-    renderers:
-    - renderer: {fileID: 4344751102781763020}
-  - screenRelativeHeight: 0.01
-    fadeTransitionWidth: 0
-    renderers:
-    - renderer: {fileID: 6959188634122131944}
-  m_Enabled: 1
 --- !u!1 &4725041288975843935
 GameObject:
   m_ObjectHideFlags: 0
@@ -141,7 +83,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 2226577143567966491}
+  - {fileID: 5557397088740418230}
   m_Father: {fileID: 7168188776218746107}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5006647380910998102
@@ -228,7 +170,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 2226577143567966491}
+  m_Father: {fileID: 5557397088740418230}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6968719870463617993
 GameObject:
@@ -261,7 +203,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 2226577143567966491}
+  m_Father: {fileID: 5557397088740418230}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &5977914925064668807
 MeshFilter:
@@ -320,6 +262,64 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1 &7303994736422044326
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5557397088740418230}
+  - component: {fileID: 4286835207337756499}
+  m_Layer: 12
+  m_Name: Medieval_Chimney_Small
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5557397088740418230
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7303994736422044326}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.0000010728836, y: 0.027955055, z: 0}
+  m_LocalScale: {x: 1.1494387, y: 1.1494387, z: 1.1494387}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 3642790081936183194}
+  - {fileID: 2871925233499756598}
+  - {fileID: 277759609293251614}
+  m_Father: {fileID: 6446312428894672382}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!205 &4286835207337756499
+LODGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7303994736422044326}
+  serializedVersion: 2
+  m_LocalReferencePoint: {x: 0.0029916763, y: 1.1192392, z: 0.001033783}
+  m_Size: 2.2619731
+  m_FadeMode: 0
+  m_AnimateCrossFading: 0
+  m_LastLODIsBillboard: 0
+  m_LODs:
+  - screenRelativeHeight: 0.3555796
+    fadeTransitionWidth: 0
+    renderers:
+    - renderer: {fileID: 4344751102781763020}
+  - screenRelativeHeight: 0.01
+    fadeTransitionWidth: 0
+    renderers:
+    - renderer: {fileID: 6959188634122131944}
+  m_Enabled: 1
 --- !u!1 &7366917446684157039
 GameObject:
   m_ObjectHideFlags: 0
@@ -449,7 +449,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6631612085712048105}
-  m_Father: {fileID: 2226577143567966491}
+  m_Father: {fileID: 5557397088740418230}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &8762870630948806142
 MeshFilter:

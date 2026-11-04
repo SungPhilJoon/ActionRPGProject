@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &176589154515978582
+--- !u!1 &1708837448835051150
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,8 +8,8 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 6208011826904970784}
-  - component: {fileID: 6954916456072261844}
+  - component: {fileID: 3803390919830615326}
+  - component: {fileID: 4755609415958155774}
   m_Layer: 0
   m_Name: Light
   m_TagString: Untagged
@@ -17,13 +17,13 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &6208011826904970784
+--- !u!4 &3803390919830615326
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 176589154515978582}
+  m_GameObject: {fileID: 1708837448835051150}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
@@ -32,13 +32,13 @@ Transform:
   m_Children: []
   m_Father: {fileID: 4462076555809971591}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!108 &6954916456072261844
+--- !u!108 &4755609415958155774
 Light:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 176589154515978582}
+  m_GameObject: {fileID: 1708837448835051150}
   m_Enabled: 1
   serializedVersion: 12
   m_Type: 2
@@ -106,7 +106,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4462076555809971591}
-  - component: {fileID: 8382333014435667149}
+  - component: {fileID: 3076060110891147629}
   m_Layer: 0
   m_Name: Shockwave
   m_TagString: Untagged
@@ -127,10 +127,10 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 6208011826904970784}
+  - {fileID: 3803390919830615326}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8382333014435667149
+--- !u!114 &3076060110891147629
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

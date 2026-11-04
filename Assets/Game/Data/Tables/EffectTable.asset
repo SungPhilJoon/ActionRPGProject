@@ -590,17 +590,17 @@ MonoBehaviour:
     Mod1Op: 1
     Mod1Type: 0
     Mod1Key: 0
-    Mod1Value: 10
+    Mod1Value: 20
     Mod2Attr: 0
-    Mod2Op: 0
+    Mod2Op: 1
     Mod2Type: 0
     Mod2Key: 0
-    Mod2Value: 0
-    Mod3Attr: 0
-    Mod3Op: 0
+    Mod2Value: 10
+    Mod3Attr: 10
+    Mod3Op: 1
     Mod3Type: 0
     Mod3Key: 0
-    Mod3Value: 0
+    Mod3Value: 10
     Coefficient: 0
     DamageType: 0
   - Index: 41
@@ -622,11 +622,11 @@ MonoBehaviour:
     Mod1Type: 0
     Mod1Key: 0
     Mod1Value: 10
-    Mod2Attr: 0
-    Mod2Op: 0
+    Mod2Attr: 2
+    Mod2Op: 1
     Mod2Type: 0
     Mod2Key: 0
-    Mod2Value: 0
+    Mod2Value: 15
     Mod3Attr: 0
     Mod3Op: 0
     Mod3Type: 0
@@ -1593,5 +1593,67 @@ MonoBehaviour:
     Mod3Type: 0
     Mod3Key: 0
     Mod3Value: 0
+    Coefficient: 0
+    DamageType: 0
+  - Index: 100
+    DurationPolicy: 1
+    Duration: 10
+    Period: 2
+    ExecuteOnApply: 1
+    Execution: 2
+    GrantedTags: 09000000
+    RequiredTags: 
+    BlockedTags: 
+    RemoveTags: 
+    Stack: 1
+    MaxStack: 1
+    Cue: 0
+    IsCooldown: 0
+    Mod1Attr: 21
+    Mod1Op: 0
+    Mod1Type: 0
+    Mod1Key: 0
+    Mod1Value: 60
+    Mod2Attr: 5
+    Mod2Op: 0
+    Mod2Type: 0
+    Mod2Key: 0
+    Mod2Value: 60
+    Mod3Attr: 0
+    Mod3Op: 0
+    Mod3Type: 0
+    Mod3Key: 0
+    Mod3Value: 0
+    Coefficient: 0
+    DamageType: 0
+  - Index: 101
+    DurationPolicy: 1
+    Duration: 8
+    Period: 0
+    ExecuteOnApply: 0
+    Execution: 0
+    GrantedTags: 08000000
+    RequiredTags: 
+    BlockedTags: 
+    RemoveTags: 
+    Stack: 1
+    MaxStack: 1
+    Cue: 0
+    IsCooldown: 0
+    Mod1Attr: 2
+    Mod1Op: 1
+    Mod1Type: 0
+    Mod1Key: 0
+    Mod1Value: 40
+    Mod2Attr: 7
+    Mod2Op: 0
+    Mod2Type: 0
+    Mod2Key: 0
+    Mod2Value: 30
+    Mod3Attr: 8
+    Mod3Op: 1
+    Mod3Type: 0
+    Mod3Key: 0
+    Mod3Value: 20
     Coefficient: 0
     DamageType: 0

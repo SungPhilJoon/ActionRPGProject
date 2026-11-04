@@ -48,6 +48,7 @@ public static partial class UIPrefabBuilder
             buildList<BuildWindow>(row);
             buildList<ShopWindow>(row);
             buildBalanceOverlay();
+            buildToastWindow();
             var markers = buildMapMarkerSprites();
             buildMinimap(markers);
             buildWorldMap(markers);
@@ -283,7 +284,67 @@ public static partial class UIPrefabBuilder
         window.Tooltip = UIFactory.CreateText(frame, "Tooltip", string.Empty, 18.0f, TextAlignmentOptions.TopLeft);
         UIFactory.Place(window.Tooltip, new Vector2(0.0f, 0.0f), new Vector2(28.0f, 18.0f), new Vector2(1060.0f, 92.0f));
         window.SlotPrefab = InSlot;
+
+        // 드래그 앤 드롭 중 마우스를 따라오는 아이콘 (맨 위, 레이캐스트 막지 않음).
+        window.DragIcon = UIFactory.CreateImage(root, "DragIcon", new Color(1.0f, 1.0f, 1.0f, 0.85f));
+        window.DragIcon.rectTransform.anchorMin = new Vector2(0.5f, 0.5f);
+        window.DragIcon.rectTransform.anchorMax = new Vector2(0.5f, 0.5f);
+        window.DragIcon.rectTransform.pivot = new Vector2(0.5f, 0.5f);
+        window.DragIcon.rectTransform.sizeDelta = new Vector2(72.0f, 72.0f);
+        window.DragIcon.preserveAspect = true;
+        window.DragIcon.raycastTarget = false;
+        window.DragIcon.gameObject.SetActive(false);
         save<InventoryWindow>(root, "Windows/InventoryWindow");
+    }
+
+    /// <summary>
+    /// 토스트 창 (Toast 레이어): 오른쪽 아래(키 안내 위)에서 위로 쌓이는 줄. 줄 = 배경 + 왼쪽 색 띠 + 아이콘 + 문구 + CanvasGroup(페이드).
+    /// </summary>
+    private static void buildToastWindow()
+    {
+        RectTransform root;
+        var window = createWindow<ToastWindow>(out root);
+        window.Stack = UIFactory.CreateRect(root, "Stack");
+        UIFactory.Place(window.Stack, new Vector2(1.0f, 0.0f), new Vector2(-20.0f, 150.0f), new Vector2(420.0f, 360.0f));
+        window.Stack.pivot = new Vector2(1.0f, 0.0f);
+        var layout = UIFactory.AddVertical(window.Stack, 6.0f, 0);
+        layout.childAlignment = TextAnchor.LowerRight;
+        layout.childControlWidth = true;
+        layout.childControlHeight = false;
+        layout.childForceExpandWidth = true;
+        layout.childForceExpandHeight = false;
+
+        var item = UIFactory.CreatePanel(window.Stack, "Toast", new Color(0.06f, 0.04f, 0.05f, 0.82f));
+        item.sizeDelta = new Vector2(420.0f, 46.0f);
+        UIFactory.SetPreferred(item, 420.0f, 46.0f);
+        item.GetComponent<Image>().raycastTarget = false;
+        var view = item.gameObject.AddComponent<ToastItemView>();
+        view.Background = item.GetComponent<Image>();
+        view.Group = item.gameObject.AddComponent<CanvasGroup>();
+        view.Group.blocksRaycasts = false;
+        view.Group.interactable = false;
+
+        view.Accent = UIFactory.CreateImage(item, "Accent", UIUtil.GoldColor);
+        view.Accent.rectTransform.anchorMin = new Vector2(0.0f, 0.0f);
+        view.Accent.rectTransform.anchorMax = new Vector2(0.0f, 1.0f);
+        view.Accent.rectTransform.pivot = new Vector2(0.0f, 0.5f);
+        view.Accent.rectTransform.sizeDelta = new Vector2(4.0f, 0.0f);
+        view.Accent.rectTransform.anchoredPosition = Vector2.zero;
+        view.Accent.raycastTarget = false;
+
+        view.Icon = UIFactory.CreateImage(item, "Icon", Color.white);
+        UIFactory.Place(view.Icon, new Vector2(0.0f, 0.5f), new Vector2(12.0f, 0.0f), new Vector2(34.0f, 34.0f));
+        view.Icon.raycastTarget = false;
+
+        view.Text = UIFactory.CreateText(item, "Text", string.Empty, 18.0f, TextAlignmentOptions.MidlineLeft);
+        view.Text.textWrappingMode = TextWrappingModes.NoWrap;
+        view.Text.rectTransform.anchorMin = new Vector2(0.0f, 0.0f);
+        view.Text.rectTransform.anchorMax = new Vector2(1.0f, 1.0f);
+        view.Text.rectTransform.offsetMin = new Vector2(54.0f, 0.0f);
+        view.Text.rectTransform.offsetMax = new Vector2(-10.0f, 0.0f);
+        item.gameObject.SetActive(false);
+        window.Template = view;
+        save<ToastWindow>(root, "Windows/ToastWindow");
     }
 
     private static void buildBalanceOverlay()

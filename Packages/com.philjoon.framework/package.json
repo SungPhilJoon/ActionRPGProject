@@ -1,0 +1,21 @@
+{
+  "name": "com.philjoon.framework",
+  "version": "0.2.0",
+  "displayName": "PhilJoon Framework",
+  "description": "게임 데이터를 모르는 재사용 런타임 · 에디터 프레임워크. 언리얼 GAS 방식 어빌리티 시스템(Ability · GameplayEffect · AttributeSet · 계층 태그), StateTree AI(+ 에디터), 레이어 기반 UI, Addressables 로더 · 의존성 분석, CSV → ScriptableObject 테이블, EventBus, 오브젝트 풀, 카메라 가림 처리, BaseBehaviour 라이프사이클.",
+  "unity": "6000.3",
+  "keywords": [ "gas", "gameplay-ability-system", "statetree", "ai", "ui", "addressables", "framework" ],
+  "author": {
+    "name": "SungPhilJoon",
+    "url": "https://github.com/SungPhilJoon"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/SungPhilJoon/Custom_Unity_Framework.git"
+  },
+  "dependencies": {
+    "com.cysharp.unitask": "2.5.11",
+    "com.unity.addressables": "2.10.3",
+    "com.unity.ugui": "2.0.0"
+  }
+}

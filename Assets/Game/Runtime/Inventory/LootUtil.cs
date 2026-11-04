@@ -28,12 +28,9 @@ public static class LootUtil
                 continue;
             }
 
-            InPlayer.Inventory.Add(loot.Items[i], count);
-            ItemRow item;
-            if (Tables.Root.Item.TryGet(loot.Items[i], out item) == true)
-            {
-                EventBus<NotifyEvent>.Publish(new NotifyEvent { TextId = item.NameId, Arg = $"+{count}", Color = new Color(0.8f, 0.8f, 0.6f) });
-            }
+            int left = InPlayer.Inventory.Add(loot.Items[i], count);
+            // 획득 알림은 ToastWindow 가 ItemObtainedEvent 로 띄운다 (전리품).
+            EventBus<ItemObtainedEvent>.Publish(new ItemObtainedEvent { Player = InPlayer, ItemId = loot.Items[i], Count = count - left, Source = EItemSource.Loot });
         }
     }
 }

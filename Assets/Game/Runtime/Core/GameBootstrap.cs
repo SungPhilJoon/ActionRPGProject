@@ -137,35 +137,33 @@ public class GameBootstrap : BaseBehaviour
             return;
         }
 
-        ui.RegistLayer(UILayerId.World, "World", canvas);
-        ui.RegistLayer(UILayerId.Hud, "Hud", canvas);
-        ui.RegistLayer(UILayerId.Window, "Window", canvas);
-        ui.RegistLayer(UILayerId.Popup, "Popup", canvas);
-        ui.RegistLayer(UILayerId.System, "System", canvas);
+        // 레이어(World/Hud/Window/Popup/Toast/System)마다 캔버스 하나. 각 UI 가 GetLayer() 로 자기 레이어를 알려 준다.
+        ui.RegistLayers(canvas);
 
         var worldCamera = Context != null && Context.Camera != null ? Context.Camera.GetComponent<Camera>() : Camera.main;
-        var healthBars = ui.Spawn<WorldHealthBarLayer>(UILayerId.World, await loadUIPrefab(EUIAsset.WorldHealthBarLayer));
+        var healthBars = ui.Spawn<WorldHealthBarLayer>(await loadUIPrefab(EUIAsset.WorldHealthBarLayer));
         if (healthBars != null)
         {
             healthBars.Setup(worldCamera);
         }
 
-        var damageNumbers = ui.Spawn<DamageNumberLayer>(UILayerId.World, await loadUIPrefab(EUIAsset.DamageNumberLayer));
+        var damageNumbers = ui.Spawn<DamageNumberLayer>(await loadUIPrefab(EUIAsset.DamageNumberLayer));
         if (damageNumbers != null)
         {
             damageNumbers.Setup(worldCamera);
         }
 
-        Hud = ui.Create<HudWindow>(UILayerId.Hud, await loadUIPrefab(EUIAsset.HudWindow));
-        ui.Create<InventoryWindow>(UILayerId.Window, await loadUIPrefab(EUIAsset.InventoryWindow));
-        ui.Create<CraftWindow>(UILayerId.Window, await loadUIPrefab(EUIAsset.CraftWindow));
-        ui.Create<BuildWindow>(UILayerId.Window, await loadUIPrefab(EUIAsset.BuildWindow));
-        ui.Create<ShopWindow>(UILayerId.Window, await loadUIPrefab(EUIAsset.ShopWindow));
-        ui.Create<WorldMapWindow>(UILayerId.Window, await loadUIPrefab(EUIAsset.WorldMapWindow));
-        Minimap = ui.Create<MinimapWindow>(UILayerId.Hud, await loadUIPrefab(EUIAsset.MinimapWindow));
-        Balance = ui.Create<BalanceOverlayWindow>(UILayerId.Popup, await loadUIPrefab(EUIAsset.BalanceOverlayWindow));
-        ui.Create<CheatConsoleWindow>(UILayerId.System, await loadUIPrefab(EUIAsset.CheatConsoleWindow));
-        Title = ui.Create<TitleWindow>(UILayerId.System, await loadUIPrefab(EUIAsset.TitleWindow), true);
+        Hud = ui.Create<HudWindow>(await loadUIPrefab(EUIAsset.HudWindow));
+        ui.Create<InventoryWindow>(await loadUIPrefab(EUIAsset.InventoryWindow));
+        ui.Create<CraftWindow>(await loadUIPrefab(EUIAsset.CraftWindow));
+        ui.Create<BuildWindow>(await loadUIPrefab(EUIAsset.BuildWindow));
+        ui.Create<ShopWindow>(await loadUIPrefab(EUIAsset.ShopWindow));
+        ui.Create<WorldMapWindow>(await loadUIPrefab(EUIAsset.WorldMapWindow));
+        Minimap = ui.Create<MinimapWindow>(await loadUIPrefab(EUIAsset.MinimapWindow));
+        Balance = ui.Create<BalanceOverlayWindow>(await loadUIPrefab(EUIAsset.BalanceOverlayWindow));
+        ui.Create<ToastWindow>(await loadUIPrefab(EUIAsset.ToastWindow), true);
+        ui.Create<CheatConsoleWindow>(await loadUIPrefab(EUIAsset.CheatConsoleWindow));
+        Title = ui.Create<TitleWindow>(await loadUIPrefab(EUIAsset.TitleWindow), true);
         if (Title != null)
         {
             Title.OnStartSinglePlayer = startSinglePlayer;
@@ -185,20 +183,11 @@ public class GameBootstrap : BaseBehaviour
         var tasks = new List<UniTask>(rows.Count);
         for (int i = 0; i < rows.Count; ++i)
         {
-            switch (rows[i].Kind)
+            // 에셋 종류별 로드 타입은 AssetPreloader 하위 클래스가 안다 (AssetPreloaders.cs).
+            var preloader = KindRegistry<AssetPreloader>.Get((int)rows[i].Kind);
+            if (preloader != null)
             {
-                case EAssetKind.Prefab:
-                    tasks.Add(loader.LoadAsync<GameObject>(rows[i].Address, this).AsUniTask());
-                    break;
-                case EAssetKind.Sprite:
-                    tasks.Add(loader.LoadAsync<Sprite>(rows[i].Address, this).AsUniTask());
-                    break;
-                case EAssetKind.Material:
-                    tasks.Add(loader.LoadAsync<Material>(rows[i].Address, this).AsUniTask());
-                    break;
-                case EAssetKind.Data:
-                    tasks.Add(loader.LoadAsync<ScriptableObject>(rows[i].Address, this).AsUniTask());
-                    break;
+                tasks.Add(preloader.Preload(loader, rows[i].Address, this));
             }
         }
 

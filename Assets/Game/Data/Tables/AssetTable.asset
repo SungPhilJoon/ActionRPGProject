@@ -326,3 +326,33 @@ MonoBehaviour:
   - Index: 416
     Address: UI/Windows/WorldMapWindow
     Kind: 0
+  - Index: 417
+    Address: UI/Windows/ToastWindow
+    Kind: 0
+  - Index: 418
+    Address: Abilities/GA_Melee
+    Kind: 3
+  - Index: 107
+    Address: Characters/NewMonster
+    Kind: 0
+  - Index: 419
+    Address: Abilities/GA_NewRanged
+    Kind: 3
+  - Index: 420
+    Address: Abilities/GA_NewMelee2
+    Kind: 3
+  - Index: 108
+    Address: Characters/NewMonster
+    Kind: 0
+  - Index: 109
+    Address: Characters/Minotaur
+    Kind: 0
+  - Index: 112
+    Address: Characters/NewMonster
+    Kind: 0
+  - Index: 113
+    Address: Characters/MinotaursKing
+    Kind: 0
+  - Index: 421
+    Address: Abilities/GA_BossEnrageBuff
+    Kind: 3

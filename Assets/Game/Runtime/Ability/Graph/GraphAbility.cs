@@ -9,6 +9,7 @@ using UnityEngine;
 ///  발동: 비용/쿨다운 커밋 → Steps[0..] 실행 (WaitStep 등이 돌려준 시간만큼 WaitDelayTask 로 대기) → 끝나면 EndAbility
 ///  종료: RemoveOnEnd 로 건 효과 제거 + 각 단계 정리 (OnAbilityEnd)
 /// </summary>
+[Kind(EAbilityType.Graph)]
 public class GraphAbility : GameAbility
 {
     public AbilityGraphAsset Graph { get; private set; }

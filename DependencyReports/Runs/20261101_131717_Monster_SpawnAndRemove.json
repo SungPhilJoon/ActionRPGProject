@@ -1,0 +1,157 @@
+{
+    "Scenario": "Monster_SpawnAndRemove",
+    "Description": "메두사 · 코브라 · 트롤을 스폰 → 처치 → 제거 (캐릭터 프리팹 · 피격 VFX)",
+    "StartedAt": "2026-11-01 13:17:09",
+    "DurationSeconds": 8.008743286132813,
+    "Repeat": 3,
+    "ExpectsCleanup": true,
+    "LoadEvents": 36,
+    "ReleaseEvents": 0,
+    "SyncWaits": 0,
+    "SyncWaitMilliseconds": 0.0,
+    "LiveBefore": 105,
+    "LiveAfter": 105,
+    "Failures": [],
+    "Assets": [
+        {
+            "Address": "AI/ST_MeleeMonster",
+            "Type": "ScriptableObject",
+            "Loads": 6,
+            "Releases": 0,
+            "RefCountBefore": 14,
+            "RefCountAfter": 20,
+            "LoadMilliseconds": 0.0,
+            "SyncWaitMilliseconds": 0.0,
+            "Failed": false,
+            "Owners": [
+                "MonsterBrain.loadTree"
+            ]
+        },
+        {
+            "Address": "AI/ST_RangedMonster",
+            "Type": "ScriptableObject",
+            "Loads": 3,
+            "Releases": 0,
+            "RefCountBefore": 7,
+            "RefCountAfter": 10,
+            "LoadMilliseconds": 0.0,
+            "SyncWaitMilliseconds": 0.0,
+            "Failed": false,
+            "Owners": [
+                "MonsterBrain.loadTree"
+            ]
+        },
+        {
+            "Address": "Characters/BanditArcher",
+            "Type": "GameObject",
+            "Loads": 3,
+            "Releases": 0,
+            "RefCountBefore": 7,
+            "RefCountAfter": 10,
+            "LoadMilliseconds": 0.0,
+            "SyncWaitMilliseconds": 0.0,
+            "Failed": false,
+            "Owners": [
+                "SpawnManager.SpawnMonsterAsync"
+            ]
+        },
+        {
+            "Address": "Characters/BanditThug",
+            "Type": "GameObject",
+            "Loads": 3,
+            "Releases": 0,
+            "RefCountBefore": 10,
+            "RefCountAfter": 13,
+            "LoadMilliseconds": 0.0,
+            "SyncWaitMilliseconds": 0.0,
+            "Failed": false,
+            "Owners": [
+                "SpawnManager.SpawnMonsterAsync"
+            ]
+        },
+        {
+            "Address": "Characters/OrcBrute",
+            "Type": "GameObject",
+            "Loads": 3,
+            "Releases": 0,
+            "RefCountBefore": 5,
+            "RefCountAfter": 8,
+            "LoadMilliseconds": 0.0,
+            "SyncWaitMilliseconds": 0.0,
+            "Failed": false,
+            "Owners": [
+                "SpawnManager.SpawnMonsterAsync"
+            ]
+        },
+        {
+            "Address": "Icons/CopperOre",
+            "Type": "Sprite",
+            "Loads": 1,
+            "Releases": 0,
+            "RefCountBefore": 1,
+            "RefCountAfter": 2,
+            "LoadMilliseconds": 0.0,
+            "SyncWaitMilliseconds": 0.0,
+            "Failed": false,
+            "Owners": [
+                "UIUtil.LoadSprite"
+            ]
+        },
+        {
+            "Address": "Icons/Lumber",
+            "Type": "Sprite",
+            "Loads": 2,
+            "Releases": 0,
+            "RefCountBefore": 1,
+            "RefCountAfter": 3,
+            "LoadMilliseconds": 0.0,
+            "SyncWaitMilliseconds": 0.0,
+            "Failed": false,
+            "Owners": [
+                "UIUtil.LoadSprite"
+            ]
+        },
+        {
+            "Address": "Icons/PlantFiber",
+            "Type": "Sprite",
+            "Loads": 4,
+            "Releases": 0,
+            "RefCountBefore": 1,
+            "RefCountAfter": 5,
+            "LoadMilliseconds": 0.0,
+            "SyncWaitMilliseconds": 0.0,
+            "Failed": false,
+            "Owners": [
+                "UIUtil.LoadSprite"
+            ]
+        },
+        {
+            "Address": "Icons/Potion",
+            "Type": "Sprite",
+            "Loads": 8,
+            "Releases": 0,
+            "RefCountBefore": 1,
+            "RefCountAfter": 9,
+            "LoadMilliseconds": 0.0,
+            "SyncWaitMilliseconds": 0.0,
+            "Failed": false,
+            "Owners": [
+                "UIUtil.LoadSprite"
+            ]
+        },
+        {
+            "Address": "VFX/DashTrail",
+            "Type": "GameObject",
+            "Loads": 3,
+            "Releases": 0,
+            "RefCountBefore": 1,
+            "RefCountAfter": 4,
+            "LoadMilliseconds": 0.0,
+            "SyncWaitMilliseconds": 0.0,
+            "Failed": false,
+            "Owners": [
+                "CueSpawner.spawnInternal"
+            ]
+        }
+    ]
+}

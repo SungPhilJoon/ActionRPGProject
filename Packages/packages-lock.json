@@ -17,6 +17,16 @@
       "dependencies": {},
       "url": "https://package.openupm.com"
     },
+    "com.philjoon.framework": {
+      "version": "file:com.philjoon.framework",
+      "depth": 0,
+      "source": "embedded",
+      "dependencies": {
+        "com.cysharp.unitask": "2.5.11",
+        "com.unity.addressables": "2.10.3",
+        "com.unity.ugui": "2.0.0"
+      }
+    },
     "com.unity.2d.sprite": {
       "version": "1.0.0",
       "depth": 0,

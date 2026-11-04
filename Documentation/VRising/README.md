@@ -54,7 +54,7 @@
 
 | 위치 | 내용 |
 |---|---|
-| `Assets/Framework/` | 게임을 모르는 재사용 기반 (GAS, StateTree, 매니저, CSV 테이블, UIFactory …) |
+| `Packages/com.philjoon.framework/` | 게임을 모르는 재사용 기반 (GAS, StateTree, 매니저, CSV 테이블, UIFactory …). UPM 패키지, 별도 저장소 [Architecture.md 2.1](Architecture.md#21-패키지--별도-저장소-2026-11-04) |
 | `Assets/Game/Runtime`, `Editor`, `Integration`, `Tests` | 이 게임의 코드 / Play 모드 테스트 |
 | `Assets/Game/Data/Monsters` | 몬스터 저작 에셋 (MonsterAuthoring — 인스펙터에서 편집) |
 | `Assets/Game/Data/CSV` → `Data/Tables` | 원본 데이터 19종 → ScriptableObject (런타임은 Tables 만 읽음) |
@@ -109,6 +109,8 @@ Unity Test Framework (Window > General > Test Runner → **PlayMode** → Run Al
 | 묶음 | 테스트 | 확인하는 것 |
 |---|---|---|
 | GAS (`GasAbilityTests`) | 가드 / 부채꼴 피해 / 발동 차단 태그 / 쿨다운 | 종료 시 GE·태그 제거, 이 어빌리티 번호의 피해 이벤트, BlockedByTags, Cooldown |
+| 보스 격노 (`BossEnrageTests`) | 직접 발동 / 보스 AI Phase2 | GAS Tool 로 만든 #603(GA_BossEnrageBuff → GE #101)을 실제 테이블 · 에셋 · ST_Boss 로 실행: 시전 태그 · 이동 잠금 → GE 적용 → 속성 = EffectTable 행 모디파이어대로 → 쿨다운 → 만료 후 복귀 / Phase1 에선 안 쓰고 체력 45% Phase2 에서 Spell1 로 사용. 기댓값은 행에서 읽으므로 수치 조정에 테스트 수정 불필요. 직접 발동은 `CloseUpCamera`(보스 정면 근접 · UI 숨김 · 15시)로 보여 주고 시전 ~ 격노 직후를 0.25배속으로 재생, 화면 `Temp/BossEnrage_0_Idle · 1_Cast · 2_Enraged.png` |
+| GAS 시연 (`GasShowcaseTests`, **[Explicit]**, Category `Showcase`) | 몬스터 한 마리 만들기 (약 60초, OBS 녹화용) | 화면 자막과 함께 AttributeSet → GE(분노 +50% 공격력) → Ability 2개(강타 · 분노의 포효) → Ability Set → StateTree → 전투 → 체력 40% 에서 분노 → 같은 강타 피해 ×1.5 → 만료 후 공격력 복귀. Run All 에서 빠지고 Test Runner 에서 골라 **Run Selected** 로 실행. 템포는 `Pace` 상수 |
 | StateTree (`StateTreeTests`) | 기본 트리 공격 / 조건부 어빌리티 | 감지 → Combat → 피해, 체력 50% 초과에선 안 쓰고 40% 에서 가드 사용 |
 | 시나리오 (`PlayScenarioTests`) | **성 짓기** | 빈 평지에 5×5칸(15m) 성을 처음부터 완성: 성 심장 → 바닥 25 → 외벽 20(남쪽 문, 3면 창) → 기둥 20 → 작업대·제련소·관·램프 4 (총 73개). 단계마다 설치 성공 · 개수 · 재료 차감 · 관 리스폰 지점 확인, 잘못된 설치 거부 확인 → **완성된 성을 10초간 카메라로 한 바퀴 돌며 보여줌** (HUD 숨김, 15시 햇빛, 스크린샷 `Temp/CastleShowcase_1·2.png`) |
 | | **몬스터 전투** | 몬스터가 플레이어 공격 → 플레이어 평타로 처치, 처치자 = 플레이어 |

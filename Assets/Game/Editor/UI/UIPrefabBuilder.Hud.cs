@@ -19,8 +19,6 @@ public static partial class UIPrefabBuilder
         // 보스 바(-30) · 대상 정보창(-118) 아래.
         UIFactory.Place(hud.SunLabel, new Vector2(0.5f, 1.0f), new Vector2(0.0f, -200.0f), new Vector2(700.0f, 50.0f));
 
-        hud.Toast = UIFactory.CreateText(root, "Toast", string.Empty, 30.0f, TextAlignmentOptions.Center);
-        UIFactory.Place(hud.Toast, new Vector2(0.5f, 0.5f), new Vector2(0.0f, 220.0f), new Vector2(1100.0f, 60.0f));
 
         hud.Hints = UIFactory.CreateText(root, "Hints", string.Empty, 16.0f, TextAlignmentOptions.BottomRight);
         hud.Hints.color = new Color(1.0f, 1.0f, 1.0f, 0.55f);

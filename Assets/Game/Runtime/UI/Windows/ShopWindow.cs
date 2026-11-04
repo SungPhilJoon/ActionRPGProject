@@ -42,7 +42,6 @@ public class ShopWindow : ListWindow
         int left = player.Inventory.Add(InRow.Item, Mathf.Max(1, InRow.Count));
         if (left < InRow.Count)
         {
-            EventBus<NotifyEvent>.Publish(new NotifyEvent { TextId = (int)EText.Buy, Arg = UIUtil.ItemName(InRow.Item), Color = new Color(0.5f, 0.9f, 0.5f) });
             EventBus<ItemObtainedEvent>.Publish(new ItemObtainedEvent { Player = player, ItemId = InRow.Item, Count = Mathf.Max(1, InRow.Count) - left, Source = EItemSource.Shop });
         }
     }

@@ -150,6 +150,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 3758e9317578bfe45a5d46c104f18760
+    m_Address: UI/Windows/ToastWindow
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 37c74714f995ee64f9909fdb6af707e2
     m_Address: Nodes/CopperVein
     m_ReadOnly: 0
@@ -255,6 +260,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 51ec98fc1cf7aac42a48cb1b4b95caee
+    m_Address: Abilities/GA_Melee
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 556a35c0e4b127a498960befd4932f25
     m_Address: UI/Windows/CraftWindow
     m_ReadOnly: 0
@@ -267,6 +277,11 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 598c48be404182d4bb970efe8f5270ac
     m_Address: VFX/Skill/Whirlwind
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 5f11979f78466f24fb0ed231c31d79af
+    m_Address: Abilities/GA_BossEnrageBuff
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -310,8 +325,23 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 7340e56fc05f9dc41a7904089ffc08d7
+    m_Address: Characters/Minotaurs
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 77a37f9d0b131854aaba8431e29b572b
+    m_Address: Abilities/GA_NewMelee2
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 7836d2fffa687c942a0044eb6da744f3
     m_Address: Characters/Player
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 793ca4ec29c63e048a277fbf961d7cbe
+    m_Address: Characters/Minotaur
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -440,6 +470,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c34c119c2a131da4487006a4e091f9ef
+    m_Address: Characters/MinotaursKing
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: c5ecbb3cf369a394e80cc7fde7ead9a7
     m_Address: Nodes/Boulder
     m_ReadOnly: 0
@@ -477,6 +512,11 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: d92d5d3f3443e0944850ea5f8f8c6910
     m_Address: UI/Windows/WorldMapWindow
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: d98e6536d94c480468cc55a9c85cfa3f
+    m_Address: Abilities/GA_NewRanged
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
